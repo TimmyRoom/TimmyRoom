@@ -74,3 +74,6 @@ crashlytics-build.properties
 # Licensed Assets
 /[Aa]ssets/08.\ Licensed\ Assets/
 /[Aa]ssets/08.\ Licensed\ Assets.meta
+
+#.DS_Store
+.DS_Store
