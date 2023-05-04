@@ -353,6 +353,71 @@ class
 - public void SoundPlay(AudioClip clip, AudioSource source)
     - 설정한 효과음 clip을 source 위치에서 재생한다.
 
+## VibrateControl
+
+---
+
+class
+
+싱글톤으로 사용함.
+
+XR Origin의 ActionBasedController와 연결하여 해당 컨트롤러에 원하는 시간과 강도만큼의 진동을 줄 수 있는 클래스. 
+
+- public static VibrateControl instance
+    - 다른 오브젝트들이 인스턴스 참조 없이 로직을 호출하는 변수
+
+- private ActionBasedController rightController
+    - XR Origin - Camera Offset 내의 RightHand Controller 오브젝트를 참조해 불러오는 변수
+
+- private ActionBasedController leftController
+    - XR Origin - Camera Offset 내의 LeftHand Controller 오브젝트를 참조해 불러오는 변수
+
+- public IEnumerator CustomVibrateRight(float amplitude, float duration)
+    - 오른쪽 컨트롤러가 활성화된 상태인 경우 오른쪽 컨트롤러에 진동을 재생하는 코루틴 함수
+    - 컨트롤러가 활성화되지 않은 경우 진동 대신 에러 로그를 띄워줌
+    - 실제로 진동을 발생시키는 부분은 ActionBasedController 클래스의 메소드에서 이루어짐
+    - amplitude : 0.0에서 1.0 사이의 진동 강도를 지정해줌
+    - duration : 얼마나 많은 시간 동안 진동을 재생할지 지정해주며 단위는 초를 사용함
+    
+    ```csharp
+    public IEnumerator CustomVibrateRight(float amplitude, float duration)
+    {
+        if (rightController != null)
+        {
+            rightController.SendHapticImpulse(amplitude, duration);
+        }
+        else
+        {
+            Debug.LogError("right controller isn't avaliable.");
+        }
+        yield return null;
+    }
+    ```
+    
+
+- public IEnumerator CustomVibrateLeft(float amplitude, float duration)
+    - 왼쪽 컨트롤러가 활성화된 상태인 경우 왼쪽 컨트롤러에 진동을 재생하는 코루틴 함수
+    - 컨트롤러가 활성화되지 않은 경우 진동 대신 에러 로그를 띄워줌
+    - 실제로 진동을 발생시키는 부분은 ActionBasedController 클래스의 메소드에서 이루어짐
+    - amplitude : 0.0에서 1.0 사이의 진동 강도를 지정해줌
+    - duration : 얼마나 많은 시간 동안 진동을 재생할지 지정해주며 단위는 초를 사용함
+    
+    ```csharp
+    public IEnumerator CustomVibrateLeft(float amplitude, float duration)
+    {
+    		if (leftController != null)
+    		{
+    		    leftController.SendHapticImpulse(amplitude, duration);
+    		}
+    		else
+    		{
+    		    Debug.LogError("left controller isn't avaliable.");
+    		}
+    		
+    		yield return null;
+    }
+    ```
+
 # Login Scene
 
 ---
