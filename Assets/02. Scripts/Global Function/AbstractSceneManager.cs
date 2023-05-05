@@ -18,8 +18,8 @@ public abstract class AbstractSceneManager : MonoBehaviour
     /// <summary>
     /// 특정 씬으로 이동하는 로직을 담은 함수.
     /// </summary>
-    /// <param name="SceneName">이동할 씬의 이름.</param>
-    public void MoveScene(string SceneName)
+    /// <param name="sceneName">이동할 씬의 이름.</param>
+    public void MoveScene(string sceneName)
     {
         //TODO : using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도
     }

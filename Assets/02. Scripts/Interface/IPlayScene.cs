@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IPlayScene
 {
     /// <summary>
-    /// SceneRecorder 싱글톤을 사용해서 플레이를 기록하는 함수
+    /// SceneRecorder 싱글톤을 사용해서 플레이를 기록하는 함수.
     /// </summary>
-    void Record();
+    public void Record();
 }

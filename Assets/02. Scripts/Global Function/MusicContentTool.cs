@@ -12,9 +12,9 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// 마디 단위를 받아 BPM에 따라 정확한 초를 계산한다.
     /// </summary>
     /// <param name="beat">마디 수.</param>
-    /// <param name="BPM">BPM</param>
-    /// <returns></returns>
-    float Beat2Second(float beat, float BPM) 
+    /// <param name="BPM">BPM.</param>
+    /// <returns>주어진 마디를 초 단위 시간으로 환산한 값.</returns>
+    public float Beat2Second(float beat, float BPM) 
     {
         return beat * 60 / BPM;
     }
@@ -22,10 +22,10 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <summary>
     /// 초 단위를 받아 BPM에 따라 정확한 마디를 계산한다.
     /// </summary>
-    /// <param name="second">초 단위.</param>
-    /// <param name="BPM">BPM</param>
-    /// <returns></returns>
-    float Second2Beat(float second, float BPM) 
+    /// <param name="second">초 단위 시간.</param>
+    /// <param name="BPM">BPM.</param>
+    /// <returns>주어진 초 단위 시간을 마디 수로 환산한 값.</returns>
+    public float Second2Beat(float second, float BPM) 
     {
 		return second * BPM /60;
     }
@@ -34,8 +34,8 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// 각 판정 이벤트들의 정보가 포함된 JSON파일을 받아 Dictionary 형태로 변환한다.
     /// </summary>
     /// <param name="jsonData">JSON 데이터.</param>
-    /// <returns></returns>
-    Dictionary<float, string> GetScript(string jsonData) 
+    /// <returns>Dictionary 자료구조.</returns>
+    public Dictionary<float, string> GetScript(string jsonData) 
     {
 		return JsonUtility.FromJson<Dictionary<float, string>>(jsonData);
     }
@@ -43,7 +43,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <summary>
     /// 각 노트에 대해 CommandExecute(time, command) 호출.
     /// </summary>
-    /// <param name="json"></param>
+    /// <param name="json">JSON 데이터.</param>
     public virtual void PlayChart(string json)
     {
         Dictionary<float, string> data = GetScript(json);

@@ -13,6 +13,18 @@ public class UISelector : MonoBehaviour
     IEnumerator InteractionRoutine;
 
     /// <summary>
+    /// class 내 설정된 시간이 지나면 할당된 events들을 Invoke한다.
+    /// </summary>
+    IEnumerator StartTimer()
+    {
+        yield return new WaitForSeconds(InteractionTime);
+		foreach(var UIEvent in UIEvents)
+		{
+			UIEvent?.Invoke();
+		}
+    }
+    
+    /// <summary>
     /// StartCoroutine으로 StartTimer 루틴을 실행하고 InteractionRoutine에 저장한다.
     /// </summary>
     public void GetRayCasted()
@@ -27,17 +39,5 @@ public class UISelector : MonoBehaviour
     public void GetRayCastStopped()
     {
         StopCoroutine(InteractionRoutine);
-    }
-
-    /// <summary>
-    /// class 내 설정된 시간이 지나면 할당된 events들을 Invoke한다.
-    /// </summary>
-    IEnumerator StartTimer()
-    {
-        yield return new WaitForSeconds(InteractionTime);
-		foreach(var UIEvent in UIEvents)
-		{
-				UIEvent?.Invoke();
-		}
     }
 }
