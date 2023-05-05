@@ -4,8 +4,9 @@ using UnityEngine;
 
 /// <summary>
 /// 음악과 관련하여 BPM을 분석해 박자 단위의 시간 체계를 초 단위 시간으로 변환하며, 박자 단위로 명령을 입력한 csv 파일을 읽어 Dictionary 형태의 자료구조로 변환한다.
+/// 각 씬의 매너지 클래스 중 일부가 상속하며 AbstractSceneManager를 상속받는다.
 /// </summary>
-public class MusicContentTool : MonoBehaviour
+public abstract class MusicContentTool : AbstractSceneManager
 {
     /// <summary>
     /// 마디 단위를 받아 BPM에 따라 정확한 초를 계산한다.
@@ -67,4 +68,6 @@ public class MusicContentTool : MonoBehaviour
     {
         return 0;
     }
+
+    public abstract override void SetScenario(int scenarioIndex);
 }
