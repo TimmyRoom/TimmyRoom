@@ -31,6 +31,7 @@ public class UserDataManager : MonoBehaviour
     /// <returns>모든 프로필의 저장 위치.</returns>
     string[] GetAllDataLocations()
     {
+        //TODO : 메서드 구현.
         return null;
     }
 
@@ -41,6 +42,7 @@ public class UserDataManager : MonoBehaviour
     void ReadData(string targetProfile)
     {
         CurrentProfile = targetProfile;
+        //TODO : 데이터를 읽어 적용한다.
         SceneRecorder.instance.SetPath(CurrentProfile);
     }
 
@@ -49,7 +51,7 @@ public class UserDataManager : MonoBehaviour
     /// </summary>
     void SaveData()
     {
-
+        //TODO : 메서드 구현.
     }
 
     /// <summary>
@@ -59,6 +61,7 @@ public class UserDataManager : MonoBehaviour
     /// <param name="jsonData">새로 생성할 프로필 정보.</param>
     void AddNewData(string targetProfile, string jsonData)
     {
+        //TODO : 메서드 구현.
         CurrentProfile = targetProfile;
     }
 

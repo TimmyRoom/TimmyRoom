@@ -47,16 +47,10 @@ public abstract class MusicContentTool : AbstractSceneManager
     public virtual void PlayChart(string json)
     {
         Dictionary<float, string> data = GetScript(json);
-    }
-
-    /// <summary>
-    /// switch구문으로 branch를 나눠 command에 따라 적절한 함수를 실행한다.
-    /// </summary>
-    /// <param name="time">command가 실행될 기준 시간.</param>
-    /// <param name="command">command 구문.</param>
-    public virtual void CommandExecute(float time, string command)
-    {
-        //
+        foreach(var keyValuePair in data)
+        {
+            CommandExecute(keyValuePair.Key, keyValuePair.Value);
+        }
     }
 
     /// <summary>
@@ -64,10 +58,14 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// </summary>
     /// <param name="type">노트의 타입.</param>
     /// <returns>노트 판정 결과.</returns>
-    public virtual int JudgeNote(int type)
-    {
-        return 0;
-    }
+    public abstract int JudgeNote(int type);
+
+    /// <summary>
+    /// switch구문으로 branch를 나눠 command에 따라 적절한 함수를 실행한다.
+    /// </summary>
+    /// <param name="time">command가 실행될 기준 시간.</param>
+    /// <param name="command">command 구문.</param>
+    public abstract void CommandExecute(float time, string command);
 
     public abstract override void SetScenario(int scenarioIndex);
 }

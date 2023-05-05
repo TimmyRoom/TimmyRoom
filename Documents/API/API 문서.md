@@ -257,17 +257,19 @@ abstract class
     - 각 노트에 대해 CommandExecute(time, command) 호출.
     - json : JSON 데이터.
 
-- public virtual void CommandExecute(float time, string command)
-    - switch구문으로 brach를 나눠 command에 따라 적절한 함수를 실행한다.
-    - time : command가 실행될 기준 시간.
-    - command : command 구문.
-
-- public virtual int JudgeNote(int type)
+- public abstract int JudgeNote(int type)
     - 노트 판정을 내린다.
     - type : 노트의 타입.
     - return : 노트 판정 결과.
 
+- public abstract void CommandExecute(float time, string command)
+    - switch구문으로 brach를 나눠 command에 따라 적절한 함수를 실행한다.
+    - time : command가 실행될 기준 시간.
+    - command : command 구문.
+
 - public abstract override void SetScenario(int scenarioIndex);
+    - AbstractSceneManager의 메서드를 override받은 메서드.
+    - abstract로 처리되어 자식 클래스에서 정의된다.
 
 ## EscapeDoor
 

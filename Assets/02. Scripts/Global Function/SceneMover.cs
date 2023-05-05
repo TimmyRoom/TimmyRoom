@@ -28,7 +28,7 @@ public class SceneMover : MonoBehaviour
     /// <param name="sceneName">이동할 씬 이름.</param>
     public void MoveScene(string sceneName)
     {
-
+        //TODO : 메서드 구현.
     }
 
     /// <summary>
@@ -37,6 +37,6 @@ public class SceneMover : MonoBehaviour
     /// <param name="sceneIndex">이동할 씬 index.</param>
     public void MoveScene(int sceneIndex)
     {
-
+        //TODO : 메서드 구현.
     }
 }

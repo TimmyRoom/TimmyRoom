@@ -29,6 +29,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="source">클립이 재생될 AudioSource.</param>
     public void SoundPlay(AudioClip clip, AudioSource source)
     {
-
+        source.clip = clip;
+        source.Play();
     }
 }

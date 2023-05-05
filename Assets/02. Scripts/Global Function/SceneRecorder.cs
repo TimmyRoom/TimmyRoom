@@ -30,7 +30,7 @@ public class SceneRecorder : MonoBehaviour
     /// <param name="path">변경할 filePath.</param>
     public void SetPath(string path)
     {
-        //
+        //TODO : 메서드 구현.
     }
 
     /// <summary>
@@ -39,6 +39,7 @@ public class SceneRecorder : MonoBehaviour
     /// <returns>저장 성공여부.</returns>
     public bool Capture()
     {
+        //TODO : 메서드 구현.
         return false;
     }
 
@@ -48,6 +49,7 @@ public class SceneRecorder : MonoBehaviour
     /// <returns>저장 성공여부.</returns>
     public bool CaptureSelf()
     {
+        //TODO : 메서드 구현.
         return false;
     }
 }
