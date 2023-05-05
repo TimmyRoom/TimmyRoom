@@ -462,3 +462,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6326a7459ad0ad459c98104516012b7, type: 3}
+--- !u!1001 &7075356788432595447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.802
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233359263448586676, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_Name
+      value: NantaInstrument
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b5bbcc0a5500b7c41a6806b5268ac078, type: 3}
