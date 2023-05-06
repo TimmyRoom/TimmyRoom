@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// XR Originì˜ ActionBasedControllerì™€ ì—°ê²°í•˜ì—¬ í•´ë‹¹ ì»¨íŠ¸ë¡¤ëŸ¬ì— ì›í•˜ëŠ” ì‹œê°„ê³¼ ê°•ë„ë§Œí¼ì˜ ì§„ë™ì„ ì¤„ ìˆ˜ ìˆëŠ” í´ë˜ìŠ¤. 
+/// </summary>
 public class VibrateControl : MonoBehaviour
 {
     public static VibrateControl instance;
@@ -25,10 +28,10 @@ public class VibrateControl : MonoBehaviour
     [SerializeField] private ActionBasedController leftController;
 
     /// <summary>
-    /// ¿À¸¥ÂÊ ÄÁÆ®·Ñ·¯°¡ È°¼ºÈ­µÈ »óÅÂÀÎ °æ¿ì ¿À¸¥ÂÊ ÄÁÆ®·Ñ·¯¿¡ Áøµ¿À» Àç»ıÇÕ´Ï´Ù.
+    /// ì˜¤ë¥¸ìª½ ì»¨íŠ¸ë¡¤ëŸ¬ê°€ í™œì„±í™”ëœ ìƒíƒœì¸ ê²½ìš° ì˜¤ë¥¸ìª½ ì»¨íŠ¸ë¡¤ëŸ¬ì— ì§„ë™ì„ ì¬ìƒí•©ë‹ˆë‹¤.
     /// </summary>
-    /// <param name="amplitude">0.0¿¡¼­ 1.0 »çÀÌÀÇ Áøµ¿ °­µµ¸¦ ÁöÁ¤ÇÕ´Ï´Ù.</param>
-    /// <param name="duration">¸î ÃÊµ¿¾È Áøµ¿À» Àç»ıÇÒ °ÍÀÎÁö¸¦ ÁöÁ¤ÇÕ´Ï´Ù.</param>
+    /// <param name="amplitude">0.0ì—ì„œ 1.0 ì‚¬ì´ì˜ ì§„ë™ ê°•ë„ë¥¼ ì§€ì •í•©ë‹ˆë‹¤.</param>
+    /// <param name="duration">ëª‡ ì´ˆë™ì•ˆ ì§„ë™ì„ ì¬ìƒí•  ê²ƒì¸ì§€ë¥¼ ì§€ì •í•©ë‹ˆë‹¤.</param>
     public IEnumerator CustomVibrateRight(float amplitude, float duration)
     {
         if (rightController != null)
@@ -43,10 +46,10 @@ public class VibrateControl : MonoBehaviour
     }
 
     /// <summary>
-    /// ¿ŞÂÊ ÄÁÆ®·Ñ·¯°¡ È°¼ºÈ­µÈ »óÅÂÀÎ °æ¿ì ¿ŞÂÊ ÄÁÆ®·Ñ·¯¿¡ Áøµ¿À» Àç»ıÇÕ´Ï´Ù.
+    /// ì™¼ìª½ ì»¨íŠ¸ë¡¤ëŸ¬ê°€ í™œì„±í™”ëœ ìƒíƒœì¸ ê²½ìš° ì™¼ìª½ ì»¨íŠ¸ë¡¤ëŸ¬ì— ì§„ë™ì„ ì¬ìƒí•©ë‹ˆë‹¤.
     /// </summary>
-    /// <param name="amplitude">0.0¿¡¼­ 1.0 »çÀÌÀÇ Áøµ¿ °­µµ¸¦ ÁöÁ¤ÇÕ´Ï´Ù.</param>
-    /// <param name="duration">¸î ÃÊµ¿¾È Áøµ¿À» Àç»ıÇÒ °ÍÀÎÁö¸¦ ÁöÁ¤ÇÕ´Ï´Ù.</param>
+    /// <param name="amplitude">0.0ì—ì„œ 1.0 ì‚¬ì´ì˜ ì§„ë™ ê°•ë„ë¥¼ ì§€ì •í•©ë‹ˆë‹¤.</param>
+    /// <param name="duration">ëª‡ ì´ˆë™ì•ˆ ì§„ë™ì„ ì¬ìƒí•  ê²ƒì¸ì§€ë¥¼ ì§€ì •í•©ë‹ˆë‹¤.</param>
     public IEnumerator CustomVibrateLeft(float amplitude, float duration)
     {
         if (leftController != null)
