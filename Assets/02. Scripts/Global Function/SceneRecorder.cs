@@ -8,6 +8,7 @@ using UnityEngine;
 public class SceneRecorder : MonoBehaviour
 {
     public static SceneRecorder instance;
+    public GameObject selfCameraObject;
     private void Awake()
     {
         if (instance == null)
@@ -20,6 +21,7 @@ public class SceneRecorder : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
+        filePath = Application.persistentDataPath;
     }
 
     string filePath;
@@ -31,6 +33,7 @@ public class SceneRecorder : MonoBehaviour
     public void SetPath(string path)
     {
         //TODO : 메서드 구현.
+        filePath = path;
     }
 
     /// <summary>
@@ -39,8 +42,40 @@ public class SceneRecorder : MonoBehaviour
     /// <returns>저장 성공여부.</returns>
     public bool Capture()
     {
-        //TODO : 메서드 구현.
-        return false;
+        //TODO : Capture Main Camera and save it to filePath.
+        try
+        {
+            // Create a RenderTexture object
+            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
+            // Read screen contents into the texture
+            Camera.main.targetTexture = rt;
+            Camera.main.Render();
+            RenderTexture.active = rt;
+            // Create a new Texture2D and read the RenderTexture image into it
+            Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            Camera.main.targetTexture = null;
+            RenderTexture.active = null; // JC: added to avoid errors
+            Destroy(rt);
+            // Encode texture into PNG
+            byte[] bytes = screenShot.EncodeToPNG();
+            // For testing purposes, also write to a file in the project folder
+            string name = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
+            System.IO.File.WriteAllBytes(filePath + "/" + name, bytes);
+            Debug.Log(string.Format("Took screenshot to: {0}", filePath));
+
+            return true;
+        }
+        catch
+        {
+            Debug.LogWarning("Failed to capture the screen.",this);
+            return false;
+        }
+    }
+
+    public void TestCapture()
+    {
+        Capture();
     }
 
     /// <summary>
@@ -49,7 +84,40 @@ public class SceneRecorder : MonoBehaviour
     /// <returns>저장 성공여부.</returns>
     public bool CaptureSelf()
     {
-        //TODO : 메서드 구현.
-        return false;
+        //TODO : Capture Self Camera and save it to filePath.
+        try
+        {
+            Camera selfCamera = selfCameraObject.GetComponent<Camera>();
+            // Create a RenderTexture object
+            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
+            // Read screen contents into the texture
+            selfCamera.targetTexture = rt;
+            selfCamera.Render();
+            RenderTexture.active = rt;
+            // Create a new Texture2D and read the RenderTexture image into it
+            Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            selfCamera.targetTexture = null;
+            RenderTexture.active = null; // JC: added to avoid errors
+            Destroy(rt);
+            // Encode texture into PNG
+            byte[] bytes = screenShot.EncodeToPNG();
+            // For testing purposes, also write to a file in the project folder
+            string name = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
+            System.IO.File.WriteAllBytes(filePath + "/" + name, bytes);
+            Debug.Log(string.Format("Took screenshot to: {0}", filePath));
+
+            return true;
+        }
+        catch
+        {
+            Debug.LogWarning("Failed to capture the screen.",this);
+            return false;
+        }
+    }
+
+    public void TestCaptureSelf()
+    {
+        CaptureSelf();
     }
 }
