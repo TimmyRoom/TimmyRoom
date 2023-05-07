@@ -488,7 +488,7 @@ class
 
 난타 내부 시나리오 전개를 위해 여러 오브젝트들을 생성하거나 제거한다.
 
-MusicContentTool, AbstarctSceneManager을 상속받는다.
+MusicContentTool을 상속받는다.
 
 - public enum NoteType {LeftHand, RightHand}
     - 노트 타입을 표현하는 열거형이다.
@@ -528,7 +528,7 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
 - void StartMusic(AudioClip audioClip, float barSecond)
     - SoundManager.SoundPlay(audioClip, MusicAudioSource)
     - 콤보 루틴을 실행하여 일정 시간마다 콤보가 쌓이도록 한다.
-    - ComboRoutine = StartCoroutine(AddComboLoop(float barSecond))
+    - ComboRoutine = StartCoroutine(AddComboLoop(barSecond))
 
 - IEnumerator AddComboLoop(float barSecond)
     - barSecond마다 barCombo += 1
@@ -540,7 +540,7 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
         | 2 | k = 0 |
         | 4,6,8,… | k = 1 |
 
-- IEnumerator void EndComboLoop(float songLength)
+- IEnumerator EndComboLoop(float songLength)
     - WaitforSecond로 songLength초 만큼 대기.
     - 콤보 루틴을 종료한다: StopCoroutine(ComboRoutine);
 
@@ -550,7 +550,7 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
 - override void PlayChart(string json)
     - base.PlayChart(json)
     - BPM을 통해 마디 당 초 단위 시간을 계산하고 이를 SPB라 둔다.
-        - MusicContentTool.Beat2Second()를 통해 계산.
+        - Beat2Second()를 통해 계산.
     - 적절한 음원 파일을 참조하여 song으로 설정, StartMusic(song, SPB) 호출.
     - StartCoroutine(EndComboLoop(songLength)) 루틴 실행.
 
@@ -563,7 +563,7 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
         | LeftHand | NantaJudgingLine.SpawnNote(time, 0) |
         | RightHand | NantaJudgingLine.SpawnNote(time, 1) |
 
-- override NoteResult JudgeNote(int type)
+- override int JudgeNote(int type)
     - NantaJudgingLine.JudgeNote(type)를 호출하여 result를 얻는다.
     - type, result를 적절한 NoteType, NoteResult로 치환한다.
     - type, result에 따라 등록된 이벤트를 출력하고 result를 반환한다.
@@ -594,7 +594,7 @@ class
 - public AudioSource InstrumentAudioSource
     - 악기와 관련된 효과음이 나오는 곳이다.
 
-- public void OnCollisionEnter(Collision other)
+- public void OnCollisionEnter(Collider other)
     - other == 사용자의 컨트롤러 Collider일 경우,
         - 변수 int type를 왼쪽 컨트롤러일 경우 0, 오른쪽 컨트롤러일 경우 1로 설정한다.
         - NantaScenarioManager.JudgeNote(type) 호출.

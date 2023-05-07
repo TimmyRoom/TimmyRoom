@@ -27,7 +27,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <returns>주어진 초 단위 시간을 마디 수로 환산한 값.</returns>
     public float Second2Beat(float second, float BPM) 
     {
-		return second * BPM /60;
+		    return second * BPM /60;
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <returns>Dictionary 자료구조.</returns>
     public Dictionary<float, string> GetScript(string jsonData) 
     {
-		return JsonUtility.FromJson<Dictionary<float, string>>(jsonData);
+		    return JsonUtility.FromJson<Dictionary<float, string>>(jsonData);
     }
 
     /// <summary>
@@ -54,6 +54,13 @@ public abstract class MusicContentTool : AbstractSceneManager
     }
 
     /// <summary>
+    /// switch구문으로 branch를 나눠 command에 따라 적절한 함수를 실행한다.
+    /// </summary>
+    /// <param name="time">command가 실행될 기준 시간.</param>
+    /// <param name="command">command 구문.</param>
+    public abstract void CommandExecute(float time, string command);
+
+    /// <summary>
     /// 노트 판정을 내린다.
     /// </summary>
     /// <param name="type">노트의 타입.</param>
@@ -61,11 +68,8 @@ public abstract class MusicContentTool : AbstractSceneManager
     public abstract int JudgeNote(int type);
 
     /// <summary>
-    /// switch구문으로 branch를 나눠 command에 따라 적절한 함수를 실행한다.
+    /// 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
     /// </summary>
-    /// <param name="time">command가 실행될 기준 시간.</param>
-    /// <param name="command">command 구문.</param>
-    public abstract void CommandExecute(float time, string command);
-
+    /// <param name="scenarioIndex">변경할 시나리오의 Index.</param>
     public abstract override void SetScenario(int scenarioIndex);
 }
