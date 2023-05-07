@@ -23,26 +23,26 @@ User Interaction을 통해 화살표를 따라 각 씬으로 이동 가능하다
 
 여러 씬에서 중복적으로 사용되는 기능들이다.
 
-## AbstarctSceneManager
+## AbstractSceneManager
 
 ---
 
 Abstract class
+각 씬의 매니저 클래스가 포함할 멤버와 메서드를 담는 추상 클래스.
+using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도한다.
 
 - void Init()
     - 초기화시 필요한 로직들을 담는 함수
 
-- void MoveScene(string SceneName) : void
+- public void MoveScene(string sceneName)
     - 특정 씬으로 이동하는 로직을 담은 함수
-    - using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도
 
-- void MoveScene(int sceneIndex) : void
+- public void MoveScene(int sceneIndex)
     - 특정 씬으로 이동하는 로직을 담은 함수
-    - using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도
 
-- abstract void SetScenario(int scenario) : void
-    - 현재 시나리오를 scenario 번호에 따라 설정한다.
-    - 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
+- public abstract void SetScenario(int scenarioIndex)
+    - 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
+    - scenarioIndex : 변경할 시나리오의 Index.
 
 ## IPlayScene
 
@@ -50,11 +50,13 @@ Abstract class
 
 interface
 
-- void Record()
-    - SceneRecorder 싱글톤을 사용해서 플레이를 기록하는 함수
+SceneRecorder 싱글톤을 사용해서 플레이를 기록하는 함수.
+
+- public void Record()
+    - SceneRecorder 싱글톤을 사용해서 플레이를 기록하는 함수.
     - 난타와 춤 씬에서만 사용 가능하기에 NantaSceneManager와 DanceSceneManager에서만 사용.
-    - 어떤 화면을 바라보게 캡처할것인지에 대한 로직을 이 함수 내에 구현
-        
+    - 어떤 화면을 바라보게 캡처할것인지에 대한 로직을 이 함수 내에 구현한다.
+        - 예시.
         ```csharp
         public void Record()
         {
@@ -82,22 +84,22 @@ class
 
 싱글톤으로 사용함.
 
+씬 내부를 촬영하고 촬영된 영상을 저장하는 클래스.
+
 - string filePath
     - 기록들이 저장될 경로.
 
-- public static SceneRecorder instance
-    - 다른 오브젝트들이 인스턴스 참조 없이 로직을 호출하는 변수
-
-- void SetPath(string path)
+- public void SetPath(string path)
     - filePath를 변경한다.
+    - path : 변경할 filePath.
 
-- bool Capture()
+- public bool Capture()
     - 사용자가 바라보는 화면을 캡처하는 함수.
-    - 저장 성공여부를 리턴함
+    - return : 저장 성공여부.
 
-- bool CaptureSelf()
+- public bool CaptureSelf()
     - 사용자를 바라보는 바깥의 가상 카메라를 캡처하는 함수
-    - 저장 성공여부를 리턴함
+    - return : 저장 성공여부.
 
 ## SceneMover
 
@@ -105,20 +107,19 @@ class
 
 class
 
-싱글톤으로 사용함
+싱글톤으로 사용함.
 
 매 SceneManager 마다 using 추가 소요를 줄이기 위해 사용.
 
 씬 이동시마다 공통된 추가 로직이 필요할 시, 이 스크립트에서 수정
 
-- public static SceneMover instance
-    - 다른 오브젝트들이 인스턴스 참조 없이 로직을 호출하는 변수
-
-- void MoveScene(string sceneName)
+- public void MoveScene(string sceneName)
     - 특정 씬으로 이동
+    - sceneName : 이동할 씬 이름.
 
-- void MoveScene(int Index)
+- public void MoveScene(int sceneIndex)
     - 특정 씬으로 이동
+    - sceneIndex : 이동할 씬 index.
 
 ## UISelecter
 
@@ -126,9 +127,7 @@ class
 
 class
 
-사용자가 컨트롤러 Ray를 통해 상호작용하여
-
-씬 내부의 오브젝트들의 Unity Event를 Invoke하는 UI 오브젝트.
+사용자가 컨트롤러 Ray를 통해 상호작용하여 씬 내부의 오브젝트들의 Unity Event를 Invoke하는 UI 오브젝트.
 
 로비, 난타, 댄스 등 각 씬에서 공통적으로 사용되는 UI의 기능을 정의한다.
 
@@ -139,33 +138,9 @@ class
 - public UnityEvent[] UIEvents
     - 인터렉션 시 발생하는 이벤트를 정의한다.
     
-- public IEnumerator InteractionRoutine
+- IEnumerator InteractionRoutine
     - 컨트롤러로 인해 발생하는 Coroutine을 참조하는 멤버.
     - 루틴은 유일해야 한다.
-
-- public void GetRayCasted()
-    - 사용자의 컨트롤러 class에서 Raycast 시 해당 Class에서 호출된다.
-    - StartCoroutine으로 StartTimer 루틴을 실행하고 InteractionRoutine에 저장한다.
-    
-    ```cpp
-    public void GetRayCasted()
-    {
-    		InteractionRoutine = StartCoroutine(StartTimer(Time.time, UIEvents));
-    }
-    ```
-    
-
-- public void GetRayCastStopped()
-    - 사용자의 컨트롤러 class에서 Raycast가 중단될 시 해당 Class에서 호출된다.
-    - StopCoroutine으로 기존 루틴을 중단한다.
-    
-    ```cpp
-    public void GetRayCastStopped()
-    {
-    		StopCoroutine(InteractionRoutine);
-    }
-    ```
-    
 
 - IEnumerator StartTimer(float startTime)
     - Ray 인터렉션 시작 시간을 받아 타이머를 시작시킨다.
@@ -174,64 +149,84 @@ class
     ```cpp
     IEnumerator StartTimer(float startTime)
     {
-    		yield return new WaitforSecond(InteractionTime);
-    		foreach(var event in UIEvents)
-    		{
-    				event?.Invoke();
-    		}
+    	yield return new WaitForSeconds(InteractionTime);
+		foreach(var UIEvent in UIEvents)
+		{
+			UIEvent?.Invoke();
+		}
+    }
+    ```
+
+- public void GetRayCasted()
+    - StartCoroutine으로 StartTimer 루틴을 실행하고 InteractionRoutine에 저장한다.
+    - 사용자의 컨트롤러 class에서 Raycast 시 해당 Class에서 호출된다.
+    
+    ```cpp
+    public void GetRayCasted()
+    {
+    	InteractionRoutine = StartTimer();
+        StartCoroutine(InteractionRoutine);
     }
     ```
     
+
+- public void GetRayCastStopped()
+    - StopCoroutine으로 기존 루틴을 중단한다.
+    - 사용자의 컨트롤러 class에서 Raycast가 중단될 시 해당 Class에서 호출된다.
+    
+    ```cpp
+    public void GetRayCastStopped()
+    {
+    	StopCoroutine(InteractionRoutine);
+    }
+    ``` 
 
 ## MusicContentTool
 
 ---
 
-class
+abstract class
 
-음악과 관련하여 BPM을 분석해 박자 단위의 시간 체계를 초 단위 시간으로 변환하며,
+음악과 관련하여 BPM을 분석해 박자 단위의 시간 체계를 초 단위 시간으로 변환하며, 박자 단위로 명령을 입력한 csv 파일을 읽어 Dictionary 형태의 자료구조로 변환한다.
 
-박자 단위로 명령을 입력한 csv 파일을 읽어 Dictionary 형태의 자료구조로 변환한다.
+각 씬의 매너지 클래스 중 일부가 상속하며 AbstractSceneManager를 상속받는다.
 
-또한 판정에 필요한 정보들을 구성한다.
-
-필요 시 상속하여 사용한다.
-
-- public enum NoteType {}
-    - 노트 타입을 표현하는 열거형이다.
-
-- public enum NoteResult {}
-    - 노트 판정을 표현하는 열거형이다.
-
-- float Beat2Second(float beat, float BPM)
+- public float Beat2Second(float beat, float BPM)
     - 박자 단위를 받아 BPM에 따라 정확한 초를 계산한다.
+    - beat : 마디 수.
+    - BPM : BPM.
+    - return : 주어진 마디를 초 단위 시간으로 환산한 값.
     
     ```cpp
     float Beat2Second(float beat, float BPM)
     {
-    		return beat * 60 / BPM;
+    	return beat * 60 / BPM;
     }
     ```
     
 
-- float Second2Beat(float second, float BPM)
+- public float Second2Beat(float second, float BPM)
     - 초 단위를 받아 BPM에 따라 정확한 마디를 계산한다.
+    - second : 초 단위 시간.
+    - BPM : BPM.
+    - return : 주어진 초 단위 시간을 마디 수로 환산한 값.
     
     ```cpp
     float Second2Beat(float second, float BPM) 
     {
-    		return second * BPM /60;
+    	return second * BPM /60;
     }
     ```
     
-- Dictionary<float, string> GetScript(string json)
+- public Dictionary<float, string> GetScript(string json)
     - 각 판정 이벤트들의 정보가 포함된 JSON파일을 받아 Dictionary 형태로 변환한다.
-    - 파싱에는 [JSON.NET](http://JSON.NET)  라이브러리를 사용한다.
+    - jsonData : JSON 데이터.
+    - return : Dictionary 자료구조.
     
     ```cpp
     Dictionary<float, T> GetScript(string jsonData) 
     {
-    		return JsonConvert.DeserializeObject<Dictionary<float, T>>(jsonData);
+    	return JsonUtility.FromJson<Dictionary<float, string>>(jsonData);
     }
     ```
     
@@ -258,15 +253,23 @@ class
     ```
     
 
-- virtual void PlayChart(string json)
-    - GetScript(json)호출.
+- public virtual void PlayChart(string json)
     - 각 노트에 대해 CommandExecute(time, command) 호출.
+    - json : JSON 데이터.
 
-- virtual void CommandExecute(float time, string command)
-    - switch구문으로 brach를 나눠 command에 따라 적절한 함수를 실행한다.
-
-- virtual NoteResult JudgeNote(int type)
+- public abstract int JudgeNote(int type)
     - 노트 판정을 내린다.
+    - type : 노트의 타입.
+    - return : 노트 판정 결과.
+
+- public abstract void CommandExecute(float time, string command)
+    - switch구문으로 brach를 나눠 command에 따라 적절한 함수를 실행한다.
+    - time : command가 실행될 기준 시간.
+    - command : command 구문.
+
+- public abstract override void SetScenario(int scenarioIndex);
+    - AbstractSceneManager의 메서드를 override받은 메서드.
+    - abstract로 처리되어 자식 클래스에서 정의된다.
 
 ## EscapeDoor
 
@@ -280,21 +283,9 @@ class
 
 - public UnityEvent[] Events
     - 인터렉션 시 발생하는 이벤트를 정의한다.
-    
-- public void GetHitted()
-    - 사용자의 컨트롤러 class에서 Collision 발생시 해당 Class에서 호출된다.
-    - StartCoroutine으로 StartTimer 루틴을 실행하고 InteractionRoutine에 저장한다.
-    
-    ```cpp
-    public void GetHitted()
-    {
-    		foreach(var event in UIEvents)
-    		{
-    				event?.Invoke();
-    		}
-    }
-    ```
-    
+
+- private void OnTriggerEnter(Collider other)
+    - Events를 발생시킨다.
 
 ## UserDataManager
 
@@ -308,32 +299,30 @@ class
 
 로컬 파일 형태로 사용자 데이터를 관리하고, 컨텐츠 진행 중 저장된 데이터를 활용하도록 한다.
 
-- public static UserDataManager instance
-    - 다른 오브젝트들이 인스턴스 참조 없이 로직을 호출하는 변수
-
 - string currentProfile
     - 현재 프로필 이름을 저장한다.
     - 초기값은 빈 문자열.
     - getter/setter 제공.
 
-- string[] ReadAllData()
+- string[] GetAllDataLocations()
     - 모든 프로필에 대해 데이터 저장 위치를 읽는다.
-    - 배열로 만들어 반환한다.
+    - return : 모든 프로필의 저장 위치.
 
-- void ReadData(string currentProfile)
-    - 데이터 파일을 읽어 캐싱한다.
-    - currentProfile을 setter를 통해 갱신한다.
+- void ReadData(string targetProfile)
+    - 지정된 프로필의 데이터 파일을 읽어 currentProfile을 갱신한다.
     - SceneRecorder.SetPath(currentProfile)로 영상 저장 폴더 설정.
+    - targetProfile : 프로필 이름.
 
 - void SaveData()
     - currenProfile에 해당하는 파일의 정보를 저장한다.
 
 - void AddNewData(string currentProfile, string jsonData)
     - 새로운 프로필에 해당하는 폴더를 만든다.
-    - 기본 정보를 저장한다.
     - currentProfile을 setter를 통해 갱신한다.
+    - targetProfile : 새로 생성할 프로필 이름.
+    - jsonData : 새로 생성할 프로필 정보.
 
-- public void OnApplicationQuit()
+- private void OnApplicationQuit()
     - 어플리케이션 종료 시 발생 예외처리.
     - SaveData()를 호출한다.
 
@@ -347,11 +336,80 @@ class
 
 원하는 오디오 클립을 재생하는 클래스. 
 
-- public static SoundManager instance
-    - 다른 오브젝트들이 인스턴스 참조 없이 로직을 호출하는 변수
-
 - public void SoundPlay(AudioClip clip, AudioSource source)
     - 설정한 효과음 clip을 source 위치에서 재생한다.
+    - clip : 재생할 AudioClip.
+    - source : 클립이 재생될 AudioSource.
+
+## VibrateControl
+
+---
+
+class
+
+싱글톤으로 사용함.
+
+XR Origin의 ActionBasedController와 연결하여 해당 컨트롤러에 원하는 시간과 강도만큼의 진동을 줄 수 있는 클래스. 
+
+- private ActionBasedController rightController
+    - XR Origin - Camera Offset 내의 RightHand Controller 오브젝트를 참조해 불러오는 변수
+
+- private ActionBasedController leftController
+    - XR Origin - Camera Offset 내의 LeftHand Controller 오브젝트를 참조해 불러오는 변수
+
+- private GameObject XROrigin
+    - 새로운/이동한 씬에 존재하는 XR Origin 오브젝트를 참조하여 저장하기 위한 변수
+
+- public void InitializeController()
+    - 맨 처음 게임 실행 후 씬에 들어오거나, 다른 씬으로 이동하였을 때 새로운 Origin이 존재하여 업데이트가 필요한 경우에 사용하는 메소드
+    - 해당 씬의 새로운 XR Origin 객체를 찾아 Camera Offset 안의 LeftHand Controller와 RightHand Controller를 인스턴스와 연결해줌
+    - foreach 문을 통해 XR Origin의 모든 자식 객체들에 접근하여 탐색
+
+- public IEnumerator CustomVibrateRight(float amplitude, float duration)
+    - 오른쪽 컨트롤러가 활성화된 상태인 경우 오른쪽 컨트롤러에 진동을 재생하는 코루틴 함수
+    - 컨트롤러가 활성화되지 않은 경우 진동 대신 에러 로그를 띄워줌
+    - 실제로 진동을 발생시키는 부분은 ActionBasedController 클래스의 메소드에서 이루어짐
+    - amplitude : 0.0에서 1.0 사이의 진동 강도를 지정해줌
+    - duration : 얼마나 많은 시간 동안 진동을 재생할지 지정해주며 단위는 초를 사용함
+    
+    ```csharp
+    public IEnumerator CustomVibrateRight(float amplitude, float duration)
+    {
+        if (rightController != null)
+        {
+            rightController.SendHapticImpulse(amplitude, duration);
+        }
+        else
+        {
+            Debug.LogError("right controller isn't avaliable.");
+        }
+        yield return null;
+    }
+    ```
+    
+
+- public IEnumerator CustomVibrateLeft(float amplitude, float duration)
+    - 왼쪽 컨트롤러가 활성화된 상태인 경우 왼쪽 컨트롤러에 진동을 재생하는 코루틴 함수
+    - 컨트롤러가 활성화되지 않은 경우 진동 대신 에러 로그를 띄워줌
+    - 실제로 진동을 발생시키는 부분은 ActionBasedController 클래스의 메소드에서 이루어짐
+    - amplitude : 0.0에서 1.0 사이의 진동 강도를 지정해줌
+    - duration : 얼마나 많은 시간 동안 진동을 재생할지 지정해주며 단위는 초를 사용함
+    
+    ```csharp
+    public IEnumerator CustomVibrateLeft(float amplitude, float duration)
+    {
+    		if (leftController != null)
+    		{
+    		    leftController.SendHapticImpulse(amplitude, duration);
+    		}
+    		else
+    		{
+    		    Debug.LogError("left controller isn't avaliable.");
+    		}
+    		
+    		yield return null;
+    }
+    ```
 
 # Login Scene
 
@@ -432,10 +490,10 @@ class
 
 MusicContentTool, AbstarctSceneManager을 상속받는다.
 
-- public new enum NoteType {LeftHand, RightHand}
+- public enum NoteType {LeftHand, RightHand}
     - 노트 타입을 표현하는 열거형이다.
 
-- public new enum NoteResult {Miss, Good}
+- public enum NoteResult {Miss, Good}
     - 노트 판정을 표현하는 열거형이다.
 
 - public UnityEvent[] HitEventsLeft
@@ -598,10 +656,10 @@ class
 
 MusicContentTool, AbstarctSceneManager을 상속받는다.
 
-- public new enum NoteType {LeftUpper, RightUpper, LeftMiddle, RightMiddle, Front}
+- public enum NoteType {LeftUpper, RightUpper, LeftMiddle, RightMiddle, Front}
     - 노트 타입을 표현하는 열거형이다.
 
-- public new enum NoteResult {Miss, Good}
+- public enum NoteResult {Miss, Good}
     - 노트 판정을 표현하는 열거형이다.
 
 - public UnityEvent[] TriggerEventsLeftUpper
