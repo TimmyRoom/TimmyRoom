@@ -11,11 +11,6 @@ public class GalleryManager : AbstractSceneManager
     int startImageIndex;
     public int StartImageIndex { get => startImageIndex; set => startImageIndex = _SetStartIndex(value); }
 
-    public override void SetScenario(int scenarioIndex)
-    {
-        throw new System.NotImplementedException();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
