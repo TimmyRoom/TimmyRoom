@@ -11,4 +11,9 @@ public class LobbyTestUI : MonoBehaviour
     {
         time.text = LobbyManager.ShowCurrentTime();
     }
+
+    public void MoveSceneTest()
+    {
+        SceneMover.instance.MoveScene(1);
+    }
 }

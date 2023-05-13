@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 씬 이동 시 사용되는 공통 함수들을 다루는 클래스.
@@ -28,7 +29,8 @@ public class SceneMover : MonoBehaviour
     /// <param name="sceneName">이동할 씬 이름.</param>
     public void MoveScene(string sceneName)
     {
-        //TODO : 메서드 구현.
+        SceneManager.LoadScene(sceneName);
+        VibrateControl.instance.InitializeController();
     }
 
     /// <summary>
@@ -37,6 +39,7 @@ public class SceneMover : MonoBehaviour
     /// <param name="sceneIndex">이동할 씬 index.</param>
     public void MoveScene(int sceneIndex)
     {
-        //TODO : 메서드 구현.
+        SceneManager.LoadScene(sceneIndex);
+        VibrateControl.instance.InitializeController();
     }
 }
