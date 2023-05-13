@@ -23,7 +23,7 @@ User Interaction을 통해 화살표를 따라 각 씬으로 이동 가능하다
 
 여러 씬에서 중복적으로 사용되는 기능들이다.
 
-## AbstarctSceneManager
+## AbstractSceneManager
 
 ---
 
@@ -356,6 +356,14 @@ XR Origin의 ActionBasedController와 연결하여 해당 컨트롤러에 원하
 
 - private ActionBasedController leftController
     - XR Origin - Camera Offset 내의 LeftHand Controller 오브젝트를 참조해 불러오는 변수
+
+- private GameObject XROrigin
+    - 새로운/이동한 씬에 존재하는 XR Origin 오브젝트를 참조하여 저장하기 위한 변수
+
+- public void InitializeController()
+    - 맨 처음 게임 실행 후 씬에 들어오거나, 다른 씬으로 이동하였을 때 새로운 Origin이 존재하여 업데이트가 필요한 경우에 사용하는 메소드
+    - 해당 씬의 새로운 XR Origin 객체를 찾아 Camera Offset 안의 LeftHand Controller와 RightHand Controller를 인스턴스와 연결해줌
+    - foreach 문을 통해 XR Origin의 모든 자식 객체들에 접근하여 탐색
 
 - public IEnumerator CustomVibrateRight(float amplitude, float duration)
     - 오른쪽 컨트롤러가 활성화된 상태인 경우 오른쪽 컨트롤러에 진동을 재생하는 코루틴 함수
