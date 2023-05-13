@@ -40,10 +40,6 @@ using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도한다.
 - public void MoveScene(int sceneIndex)
     - 특정 씬으로 이동하는 로직을 담은 함수
 
-- public abstract void SetScenario(int scenarioIndex)
-    - 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
-    - scenarioIndex : 변경할 시나리오의 Index.
-
 ## IPlayScene
 
 ---
@@ -270,7 +266,10 @@ abstract class
 - public abstract override void SetScenario(int scenarioIndex);
     - AbstractSceneManager의 메서드를 override받은 메서드.
     - abstract로 처리되어 자식 클래스에서 정의된다.
-
+    
+- public abstract void SetScenario(int scenarioIndex)
+    - 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
+    - scenarioIndex : 변경할 시나리오의 Index.
 ## EscapeDoor
 
 ---
@@ -488,7 +487,7 @@ class
 
 난타 내부 시나리오 전개를 위해 여러 오브젝트들을 생성하거나 제거한다.
 
-MusicContentTool을 상속받는다.
+MusicContentTool, AbstarctSceneManager을 상속받는다.
 
 - public enum NoteType {LeftHand, RightHand}
     - 노트 타입을 표현하는 열거형이다.
@@ -528,7 +527,7 @@ MusicContentTool을 상속받는다.
 - void StartMusic(AudioClip audioClip, float barSecond)
     - SoundManager.SoundPlay(audioClip, MusicAudioSource)
     - 콤보 루틴을 실행하여 일정 시간마다 콤보가 쌓이도록 한다.
-    - ComboRoutine = StartCoroutine(AddComboLoop(barSecond))
+    - ComboRoutine = StartCoroutine(AddComboLoop(float barSecond))
 
 - IEnumerator AddComboLoop(float barSecond)
     - barSecond마다 barCombo += 1
@@ -540,7 +539,7 @@ MusicContentTool을 상속받는다.
         | 2 | k = 0 |
         | 4,6,8,… | k = 1 |
 
-- IEnumerator EndComboLoop(float songLength)
+- IEnumerator void EndComboLoop(float songLength)
     - WaitforSecond로 songLength초 만큼 대기.
     - 콤보 루틴을 종료한다: StopCoroutine(ComboRoutine);
 
@@ -550,7 +549,7 @@ MusicContentTool을 상속받는다.
 - override void PlayChart(string json)
     - base.PlayChart(json)
     - BPM을 통해 마디 당 초 단위 시간을 계산하고 이를 SPB라 둔다.
-        - Beat2Second()를 통해 계산.
+        - MusicContentTool.Beat2Second()를 통해 계산.
     - 적절한 음원 파일을 참조하여 song으로 설정, StartMusic(song, SPB) 호출.
     - StartCoroutine(EndComboLoop(songLength)) 루틴 실행.
 
@@ -563,7 +562,7 @@ MusicContentTool을 상속받는다.
         | LeftHand | NantaJudgingLine.SpawnNote(time, 0) |
         | RightHand | NantaJudgingLine.SpawnNote(time, 1) |
 
-- override int JudgeNote(int type)
+- override NoteResult JudgeNote(int type)
     - NantaJudgingLine.JudgeNote(type)를 호출하여 result를 얻는다.
     - type, result를 적절한 NoteType, NoteResult로 치환한다.
     - type, result에 따라 등록된 이벤트를 출력하고 result를 반환한다.
@@ -584,13 +583,17 @@ class
 
 사용자의 인터렉션이 타격인지 아닌지를 판별하며, 어느 쪽 손의 컨트롤러인지 확인한다.
 
+- public BoxCollider[] Colliders
+    - 컨트롤러로 타격 가능한 범위이다.
+    - Collider의 범위는 실제 폴리곤보다 1.5배 크게 만든다.
+
 - public AudioClip[] InstrumentClips
     - 악기와 관련된 효과음 목록이다.
 
 - public AudioSource InstrumentAudioSource
     - 악기와 관련된 효과음이 나오는 곳이다.
 
-- public void OnCollisionEnter(Collidsion other)
+- public void OnTriggerEnter(Collider other)
     - other == 사용자의 컨트롤러 Collider일 경우,
         - 변수 int type를 왼쪽 컨트롤러일 경우 0, 오른쪽 컨트롤러일 경우 1로 설정한다.
         - NantaScenarioManager.JudgeNote(type) 호출.
