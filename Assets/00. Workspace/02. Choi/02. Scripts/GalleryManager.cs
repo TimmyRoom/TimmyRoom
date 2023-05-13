@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GalleryManager : MonoBehaviour
+public class GalleryManager : AbstractSceneManager
 {
     public GameObject galleryCanvas;
     string filePath;
     int startImageIndex;
     public int StartImageIndex { get => startImageIndex; set => startImageIndex = _SetStartIndex(value); }
+
+    public override void SetScenario(int scenarioIndex)
+    {
+        throw new System.NotImplementedException();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +69,20 @@ public class GalleryManager : MonoBehaviour
     public void SetStartIndex(int value)
     {
         StartImageIndex = value;
+        List<Texture2D> imageList = LoadImages();
+        SetGallery(imageList);
+    }
+
+    public void NextPage()
+    {
+        StartImageIndex += 1;
+        List<Texture2D> imageList = LoadImages();
+        SetGallery(imageList);
+    }
+
+    public void LastPage()
+    {
+        StartImageIndex -= 1;
         List<Texture2D> imageList = LoadImages();
         SetGallery(imageList);
     }
