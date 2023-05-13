@@ -40,10 +40,6 @@ using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도한다.
 - public void MoveScene(int sceneIndex)
     - 특정 씬으로 이동하는 로직을 담은 함수
 
-- public abstract void SetScenario(int scenarioIndex)
-    - 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
-    - scenarioIndex : 변경할 시나리오의 Index.
-
 ## IPlayScene
 
 ---
@@ -270,7 +266,10 @@ abstract class
 - public abstract override void SetScenario(int scenarioIndex);
     - AbstractSceneManager의 메서드를 override받은 메서드.
     - abstract로 처리되어 자식 클래스에서 정의된다.
-
+    
+- public abstract void SetScenario(int scenarioIndex)
+    - 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
+    - scenarioIndex : 변경할 시나리오의 Index.
 ## EscapeDoor
 
 ---
@@ -466,7 +465,7 @@ class
 - public Sprite ShowProfile()
     - 현재 프로필과 매칭되는 이미지 스프라이트를 반환한다.
 
-- public string ShowCurrentTime()
+- public static string GetCurrentTime()
     - DataTime 라이브러리를 통해 현재 시각을 출력한다.
     - 기준은 KST, 형식은 HHmmss.
 
@@ -594,7 +593,7 @@ class
 - public AudioSource InstrumentAudioSource
     - 악기와 관련된 효과음이 나오는 곳이다.
 
-- public void OnCollisionEnter(Collision other)
+- public void OnTriggerEnter(Collider other)
     - other == 사용자의 컨트롤러 Collider일 경우,
         - 변수 int type를 왼쪽 컨트롤러일 경우 0, 오른쪽 컨트롤러일 경우 1로 설정한다.
         - NantaScenarioManager.JudgeNote(type) 호출.
