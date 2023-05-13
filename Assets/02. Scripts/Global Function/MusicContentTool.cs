@@ -67,5 +67,9 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <param name="command">command 구문.</param>
     public abstract void CommandExecute(float time, string command);
 
-    public abstract override void SetScenario(int scenarioIndex);
+    /// <summary>
+    /// 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
+    /// </summary>
+    /// <param name="scenarioIndex">변경할 시나리오의 Index.</param>
+    public abstract void SetScenario(int scenarioIndex);
 }

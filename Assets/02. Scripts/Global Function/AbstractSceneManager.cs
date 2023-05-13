@@ -32,9 +32,4 @@ public abstract class AbstractSceneManager : MonoBehaviour
     {
         //TODO : using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도
     }
-    /// <summary>
-    /// 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
-    /// </summary>
-    /// <param name="scenarioIndex">변경할 시나리오의 Index.</param>
-    public abstract void SetScenario(int scenarioIndex);
 }
