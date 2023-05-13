@@ -5,11 +5,6 @@ using UnityEngine;
 public class NantaInstrument : MonoBehaviour
 {
     /// <summary>
-    /// 컨트롤러로 타격 가능한 범위.
-    /// </summary>
-    public BoxCollider[] Colliders;
-
-    /// <summary>
     /// 악기와 관련된 효과음 목록.
     /// </summary>
     public AudioClip[] InstrumentClips;
@@ -20,13 +15,20 @@ public class NantaInstrument : MonoBehaviour
     public AudioSource InstrumentAudioSource;
 
     
-    public void OnCollisionEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.CompareTag("LeftController"))
         {
-            //변수 int type를 왼쪽 컨트롤러일 경우 0, 오른쪽 컨트롤러일 경우 1로 설정한다.
-            //NantaScenarioManager.JudgeNote(type);
+            Debug.Log("Hit Left");
+            //int result = NantaScenarioManager.instance.JudgeNote(0);
             //결과가 Good일 경우 SoundManager.SoundPlay(InstrumentClips[0], InstrumentAudioSource) 호출.
+        }
+        else if(other.CompareTag("RightController"))
+        {
+            Debug.Log("Hit Right");
+            //int result = NantaScenarioManager.instance.JudgeNote(1);
+            //결과가 Good일 경우 SoundManager.SoundPlay(InstrumentClips[0], InstrumentAudioSource) 호출.
+
         }
     }
 }

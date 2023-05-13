@@ -584,17 +584,13 @@ class
 
 사용자의 인터렉션이 타격인지 아닌지를 판별하며, 어느 쪽 손의 컨트롤러인지 확인한다.
 
-- public BoxCollider[] Colliders
-    - 컨트롤러로 타격 가능한 범위이다.
-    - Collider의 범위는 실제 폴리곤보다 1.5배 크게 만든다.
-
 - public AudioClip[] InstrumentClips
     - 악기와 관련된 효과음 목록이다.
 
 - public AudioSource InstrumentAudioSource
     - 악기와 관련된 효과음이 나오는 곳이다.
 
-- public void OnCollisionEnter(Collider other)
+- public void OnCollisionEnter(Collidsion other)
     - other == 사용자의 컨트롤러 Collider일 경우,
         - 변수 int type를 왼쪽 컨트롤러일 경우 0, 오른쪽 컨트롤러일 경우 1로 설정한다.
         - NantaScenarioManager.JudgeNote(type) 호출.

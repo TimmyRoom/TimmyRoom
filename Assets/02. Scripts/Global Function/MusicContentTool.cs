@@ -27,7 +27,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <returns>주어진 초 단위 시간을 마디 수로 환산한 값.</returns>
     public float Second2Beat(float second, float BPM) 
     {
-		    return second * BPM /60;
+		return second * BPM /60;
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <returns>Dictionary 자료구조.</returns>
     public Dictionary<float, string> GetScript(string jsonData) 
     {
-		    return JsonUtility.FromJson<Dictionary<float, string>>(jsonData);
+		return JsonUtility.FromJson<Dictionary<float, string>>(jsonData);
     }
 
     /// <summary>

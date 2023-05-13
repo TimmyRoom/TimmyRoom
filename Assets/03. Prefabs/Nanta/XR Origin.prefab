@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 5309121269456694143}
   m_Layer: 0
   m_Name: XR Origin
-  m_TagString: Untagged
+  m_TagString: XR Origin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1520,10 +1520,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3046346927431750597, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046346927431750597, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightController
+      objectReference: {fileID: 0}
     - target: {fileID: 4481722427582031343, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
       propertyPath: m_Name
       value: DemoStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560225895522959742, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b4a731da4a9c444a792b0942a71f02, type: 3}
@@ -1540,6 +1555,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5309121269420862688}
     m_Modifications:
+    - target: {fileID: 136926205976242410, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136926205976242410, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 682360350985766101, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
       propertyPath: m_RootOrder
@@ -1595,10 +1620,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3046346927431750597, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: LeftController
+      objectReference: {fileID: 0}
     - target: {fileID: 4481722427582031343, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
       propertyPath: m_Name
       value: DemoStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481722427582031343, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560225895522959742, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: LeftController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b4a731da4a9c444a792b0942a71f02, type: 3}
