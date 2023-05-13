@@ -9,7 +9,7 @@ public class LobbyTestUI : MonoBehaviour
 
     private void Update()
     {
-        time.text = LobbyManager.ShowCurrentTime();
+        time.text = LobbyManager.GetCurrentTime();
     }
 
     public void MoveSceneTest()

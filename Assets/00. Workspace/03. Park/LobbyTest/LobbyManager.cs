@@ -11,14 +11,14 @@ public class LobbyManager : MonoBehaviour
     public Sprite ShowProfile()
     {
         // ProfileManager 생성 시 함께 작업
-        return null;
+        throw new NotImplementedException();
     }
 
     /// <summary>
     /// DataTime 라이브러리를 통해 현재 시각을 출력한다.
     /// 기준은 KST, 형식은 HHmmss.
     /// </summary>
-    public static string ShowCurrentTime()
+    public static string GetCurrentTime()
     {
         DateTime currentDate = DateTime.Now;
         return currentDate.ToString("HH:mm:ss");
