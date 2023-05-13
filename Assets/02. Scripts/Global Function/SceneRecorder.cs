@@ -45,26 +45,12 @@ public class SceneRecorder : MonoBehaviour
         //TODO : Capture Main Camera and save it to filePath.
         try
         {
-            // Create a RenderTexture object
-            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
-            // Read screen contents into the texture
-            Camera.main.targetTexture = rt;
-            Camera.main.Render();
-            RenderTexture.active = rt;
-            // Create a new Texture2D and read the RenderTexture image into it
-            Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-            Camera.main.targetTexture = null;
-            RenderTexture.active = null; // JC: added to avoid errors
-            Destroy(rt);
-            // Encode texture into PNG
-            byte[] bytes = screenShot.EncodeToPNG();
-            // For testing purposes, also write to a file in the project folder
-            string name = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
-            System.IO.File.WriteAllBytes(filePath + "/" + name, bytes);
-            Debug.Log(string.Format("Took screenshot to: {0}", filePath));
-
-            return true;
+            Camera mainCamera = Camera.main;
+            Camera selfCamera = selfCameraObject.GetComponent<Camera>();
+            
+            selfCamera.enabled = false;
+            bool result = _Capture(mainCamera);
+            return result;
         }
         catch
         {
@@ -88,26 +74,12 @@ public class SceneRecorder : MonoBehaviour
         try
         {
             Camera selfCamera = selfCameraObject.GetComponent<Camera>();
-            // Create a RenderTexture object
-            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
-            // Read screen contents into the texture
-            selfCamera.targetTexture = rt;
-            selfCamera.Render();
-            RenderTexture.active = rt;
-            // Create a new Texture2D and read the RenderTexture image into it
-            Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-            selfCamera.targetTexture = null;
-            RenderTexture.active = null; // JC: added to avoid errors
-            Destroy(rt);
-            // Encode texture into PNG
-            byte[] bytes = screenShot.EncodeToPNG();
-            // For testing purposes, also write to a file in the project folder
-            string name = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
-            System.IO.File.WriteAllBytes(filePath + "/" + name, bytes);
-            Debug.Log(string.Format("Took screenshot to: {0}", filePath));
-
-            return true;
+            Camera mainCamera = Camera.main;
+            
+            bool result = _Capture(selfCamera);
+            mainCamera.enabled = true;
+            selfCamera.enabled = false;
+            return result;
         }
         catch
         {
@@ -119,5 +91,33 @@ public class SceneRecorder : MonoBehaviour
     public void TestCaptureSelf()
     {
         CaptureSelf();
+    }
+
+    bool _Capture(Camera camera) 
+    {
+        // Create a RenderTexture object
+        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
+        // Read screen contents into the texture
+        camera.targetTexture = rt;
+        camera.Render();
+        RenderTexture.active = rt;
+
+        // Create a new Texture2D and read the RenderTexture image into it
+        Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+
+        camera.targetTexture = null;
+        RenderTexture.active = null; // JC: added to avoid errors
+        Destroy(rt);
+        // Encode texture into PNG
+        byte[] bytes = screenShot.EncodeToPNG();
+        // For testing purposes, also write to a file in the project folder
+        string name = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
+        System.IO.File.WriteAllBytes(filePath + "/" + name, bytes);
+        Debug.Log(string.Format("Took screenshot to: {0}", filePath));
+
+        Debug.Log("Main Camera", Camera.main);
+
+        return true;
     }
 }
