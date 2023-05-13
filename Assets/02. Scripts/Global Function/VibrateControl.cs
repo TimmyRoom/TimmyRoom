@@ -24,8 +24,40 @@ public class VibrateControl : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    [SerializeField] private ActionBasedController rightController;
-    [SerializeField] private ActionBasedController leftController;
+    private ActionBasedController rightController;
+    private ActionBasedController leftController;
+
+    private GameObject XROrigin;
+
+    /// <summary>
+    /// 게임이 실행됐을 때 존재하는 XR Origin의 컨트롤러를 사용 가능하도록 연결합니다.
+    /// </summary>
+    private void Start()
+    {
+        InitializeController();
+    }
+
+    /// <summary>
+    /// 맨 처음 씬에 들어오거나 다른 씬으로 이동하여 새로운 XR Origin이 존재하는 경우
+    /// 해당 XR Origin의 컨트롤러를 사용 가능하도록 연결합니다.
+    /// </summary>
+    public void InitializeController()
+    {
+        XROrigin = GameObject.FindWithTag("XR Origin");
+
+        Transform[] originChildrens = XROrigin.GetComponentsInChildren<Transform>();
+        foreach (Transform originChild in originChildrens)
+        {
+            if (originChild.name == "RightHand Controller")
+            {
+                rightController = originChild.GetComponent<ActionBasedController>();
+            }
+            else if (originChild.name == "LeftHand Controller")
+            {
+                leftController = originChild.GetComponent<ActionBasedController>();
+            }
+        }
+    }
 
     /// <summary>
     /// 오른쪽 컨트롤러가 활성화된 상태인 경우 오른쪽 컨트롤러에 진동을 재생합니다.
