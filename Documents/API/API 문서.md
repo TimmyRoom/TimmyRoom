@@ -466,7 +466,7 @@ class
 - public Sprite ShowProfile()
     - 현재 프로필과 매칭되는 이미지 스프라이트를 반환한다.
 
-- public string ShowCurrentTime()
+- public static string GetCurrentTime()
     - DataTime 라이브러리를 통해 현재 시각을 출력한다.
     - 기준은 KST, 형식은 HHmmss.
 
