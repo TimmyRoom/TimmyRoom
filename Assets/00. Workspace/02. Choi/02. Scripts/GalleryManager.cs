@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GalleryManager : MonoBehaviour
+public class GalleryManager : AbstractSceneManager
 {
     public GameObject galleryCanvas;
+    GameObject gridObject;
     string filePath;
     int startImageIndex;
     public int StartImageIndex { get => startImageIndex; set => startImageIndex = _SetStartIndex(value); }
@@ -13,6 +14,7 @@ public class GalleryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gridObject = galleryCanvas.transform.Find("Grid").gameObject;
         filePath = Application.persistentDataPath;
         List<Texture2D> imageList = LoadImages();
         SetGallery(imageList);
@@ -38,17 +40,17 @@ public class GalleryManager : MonoBehaviour
 
     private void SetGallery(List<Texture2D> images)
     {
-        int childCount = galleryCanvas.transform.Find("Grid").childCount;
+        int childCount = gridObject.transform.childCount;
         for (int i = 0; i < childCount; i++)
         {
-            Transform child = galleryCanvas.transform.Find("Grid").GetChild(i);
+            Transform child = gridObject.transform.GetChild(i);
             child.GetComponent<RawImage>().texture = images[startImageIndex + i];
         }
     }
 
     int _SetStartIndex(int value)
     {
-        int childCount = galleryCanvas.transform.Find("Grid").childCount;
+        int childCount = gridObject.transform.childCount;
         int imageCount = System.IO.Directory.GetFiles(filePath).Length;
         if(value > imageCount - childCount)
         {
@@ -64,6 +66,20 @@ public class GalleryManager : MonoBehaviour
     public void SetStartIndex(int value)
     {
         StartImageIndex = value;
+        List<Texture2D> imageList = LoadImages();
+        SetGallery(imageList);
+    }
+
+    public void NextPage()
+    {
+        StartImageIndex += 1;
+        List<Texture2D> imageList = LoadImages();
+        SetGallery(imageList);
+    }
+
+    public void LastPage()
+    {
+        StartImageIndex -= 1;
         List<Texture2D> imageList = LoadImages();
         SetGallery(imageList);
     }
