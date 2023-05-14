@@ -1,16 +1,17 @@
 {
 	"ChartName": "Rooftop_Easy",
 	"SongName": "Rooftop",
-	"Artist": "Nflying", 
+	"ArtistName": "Nflying", 
 	"SongLength": 216,
 	"Offset": 1.2,
+	"BPM": 120,
 	"Notes": [
 		{
-			"Time": 3,
+			"Time": 3.0,
 			"Type": "LeftHand"
 		},
 		{
-			"Time": 4,
+			"Time": 4.0,
 			"Type": "RightHand"
 		}
 	]
