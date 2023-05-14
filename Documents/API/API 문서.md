@@ -322,32 +322,46 @@ class
 
 로컬 파일 형태로 사용자 데이터를 관리하고, 컨텐츠 진행 중 저장된 데이터를 활용하도록 한다.
 
-- string currentProfile
-    - 현재 프로필 이름을 저장한다.
-    - 초기값은 빈 문자열.
+- int currentProfile
+    - 현재 프로필 아이디을 저장한다.
+    - 초기값은 빈 정수.
     - getter/setter 제공.
 
-- string[] GetAllDataLocations()
-    - 모든 프로필에 대해 데이터 저장 위치를 읽는다.
-    - return : 모든 프로필의 저장 위치.
-
-- void ReadData(string targetProfile)
-    - 지정된 프로필의 데이터 파일을 읽어 currentProfile을 갱신한다.
-    - SceneRecorder.SetPath(currentProfile)로 영상 저장 폴더 설정.
-    - targetProfile : 프로필 이름.
+- void ReadData(int targetProfile)
+    - set currentProfile
+    - targetProfile을 받아서 SceneRecorder의 userData 설정
+    - targetProfile : 프로필 아이디.
 
 - void SaveData()
-    - currenProfile에 해당하는 파일의 정보를 저장한다.
+    - 유저 정보들을 저장한다.
 
-- void AddNewData(string currentProfile, string jsonData)
-    - 새로운 프로필에 해당하는 폴더를 만든다.
-    - currentProfile을 setter를 통해 갱신한다.
-    - targetProfile : 새로 생성할 프로필 이름.
-    - jsonData : 새로 생성할 프로필 정보.
+- void AddNewData(int colorId, int patternId)
+    - 새로운 프로필을 만들어서 GameData에 추가한다.
+    - colorId, patternId : 새로운 프로필의 색상과 패턴
 
 - private void OnApplicationQuit()
     - 어플리케이션 종료 시 발생 예외처리.
     - SaveData()를 호출한다.
+
+## GameData & UserData
+
+---
+
+class
+- UserData: System.Serializable / 사용자 정보
+- GameData: static / List<UserData> 저장중
+
+사용자 데이터 형식을 다루는 클래스
+
+- bool CheckPurity(int colorId, int patternId)
+    - colorId, patternId : 사용자가 고른 컬러와 패턴
+    - 반환값 : 하나도 없다면 true, 아니면 false
+
+- int AddUser(int colorId, int patternId)
+    - CheckPurity 호출해서 검사
+    - 새로운 userData 생성
+    - 새로운 userid 세팅
+
 
 ## SoundManager
 
