@@ -9,11 +9,6 @@ public class LobbyTestUI : MonoBehaviour
 
     private void Update()
     {
-        time.text = LobbyManager.GetCurrentTime();
-    }
-
-    public void MoveSceneTest()
-    {
-        SceneMover.instance.MoveScene(1);
+        time.text = LobbySceneManager.GetCurrentTime();
     }
 }
