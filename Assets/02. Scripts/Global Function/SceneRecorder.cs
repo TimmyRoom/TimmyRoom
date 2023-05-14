@@ -8,7 +8,14 @@ using UnityEngine;
 public class SceneRecorder : MonoBehaviour
 {
     public static SceneRecorder instance;
+    public static string sceneName = "Nanta";
     public GameObject selfCameraObject;
+
+    bool isRecording = false;
+    float recordTime = 0f;
+    float maxRecordTime = 10f;
+    Coroutine coroutine;
+
     private void Awake()
     {
         if (instance == null)
@@ -52,9 +59,10 @@ public class SceneRecorder : MonoBehaviour
             bool result = _Capture(mainCamera);
             return result;
         }
-        catch
+        catch (UnityException e)
         {
             Debug.LogWarning("Failed to capture the screen.",this);
+            Debug.LogWarning(e.Message);
             return false;
         }
     }
@@ -95,6 +103,18 @@ public class SceneRecorder : MonoBehaviour
 
     bool _Capture(Camera camera) 
     {
+        string dirName = System.DateTime.Now.ToString("yyyy-MM-dd-mm-ss");
+        string curFilePath = filePath + "/" + dirName;
+        if(!System.IO.Directory.Exists(curFilePath))
+        {
+            System.IO.Directory.CreateDirectory(curFilePath);
+        }
+        else
+        {
+            Debug.LogWarning("Too fast to capture the screen.");
+            throw new UnityException("Directory already exists.");
+        }
+
         // Create a RenderTexture object
         RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
         // Read screen contents into the texture
@@ -111,13 +131,140 @@ public class SceneRecorder : MonoBehaviour
         Destroy(rt);
         // Encode texture into PNG
         byte[] bytes = screenShot.EncodeToPNG();
+
         // For testing purposes, also write to a file in the project folder
-        string name = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
-        System.IO.File.WriteAllBytes(filePath + "/" + name, bytes);
-        Debug.Log(string.Format("Took screenshot to: {0}", filePath));
+        string photoName = "photo" + "0" +".png";
+        System.IO.File.WriteAllBytes(curFilePath + "/" + photoName, bytes);
+        Debug.Log(string.Format("Took screenshot to: {0}", curFilePath));
+
+        string infoName = "info.json";
+        string info = MakeRecordInfo(RecordType.Image);
+        System.IO.File.WriteAllText(curFilePath + "/" + infoName, info);
 
         Debug.Log("Main Camera", Camera.main);
 
         return true;
+    }
+    
+    public bool Record()
+    {
+        if(isRecording)
+        {
+            Debug.LogWarning("Already recording.",this);
+            return false;
+        }
+        Camera camera = Camera.main;
+        bool result = _Record(camera);
+        return result;
+    }
+
+    public void TestRecord() { Record();}
+
+    public bool RecordSelf()
+    {
+        if(isRecording)
+        {
+            Debug.LogWarning("Already recording.",this);
+            return false;
+        }
+        Camera camera = selfCameraObject.GetComponent<Camera>();
+        bool result = _Record(camera);
+        return result;
+    }
+
+    public void TestRecordSelf() { RecordSelf();}
+
+    bool _Record(Camera camera)
+    {
+        //TODO : Record Camera and save it to filePath.
+        RecordSceneType sceneType = RecordSceneType.Nanta;
+        if(sceneName == "Nanta" || sceneName == "nanta")
+        {
+            sceneType = RecordSceneType.Nanta;
+        }
+        else if (sceneName == "Dance" || sceneName == "dance")
+        {
+            sceneType = RecordSceneType.Dance;
+        }
+
+        coroutine = StartCoroutine(_RecordCoroutine(camera, sceneType));
+        return true;
+    }
+
+    IEnumerator _RecordCoroutine(Camera camera, RecordSceneType sceneType)
+    {
+        //TODO : Record Camera and save it to filePath.
+        //Make Directory
+        string dirName = System.DateTime.Now.ToString("yyyy-MM-dd-mm-ss");
+        string curFilePath = filePath + "/" + dirName;
+        if(!System.IO.Directory.Exists(curFilePath))
+        {
+            System.IO.Directory.CreateDirectory(curFilePath);
+        }
+        else
+        {
+            Debug.LogWarning("Too fast to record the screen.");
+            throw new UnityException("Directory already exists.");
+        }
+        for(int i = 0; i < 10; i++)
+        {
+            // Create a RenderTexture object
+            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
+            // Read screen contents into the texture
+            camera.targetTexture = rt;
+            camera.Render();
+            RenderTexture.active = rt;
+
+            // Create a new Texture2D and read the RenderTexture image into it
+            Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+
+            camera.targetTexture = null;
+            RenderTexture.active = null; // JC: added to avoid errors
+            Destroy(rt);
+            // Encode texture into PNG
+            byte[] bytes = screenShot.EncodeToPNG();
+
+            // For testing purposes, also write to a file in the project folder
+            string photoName = "photo" + i.ToString() + ".png";
+            System.IO.File.WriteAllBytes(curFilePath + "/" + photoName, bytes);
+            Debug.Log(string.Format("Took screenshot to: {0}", curFilePath));
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        string infoName = "info.json";
+        string info = MakeRecordInfo(RecordType.Video);
+        System.IO.File.WriteAllText(curFilePath + "/" + infoName, info);
+
+        Debug.Log("Recorded");
+    }
+
+    string MakeRecordInfo(RecordType type)
+    {
+        RecordInfo info = new RecordInfo();
+        info.type = type;
+
+        if(sceneName == "Nanta" || sceneName == "nanta")
+        {
+            info.sceneType = RecordSceneType.Nanta;
+        }
+        else if(sceneName == "Dance" || sceneName == "dance")
+        {
+            info.sceneType = RecordSceneType.Dance;
+        }
+
+        string json = JsonUtility.ToJson(info);
+        return json;
+    }
+
+    public void StopRecord()
+    {
+        if(!isRecording)
+        {
+            Debug.LogWarning("Not recording.",this);
+            return;
+        }
+        StopCoroutine(coroutine);
     }
 }

@@ -6,6 +6,7 @@ public interface IPlayScene
 {
     /// <summary>
     /// SceneRecorder 싱글톤을 사용해서 플레이를 기록하는 함수.
+    /// sceneName = {Nanta, Dance, nanta, dance}
     /// </summary>
-    public void Record();
+    public void Record(string sceneName);
 }

@@ -97,6 +97,15 @@ class
     - 사용자를 바라보는 바깥의 가상 카메라를 캡처하는 함수
     - return : 저장 성공여부.
 
+- public bool Record()
+    - 사용자가 바라보는 화면을 녹화하는 함수
+    - return : 저장 성공여부
+
+- public bool RecordSelf()
+    - 사용자를 바라보는 바깥의 가상 카메라 화면을 녹화하는 함수
+    - return : 저장 성공여부
+
+
 ## SceneMover
 
 ---
@@ -868,23 +877,47 @@ class
 
 각 클래스들의 기능을 호출하는 UI 오브젝트를 통해 인터렉션한다.
 
-## RecordPlayer
+## GalleryManager
 
 ---
 
 class
+현재 갤러리에 불러올 이미지들을 결정한다.
 
-영상 자료를 찾아 반환한다.
+- public GameObject galleryCanvas
+    - 갤러리가 렌더링 될 캔버스 오브젝트이다.
+- string filePath
+    - 캡처, 녹화한 영상이 저장되는 위치이다.
+- StartImageIndex
+    - 갤러리에 띄울 이미지의 시작 인덱스이다.
 
-- string[] filePaths
-    - 반환 가능한 영상들이 저장된 위치이다.
+- int _SetStartIndex(int value)
+    - 시작 인덱스가 IndexError를 일으키지 않도록 방지하는 함수이다.
+    - 반환값: IndexError을 일으키지 않는 범위 내의 값.
 
-- void GetPath()
-    - UserDataManager.ReadAllData()로 filePaths를 갱신한다.
+- void SetGallery()
+    - GalleryImage.SetImage(string dirPath)를 통해 각 이미지를 갱신한다.
 
-- Sprite[] GetThumbnails()
-    - 전체 영상에 해당하는 썸네일 스프라이트를 배열로 반환한다.
+## GalleryImage
+---
 
-- GameObject GetVideo(string videoName)
-    - 해당하는 이름의 비디오를 재생 가능한 오브젝트를 생성한다.
-    - 해당 API의 IPO는 이후 개발 상황에 따라 변경할 것.
+class
+갤러리의 한 이미지.
+
+- string path
+    - 현재 영상, 이미지가 저장된 위치이다.
+- SceneRecorder.RecordInfo info
+    - 현재 영상, 이미지의 정보이다.
+- Coroutine coroutine
+    - 영상 재생의 중복 실행을 방지하기 위한 변수이다.
+
+- void SetImage(string dirPath)
+    - 해당 디렉토리 내의 info.json 을 읽어와 해당 영상의 정보를 갱신하고 RawImage 의 내용을 갱신한다.
+
+- void Hover()
+    - 이미지라면 해당 이미지에 대한 정보를 출력한다.
+    - 영상이라면 해당 영상을 플레이한다.
+
+- IEnumerator ShowVideo()
+    - 연속된 이미지를 시간에 따라 다음 이미지로 변경하는 함수.
+
