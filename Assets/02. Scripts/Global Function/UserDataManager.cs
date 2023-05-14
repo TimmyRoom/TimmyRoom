@@ -8,6 +8,9 @@ using UnityEngine;
 public class UserDataManager : MonoBehaviour
 {
     public static UserDataManager instance;
+    int currentId = -1;
+    public int CurrentProfile { get => currentId; set => currentId = value; }
+
     private void Awake()
     {
         if (instance == null)
@@ -20,30 +23,39 @@ public class UserDataManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
+        LoadData();
     }
-
-    string currentProfile;
-    public string CurrentProfile { get => currentProfile; set => currentProfile = value; }
 
     /// <summary>
-    /// 모든 프로필에 대해 데이터 저장 위치를 읽는다.
+    /// 모든 유저 정보를 불러온다.
     /// </summary>
-    /// <returns>모든 프로필의 저장 위치.</returns>
-    string[] GetAllDataLocations()
+    /// <returns>성공하면 true, 실패하면 false</returns>
+    bool LoadData()
     {
-        //TODO : 메서드 구현.
-        return null;
+        try
+        {
+            string dirPath = Application.persistentDataPath;
+            string json = System.IO.File.ReadAllText(dirPath + "/userData.json");
+            GameData.userDataList = JsonUtility.FromJson<List<UserData>>(json);
+            return true;
+        }
+        catch(UnityEngine.UnityException e)
+        {
+            Debug.Log(e.Message);
+            return false;
+        }
     }
+
 
     /// <summary>
     /// 지정된 프로필의 데이터 파일을 읽어 currentProfile을 갱신한다.
     /// </summary>
     /// <param name="targetProfile">프로필 이름.</param>
-    void ReadData(string targetProfile)
+    void ReadData(int targetProfile)
     {
         CurrentProfile = targetProfile;
         //TODO : 데이터를 읽어 적용한다.
-        SceneRecorder.instance.SetPath(CurrentProfile);
+        SceneRecorder.userId = CurrentProfile;
     }
 
     /// <summary>
@@ -51,7 +63,9 @@ public class UserDataManager : MonoBehaviour
     /// </summary>
     void SaveData()
     {
-        //TODO : 메서드 구현.
+        string json = JsonUtility.ToJson(GameData.userDataList);
+        string dirPath = Application.persistentDataPath;
+        System.IO.File.WriteAllText(dirPath + "/userData.json", json);
     }
 
     /// <summary>
@@ -59,10 +73,10 @@ public class UserDataManager : MonoBehaviour
     /// </summary>
     /// <param name="targetProfile">새로 생성할 프로필 이름.</param>
     /// <param name="jsonData">새로 생성할 프로필 정보.</param>
-    void AddNewData(string targetProfile, string jsonData)
+    void AddNewData(int colorId, int patterId)
     {
-        //TODO : 메서드 구현.
-        CurrentProfile = targetProfile;
+        int id = GameData.AddUser(colorId, patterId);
+        CurrentProfile = id;
     }
 
     private void OnApplicationQuit()
