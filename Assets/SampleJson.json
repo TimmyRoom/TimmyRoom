@@ -1,42 +1,458 @@
 {
-	"ChartName": "Rooftop_Easy",
-	"SongName": "Rooftop",
-	"ArtistName": "Nflying",
-	"SongLength": 216.0,
-	"Offset": 1.2,
-	"BPM": 96.0,
-	"Notes": [
-		{
-			"Time": 0.5,
-			"Type": "RightHand"
-		},
-		{
-			"Time": 1.5,
-			"Type": "RightHand"
-		},
-		{
-			"Time": 2.5,
-			"Type": "RightHand"
-		},
-		{
-			"Time": 3.5,
-			"Type": "RightHand"
-		},
-		{
-			"Time": 4.5,
-			"Type": "RightHand"
-		},
-		{
-			"Time": 5.5,
-			"Type": "RightHand"
-		},
-		{
-			"Time": 6.5,
-			"Type": "RightHand"
-		},
-		{
-			"Time": 7.5,
-			"Type": "RightHand"
-		}
-	]
+    "ChartName": "Rooftop_Easy",
+    "SongName": "Rooftop",
+    "ArtistName": "Nflying",
+    "SongLength": 216,
+    "Offset": 1.2,
+    "BPM": 97,
+    "Notes": [
+        {
+            "Time": 0.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 1.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 2.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 3.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 4.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 5.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 6.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 7.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 8.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 9.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 10.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 11.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 12.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 13.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 14.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 15.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 16.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 17.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 18.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 19.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 20.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 21.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 22.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 23.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 24.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 25.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 26.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 27.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 28.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 29.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 30.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 31.5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 32,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 32.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 33,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 33,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 33.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 34,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 34.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 35,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 35,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 35.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 36,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 36.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 37,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 37,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 37.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 38,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 38.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 39,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 39,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 39.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 40,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 40.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 41,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 41,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 41.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 42,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 42.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 43,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 43,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 43.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 44,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 44.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 45,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 45,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 45.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 46,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 46.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 47,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 47,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 47.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 48,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 48.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 49,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 49,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 49.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 50,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 50.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 51,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 51,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 51.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 52,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 52.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 53,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 53,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 53.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 54,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 54.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 55,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 55,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 55.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 56,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 56.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 57,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 57,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 57.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 58,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 58.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 59,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 59,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 59.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 60,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 60.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 61,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 61,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 61.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 62,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 62.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 63,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 63,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 63.5,
+            "Type": "LeftHand"
+        }
+    ]
 }

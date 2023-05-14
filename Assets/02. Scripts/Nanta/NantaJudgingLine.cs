@@ -63,6 +63,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
+        Debug.Log(Time.time);
         yield return new WaitForSeconds(Mathf.Clamp(time - fallingTime, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
