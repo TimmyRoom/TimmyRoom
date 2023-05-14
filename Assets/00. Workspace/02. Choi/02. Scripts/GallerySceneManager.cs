@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GalleryManager : AbstractSceneManager
+public class GallerySceneManager : AbstractSceneManager
 {
     public GameObject galleryCanvas;
     GameObject gridObject;
@@ -82,5 +82,15 @@ public class GalleryManager : AbstractSceneManager
         StartImageIndex -= 1;
         List<Texture2D> imageList = LoadImages();
         SetGallery(imageList);
+    }
+
+    public override void MoveScene(int sceneIndex)
+    {
+        SceneMover.instance.MoveScene(sceneIndex);
+    }
+
+    public override void MoveScene(string sceneName)
+    {
+        SceneMover.instance.MoveScene(sceneName);
     }
 }
