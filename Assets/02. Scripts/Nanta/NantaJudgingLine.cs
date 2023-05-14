@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class NantaJudgingLine : MonoBehaviour
 {
+    [SerializeField] NantaScenarioManager manager;
+
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
-    float judgingTime;
+    [SerializeField]float judgingTime;
     public float JudgingTime { get => judgingTime; set => judgingTime = value; }
- 
+
     /// <summary>
-    /// 판정면. 노트가 해당 면에 Trigger된 동안은 성공 판정. 한번이라도 판정면에 Trigger된 후 Trigger에서 Exit될 경우 실패 판정.
+    /// 노트의 등속 운동 속도.
     /// </summary>
-    public BoxCollider JudjingLine;
+    [SerializeField]float noteVelocity;
+    public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
+
+    List<float> JudgeDistance = new List<float>(){-10, 10};
+
+    /// <summary>
+    /// 판정을 위한 Raycast가 발생하는 Transform.
+    /// </summary>
+    public Transform[] RayPosition;
+
+    /// <summary>
+    /// 생성하는 노트의 프리팹.
+    /// </summary>
+    public Rigidbody NotePrefab;
 
     /// <summary>
     /// 노트가 생성되는 위치.
@@ -39,7 +54,8 @@ public class NantaJudgingLine : MonoBehaviour
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
         yield return new WaitForSeconds(Mathf.Clamp(time - judgingTime, 0, float.MaxValue));
-        //노트를 NoteSpawnTransforms[type].position에 생성하여 NoteSpawnTransforms[type].rotation 방향으로 등속 운동시킨다.
+        Rigidbody newNote = GetNote(type);
+        newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
     }
 
     /// <summary>
@@ -49,9 +65,35 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns>노트 판정 결과.</returns>
     public int JudgeNote(int type)
     {
-        //노트 타입에 연결되는 라인에서 노트 진행 방향으로 가장 멀리 이동한 노트를 참조한다.
-        //참조한 노트가 해당 면에 Trigger된 상태라면 1을 반환한다.
-        //그 외엔 0을 반환한다.
-        return 0;
+        int result = 0;
+        RaycastHit hit;
+        if (Physics.Raycast(RayPosition[type].position, RayPosition[type].forward, out hit))
+        {
+            if(hit.distance > 3)
+            {
+                result = 0;
+            }
+            else if(-3 < hit.distance && hit.distance < 3)
+            {
+                result = 1;
+            }
+            else
+            {
+                result = 0;
+            }
+            Destroy(hit.collider.gameObject);
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.forward * 1000f, Color.red);
+        }
+        return result;
+    }
+
+    Rigidbody GetNote(int type)
+    {
+        //TODO : 오브젝트 풀링 기법 구현
+        Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms[type].position, NoteSpawnTransforms[type].rotation);
+        return newNote;
     }
 }

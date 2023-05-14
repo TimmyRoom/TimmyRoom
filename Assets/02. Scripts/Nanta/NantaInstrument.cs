@@ -14,21 +14,25 @@ public class NantaInstrument : MonoBehaviour
     /// </summary>
     public AudioSource InstrumentAudioSource;
 
+    [SerializeField] NantaScenarioManager manager;
+
     
     public void OnTriggerEnter(Collider other)
     {
+        int result = 0;
         if(other.CompareTag("LeftController"))
         {
             Debug.Log("Hit Left");
-            //int result = NantaScenarioManager.instance.JudgeNote(0);
-            //결과가 Good일 경우 SoundManager.SoundPlay(InstrumentClips[0], InstrumentAudioSource) 호출.
+            result = manager.JudgeNote(0);
         }
         else if(other.CompareTag("RightController"))
         {
             Debug.Log("Hit Right");
-            //int result = NantaScenarioManager.instance.JudgeNote(1);
-            //결과가 Good일 경우 SoundManager.SoundPlay(InstrumentClips[0], InstrumentAudioSource) 호출.
-
+            result = manager.JudgeNote(1);
+        }
+        if(result == 0)
+        {
+            //SoundManager.instance.SoundPlay(InstrumentClips[0], InstrumentAudioSource);
         }
     }
 }

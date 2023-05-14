@@ -212,6 +212,7 @@ MonoBehaviour:
   InstrumentClips:
   - {fileID: 0}
   InstrumentAudioSource: {fileID: 3951163383134516667}
+  manager: {fileID: 0}
 --- !u!54 &280625036
 Rigidbody:
   m_ObjectHideFlags: 0

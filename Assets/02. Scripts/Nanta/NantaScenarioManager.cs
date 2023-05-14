@@ -8,6 +8,10 @@ using UnityEngine.Events;
 /// </summary>
 public class NantaScenarioManager : MusicContentTool
 {
+    [SerializeField] NantaJudgingLine nantaJudgeLine;
+    
+    [SerializeField] NantaInstrument nantaInstrument;
+
     /// <summary>
     /// 왼쪽 난타 북 타격 판정이 성공할 경우에 대한 이벤트.
     /// </summary>
@@ -52,6 +56,11 @@ public class NantaScenarioManager : MusicContentTool
     /// AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
     /// </summary>
     IEnumerator ComboRoutine;
+
+    void Start()
+    {
+        PlayChart("");
+    }
 
     /// <summary>
     /// 콤보 루틴을 실행하여 일정 시간마다 콤보가 쌓이도록 한다.
@@ -113,7 +122,9 @@ public class NantaScenarioManager : MusicContentTool
     /// <param name="json"></param>
     public override void PlayChart(string json)
     {
-        base.PlayChart(json);
+        //base.PlayChart(json);
+        nantaJudgeLine.SpawnNote(5, 0);
+        nantaJudgeLine.SpawnNote(8, 1);
         //TODO
         //float spb = Beat2Second();
     }
@@ -137,9 +148,69 @@ public class NantaScenarioManager : MusicContentTool
     /// <returns>노트 판정 결과.</returns>
     public override int JudgeNote(int type)
     {
-        //| LeftHand | HitEventsLeft | HitFailEventsLeft |
-        //| RightHand | HitEventsRight | HitFailEventsRight |
-        throw new System.NotImplementedException();
+        int result = nantaJudgeLine.JudgeNote(type);
+        switch(type)
+        {
+            case 0:
+            {
+                switch(result)
+                {
+                    case 0:
+                    {
+                        foreach(var hitEvent in HitEventsLeft)
+                        {
+                            hitEvent?.Invoke();
+                        }
+                        break;
+                    }
+                    case 1:
+                    {
+                        foreach(var hitEvent in HitFailEventsLeft)
+                        {
+                            hitEvent?.Invoke();
+                        }
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+                break;
+            }
+            case 1:
+            {
+                switch(result)
+                {
+                    case 0:
+                    {
+                        foreach(var hitEvent in HitEventsRight)
+                        {
+                            hitEvent?.Invoke();
+                        }
+                        break;
+                    }
+                    case 1:
+                    {
+                        foreach(var hitEvent in HitFailEventsRight)
+                        {
+                            hitEvent?.Invoke();
+                        }
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+        return result;
     }
 
     /// <summary>
