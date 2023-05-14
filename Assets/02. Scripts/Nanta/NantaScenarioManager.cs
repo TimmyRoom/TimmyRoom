@@ -142,6 +142,8 @@ public class NantaScenarioManager : MusicContentTool
         {
             CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + nantaJudgeLine.FallingTime, note.Type);
         }
+        
+        Debug.Log(Time.time);
         StartCoroutine(PlayChartRoutine(nantaJudgeLine.FallingTime, Beat2Second(1, data.BPM)));
         return data;
     }
