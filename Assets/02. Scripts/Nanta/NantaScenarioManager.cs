@@ -137,6 +137,7 @@ public class NantaScenarioManager : MusicContentTool
     public override GameChart PlayChart(string json)
     {
         GameChart data = GetScript(json);
+        nantaJudgeLine.SetVelocity();
         foreach(var note in data.Notes)
         {
             CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + nantaJudgeLine.FallingTime, note.Type);
@@ -187,7 +188,7 @@ public class NantaScenarioManager : MusicContentTool
             {
                 switch(result)
                 {
-                    case 0:
+                    case 1:
                     {
                         foreach(var hitEvent in HitEventsLeft)
                         {
@@ -195,7 +196,7 @@ public class NantaScenarioManager : MusicContentTool
                         }
                         break;
                     }
-                    case 1:
+                    case 0:
                     {
                         foreach(var hitEvent in HitFailEventsLeft)
                         {
@@ -214,7 +215,7 @@ public class NantaScenarioManager : MusicContentTool
             {
                 switch(result)
                 {
-                    case 0:
+                    case 1:
                     {
                         foreach(var hitEvent in HitEventsRight)
                         {
@@ -222,7 +223,7 @@ public class NantaScenarioManager : MusicContentTool
                         }
                         break;
                     }
-                    case 1:
+                    case 0:
                     {
                         foreach(var hitEvent in HitFailEventsRight)
                         {
