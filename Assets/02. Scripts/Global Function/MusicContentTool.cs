@@ -35,22 +35,23 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// </summary>
     /// <param name="jsonData">JSON 데이터.</param>
     /// <returns>Dictionary 자료구조.</returns>
-    public Dictionary<float, string> GetScript(string jsonData) 
+    public GameChart GetScript(string jsonData) 
     {
-		return JsonUtility.FromJson<Dictionary<float, string>>(jsonData);
+		return JsonUtility.FromJson<GameChart>(jsonData);
     }
 
     /// <summary>
     /// 각 노트에 대해 CommandExecute(time, command) 호출.
     /// </summary>
     /// <param name="json">JSON 데이터.</param>
-    public virtual void PlayChart(string json)
+    public virtual GameChart PlayChart(string json)
     {
-        Dictionary<float, string> data = GetScript(json);
-        foreach(var keyValuePair in data)
+        GameChart data = GetScript(json);
+        foreach(var note in data.Notes)
         {
-            CommandExecute(keyValuePair.Key, keyValuePair.Value);
+            CommandExecute(Beat2Second(note.Time, data.BPM), note.Type);
         }
+        return data;
     }
 
     /// <summary>
