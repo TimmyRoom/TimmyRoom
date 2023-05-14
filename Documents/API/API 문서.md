@@ -450,7 +450,7 @@ class
 
 각 클래스들의 기능을 호출하는 UI 오브젝트를 통해 인터렉션한다.
 
-## LobbyManager
+## LobbySceneManager
 
 ---
 
