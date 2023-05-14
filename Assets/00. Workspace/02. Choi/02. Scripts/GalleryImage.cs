@@ -7,7 +7,7 @@ public class GalleryImage : MonoBehaviour
 {
     public string path;
     public string dateTime;
-    public SceneRecorder.RecordInfo info;
+    public RecordInfo info;
     Coroutine coroutine;
     private void Awake(){
 
@@ -16,7 +16,7 @@ public class GalleryImage : MonoBehaviour
     public void SetImage(string dirPath)
     {
         this.path = dirPath;
-        SceneRecorder.RecordInfo info = JsonUtility.FromJson<SceneRecorder.RecordInfo>(System.IO.File.ReadAllText(dirPath + "/info.json"));
+        RecordInfo info = JsonUtility.FromJson<RecordInfo>(System.IO.File.ReadAllText(dirPath + "/info.json"));
         this.info = info;
         this.dateTime = dirPath.Substring(dirPath.LastIndexOf('/') + 1);
         Texture2D tex = new Texture2D(1920,1080,TextureFormat.RGB24,false);
@@ -26,11 +26,11 @@ public class GalleryImage : MonoBehaviour
 
     public void Hover()
     {
-        if(this.info.type == SceneRecorder.RecordType.Image)
+        if(this.info.type == RecordType.Image)
         {
             Debug.Log("이미지입니다.");
         }
-        if(this.info.type == SceneRecorder.RecordType.Video)
+        if(this.info.type == RecordType.Video)
         {
             if(coroutine != null)
             {

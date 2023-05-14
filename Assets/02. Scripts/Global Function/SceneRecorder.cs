@@ -7,27 +7,6 @@ using UnityEngine;
 /// </summary>
 public class SceneRecorder : MonoBehaviour
 {
-    [System.Serializable]
-    public class RecordInfo
-    {
-        public RecordType type;
-        public RecordSceneType sceneType;
-    }
-
-    [System.Serializable]
-    public enum RecordType
-    {
-        Image,
-        Video
-    }
-
-    [System.Serializable]
-    public enum RecordSceneType
-    {
-        Nanta,
-        Dance
-    }
-
     public static SceneRecorder instance;
     public static string sceneName = "Nanta";
     public GameObject selfCameraObject;
