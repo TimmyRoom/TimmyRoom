@@ -123,59 +123,74 @@ class
 
 class
 
-사용자가 컨트롤러 Ray를 통해 상호작용하여 씬 내부의 오브젝트들의 Unity Event를 Invoke하는 UI 오브젝트.
+사용자가 컨트롤러 Ray를 통해 상호작용하여
+
+캔버스 내부의 오브젝트들의 Unity Event를 Invoke하는 클래스.
 
 로비, 난타, 댄스 등 각 씬에서 공통적으로 사용되는 UI의 기능을 정의한다.
 
+사용 시에는 각 UI 오브젝트에 스크립트 컴포넌트를 추가하고 이벤트를 지정해준다.
+
 - public float InteractionTime
-    - 인터렉션에 필요한 시간을 정의하는 멤버.
-    - [Range (0,3)]으로 에디터 편의성 고려.
+    - 인터랙션에 필요한 시간을 정의하는 멤버.
+    - [Range (0,3)]으로 에디터 편의성 고려. 기본값은 2.0f
 
 - public UnityEvent[] UIEvents
-    - 인터렉션 시 발생하는 이벤트를 정의한다.
+    - 인터랙션 시 발생하는 이벤트를 정의한다.
     
-- IEnumerator InteractionRoutine
-    - 컨트롤러로 인해 발생하는 Coroutine을 참조하는 멤버.
-    - 루틴은 유일해야 한다.
+- private bool buttonPressed
+    - 컨트롤러의 오브젝트 중복 입력을 막기 위해 설정한 멤버.
+    - 포인터가 오브젝트를 나가면 초기화된다.
 
-- IEnumerator StartTimer(float startTime)
-    - Ray 인터렉션 시작 시간을 받아 타이머를 시작시킨다.
-    - class 내 설정된 시간이 지나면 여전히 변수로 할당된 events들을 Invoke한다.
+- public void OnPointerEnter(PointerEventData eventData)
+    - 사용자의 컨트롤러 Ray가 UI 오브젝트(버튼 등)로 들어왔을 때 시간을 잰다.
+    - 버튼이 한 번이라도 눌리지 않았을 경우에만 시간을 측정한다.
     
     ```cpp
-    IEnumerator StartTimer(float startTime)
+    public void OnPointerEnter(PointerEventData eventData)
     {
-    	yield return new WaitForSeconds(InteractionTime);
-		foreach(var UIEvent in UIEvents)
-		{
-			UIEvent?.Invoke();
-		}
-    }
-    ```
-
-- public void GetRayCasted()
-    - StartCoroutine으로 StartTimer 루틴을 실행하고 InteractionRoutine에 저장한다.
-    - 사용자의 컨트롤러 class에서 Raycast 시 해당 Class에서 호출된다.
-    
-    ```cpp
-    public void GetRayCasted()
-    {
-    	InteractionRoutine = StartTimer();
-        StartCoroutine(InteractionRoutine);
+    		if (!buttonPressed)
+    		{
+    				pressTime = Time.time;
+    		}
     }
     ```
     
 
-- public void GetRayCastStopped()
-    - StopCoroutine으로 기존 루틴을 중단한다.
-    - 사용자의 컨트롤러 class에서 Raycast가 중단될 시 해당 Class에서 호출된다.
+- public void OnPointerExit(PointerEventData eventData)
+    - 사용자의 컨트롤러 Ray가 UI 오브젝트를 나갔을 때 기존 루틴을 중단한다.
+    - 눌린 시간을 초기화하고 기존에 버튼이 눌린 적이 있으면 그 기록을 초기화한다.
     
     ```cpp
-    public void GetRayCastStopped()
+    public void OnPointerExit(PointerEventData eventData)
     {
-    	StopCoroutine(InteractionRoutine);
+          pressTime = 0.0f;
+          buttonPressed = false;
     }
-    ``` 
+    ```
+    
+
+- private void Update()
+    - Ray가 오브젝트에 들어온 시간을 측정하여 일정 시간동안 입력이 들어왔는지 체크한다.
+    - class 내 설정된 시간이 지나면 변수로 할당된 events들을 Invoke한다.
+    - 중복 입력을 막기 위해 버튼이 입력되었음을 기록해준다.
+    
+    ```cpp
+    private void Update()
+    {
+    		if(!buttonPressed && pressTime > 0.0f)
+    		{
+    				if(Time.time - pressTime >= InteractionTime)
+    				{
+    						foreach(var UIEvent in UIEvents)
+    						{
+    								UIEvent?.Invoke();
+    						}
+    						buttonPressed = true;
+    				}
+    		}
+    }
+    ```
 
 ## MusicContentTool
 
