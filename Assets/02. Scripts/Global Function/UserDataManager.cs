@@ -76,6 +76,11 @@ public class UserDataManager : MonoBehaviour
     void AddNewData(int colorId, int patterId)
     {
         int id = GameData.AddUser(colorId, patterId);
+        if(id == -1)
+        {
+            Debug.LogWarning("AddNewData : AddUser Failed");
+            throw new System.Exception("AddNewData : AddUser Failed");
+        }
         CurrentProfile = id;
     }
 
