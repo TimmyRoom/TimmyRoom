@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 505089280}
   - component: {fileID: 505089279}
   - component: {fileID: 505089278}
+  - component: {fileID: 505089281}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -618,19 +619,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 505089279}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1634406132}
-        m_TargetAssemblyTypeName: VibrateTestUI, Assembly-CSharp
-        m_MethodName: RunOneSecondWeakVibrate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &505089279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,6 +658,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505089276}
   m_CullTransparentMesh: 1
+--- !u!114 &505089281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505089276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionTime: 2
+  UIEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1634406132}
+        m_TargetAssemblyTypeName: VibrateTestUI, Assembly-CSharp
+        m_MethodName: RunOneSecondWeakVibrate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &590983190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,11 +1308,11 @@ MonoBehaviour:
   m_SphereCastRadius: 0.1
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0
-  m_HoverTimeToSelect: 0.5
+  m_HoverTimeToSelect: 2
   m_EnableUIInteraction: 1
   m_AllowAnchorControl: 1
   m_UseForceGrab: 1
@@ -2345,6 +2362,7 @@ GameObject:
   - component: {fileID: 2032510157}
   - component: {fileID: 2032510156}
   - component: {fileID: 2032510155}
+  - component: {fileID: 2032510158}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -2416,19 +2434,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2032510156}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1634406132}
-        m_TargetAssemblyTypeName: VibrateTestUI, Assembly-CSharp
-        m_MethodName: RunOneSecondHardVibrate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2032510156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2467,6 +2473,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032510153}
   m_CullTransparentMesh: 1
+--- !u!114 &2032510158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032510153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionTime: 2
+  UIEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1634406132}
+        m_TargetAssemblyTypeName: VibrateTestUI, Assembly-CSharp
+        m_MethodName: RunOneSecondHardVibrate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2073598346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,7 +2887,7 @@ MonoBehaviour:
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0
-  m_HoverTimeToSelect: 0.5
+  m_HoverTimeToSelect: 2
   m_EnableUIInteraction: 1
   m_AllowAnchorControl: 1
   m_UseForceGrab: 1

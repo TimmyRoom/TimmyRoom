@@ -2308,7 +2308,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1042184686}
         m_TargetAssemblyTypeName: LobbyTestUI, Assembly-CSharp
-        m_MethodName: MoveSceneTest
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
