@@ -10,6 +10,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class UISelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+	[Range(0f, 3f)]
 	public float InteractionTime = 2.0f;
 	public UnityEvent[] UIEvents;
 
