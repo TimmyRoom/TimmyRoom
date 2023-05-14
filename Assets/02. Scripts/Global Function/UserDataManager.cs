@@ -41,7 +41,7 @@ public class UserDataManager : MonoBehaviour
         }
         catch(UnityEngine.UnityException e)
         {
-            Debug.Log(e.Message);
+            Debug.LogError(e.Message);
             return false;
         }
     }
