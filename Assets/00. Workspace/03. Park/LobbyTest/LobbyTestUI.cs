@@ -7,8 +7,15 @@ public class LobbyTestUI : MonoBehaviour
 {
     public TextMeshProUGUI time;
 
+    [SerializeField] private LobbySceneManager lobbySceneManager;
+
     private void Update()
     {
         time.text = LobbySceneManager.GetCurrentTime();
+    }
+
+    public void EnterGallery()
+    {
+        lobbySceneManager.MoveScene(1);
     }
 }
