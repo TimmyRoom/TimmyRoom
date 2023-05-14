@@ -976,16 +976,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NantaJudjingLine
       objectReference: {fileID: 0}
-    - target: {fileID: 3207248566333320872, guid: a90945afa1a6cf240aedeeb1bf133516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800345447711788393, guid: a90945afa1a6cf240aedeeb1bf133516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8514578786437164294, guid: a90945afa1a6cf240aedeeb1bf133516,
         type: 3}
       propertyPath: manager
