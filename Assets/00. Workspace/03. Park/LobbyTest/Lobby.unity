@@ -2639,7 +2639,7 @@ GameObject:
   - component: {fileID: 1215717391}
   - component: {fileID: 1215717390}
   m_Layer: 0
-  m_Name: LobbyManager
+  m_Name: LobbySceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4652,7 +4652,7 @@ PrefabInstance:
     - target: {fileID: 3670090461717887125, guid: d4d788cbb50ef624494699b4e96efbf1,
         type: 3}
       propertyPath: m_Name
-      value: SceneMoverTest
+      value: SceneMover
       objectReference: {fileID: 0}
     - target: {fileID: 4675796998799124033, guid: d4d788cbb50ef624494699b4e96efbf1,
         type: 3}
