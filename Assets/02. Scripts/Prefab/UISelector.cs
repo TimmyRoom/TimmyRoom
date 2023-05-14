@@ -13,8 +13,8 @@ public class UISelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 	public float InteractionTime = 2.0f;
 	public UnityEvent[] UIEvents;
 
-	private bool buttonPressed = false;
-	private float pressTime = 0.0f;
+	private bool mbButtonPressed = false;
+	private float mPressTime = 0.0f;
 
     /// <summary>
     /// 사용자의 컨트롤러 Ray가 UI 오브젝트(버튼 등)로 들어왔을 때 시간을 잰다.
@@ -22,9 +22,9 @@ public class UISelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     /// </summary>
     public void OnPointerEnter(PointerEventData eventData)
 	{
-		if (!buttonPressed)
+		if (!mbButtonPressed)
 		{
-			pressTime = Time.time;
+            mPressTime = Time.time;
 		}
 	}
 
@@ -34,8 +34,8 @@ public class UISelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     /// </summary>
     public void OnPointerExit(PointerEventData eventData)
 	{
-        pressTime = 0.0f;
-        buttonPressed = false;
+        mPressTime = 0.0f;
+        mbButtonPressed = false;
     }
 
     /// <summary>
@@ -45,15 +45,15 @@ public class UISelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     /// </summary>
     private void Update()
 	{
-		if(!buttonPressed && pressTime > 0.0f)
+		if(!mbButtonPressed && mPressTime > 0.0f)
 		{
-			if(Time.time - pressTime >= InteractionTime)
+			if(Time.time - mPressTime >= InteractionTime)
 			{
 				foreach(var UIEvent in UIEvents)
 				{
 					UIEvent?.Invoke();
 				}
-				buttonPressed = true;
+                mbButtonPressed = true;
 			}
 		}
 	}
