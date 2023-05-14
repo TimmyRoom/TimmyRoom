@@ -194,6 +194,10 @@ public class SceneRecorder : MonoBehaviour
 
     IEnumerator _RecordCoroutine(Camera camera, RecordSceneType sceneType)
     {
+        Camera mainCamera = Camera.main;
+        Camera selfCamera = selfCameraObject.GetComponent<Camera>();
+
+
         //TODO : Record Camera and save it to filePath.
         //Make Directory
         string dirName = System.DateTime.Now.ToString("yyyy-MM-dd-mm-ss");
@@ -230,6 +234,12 @@ public class SceneRecorder : MonoBehaviour
             string photoName = "photo" + i.ToString("D3") + ".png";
             System.IO.File.WriteAllBytes(curFilePath + "/" + photoName, bytes);
             Debug.Log(string.Format("Took screenshot to: {0}", curFilePath));
+
+            if(camera == selfCamera)
+            {
+                mainCamera.enabled = true;
+                selfCamera.enabled = false;
+            }
 
             yield return new WaitForSeconds(1.0f/24.0f);
         }
