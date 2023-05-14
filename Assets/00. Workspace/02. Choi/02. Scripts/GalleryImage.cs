@@ -20,7 +20,7 @@ public class GalleryImage : MonoBehaviour
         this.info = info;
         this.dateTime = dirPath.Substring(dirPath.LastIndexOf('/') + 1);
         Texture2D tex = new Texture2D(1920,1080,TextureFormat.RGB24,false);
-        tex.LoadImage(System.IO.File.ReadAllBytes(dirPath + "/photo0.png"));
+        tex.LoadImage(System.IO.File.ReadAllBytes(dirPath + "/photo000.png"));
         this.GetComponent<RawImage>().texture = tex;
     }
 
@@ -45,6 +45,7 @@ public class GalleryImage : MonoBehaviour
         List<Texture2D> images = new List<Texture2D>();
         // Load Images on filePath
         string[] files = System.IO.Directory.GetFiles(path);
+
         foreach (string file in files)
         {
             if(file.Contains(".png"))
@@ -57,7 +58,7 @@ public class GalleryImage : MonoBehaviour
         foreach(var img in images)
         {
             this.GetComponent<RawImage>().texture = img;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f / 24.0f);
         }
         Debug.Log("영상 재생 종료");
     }

@@ -32,18 +32,21 @@ public class UserDataManager : MonoBehaviour
     /// <returns>성공하면 true, 실패하면 false</returns>
     bool LoadData()
     {
-        try
-        {
-            string dirPath = Application.persistentDataPath;
-            string json = System.IO.File.ReadAllText(dirPath + "/userData.json");
-            GameData.userDataList = JsonUtility.FromJson<List<UserData>>(json);
-            return true;
-        }
-        catch(UnityEngine.UnityException e)
-        {
-            Debug.LogError(e.Message);
-            return false;
-        }
+        return true;
+
+        // After Making Login Scene
+        // try
+        // {
+        //     string dirPath = Application.persistentDataPath;
+        //     string json = System.IO.File.ReadAllText(dirPath + "/userData.json");
+        //     GameData.userDataList = JsonUtility.FromJson<List<UserData>>(json);
+        //     return true;
+        // }
+        // catch(UnityEngine.UnityException e)
+        // {
+        //     Debug.LogError(e.Message);
+        //     return false;
+        // }
     }
 
 
