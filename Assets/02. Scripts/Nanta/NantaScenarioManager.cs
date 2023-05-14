@@ -12,6 +12,10 @@ public class NantaScenarioManager : MusicContentTool
     
     [SerializeField] NantaInstrument nantaInstrument;
 
+    [SerializeField] TextAsset jsonFile;
+
+    [SerializeField] AudioClip audioClip;
+
     /// <summary>
     /// 왼쪽 난타 북 타격 판정이 성공할 경우에 대한 이벤트.
     /// </summary>
@@ -59,7 +63,7 @@ public class NantaScenarioManager : MusicContentTool
 
     void Start()
     {
-        PlayChart("");
+        PlayChart(jsonFile.text);
     }
 
     /// <summary>
@@ -70,8 +74,8 @@ public class NantaScenarioManager : MusicContentTool
     void StartMusic(AudioClip audioClip, float barSecond)
     {
         SoundManager.instance.SoundPlay(audioClip, MusicAudioSource);
-        ComboRoutine = AddComboLoop(barSecond);
-        StartCoroutine(ComboRoutine);
+        //ComboRoutine = AddComboLoop(barSecond);
+        //StartCoroutine(ComboRoutine);
     }
 
     /// <summary>
@@ -116,17 +120,35 @@ public class NantaScenarioManager : MusicContentTool
         barCombo = 0;
     }
 
+    public override void MoveScene(string sceneName)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void MoveScene(int sceneIndex)
+    {
+        throw new System.NotImplementedException();
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="json"></param>
-    public override void PlayChart(string json)
+    public override GameChart PlayChart(string json)
     {
-        //base.PlayChart(json);
-        nantaJudgeLine.SpawnNote(5, 0);
-        nantaJudgeLine.SpawnNote(8, 1);
-        //TODO
-        //float spb = Beat2Second();
+        GameChart data = GetScript(json);
+        foreach(var note in data.Notes)
+        {
+            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + nantaJudgeLine.FallingTime, note.Type);
+        }
+        StartCoroutine(PlayChartRoutine(nantaJudgeLine.FallingTime, Beat2Second(1, data.BPM)));
+        return data;
+    }
+
+    IEnumerator PlayChartRoutine(float waitTime, float barSecond)
+    {
+        yield return new WaitForSeconds(waitTime);
+        StartMusic(audioClip, barSecond);
     }
 
     /// <summary>
@@ -136,9 +158,19 @@ public class NantaScenarioManager : MusicContentTool
     /// <param name="command">command 구문.</param>
     public override void CommandExecute(float time, string command)
     {
-        //| LeftHand | NantaJudgingLine.SpawnNote(time, 0) |
-        //| RightHand | NantaJudgingLine.SpawnNote(time, 1) |
-        throw new System.NotImplementedException();
+        switch(command)
+        {
+            case "LeftHand":
+            {
+                nantaJudgeLine.SpawnNote(time, 0);
+                break;
+            }
+            case "RightHand":
+            {
+                nantaJudgeLine.SpawnNote(time, 1);
+                break;
+            }
+        }
     }
 
     /// <summary>

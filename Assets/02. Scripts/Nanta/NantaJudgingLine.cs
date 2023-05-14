@@ -9,8 +9,8 @@ public class NantaJudgingLine : MonoBehaviour
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
-    [SerializeField]float judgingTime;
-    public float JudgingTime { get => judgingTime; set => judgingTime = value; }
+    [SerializeField]float fallingTime;
+    public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
     /// <summary>
     /// 노트의 등속 운동 속도.
@@ -53,7 +53,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
-        yield return new WaitForSeconds(Mathf.Clamp(time - judgingTime, 0, float.MaxValue));
+        yield return new WaitForSeconds(Mathf.Clamp(time - fallingTime, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
     }

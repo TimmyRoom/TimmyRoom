@@ -7,8 +7,8 @@ public class GameChart
     public string ChartName;
     public string SongName;
     public string ArtistName;
-    public string SongLength;
-    public string Offset;
-    public string BPM;
+    public float SongLength;
+    public float Offset;
+    public float BPM;
     public List<Note> Notes;
 }
