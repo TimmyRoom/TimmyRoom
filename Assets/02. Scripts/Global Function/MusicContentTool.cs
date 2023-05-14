@@ -49,7 +49,7 @@ public abstract class MusicContentTool : AbstractSceneManager
         GameChart data = GetScript(json);
         foreach(var note in data.Notes)
         {
-            CommandExecute(note.time, note.type);
+            CommandExecute(Beat2Second(note.Time, data.BPM), note.Type);
         }
         return data;
     }

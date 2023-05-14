@@ -638,10 +638,16 @@ class
     - getter/setter 제공
     - Start시 NoteSpawnTransforms와 JudjingLine 위치를 참고하여 초기값을 설정한다.
 
-- public BoxCollider JudjingLine
-    - 폴리곤 크기보다 170% 크게 설정한다.
-    - 판정면. 노트가 해당 면에 Trigger된 동안은 성공 판정.
-    - 한번이라도 판정면에 Trigger된 후 Trigger에서 Exit될 경우 실패 판정.
+- float noteVelocity
+    - 노트의 등속 운동 속도.
+    - getter/setter 제공
+
+- public Transform RayPosition;
+    - 판정을 위한 Raycast가 발생하는 Transform.
+
+- public Rigidbody NotePrefab
+    - 생성하는 노트의 프리팹.
+    - Rigidbody로 등록하여 작업하기 편하게 한다.
 
 - public Transform[] NoteSpawnTransforms
     - 노트가 생성되는 위치를 지정한다.
