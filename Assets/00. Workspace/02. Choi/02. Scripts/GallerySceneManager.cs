@@ -8,7 +8,7 @@ public class GallerySceneManager : AbstractSceneManager
     public GameObject galleryCanvas;
     GameObject gridObject;
     string filePath;
-    int startImageIndex;
+    int startImageIndex = 0;
     public int StartImageIndex { get => startImageIndex; set => startImageIndex = _SetStartIndex(value); }
 
     // Start is called before the first frame update
@@ -16,42 +16,56 @@ public class GallerySceneManager : AbstractSceneManager
     {
         gridObject = galleryCanvas.transform.Find("Grid").gameObject;
         filePath = Application.persistentDataPath;
-        List<Texture2D> imageList = LoadImages();
-        SetGallery(imageList);
+        SetGallery();
     }
 
-    /// <summary> <summary>
-    /// filePath에서 이미지를 불러온다.
-    /// </summary>
-    /// <returns> 저장소에 들어있는 것. </returns>
-    private List<Texture2D> LoadImages()
+    public void SetGallery()
     {
-        List<Texture2D> images = new List<Texture2D>();
-        // Load Images on filePath
-        string[] files = System.IO.Directory.GetFiles(filePath);
-        foreach (string file in files)
-        {
-            Texture2D tex = new Texture2D(1920,1080,TextureFormat.RGB24,false);
-            tex.LoadImage(System.IO.File.ReadAllBytes(file));
-            images.Add(tex);
-        }
-        return images;
-    }
-
-    private void SetGallery(List<Texture2D> images)
-    {
+        string[] dirs = System.IO.Directory.GetDirectories(filePath);
         int childCount = gridObject.transform.childCount;
         for (int i = 0; i < childCount; i++)
         {
+            if(startImageIndex + i == dirs.Length)
+            {
+                break;
+            }
             Transform child = gridObject.transform.GetChild(i);
-            child.GetComponent<RawImage>().texture = images[startImageIndex + i];
+            child.GetComponent<GalleryImage>().SetImage(dirs[startImageIndex + i]);
         }
     }
+
+    // /// <summary> <summary>
+    // /// filePath에서 이미지를 불러온다.
+    // /// </summary>
+    // /// <returns> 저장소에 들어있는 것. </returns>
+    // private List<Texture2D> LoadImages()
+    // {
+    //     List<Texture2D> images = new List<Texture2D>();
+    //     // Load Images on filePath
+    //     string[] files = System.IO.Directory.GetFiles(filePath);
+    //     foreach (string file in files)
+    //     {
+    //         Texture2D tex = new Texture2D(1920,1080,TextureFormat.RGB24,false);
+    //         tex.LoadImage(System.IO.File.ReadAllBytes(file));
+    //         images.Add(tex);
+    //     }
+    //     return images;
+    // }
+
+    // private void SetGallery(List<Texture2D> images)
+    // {
+    //     int childCount = gridObject.transform.childCount;
+    //     for (int i = 0; i < childCount; i++)
+    //     {
+    //         Transform child = gridObject.transform.GetChild(i);
+    //         child.GetComponent<RawImage>().texture = images[startImageIndex + i];
+    //     }
+    // }
 
     int _SetStartIndex(int value)
     {
         int childCount = gridObject.transform.childCount;
-        int imageCount = System.IO.Directory.GetFiles(filePath).Length;
+        int imageCount = System.IO.Directory.GetDirectories(filePath).Length;
         if(value > imageCount - childCount)
         {
             value = imageCount - childCount;
@@ -66,22 +80,25 @@ public class GallerySceneManager : AbstractSceneManager
     public void SetStartIndex(int value)
     {
         StartImageIndex = value;
-        List<Texture2D> imageList = LoadImages();
-        SetGallery(imageList);
+        SetGallery();
+        // List<Texture2D> imageList = LoadImages();
+        // SetGallery(imageList);
     }
 
     public void NextPage()
     {
         StartImageIndex += 1;
-        List<Texture2D> imageList = LoadImages();
-        SetGallery(imageList);
+        SetGallery();
+        // List<Texture2D> imageList = LoadImages();
+        // SetGallery(imageList);
     }
 
     public void LastPage()
     {
         StartImageIndex -= 1;
-        List<Texture2D> imageList = LoadImages();
-        SetGallery(imageList);
+        SetGallery();
+        // List<Texture2D> imageList = LoadImages();
+        // SetGallery(imageList);
     }
 
     public override void MoveScene(int sceneIndex)
