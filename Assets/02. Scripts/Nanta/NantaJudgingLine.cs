@@ -9,13 +9,13 @@ public class NantaJudgingLine : MonoBehaviour
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
-    [SerializeField]float fallingTime;
+    [SerializeField]float fallingTime = 0;
     public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
     /// <summary>
     /// 노트의 등속 운동 속도.
     /// </summary>
-    [SerializeField]float noteVelocity;
+    float noteVelocity = 0;
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
 
     List<float> JudgeDistance = new List<float>(){-10, 10};
@@ -26,6 +26,11 @@ public class NantaJudgingLine : MonoBehaviour
     public Transform[] RayPosition;
 
     /// <summary>
+    /// 실제 사용자가 보는 판정선 Transform.
+    /// </summary>
+    public Transform[] JudgePosition;
+
+    /// <summary>
     /// 생성하는 노트의 프리팹.
     /// </summary>
     public Rigidbody NotePrefab;
@@ -34,6 +39,11 @@ public class NantaJudgingLine : MonoBehaviour
     /// 노트가 생성되는 위치.
     /// </summary>
     public Transform[] NoteSpawnTransforms;
+
+    public void SetVelocity()
+    {
+        NoteVelocity = (JudgePosition[0].position - NoteSpawnTransforms[0].position).magnitude / FallingTime;
+    }
 
     /// <summary>
     /// SpawnNoteRoutine(time, type) 루틴 실행.
@@ -69,19 +79,20 @@ public class NantaJudgingLine : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(RayPosition[type].position, RayPosition[type].forward, out hit))
         {
-            if(hit.distance > 3)
+            if(hit.distance > 1.35f)
             {
                 result = 0;
             }
-            else if(-3 < hit.distance && hit.distance < 3)
+            else if(0f < hit.distance && hit.distance < 1.35f)
             {
                 result = 1;
+                Destroy(hit.collider.gameObject);
             }
             else
             {
                 result = 0;
+                Destroy(hit.collider.gameObject);
             }
-            Destroy(hit.collider.gameObject);
         }
         else
         {

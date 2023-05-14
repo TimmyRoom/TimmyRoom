@@ -22,12 +22,10 @@ public class NantaInstrument : MonoBehaviour
         int result = 0;
         if(other.CompareTag("LeftController"))
         {
-            Debug.Log("Hit Left");
             result = manager.JudgeNote(0);
         }
         else if(other.CompareTag("RightController"))
         {
-            Debug.Log("Hit Right");
             result = manager.JudgeNote(1);
         }
         if(result == 0)
