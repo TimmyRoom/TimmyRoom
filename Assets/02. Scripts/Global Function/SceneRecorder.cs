@@ -9,6 +9,7 @@ public class SceneRecorder : MonoBehaviour
 {
     public static SceneRecorder instance;
     public static string sceneName = "Nanta";
+    public static int userId;
     public GameObject selfCameraObject;
 
     bool isRecording = false;
