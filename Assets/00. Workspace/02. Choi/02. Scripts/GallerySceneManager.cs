@@ -9,6 +9,12 @@ public class GallerySceneManager : AbstractSceneManager
     GameObject gridObject;
     string filePath;
     int startImageIndex = 0;
+
+    bool isHover = false;
+    bool isLeft = false;
+    float hoverTimer = 0f;
+    float maxHoverTime = 1f;
+
     public int StartImageIndex { get => startImageIndex; set => startImageIndex = _SetStartIndex(value); }
 
     // Start is called before the first frame update
@@ -17,6 +23,29 @@ public class GallerySceneManager : AbstractSceneManager
         gridObject = galleryCanvas.transform.Find("Grid").gameObject;
         filePath = Application.persistentDataPath;
         SetGallery();
+    }
+
+    private void Update() {
+        if(isHover)
+        {
+            hoverTimer += Time.deltaTime;
+            if(hoverTimer > maxHoverTime)
+            {
+                hoverTimer = 0f;
+                if(isLeft)
+                {
+                    LastPage();
+                }
+                else
+                {
+                    NextPage();
+                }
+            }
+        }
+        else
+        {
+            hoverTimer = 0f;
+        }
     }
 
     public void SetGallery()
@@ -65,6 +94,23 @@ public class GallerySceneManager : AbstractSceneManager
     {
         StartImageIndex -= 1;
         SetGallery();
+    }
+
+    public void LeftHoverEnter()
+    {
+        isHover = true;
+        isLeft = true;
+    }
+
+    public void RightHoverEnter()
+    {
+        isHover = true;
+        isLeft = false;
+    }
+
+    public void HoverExit()
+    {
+        isHover = false;
     }
 
     public override void MoveScene(int sceneIndex)
