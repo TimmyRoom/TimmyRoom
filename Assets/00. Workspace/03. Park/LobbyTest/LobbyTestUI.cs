@@ -14,8 +14,8 @@ public class LobbyTestUI : MonoBehaviour
         time.text = LobbySceneManager.GetCurrentTime();
     }
 
-    public void EnterGallery()
+    public void EnterScene(int sceneIndex)
     {
-        lobbySceneManager.MoveScene(1);
+        lobbySceneManager.MoveScene(sceneIndex);
     }
 }
