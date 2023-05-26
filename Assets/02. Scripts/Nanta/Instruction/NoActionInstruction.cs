@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class NoActionInstruction : MonoBehaviour, IInstruction
+public class NoActionInstruction : MonoBehaviour, IScenario
 {
     public Dictionary<int, UnityAction> GetActions()
     {

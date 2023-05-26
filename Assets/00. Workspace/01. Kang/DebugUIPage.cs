@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DebugUIPage : MonoBehaviour, IInstruction
+public class DebugUIPage : MonoBehaviour, IScenario
 {
     int count = 0;
     public TextMeshProUGUI text;

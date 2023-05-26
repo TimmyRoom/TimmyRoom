@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HitTest : MonoBehaviour, IInstruction
+public class HitTest : MonoBehaviour, IScenario
 {
     public TextMeshProUGUI text;
     private float count = 0;
