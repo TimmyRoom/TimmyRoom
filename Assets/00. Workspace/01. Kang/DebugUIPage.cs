@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 public class DebugUIPage : MonoBehaviour, IScenario
 {
-    int count = 0;
-    public TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI text;
     [SerializeField] TextAsset jsonFile;
     [SerializeField] AudioClip audioClip;
+    private int count = 0;
     public void StartSong()
     {
         NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);

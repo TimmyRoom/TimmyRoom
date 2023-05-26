@@ -1389,9 +1389,44 @@ PrefabInstance:
       objectReference: {fileID: 7075356788432595448}
     - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
         type: 3}
+      propertyPath: Scenarios.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
       propertyPath: Instructions.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
+      propertyPath: Scenarios.Array.data[0]
+      value: 
+      objectReference: {fileID: 1813949578}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
+      propertyPath: Scenarios.Array.data[1]
+      value: 
+      objectReference: {fileID: 465964763}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
+      propertyPath: Scenarios.Array.data[2]
+      value: 
+      objectReference: {fileID: 1674643362}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
+      propertyPath: Scenarios.Array.data[3]
+      value: 
+      objectReference: {fileID: 5167148156151493490}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
+      propertyPath: Scenarios.Array.data[4]
+      value: 
+      objectReference: {fileID: 1216577896067796471}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
+      propertyPath: Scenarios.Array.data[5]
+      value: 
+      objectReference: {fileID: 1734679556}
     - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
         type: 3}
       propertyPath: Instructions.Array.data[0]
