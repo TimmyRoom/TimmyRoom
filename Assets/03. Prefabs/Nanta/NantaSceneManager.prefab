@@ -46,10 +46,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nantaJudgeLine: {fileID: 0}
   nantaInstrument: {fileID: 0}
-  HitEventsLeft: []
-  HitFailEventsLeft: []
-  HitEventsRight: []
-  HitFailEventsRight: []
+  jsonFile: {fileID: 4900000, guid: de3ec47107e0c8b43ab446e550d92c16, type: 3}
+  audioClip: {fileID: 8300000, guid: 1d364be327b0a5c4fa2b0e1e5628c36a, type: 3}
+  Instructions: []
+  HitEventsLeft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DebugUIPage, Assembly-CSharp
+        m_MethodName: UP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HitFailEventsLeft:
+    m_PersistentCalls:
+      m_Calls: []
+  HitEventsRight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DebugUIPage, Assembly-CSharp
+        m_MethodName: UP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HitFailEventsRight:
+    m_PersistentCalls:
+      m_Calls: []
   ComboClips: []
   MusicAudioSource: {fileID: 0}
   ComboAudioSource: {fileID: 0}

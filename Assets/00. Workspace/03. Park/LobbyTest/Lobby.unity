@@ -2540,16 +2540,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionTime: 2
   UIEvents:
-  - m_PersistentCalls:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042184686}
-        m_TargetAssemblyTypeName: LobbyTestUI, Assembly-CSharp
-        m_MethodName: EnterScene
+      - m_Target: {fileID: 7404486724594073020}
+        m_TargetAssemblyTypeName: SceneMover, Assembly-CSharp
+        m_MethodName: MoveScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2692,16 +2692,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionTime: 2
   UIEvents:
-  - m_PersistentCalls:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042184686}
-        m_TargetAssemblyTypeName: LobbyTestUI, Assembly-CSharp
-        m_MethodName: EnterScene
+      - m_Target: {fileID: 7404486724594073020}
+        m_TargetAssemblyTypeName: SceneMover, Assembly-CSharp
+        m_MethodName: MoveScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5003,3 +5003,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4d788cbb50ef624494699b4e96efbf1, type: 3}
+--- !u!114 &7404486724594073020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1717784170654593829, guid: d4d788cbb50ef624494699b4e96efbf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7404486724594073019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a135f27f408b04499f2a8245d64ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

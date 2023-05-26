@@ -12,7 +12,7 @@ public class UISelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
 	[Range(0f, 3f)]
 	public float InteractionTime = 2.0f;
-	public UnityEvent[] UIEvents;
+	public UnityEvent UIEvents;
 
 	private bool mbButtonPressed = false;
 	private float mPressTime = 0.0f;
@@ -50,10 +50,7 @@ public class UISelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 		{
 			if(Time.time - mPressTime >= InteractionTime)
 			{
-				foreach(var UIEvent in UIEvents)
-				{
-					UIEvent?.Invoke();
-				}
+				UIEvents?.Invoke();
                 mbButtonPressed = true;
 			}
 		}

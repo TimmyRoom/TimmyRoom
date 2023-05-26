@@ -8,33 +8,54 @@ using UnityEngine.Events;
 /// </summary>
 public class NantaScenarioManager : MusicContentTool
 {
+    public static NantaScenarioManager instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this);
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this);
+    }
     [SerializeField] NantaJudgingLine nantaJudgeLine;
     
     [SerializeField] NantaInstrument nantaInstrument;
 
-    [SerializeField] TextAsset jsonFile;
-
-    [SerializeField] AudioClip audioClip;
+    /// <summary>
+    /// 각 상황마다 등장하는 UI이다.
+    /// </summary>
+    public GameObject[] Instructions;
 
     /// <summary>
-    /// 왼쪽 난타 북 타격 판정이 성공할 경우에 대한 이벤트.
+    /// Instruction에서 발생 가능한 이벤트 타입.
     /// </summary>
-    public UnityEvent[] HitEventsLeft;
+    public enum EventType
+    {
+        LeftHit,
+        LeftFail,
+        RightHit,
+        RightFail,
+        Start,
+        End
+    }
 
     /// <summary>
-    /// 왼쪽 난타 북 타격 판정이 실패할 경우에 대한 이벤트.
+    /// 난타 북 타격 판정에 따른 이벤트.
     /// </summary>
-    public UnityEvent[] HitFailEventsLeft;
-
-    /// <summary>
-    /// 오른쪽 난타 북 타격 판정이 성공할 경우에 대한 이벤트.
-    /// </summary>
-    public UnityEvent[] HitEventsRight;
-
-    /// <summary>
-    /// 오른쪽 난타 북 타격 판정이 실패할 경우에 대한 이벤트.
-    /// </summary>
-    public UnityEvent[] HitFailEventsRight;
+    private Dictionary<EventType, UnityEvent> ScenarioEvents = 
+        new Dictionary<EventType, UnityEvent>(){
+        { EventType.LeftHit, new UnityEvent() },
+        { EventType.LeftFail, new UnityEvent() },
+        { EventType.RightHit, new UnityEvent() },
+        { EventType.RightFail, new UnityEvent() },
+        { EventType.Start, new UnityEvent() },
+        { EventType.End, new UnityEvent() }
+        };
 
     /// <summary>
     /// 콤보 달성 시 발생하는 효과음 목록이다.
@@ -60,12 +81,10 @@ public class NantaScenarioManager : MusicContentTool
     /// AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
     /// </summary>
     IEnumerator ComboRoutine;
-
     void Start()
     {
-        PlayChart(jsonFile.text);
+        SetScenario(0);
     }
-
     /// <summary>
     /// 콤보 루틴을 실행하여 일정 시간마다 콤보가 쌓이도록 한다.
     /// </summary>
@@ -131,10 +150,12 @@ public class NantaScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// 
+    /// 각 노트에 대해 CommandExecute(time, command) 호출.
     /// </summary>
-    /// <param name="json"></param>
-    public override GameChart PlayChart(string json)
+    /// <param name="json">JSON 데이터.</param>
+    /// <param name="audioClip">재생할 음원.</param>
+    /// <returns></returns>
+    public override GameChart PlayChart(string json, AudioClip audioClip)
     {
         GameChart data = GetScript(json);
         nantaJudgeLine.SetVelocity();
@@ -144,11 +165,11 @@ public class NantaScenarioManager : MusicContentTool
         }
         
         Debug.Log(Time.time);
-        StartCoroutine(PlayChartRoutine(nantaJudgeLine.FallingTime, Beat2Second(1, data.BPM)));
+        StartCoroutine(PlayChartRoutine(audioClip, nantaJudgeLine.FallingTime, Beat2Second(1, data.BPM)));
         return data;
     }
 
-    IEnumerator PlayChartRoutine(float waitTime, float barSecond)
+    IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
     {
         yield return new WaitForSeconds(waitTime);
         StartMusic(audioClip, barSecond);
@@ -192,18 +213,12 @@ public class NantaScenarioManager : MusicContentTool
                 {
                     case 1:
                     {
-                        foreach(var hitEvent in HitEventsLeft)
-                        {
-                            hitEvent?.Invoke();
-                        }
+                        ScenarioEvents[EventType.LeftHit]?.Invoke();
                         break;
                     }
                     case 0:
                     {
-                        foreach(var hitEvent in HitFailEventsLeft)
-                        {
-                            hitEvent?.Invoke();
-                        }
+                        ScenarioEvents[EventType.LeftFail]?.Invoke();
                         break;
                     }
                     default:
@@ -219,18 +234,12 @@ public class NantaScenarioManager : MusicContentTool
                 {
                     case 1:
                     {
-                        foreach(var hitEvent in HitEventsRight)
-                        {
-                            hitEvent?.Invoke();
-                        }
+                        ScenarioEvents[EventType.RightHit]?.Invoke();
                         break;
                     }
                     case 0:
                     {
-                        foreach(var hitEvent in HitFailEventsRight)
-                        {
-                            hitEvent?.Invoke();
-                        }
+                        ScenarioEvents[EventType.RightFail]?.Invoke();
                         break;
                     }
                     default:
@@ -249,11 +258,25 @@ public class NantaScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
+    /// 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 UI를 생성하거나 삭제하고 이벤트 설정을 재설정한다.
     /// </summary>
     /// <param name="scenarioIndex">변경할 시나리오의 Index.</param>
     public override void SetScenario(int scenarioIndex)
     {
-        throw new System.NotImplementedException();
+        foreach(var instruction in Instructions)
+        {
+            instruction.SetActive(false);
+        }
+        Instructions[scenarioIndex].SetActive(true);
+        ScenarioEvents[EventType.End].Invoke();
+        foreach(var events in ScenarioEvents.Values)
+        {
+            events.RemoveAllListeners();
+        }
+        foreach(var KeyPair in Instructions[scenarioIndex].GetComponent<IInstruction>().GetActions())
+        {
+            ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
+        }
+        ScenarioEvents[EventType.Start].Invoke();
     }
 }

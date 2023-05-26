@@ -14,19 +14,16 @@ public class NantaInstrument : MonoBehaviour
     /// </summary>
     public AudioSource InstrumentAudioSource;
 
-    [SerializeField] NantaScenarioManager manager;
-
-    
     public void OnTriggerEnter(Collider other)
     {
         int result = 0;
         if(other.CompareTag("LeftController"))
         {
-            result = manager.JudgeNote(0);
+            result = NantaScenarioManager.instance.JudgeNote(0);
         }
         else if(other.CompareTag("RightController"))
         {
-            result = manager.JudgeNote(1);
+            result = NantaScenarioManager.instance.JudgeNote(1);
         }
         if(result == 0)
         {
