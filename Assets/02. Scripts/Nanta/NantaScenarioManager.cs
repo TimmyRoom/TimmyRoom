@@ -273,7 +273,7 @@ public class NantaScenarioManager : MusicContentTool
         {
             events.RemoveAllListeners();
         }
-        foreach(var KeyPair in Instructions[scenarioIndex].GetComponent<IInstruction>().GetActions())
+        foreach(var KeyPair in Instructions[scenarioIndex].GetComponent<IScenario>().GetActions())
         {
             ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
         }
