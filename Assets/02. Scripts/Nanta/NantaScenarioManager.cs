@@ -29,7 +29,7 @@ public class NantaScenarioManager : MusicContentTool
     /// <summary>
     /// 각 상황마다 등장하는 UI이다.
     /// </summary>
-    public GameObject[] Instructions;
+    public GameObject[] Scenarios;
 
     /// <summary>
     /// Instruction에서 발생 가능한 이벤트 타입.
@@ -164,7 +164,6 @@ public class NantaScenarioManager : MusicContentTool
             CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + nantaJudgeLine.FallingTime, note.Type);
         }
         
-        Debug.Log(Time.time);
         StartCoroutine(PlayChartRoutine(audioClip, nantaJudgeLine.FallingTime, Beat2Second(1, data.BPM)));
         return data;
     }
@@ -263,17 +262,17 @@ public class NantaScenarioManager : MusicContentTool
     /// <param name="scenarioIndex">변경할 시나리오의 Index.</param>
     public override void SetScenario(int scenarioIndex)
     {
-        foreach(var instruction in Instructions)
+        foreach(var scenario in Scenarios)
         {
-            instruction.SetActive(false);
+            scenario.SetActive(false);
         }
-        Instructions[scenarioIndex].SetActive(true);
+        Scenarios[scenarioIndex].SetActive(true);
         ScenarioEvents[EventType.End].Invoke();
         foreach(var events in ScenarioEvents.Values)
         {
             events.RemoveAllListeners();
         }
-        foreach(var KeyPair in Instructions[scenarioIndex].GetComponent<IScenario>().GetActions())
+        foreach(var KeyPair in Scenarios[scenarioIndex].GetComponent<IScenario>().GetActions())
         {
             ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
         }
