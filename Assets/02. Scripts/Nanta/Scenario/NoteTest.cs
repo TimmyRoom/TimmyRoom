@@ -6,31 +6,32 @@ using UnityEngine.Events;
 
 public class NoteTest : MonoBehaviour, IScenario
 {
-    [SerializeField] TextMeshProUGUI text;
-    [SerializeField] TextAsset jsonFile;
-    [SerializeField] AudioClip audioClip;
-    [SerializeField] int count = 7;
-    private IEnumerator barCoroutine;
-    public void Start()
+    [SerializeField] protected TextMeshProUGUI text;
+    [SerializeField] protected TextAsset jsonFile;
+    [SerializeField] protected AudioClip audioClip;
+    [SerializeField] protected int count = 7;
+    [SerializeField] protected int nextScenario = 3;
+    protected IEnumerator barCoroutine;
+    protected void Start()
     {
         text.text = count.ToString();
     }
-    public void SetCount()
+    public virtual void SetCount()
     {
         text.text = (--count).ToString();
         if(count <= 0)
         {
             StopCoroutine(barCoroutine);
             NantaScenarioManager.instance.ResetAll();
-            NantaScenarioManager.instance.SetScenario(3);
+            NantaScenarioManager.instance.SetScenario(nextScenario);
         }
     }
     public void StartBar()
     {
-        barCoroutine = BarCoroutine(1f);
+        barCoroutine = BarCoroutine();
         StartCoroutine(barCoroutine);
     }
-    IEnumerator BarCoroutine(float time)
+    protected virtual IEnumerator BarCoroutine()
     {
         GameChart chart = NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
         while (count > 0)
@@ -39,7 +40,7 @@ public class NoteTest : MonoBehaviour, IScenario
             NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
         }
     }
-    public Dictionary<int, UnityAction> GetActions()
+    public virtual Dictionary<int, UnityAction> GetActions()
     {
         return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 2, SetCount }, { 4, StartBar} };
     }

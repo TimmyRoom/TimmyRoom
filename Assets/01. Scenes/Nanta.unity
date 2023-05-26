@@ -760,6 +760,11 @@ PrefabInstance:
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 140161133255829378, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
+      propertyPath: count
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 674350061284512870, guid: 21e4b2946f0e318468f12a59658f2518,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1130,11 +1135,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 3.SplitTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 1971952545116422378, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2892885560070871052, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
         type: 3}
