@@ -38,6 +38,13 @@ public class NantaJudgingLine : MonoBehaviour
     /// </summary>
     public Transform[] NoteSpawnTransforms;
 
+    private List<Rigidbody> notes = new List<Rigidbody>();
+
+    /// <summary>
+    /// 실행되는 모든 노트 루틴을 저장하는 리스트.
+    /// </summary>
+    private List<IEnumerator> noteRoutines = new List<IEnumerator>();
+
     public void SetVelocity()
     {
         NoteVelocity = (JudgePosition[0].position - NoteSpawnTransforms[0].position).magnitude / FallingTime;
@@ -50,7 +57,9 @@ public class NantaJudgingLine : MonoBehaviour
     /// <param name="type">노트의 종류.</param>
     public void SpawnNote(float time, int type)
     {
-        StartCoroutine(SpawnNoteRoutine(time, type));
+        IEnumerator noteRoutine = SpawnNoteRoutine(time, type);
+        noteRoutines.Add(noteRoutine);
+        StartCoroutine(noteRoutine);
     }
 
     /// <summary>
@@ -64,6 +73,9 @@ public class NantaJudgingLine : MonoBehaviour
         yield return new WaitForSeconds(Mathf.Clamp(time - fallingTime, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
+        yield return new WaitForSeconds(3 * fallingTime);
+        Destroy(newNote?.gameObject);
+        notes.Remove(newNote);
     }
 
     /// <summary>
@@ -84,11 +96,13 @@ public class NantaJudgingLine : MonoBehaviour
             else if(0f < hit.distance && hit.distance < 1.35f)
             {
                 result = 1;
+                notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
                 Destroy(hit.collider.gameObject);
             }
             else
             {
                 result = 0;
+                notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
                 Destroy(hit.collider.gameObject);
             }
         }
@@ -101,8 +115,22 @@ public class NantaJudgingLine : MonoBehaviour
 
     Rigidbody GetNote(int type)
     {
-        //TODO : 오브젝트 풀링 기법 구현
         Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms[type].position, NoteSpawnTransforms[type].rotation);
+        notes.Add(newNote);
         return newNote;
+    }
+
+    public void ResetAll()
+    {
+        foreach (IEnumerator routine in noteRoutines)
+        {
+            StopCoroutine(routine);
+        }
+        noteRoutines.Clear();
+        foreach (Rigidbody note in notes)
+        {
+            Destroy(note.gameObject);
+        }
+        notes.Clear();
     }
 }

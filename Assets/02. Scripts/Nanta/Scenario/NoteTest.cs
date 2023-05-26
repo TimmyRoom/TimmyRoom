@@ -18,6 +18,12 @@ public class NoteTest : MonoBehaviour, IScenario
     public void SetCount()
     {
         text.text = (--count).ToString();
+        if(count <= 0)
+        {
+            StopCoroutine(barCoroutine);
+            NantaScenarioManager.instance.ResetAll();
+            NantaScenarioManager.instance.SetScenario(3);
+        }
     }
     public void StartBar()
     {
@@ -32,10 +38,9 @@ public class NoteTest : MonoBehaviour, IScenario
             yield return new WaitForSeconds(240 / chart.BPM);
             NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
         }
-        NantaScenarioManager.instance.SetScenario(3);
     }
     public Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 2, SetCount }, {4, StartBar} };
+        return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 2, SetCount }, { 4, StartBar} };
     }
 }

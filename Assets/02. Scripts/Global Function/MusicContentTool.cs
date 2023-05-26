@@ -67,6 +67,10 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <param name="time">command가 실행될 기준 시간.</param>
     /// <param name="command">command 구문.</param>
     public abstract void CommandExecute(float time, string command);
+    /// <summary>
+    /// 채보 시작 이전 상태로 되돌린다.
+    /// </summary>
+    public abstract void ResetAll();
 
     /// <summary>
     /// 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.

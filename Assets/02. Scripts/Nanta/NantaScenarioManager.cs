@@ -92,7 +92,7 @@ public class NantaScenarioManager : MusicContentTool
     /// <param name="barSecond">마디당 소요 시간.</param>
     void StartMusic(AudioClip audioClip, float barSecond)
     {
-        SoundManager.instance.SoundPlay(audioClip, MusicAudioSource);
+        SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
         //ComboRoutine = AddComboLoop(barSecond);
         //StartCoroutine(ComboRoutine);
     }
@@ -111,11 +111,11 @@ public class NantaScenarioManager : MusicContentTool
             barCombo += 1;
             if(barCombo == 2)
             {
-                SoundManager.instance.SoundPlay(ComboClips[0], ComboAudioSource);
+                SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
             }
             else if(barCombo > 2 && barCombo % 2 == 0)
             {
-                SoundManager.instance.SoundPlay(ComboClips[1], ComboAudioSource);
+                SoundManager.instance.PlaySound(ComboClips[1], ComboAudioSource);
             }
         }
     }
@@ -277,5 +277,11 @@ public class NantaScenarioManager : MusicContentTool
             ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
         }
         ScenarioEvents[EventType.Start].Invoke();
+    }
+
+    public override void ResetAll()
+    {
+        nantaJudgeLine.ResetAll();
+        SoundManager.instance.StopSound(MusicAudioSource);
     }
 }
