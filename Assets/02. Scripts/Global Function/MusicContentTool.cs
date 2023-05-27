@@ -44,7 +44,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// 각 노트에 대해 CommandExecute(time, command) 호출.
     /// </summary>
     /// <param name="json">JSON 데이터.</param>
-    public virtual GameChart PlayChart(string json)
+    public virtual GameChart PlayChart(string json, AudioClip audio)
     {
         GameChart data = GetScript(json);
         foreach(var note in data.Notes)
