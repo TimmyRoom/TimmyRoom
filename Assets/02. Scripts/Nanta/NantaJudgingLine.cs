@@ -7,7 +7,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
-    [SerializeField]float fallingTime = 0;
+    [SerializeField]float fallingTime = 2;
     public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
     /// <summary>
@@ -15,8 +15,6 @@ public class NantaJudgingLine : MonoBehaviour
     /// </summary>
     float noteVelocity = 0;
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
-
-    List<float> JudgeDistance = new List<float>(){-10, 10};
 
     /// <summary>
     /// 판정을 위한 Raycast가 발생하는 Transform.
@@ -38,6 +36,13 @@ public class NantaJudgingLine : MonoBehaviour
     /// </summary>
     public Transform[] NoteSpawnTransforms;
 
+    private List<Rigidbody> notes = new List<Rigidbody>();
+
+    /// <summary>
+    /// 실행되는 모든 노트 루틴을 저장하는 리스트.
+    /// </summary>
+    private List<IEnumerator> noteRoutines = new List<IEnumerator>();
+
     public void SetVelocity()
     {
         NoteVelocity = (JudgePosition[0].position - NoteSpawnTransforms[0].position).magnitude / FallingTime;
@@ -50,7 +55,9 @@ public class NantaJudgingLine : MonoBehaviour
     /// <param name="type">노트의 종류.</param>
     public void SpawnNote(float time, int type)
     {
-        StartCoroutine(SpawnNoteRoutine(time, type));
+        IEnumerator noteRoutine = SpawnNoteRoutine(time, type);
+        noteRoutines.Add(noteRoutine);
+        StartCoroutine(noteRoutine);
     }
 
     /// <summary>
@@ -61,9 +68,13 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
-        yield return new WaitForSeconds(Mathf.Clamp(time - fallingTime, 0, float.MaxValue));
+        yield return new WaitForSeconds(Mathf.Clamp(time, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
+        yield return new WaitForSeconds(1.1f * fallingTime);
+        if(newNote.gameObject.activeInHierarchy) NantaScenarioManager.instance.JudgeNote(type, 0);
+        Destroy(newNote?.gameObject);
+        notes.Remove(newNote);
     }
 
     /// <summary>
@@ -73,7 +84,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns>노트 판정 결과.</returns>
     public int JudgeNote(int type)
     {
-        int result = 0;
+        int result = -1;
         RaycastHit hit;
         if (Physics.Raycast(RayPosition[type].position, RayPosition[type].forward, out hit))
         {
@@ -84,25 +95,38 @@ public class NantaJudgingLine : MonoBehaviour
             else if(0f < hit.distance && hit.distance < 1.35f)
             {
                 result = 1;
-                Destroy(hit.collider.gameObject);
+                notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
+                hit.collider.gameObject.SetActive(false);
+                NantaScenarioManager.instance.JudgeNote(type, result);
             }
             else
             {
                 result = 0;
-                Destroy(hit.collider.gameObject);
+                notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
+                hit.collider.gameObject.SetActive(false);
             }
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.forward * 1000f, Color.red);
         }
         return result;
     }
 
     Rigidbody GetNote(int type)
     {
-        //TODO : 오브젝트 풀링 기법 구현
         Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms[type].position, NoteSpawnTransforms[type].rotation);
+        notes.Add(newNote);
         return newNote;
+    }
+
+    public void ResetAll()
+    {
+        foreach (IEnumerator routine in noteRoutines)
+        {
+            StopCoroutine(routine);
+        }
+        noteRoutines.Clear();
+        foreach (Rigidbody note in notes)
+        {
+            Destroy(note.gameObject);
+        }
+        notes.Clear();
     }
 }

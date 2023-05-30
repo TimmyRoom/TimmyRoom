@@ -24,7 +24,7 @@ public class NantaScenarioManager : MusicContentTool
     }
     [SerializeField] NantaJudgingLine nantaJudgeLine;
     
-    [SerializeField] NantaInstrument nantaInstrument;
+    public AbstractNantaInstrument[] Instruments;
 
     /// <summary>
     /// 각 상황마다 등장하는 UI이다.
@@ -75,7 +75,12 @@ public class NantaScenarioManager : MusicContentTool
     /// <summary>
     /// 마디의 모든 노트를 성공적으로 처리할 경우 값이 상승한다.
     /// </summary>
+    /// 
     int barCombo = 0;
+    /// <summary>
+    /// 음악을 재생하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+    /// </summary>
+    IEnumerator SongRoutine;
 
     /// <summary>
     /// AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
@@ -92,7 +97,7 @@ public class NantaScenarioManager : MusicContentTool
     /// <param name="barSecond">마디당 소요 시간.</param>
     void StartMusic(AudioClip audioClip, float barSecond)
     {
-        SoundManager.instance.SoundPlay(audioClip, MusicAudioSource);
+        SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
         //ComboRoutine = AddComboLoop(barSecond);
         //StartCoroutine(ComboRoutine);
     }
@@ -111,11 +116,11 @@ public class NantaScenarioManager : MusicContentTool
             barCombo += 1;
             if(barCombo == 2)
             {
-                SoundManager.instance.SoundPlay(ComboClips[0], ComboAudioSource);
+                SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
             }
             else if(barCombo > 2 && barCombo % 2 == 0)
             {
-                SoundManager.instance.SoundPlay(ComboClips[1], ComboAudioSource);
+                SoundManager.instance.PlaySound(ComboClips[1], ComboAudioSource);
             }
         }
     }
@@ -161,11 +166,16 @@ public class NantaScenarioManager : MusicContentTool
         nantaJudgeLine.SetVelocity();
         foreach(var note in data.Notes)
         {
-            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + nantaJudgeLine.FallingTime, note.Type);
+            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM), note.Type);
         }
-        
-        StartCoroutine(PlayChartRoutine(audioClip, nantaJudgeLine.FallingTime, Beat2Second(1, data.BPM)));
+        SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
+        StartCoroutine(SongRoutine);
         return data;
+    }
+
+    public override float GetWaitTime()
+    {
+        return nantaJudgeLine.FallingTime;
     }
 
     IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
@@ -174,11 +184,6 @@ public class NantaScenarioManager : MusicContentTool
         StartMusic(audioClip, barSecond);
     }
 
-    /// <summary>
-    /// switch구문으로 branch를 나눠 command에 따라 적절한 함수를 실행한다.
-    /// </summary>
-    /// <param name="time">command가 실행될 기준 시간.</param>
-    /// <param name="command">command 구문.</param>
     public override void CommandExecute(float time, string command)
     {
         switch(command)
@@ -196,14 +201,8 @@ public class NantaScenarioManager : MusicContentTool
         }
     }
 
-    /// <summary>
-    /// 노트 판정을 내린다.
-    /// </summary>
-    /// <param name="type">노트의 타입.</param>
-    /// <returns>노트 판정 결과.</returns>
-    public override int JudgeNote(int type)
+    public override int JudgeNote(int type, int result)
     {
-        int result = nantaJudgeLine.JudgeNote(type);
         switch(type)
         {
             case 0:
@@ -256,10 +255,6 @@ public class NantaScenarioManager : MusicContentTool
         return result;
     }
 
-    /// <summary>
-    /// 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 UI를 생성하거나 삭제하고 이벤트 설정을 재설정한다.
-    /// </summary>
-    /// <param name="scenarioIndex">변경할 시나리오의 Index.</param>
     public override void SetScenario(int scenarioIndex)
     {
         foreach(var scenario in Scenarios)
@@ -277,5 +272,14 @@ public class NantaScenarioManager : MusicContentTool
             ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
         }
         ScenarioEvents[EventType.Start].Invoke();
+    }
+
+    public override void ResetAll()
+    {
+        barCombo = 0;
+        //StopCoroutine(ComboRoutine);
+        StopCoroutine(SongRoutine);
+        nantaJudgeLine.ResetAll();
+        SoundManager.instance.StopSound(MusicAudioSource);
     }
 }

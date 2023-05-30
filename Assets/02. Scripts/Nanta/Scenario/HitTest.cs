@@ -6,15 +6,18 @@ using UnityEngine.Events;
 
 public class HitTest : MonoBehaviour, IScenario
 {
-    public TextMeshProUGUI text;
-    private float count = 0;
-
+    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] float count = 7;
+    public void Start()
+    {
+        text.text = count.ToString();
+    }
     public void SetCount()
     {
-        text.text = (++count).ToString();
-        if(count == 4)
+        text.text = (--count).ToString();
+        if(count == 0)
         {
-            NantaScenarioManager.instance.SetScenario(5);
+            NantaScenarioManager.instance.SetScenario(2);
         }
     }
 

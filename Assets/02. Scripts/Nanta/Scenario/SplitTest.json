@@ -1,5 +1,5 @@
 {
-    "ChartName": "NormalBeat_NoteTest",
+    "ChartName": "NormalBeat_SplitTest",
     "SongName": "NormalBeat",
     "ArtistName": "TimmyRoom",
     "SongLength": 2.47422,
@@ -12,7 +12,7 @@
         },
         {
             "Time": 1,
-            "Type": "RightHand"
+            "Type": "LeftHand"
         },
         {
             "Time": 2,
@@ -20,7 +20,7 @@
         },
         {
             "Time": 3,
-            "Type": "RightHand"
+            "Type": "LeftHand"
         }
     ]
 }
