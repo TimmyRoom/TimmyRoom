@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class NantaJudgingLine : MonoBehaviour
 {
+    [SerializeField]float fallingTime = 2;
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
-    [SerializeField]float fallingTime = 2;
     public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
+    float noteVelocity = 0;
     /// <summary>
     /// 노트의 등속 운동 속도.
     /// </summary>
-    float noteVelocity = 0;
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
 
     /// <summary>
@@ -35,14 +35,18 @@ public class NantaJudgingLine : MonoBehaviour
     /// 노트가 생성되는 위치.
     /// </summary>
     public Transform[] NoteSpawnTransforms;
-
+    /// <summary>
+    ///생성된 모든 노트들을 저장하는 리스트.
+    /// </summary>
     private List<Rigidbody> notes = new List<Rigidbody>();
 
     /// <summary>
     /// 실행되는 모든 노트 루틴을 저장하는 리스트.
     /// </summary>
     private List<IEnumerator> noteRoutines = new List<IEnumerator>();
-
+    /// <summary>
+    /// 노트의 속력을 설정한다.
+    /// </summary>
     public void SetVelocity()
     {
         NoteVelocity = (JudgePosition[0].position - NoteSpawnTransforms[0].position).magnitude / FallingTime;
@@ -68,7 +72,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
-        yield return new WaitForSeconds(Mathf.Clamp(time, 0, float.MaxValue));
+        yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
         yield return new WaitForSeconds(1.1f * fallingTime);
@@ -106,16 +110,25 @@ public class NantaJudgingLine : MonoBehaviour
                 hit.collider.gameObject.SetActive(false);
             }
         }
+        else
+        {
+            NantaScenarioManager.instance.JudgeNote(type, result);
+        }
         return result;
     }
-
+    /// <summary> 
+    /// 노트를 생성하고 해당 오브젝트의 RigidBody 컴포넌트를 반환한다.
+    /// <returns>생성된 노트의 RigidBody.</returns>
+    /// </summary>
     Rigidbody GetNote(int type)
     {
         Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms[type].position, NoteSpawnTransforms[type].rotation);
         notes.Add(newNote);
         return newNote;
     }
-
+    /// <summary>
+    /// 씬 시작 상태로 되돌리는 함수.
+    /// </summary>
     public void ResetAll()
     {
         foreach (IEnumerator routine in noteRoutines)

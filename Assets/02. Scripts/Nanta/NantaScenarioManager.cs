@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,9 +23,14 @@ public class NantaScenarioManager : MusicContentTool
         }
         DontDestroyOnLoad(this);
     }
+    /// <summary>
+    /// 난타 북의 판정을 담당하는 클래스이다.
+    /// </summary>
     [SerializeField] NantaJudgingLine nantaJudgeLine;
-    
-    public AbstractNantaInstrument[] Instruments;
+    /// <summary>
+    /// 난타 악기 오브젝트들을 관리하는 클래스이다.
+    /// </summary>
+    [SerializeField] NantaInstrumentManager nantaInstrumentManager;
 
     /// <summary>
     /// 각 상황마다 등장하는 UI이다.
@@ -88,8 +94,17 @@ public class NantaScenarioManager : MusicContentTool
     IEnumerator ComboRoutine;
     void Start()
     {
+        Initialize();
+    }
+    /// <summary>
+    /// 초기 설정을 위한 함수.
+    /// </summary>
+    void Initialize()
+    {
+        nantaInstrumentManager.Initialize();
         SetScenario(0);
     }
+
     /// <summary>
     /// 콤보 루틴을 실행하여 일정 시간마다 콤보가 쌓이도록 한다.
     /// </summary>
@@ -166,7 +181,7 @@ public class NantaScenarioManager : MusicContentTool
         nantaJudgeLine.SetVelocity();
         foreach(var note in data.Notes)
         {
-            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM), note.Type);
+            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + GetWaitTime(), note.Type);
         }
         SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
         StartCoroutine(SongRoutine);
@@ -177,7 +192,9 @@ public class NantaScenarioManager : MusicContentTool
     {
         return nantaJudgeLine.FallingTime;
     }
-
+    /// <summary>
+    /// 일정 시간 후 음악을 재생하는 코루틴.
+    /// </summary>
     IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
     {
         yield return new WaitForSeconds(waitTime);
@@ -186,18 +203,17 @@ public class NantaScenarioManager : MusicContentTool
 
     public override void CommandExecute(float time, string command)
     {
-        switch(command)
+        if(command == "LeftHand")
         {
-            case "LeftHand":
-            {
-                nantaJudgeLine.SpawnNote(time, 0);
-                break;
-            }
-            case "RightHand":
-            {
-                nantaJudgeLine.SpawnNote(time, 1);
-                break;
-            }
+            nantaJudgeLine.SpawnNote(time, 0);
+        }
+        else if(command == "RightHand")
+        {
+            nantaJudgeLine.SpawnNote(time, 1);    
+        }
+        else if(Regex.IsMatch(command, "^ChangeInstrument .$"))
+        {
+            nantaInstrumentManager.ChangeInstrument(time, int.Parse(command.Split(' ')[1]));
         }
     }
 
@@ -219,6 +235,11 @@ public class NantaScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.LeftFail]?.Invoke();
                         break;
                     }
+                    case -1:
+                    {
+                        ScenarioEvents[EventType.LeftFail]?.Invoke();
+                        break;
+                    }
                     default:
                     {
                         break;
@@ -236,6 +257,11 @@ public class NantaScenarioManager : MusicContentTool
                         break;
                     }
                     case 0:
+                    {
+                        ScenarioEvents[EventType.RightFail]?.Invoke();
+                        break;
+                    }
+                    case -1:
                     {
                         ScenarioEvents[EventType.RightFail]?.Invoke();
                         break;
@@ -262,18 +288,24 @@ public class NantaScenarioManager : MusicContentTool
             scenario.SetActive(false);
         }
         Scenarios[scenarioIndex].SetActive(true);
+
         ScenarioEvents[EventType.End].Invoke();
         foreach(var events in ScenarioEvents.Values)
         {
             events.RemoveAllListeners();
         }
+
+        nantaInstrumentManager.ChangeInstrument(0f, 0);
+
         foreach(var KeyPair in Scenarios[scenarioIndex].GetComponent<IScenario>().GetActions())
         {
             ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
         }
         ScenarioEvents[EventType.Start].Invoke();
     }
-
+    /// <summary>
+    /// 씬 시작 상태로 되돌리는 함수.
+    /// </summary>
     public override void ResetAll()
     {
         barCombo = 0;
