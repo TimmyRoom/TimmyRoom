@@ -23,7 +23,13 @@ public class NantaScenarioManager : MusicContentTool
         }
         DontDestroyOnLoad(this);
     }
+    /// <summary>
+    /// 난타 북의 판정을 담당하는 클래스이다.
+    /// </summary>
     [SerializeField] NantaJudgingLine nantaJudgeLine;
+    /// <summary>
+    /// 난타 악기 오브젝트들을 관리하는 클래스이다.
+    /// </summary>
     [SerializeField] NantaInstrumentManager nantaInstrumentManager;
 
     /// <summary>
@@ -90,7 +96,9 @@ public class NantaScenarioManager : MusicContentTool
     {
         Initialize();
     }
-
+    /// <summary>
+    /// 초기 설정을 위한 함수.
+    /// </summary>
     void Initialize()
     {
         nantaInstrumentManager.Initialize();
@@ -184,7 +192,9 @@ public class NantaScenarioManager : MusicContentTool
     {
         return nantaJudgeLine.FallingTime;
     }
-
+    /// <summary>
+    /// 일정 시간 후 음악을 재생하는 코루틴.
+    /// </summary>
     IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
     {
         yield return new WaitForSeconds(waitTime);
@@ -293,7 +303,9 @@ public class NantaScenarioManager : MusicContentTool
         }
         ScenarioEvents[EventType.Start].Invoke();
     }
-
+    /// <summary>
+    /// 씬 시작 상태로 되돌리는 함수.
+    /// </summary>
     public override void ResetAll()
     {
         barCombo = 0;
