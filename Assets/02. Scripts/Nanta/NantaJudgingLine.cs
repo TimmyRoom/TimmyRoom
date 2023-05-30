@@ -68,7 +68,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
-        yield return new WaitForSeconds(Mathf.Clamp(time, 0, float.MaxValue));
+        yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
         yield return new WaitForSeconds(1.1f * fallingTime);
@@ -105,6 +105,10 @@ public class NantaJudgingLine : MonoBehaviour
                 notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
                 hit.collider.gameObject.SetActive(false);
             }
+        }
+        else
+        {
+            NantaScenarioManager.instance.JudgeNote(type, result);
         }
         return result;
     }
