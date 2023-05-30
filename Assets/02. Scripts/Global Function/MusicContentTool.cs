@@ -55,11 +55,18 @@ public abstract class MusicContentTool : AbstractSceneManager
     }
 
     /// <summary>
-    /// 노트 판정을 내린다.
+    /// 음악 재생 전 대기하는 시간을 기록한다. 이는 음수 시간 발생을 방지하기 위함이다.
+    /// </summary>
+    /// <returns>노트 이펙트 생성에 필요한 최대 시간</returns>
+    public abstract float GetWaitTime();
+
+    /// <summary>
+    /// 노트 판정에 따른 이벤트를 발생시킨다.
     /// </summary>
     /// <param name="type">노트의 타입.</param>
+    /// <param name="result">노트 판정 결과.</param>
     /// <returns>노트 판정 결과.</returns>
-    public abstract int JudgeNote(int type);
+    public abstract int JudgeNote(int type, int result);
 
     /// <summary>
     /// switch구문으로 branch를 나눠 command에 따라 적절한 함수를 실행한다.

@@ -6,42 +6,45 @@ using UnityEngine.Events;
 
 public class ChartTest : NoteTest
 {
+    public TextMeshProUGUI CountText;
     [Range(0, 1)]
     [SerializeField] float clearRate = 0.6f;
     [SerializeField] List<string> failTexts;
     private int hitCount = 0;
     private int failCount = 0;
+    protected override void Start()
+    {
+        CountText.text = $"{hitCount}/{hitCount + failCount}";
+    }
     public override void SetCount()
     {
         hitCount++;
+        CountText.text = $"{hitCount}/{hitCount + failCount}";
     }
 
-    protected override IEnumerator BarCoroutine()
+    protected override IEnumerator MusicCoroutine()
     {
-        GameChart chart = NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
-        while (count >= 0)
+        yield return new WaitForSeconds(NantaScenarioManager.instance.GetWaitTime());
+        float hitRate = (float)hitCount / (hitCount + failCount);
+        if(hitRate < clearRate && count > 0)
         {
-            yield return new WaitForSeconds(480 / chart.BPM);
-            float hitRate = (float)hitCount / (hitCount + failCount);
-            if(hitRate >= clearRate || count == 0)
-            {
-                break;
-            }
-            else
-            {
-                text.text = failTexts[failTexts.Count - (count--)];
-                NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
-                hitCount = 0;
-                failCount = 0;
-            }
+            text.text = failTexts[failTexts.Count - (count--)];
+            hitCount = 0;
+            failCount = 0;
+            CountText.text = $"{hitCount}/{hitCount + failCount}";
         }
-        NantaScenarioManager.instance.ResetAll();
-        NantaScenarioManager.instance.SetScenario(nextScenario);
+        else
+        {
+            StopCoroutine(barCoroutine);
+            NantaScenarioManager.instance.ResetAll();
+            NantaScenarioManager.instance.SetScenario(nextScenario);
+        }
     }
 
     public void MissNote()
     {
         failCount++;
+        CountText.text = $"{hitCount}/{hitCount + failCount}";
     }
 
     public override Dictionary<int, UnityAction> GetActions()

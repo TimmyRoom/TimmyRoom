@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionTime: 2
   UIEvents:
-  - m_PersistentCalls:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NantaScenarioManager, Assembly-CSharp
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionTime: 2
   UIEvents:
-  - m_PersistentCalls:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NantaScenarioManager, Assembly-CSharp
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionTime: 2
   UIEvents:
-  - m_PersistentCalls:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NantaScenarioManager, Assembly-CSharp
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionTime: 2
   UIEvents:
-  - m_PersistentCalls:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NantaScenarioManager, Assembly-CSharp
@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 8705594094840432574}
   - component: {fileID: 8705594094840432575}
   - component: {fileID: 8283410007810948836}
+  - component: {fileID: 1813949580}
   m_Layer: 5
   m_Name: 0. LevelSelect
   m_TagString: Untagged
@@ -538,6 +539,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f05051e8efdea419c8d9561327ecd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1813949580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705594094840432569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1 &8979305779704127045
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionTime: 2
   UIEvents:
-  - m_PersistentCalls:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NantaScenarioManager, Assembly-CSharp

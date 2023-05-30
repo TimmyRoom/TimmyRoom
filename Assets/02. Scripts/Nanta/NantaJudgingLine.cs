@@ -7,7 +7,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
-    [SerializeField]float fallingTime = 0;
+    [SerializeField]float fallingTime = 2;
     public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
     /// <summary>
@@ -15,8 +15,6 @@ public class NantaJudgingLine : MonoBehaviour
     /// </summary>
     float noteVelocity = 0;
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
-
-    List<float> JudgeDistance = new List<float>(){-10, 10};
 
     /// <summary>
     /// 판정을 위한 Raycast가 발생하는 Transform.
@@ -70,10 +68,11 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
-        yield return new WaitForSeconds(Mathf.Clamp(time - fallingTime, 0, float.MaxValue));
+        yield return new WaitForSeconds(Mathf.Clamp(time, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
-        yield return new WaitForSeconds(3 * fallingTime);
+        yield return new WaitForSeconds(1.1f * fallingTime);
+        if(newNote.gameObject.activeInHierarchy) NantaScenarioManager.instance.JudgeNote(type, 0);
         Destroy(newNote?.gameObject);
         notes.Remove(newNote);
     }
@@ -85,7 +84,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// <returns>노트 판정 결과.</returns>
     public int JudgeNote(int type)
     {
-        int result = 0;
+        int result = -1;
         RaycastHit hit;
         if (Physics.Raycast(RayPosition[type].position, RayPosition[type].forward, out hit))
         {
@@ -97,18 +96,15 @@ public class NantaJudgingLine : MonoBehaviour
             {
                 result = 1;
                 notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
-                Destroy(hit.collider.gameObject);
+                hit.collider.gameObject.SetActive(false);
+                NantaScenarioManager.instance.JudgeNote(type, result);
             }
             else
             {
                 result = 0;
                 notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
-                Destroy(hit.collider.gameObject);
+                hit.collider.gameObject.SetActive(false);
             }
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.forward * 1000f, Color.red);
         }
         return result;
     }

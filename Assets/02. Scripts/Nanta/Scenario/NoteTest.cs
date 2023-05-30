@@ -12,32 +12,36 @@ public class NoteTest : MonoBehaviour, IScenario
     [SerializeField] protected int count = 7;
     [SerializeField] protected int nextScenario = 3;
     protected IEnumerator barCoroutine;
-    protected void Start()
+    protected virtual void Start()
     {
         text.text = count.ToString();
     }
     public virtual void SetCount()
     {
         text.text = (--count).ToString();
-        if(count <= 0)
-        {
-            StopCoroutine(barCoroutine);
-            NantaScenarioManager.instance.ResetAll();
-            NantaScenarioManager.instance.SetScenario(nextScenario);
-        }
     }
     public void StartBar()
     {
         barCoroutine = BarCoroutine();
         StartCoroutine(barCoroutine);
     }
-    protected virtual IEnumerator BarCoroutine()
+    protected IEnumerator BarCoroutine()
     {
-        GameChart chart = NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
-        while (count > 0)
+        do
         {
-            yield return new WaitForSeconds(240 / chart.BPM);
-            NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
+            GameChart chart = NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
+            yield return new WaitForSeconds(chart.SongLength);
+            StartCoroutine(MusicCoroutine());
+        } while (count > 0);
+    }
+    protected virtual IEnumerator MusicCoroutine()
+    {
+        yield return new WaitForSeconds(NantaScenarioManager.instance.GetWaitTime());
+        if(count <= 0)
+        {
+            StopCoroutine(barCoroutine);
+            NantaScenarioManager.instance.ResetAll();
+            NantaScenarioManager.instance.SetScenario(nextScenario);
         }
     }
     public virtual Dictionary<int, UnityAction> GetActions()

@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 5309121269456694142}
   - component: {fileID: 5309121269456694143}
   m_Layer: 0
-  m_Name: XR Origin
+  m_Name: XR Origin Nanta
   m_TagString: XR Origin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
