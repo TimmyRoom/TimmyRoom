@@ -43,6 +43,15 @@ public class NantaInstrumentManager : MonoBehaviour
             instrument.gameObject.SetActive(false);
         }
         Instruments[instrumentIndex].gameObject.SetActive(true);
+        AlertChange(instrumentIndex);
+    }
+    /// <summary>
+    /// 악기 교체 알림을 처리하는 함수.
+    /// </summary>
+    /// <param name="instrumentIndex">변경되는 악기 인덱스</param>
+    public void AlertChange(int instrumentIndex)
+    {
+        //TODO: 악기 교체 알림.
     }
     /// <summary>
     /// 씬 시작 상태로 되돌리는 함수.
