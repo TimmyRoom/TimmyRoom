@@ -1,0 +1,26 @@
+{
+    "ChartName": "NormalBeat_NoteTest",
+    "SongName": "NormalBeat",
+    "ArtistName": "TimmyRoom",
+    "SongLength": 2.47422,
+    "Offset": 0,
+    "BPM": 97,
+    "Notes": [
+        {
+            "Time": 0,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 1,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 2,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 3,
+            "Type": "RightHand"
+        }
+    ]
+}

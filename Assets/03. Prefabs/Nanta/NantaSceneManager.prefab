@@ -45,11 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nantaJudgeLine: {fileID: 0}
-  nantaInstrument: {fileID: 0}
-  HitEventsLeft: []
-  HitFailEventsLeft: []
-  HitEventsRight: []
-  HitFailEventsRight: []
+  nantaInstrumentManager: {fileID: 0}
+  Scenarios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ComboClips: []
   MusicAudioSource: {fileID: 0}
   ComboAudioSource: {fileID: 0}

@@ -1,0 +1,50 @@
+{
+    "ChartName": "ChartBeat_ChartTest",
+    "SongName": "ChartBeat",
+    "ArtistName": "TimmyRoom",
+    "SongLength": 4.94844,
+    "Offset": 0,
+    "BPM": 97,
+    "Notes": [
+        {
+            "Time": 0,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 1,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 2,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 2.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 3,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 4,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 5,
+            "Type": "RightHand"
+        },
+        {
+            "Time": 6,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 6.5,
+            "Type": "LeftHand"
+        },
+        {
+            "Time": 7,
+            "Type": "RightHand"
+        }
+    ]
+}

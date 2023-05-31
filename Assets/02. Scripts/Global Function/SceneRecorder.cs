@@ -134,7 +134,7 @@ public class SceneRecorder : MonoBehaviour
         byte[] bytes = screenShot.EncodeToPNG();
 
         // For testing purposes, also write to a file in the project folder
-        string photoName = "photo" + "0" +".png";
+        string photoName = "photo" + "000" +".png";
         System.IO.File.WriteAllBytes(curFilePath + "/" + photoName, bytes);
         Debug.Log(string.Format("Took screenshot to: {0}", curFilePath));
 
@@ -194,6 +194,10 @@ public class SceneRecorder : MonoBehaviour
 
     IEnumerator _RecordCoroutine(Camera camera, RecordSceneType sceneType)
     {
+        Camera mainCamera = Camera.main;
+        Camera selfCamera = selfCameraObject.GetComponent<Camera>();
+
+
         //TODO : Record Camera and save it to filePath.
         //Make Directory
         string dirName = System.DateTime.Now.ToString("yyyy-MM-dd-mm-ss");
@@ -207,7 +211,7 @@ public class SceneRecorder : MonoBehaviour
             Debug.LogWarning("Too fast to record the screen.");
             throw new UnityException("Directory already exists.");
         }
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 240; i++)
         {
             // Create a RenderTexture object
             RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
@@ -227,11 +231,17 @@ public class SceneRecorder : MonoBehaviour
             byte[] bytes = screenShot.EncodeToPNG();
 
             // For testing purposes, also write to a file in the project folder
-            string photoName = "photo" + i.ToString() + ".png";
+            string photoName = "photo" + i.ToString("D3") + ".png";
             System.IO.File.WriteAllBytes(curFilePath + "/" + photoName, bytes);
             Debug.Log(string.Format("Took screenshot to: {0}", curFilePath));
 
-            yield return new WaitForSeconds(1f);
+            if(camera == selfCamera)
+            {
+                mainCamera.enabled = true;
+                selfCamera.enabled = false;
+            }
+
+            yield return new WaitForSeconds(1.0f/24.0f);
         }
 
         string infoName = "info.json";
