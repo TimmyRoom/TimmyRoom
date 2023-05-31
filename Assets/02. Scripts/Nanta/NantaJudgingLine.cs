@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 시간에 따라 노트를 생성하고 이를 통해 사용자에게 타이밍을 인지시키는 클래스.
+/// </summary>
 public class NantaJudgingLine : MonoBehaviour
 {
-    [SerializeField]float fallingTime = 2;
+    [SerializeField] float fallingTime = 2;
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
@@ -17,14 +19,19 @@ public class NantaJudgingLine : MonoBehaviour
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
 
     /// <summary>
-    /// 판정을 위한 Raycast가 발생하는 Transform.
+    /// 판정을 위한 Raycast가 발생하는 Transform. 노트가 낙하하는 각 라인 별로 존재한다.
     /// </summary>
     public Transform[] RayPosition;
 
     /// <summary>
-    /// 실제 사용자가 보는 판정선 Transform.
+    /// 실제 사용자가 보는 판정선 Transform. 노트가 낙하하는 각 라인 별로 존재한다.
     /// </summary>
     public Transform[] JudgePosition;
+
+    /// <summary>
+    /// 노트가 생성되는 위치. 노트가 낙하하는 각 라인 별로 존재한다.
+    /// </summary>
+    public Transform[] NoteSpawnTransforms;
 
     /// <summary>
     /// 생성하는 노트의 프리팹.
@@ -32,11 +39,7 @@ public class NantaJudgingLine : MonoBehaviour
     public Rigidbody NotePrefab;
 
     /// <summary>
-    /// 노트가 생성되는 위치.
-    /// </summary>
-    public Transform[] NoteSpawnTransforms;
-    /// <summary>
-    ///생성된 모든 노트들을 저장하는 리스트.
+    /// 생성된 모든 노트들을 저장하는 리스트.
     /// </summary>
     private List<Rigidbody> notes = new List<Rigidbody>();
 
@@ -44,6 +47,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// 실행되는 모든 노트 루틴을 저장하는 리스트.
     /// </summary>
     private List<IEnumerator> noteRoutines = new List<IEnumerator>();
+    
     /// <summary>
     /// 노트의 속력을 설정한다.
     /// </summary>
@@ -56,7 +60,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// SpawnNoteRoutine(time, type) 루틴 실행.
     /// </summary>
     /// <param name="time">루틴이 시작될 시간.</param>
-    /// <param name="type">노트의 종류.</param>
+    /// <param name="type">노트가 생성되는 라인</param>
     public void SpawnNote(float time, int type)
     {
         IEnumerator noteRoutine = SpawnNoteRoutine(time, type);
@@ -68,8 +72,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// 일정 시간동안 대기 후 노트를 생성하여 움직이게 한다.
     /// </summary>
     /// <param name="time">생성까지 대기하는 시간.</param>
-    /// <param name="type">노트의 종류.</param>
-    /// <returns></returns>
+    /// <param name="type">노트가 생성되는 라인.</param>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
         yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));

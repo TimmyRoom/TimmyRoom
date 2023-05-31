@@ -55,7 +55,8 @@ public abstract class MusicContentTool : AbstractSceneManager
     }
 
     /// <summary>
-    /// 음악 재생 전 대기하는 시간을 기록한다. 이는 음수 시간 발생을 방지하기 위함이다.
+    /// 음악 재생 전 대기하는 시간을 기록한다.
+    /// 이는 노트 낙하 및 등장 시간으로 인해 WaitforSecond의 파라미터로 음수 시간이 할당되는 것을 방지하기 위함이다.
     /// </summary>
     /// <returns>노트 이펙트 생성에 필요한 최대 시간</returns>
     public abstract float GetWaitTime();
@@ -75,7 +76,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// <param name="command">command 구문.</param>
     public abstract void CommandExecute(float time, string command);
     /// <summary>
-    /// 채보 시작 이전 상태로 되돌린다.
+    /// 씬의 상태를 채보 시작 이전 상태로 되돌린다.
     /// </summary>
     public abstract void ResetAll();
 

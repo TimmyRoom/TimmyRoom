@@ -70,7 +70,60 @@ SceneRecorder 싱글톤을 사용해서 플레이를 기록하는 함수.
         	else Debug.Warning("기록이 실패하였습니다.");
         }
         ```
-        
+## IScenario
+
+---
+
+interface
+
+AbstractSceneManager에서 시나리오로 분류되는 클래스들의 인터페이스.
+
+- public Dictionary<int, UnityAction> GetActions()
+    - 해당 인스트럭션에서 발생하는 액션들의 리스트를 반환한다.
+    - returns : 인스트럭션에서 발생하는 액션들의 리스트
+
+## Note
+
+---
+
+class
+
+GameChart에서 다루는 각 노트의 클레스.
+
+- public float Time
+    - 노트 등장 시간.
+
+- public string Type
+    - 노트의 타입.
+
+##GameChart
+
+---
+
+class
+
+채보 데이터를 나타내는 클래스. JSON 파싱 후 해당 형태로 변환된다.
+
+- public string ChartName
+    - 차트의 이름.
+
+- public string SongName
+    - 음악의 이름.
+
+- public string ArtistName
+    - 아티스트의 이름.
+
+- public float SongLength
+    - 음악의 길이.
+
+- public float Offset
+    - 음악의 초기 Offset.
+
+- public float BPM
+    - 음악의 BPM.
+
+- public List<Note> Notes
+    - 음악에 등장하는 모든 노트들의 리스트.
 
 ## SceneRecorder
 
@@ -277,6 +330,11 @@ abstract class
     - 각 노트에 대해 CommandExecute(time, command) 호출.
     - json : JSON 데이터.
 
+- public abstract float GetWaitTime()
+    - 음악 재생 전 대기하는 시간을 기록한다. 
+    - 이는 노트 낙하 및 등장 시간으로 인해 WaitforSecond의 파라미터로 음수 시간이 할당되는 것을 방지하기 위함이다.
+    - returns : 노트 이펙트 생성에 필요한 최대 시간
+
 - public abstract int JudgeNote(int type)
     - 노트 판정을 내린다.
     - type : 노트의 타입.
@@ -287,9 +345,8 @@ abstract class
     - time : command가 실행될 기준 시간.
     - command : command 구문.
 
-- public abstract override void SetScenario(int scenarioIndex);
-    - AbstractSceneManager의 메서드를 override받은 메서드.
-    - abstract로 처리되어 자식 클래스에서 정의된다.
+- public abstract void ResetAll()
+    - 씬의 상태를 채보 시작 이전 상태로 되돌린다.
     
 - public abstract void SetScenario(int scenarioIndex)
     - 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
@@ -355,7 +412,7 @@ class
 
 - bool CheckPurity(int colorId, int patternId)
     - colorId, patternId : 사용자가 고른 컬러와 패턴
-    - 반환값 : 하나도 없다면 true, 아니면 false
+    - returns : 하나도 없다면 true, 아니면 false
 
 - int AddUser(int colorId, int patternId)
     - CheckPurity 호출해서 검사
@@ -377,6 +434,10 @@ class
     - 설정한 효과음 clip을 source 위치에서 재생한다.
     - clip : 재생할 AudioClip.
     - source : 클립이 재생될 AudioSource.
+
+- public void StopSound(AudioSource source)
+    - 설정한 AudioSource의 재생 음악을 멈춘다.
+    - source : 멈추고자 하는 AudioSource.
 
 ## VibrateControl
 
@@ -513,7 +574,33 @@ class
 
 난타 씬에서 사용되는 오브젝트 별 API이다.
 
-각 클래스들의 기능을 호출하는 UI 오브젝트를 통해 인터렉션한다.
+NantaScenarioManager가 설정한 시나리오에 따라 오브젝트를 배치한다.
+사용자는 NantaInstrument를 통해 발생한 인터렉션을 발생시킨다.
+해당 인터렉션은 NantaJudgingLine을 통해 판정한다. 
+판정 결과는 NantaScenarioManager에게 전송되어 적절한 이벤트를 발생시킨다.
+
+## AbstractNantaInstrument
+
+---
+
+abstract class
+
+난타 씬에서 악기로 사용되는 오브젝트 스크립트의 추상 클래스.
+
+- public AudioClip[] InstrumentClips
+    - 악기와 관련된 효과음 목록.
+
+- public AudioSource InstrumentAudioSource
+    - 악기와 관련된 효과음이 나오는 곳.
+
+- protected NantaJudgingLine Judge
+    - 판정을 위해 참조하는 클래스.
+
+- public abstract void Initialize()
+    - 악기의 초기화를 위한 함수.
+
+- public abstract void GetHitted(int type)
+    - 악기가 사용자에 의해 인터렉션되었을 때 호출되는 함수.
 
 ## NantaScenarioManager
 
@@ -527,23 +614,21 @@ class
 
 MusicContentTool, AbstarctSceneManager을 상속받는다.
 
-- public enum NoteType {LeftHand, RightHand}
-    - 노트 타입을 표현하는 열거형이다.
+- private NantaJudgingLine nantaJudgeLine
+    - 난타 북의 판정을 담당하는 클래스이다.
 
-- public enum NoteResult {Miss, Good}
-    - 노트 판정을 표현하는 열거형이다.
+- private NantaInstrumentManager nantaInstrumentManager
+    - 난타 악기 오브젝트들을 관리하는 클래스이다.
 
-- public UnityEvent[] HitEventsLeft
-    - 왼쪽 난타 북 타격 판정이 성공할 경우에 대한 이벤트.
+- public GameObject[] Scenarios
+    - 각 상황마다 등장하는 UI이다.
 
-- public UnityEvent[] HitFailEventsLeft
-    - 왼쪽 난타 북 타격 판정이 실패할 경우에 대한 이벤트.
+- public enum EventType
+    - Instruction에서 발생 가능한 이벤트 타입을 표현하는 열거형이다.
 
-- public UnityEvent[] HitEventsRight
-    - 오른쪽 난타 북 타격 판정이 성공할 경우에 대한 이벤트.
-
-- public UnityEvent[] HitFailEventsRight
-    - 오른쪽 난타 북 타격 판정이 실패할 경우에 대한 이벤트.
+- Dictionary<EventType, UnityEvent> ScenarioEvents
+    - 난타 북 타격 판정에 따른 이벤트 목록.
+    - EventType에 따라 적절한 이벤트를 발생시킨다.
 
 - public AudioClip[] ComboClips
     - 콤보 달성 시 발생하는 효과음 목록이다.
@@ -559,8 +644,14 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
     - 모든 노드를 성공으로 판정받은 마디가 있으면 해당 값을 1 증가시킨다.
     - 판정에 실패하면 즉시 값을 0으로 만든다.
 
+- IEnumerator SongRoutine
+    - 음악을 재생하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+
 - IEnumerator ComboRoutine
     - AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+
+- void Initialize()
+    - 초기 설정을 위한 함수.
 
 - void StartMusic(AudioClip audioClip, float barSecond)
     - SoundManager.SoundPlay(audioClip, MusicAudioSource)
@@ -591,51 +682,73 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
     - 적절한 음원 파일을 참조하여 song으로 설정, StartMusic(song, SPB) 호출.
     - StartCoroutine(EndComboLoop(songLength)) 루틴 실행.
 
-- override void CommandExecute(float time, string command)
+- public override float GetWaitTime()
+    - NantaJudgingLine의 judgingTime을 반환한다.
+
+- IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
+    - 일정 시간 후 음악을 재생하는 코루틴.
+    - audioClip : 재생할 음악.
+    - waitTime : 음악 재생 전 대기 시간.
+    - barSecond : 마디 당 초 단위 시간.
+
+- public override void CommandExecute(float time, string command)
     - switch구문으로 brach를 나눠 command에 따라 적절한 함수를 실행한다.
-        
-        
         | command | function |
         | --- | --- |
         | LeftHand | NantaJudgingLine.SpawnNote(time, 0) |
         | RightHand | NantaJudgingLine.SpawnNote(time, 1) |
+        | ^ChangeInstrument .$ | NantaInstrumentManager.ChangeInstrument(time, int.Parse(command.Split(' ')[1])) |
 
-- override NoteResult JudgeNote(int type)
+- public override NoteResult JudgeNote(int type)
     - NantaJudgingLine.JudgeNote(type)를 호출하여 result를 얻는다.
     - type, result를 적절한 NoteType, NoteResult로 치환한다.
     - type, result에 따라 등록된 이벤트를 출력하고 result를 반환한다.
-        
-        
-        | type\result | Good | Bad |
-        | --- | --- | --- |
-        | LeftHand | HitEventsLeft | HitFailEventsLeft |
-        | RightHand | HitEventsRight | HitFailEventsRight |
 
-## NantaInstrument
+- public override void SetScenario(int scenarioIndex)
+    - 각 시나리오에 맞는 적절한 인터페이스 오브젝트를 활성화한다.
+    - 시나리오가 끝날 때 발생하는 이벤트들을 Invoke한다.
+    - 0번쨰 인덱스의 Instrument를 활성화한다.
+    - 각 시나리오에 맞게 판정 이벤트를 초기화 후 새롭게 매핑한다.
+    - 시나리오 시작 시 발생하는 이벤트들을 Invoke한다.
+
+- public override void ResetAll()
+    - 씬 시작 상태로 되돌리는 함수.
+
+
+## NantaInstrumentManager
 
 ---
 
 class
 
-실제로 사용자가 컨트롤러를 통해 상호작용하는 오브젝트.
+난타 씬에서 사용되는 악기 오브젝트를 관리하는 클래스.
 
-사용자의 인터렉션이 타격인지 아닌지를 판별하며, 어느 쪽 손의 컨트롤러인지 확인한다.
+- public AbstractNantaInstrument[] Instruments
+    - 씬 진행에 사용되는 모든 악기들의 집합.
 
-- public BoxCollider[] Colliders
-    - 컨트롤러로 타격 가능한 범위이다.
-    - Collider의 범위는 실제 폴리곤보다 1.5배 크게 만든다.
+- private List<IEnumerator> changeRoutines
+    - 악기 교체에 사용되는 코루틴의 리스트.
 
-- public AudioClip[] InstrumentClips
-    - 악기와 관련된 효과음 목록이다.
+- public void Initialize()
+    - 초기 설정을 위한 함수.
 
-- public AudioSource InstrumentAudioSource
-    - 악기와 관련된 효과음이 나오는 곳이다.
+- public void ChangeInstrument(float time, int instrumentIndex)
+    - 악기를 교체하는 함수.
+    - time : 악기 교체가 일어나는 시간.
+    - instrumentIndex : 교체할 악기의 인덱스.
 
-- public void OnTriggerEnter(Collider other)
-    - other == 사용자의 컨트롤러 Collider일 경우,
-        - 변수 int type를 왼쪽 컨트롤러일 경우 0, 오른쪽 컨트롤러일 경우 1로 설정한다.
-        - NantaScenarioManager.JudgeNote(type) 호출.
-            - 결과가 Good일 경우 SoundManager.SoundPlay(InstrumentClips[0], InstrumentAudioSource) 호출.
+- IEnumerator ChangeRoutine(float time, int instrumentIndex)
+    - 악기를 교체하는 코루틴.
+    - time : 악기 교체가 일어나는 시간.
+    - instrumentIndex : 교체할 악기의 인덱스.
+
+- public void AlertChange(int instrumentIndex)
+    - 악기 교체 알림을 처리하는 함수.
+    - instrumentIndex : 교체할 악기의 인덱스.
+
+- public void ResetAll()
+    - 씬 시작 상태로 되돌리는 함수.
+
 
 ## NantaJudgingLine
 
@@ -645,39 +758,55 @@ class
 
 시간에 따라 노트를 생성하고 이를 통해 사용자에게 타이밍을 인지시키는 클래스.
 
-각각의 노트는 Object Pulling을 활용한다.
-
-- float judgingTime
+- public float FallingTime
     - 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     - getter/setter 제공
-    - Start시 NoteSpawnTransforms와 JudjingLine 위치를 참고하여 초기값을 설정한다.
 
 - float noteVelocity
     - 노트의 등속 운동 속도.
     - getter/setter 제공
 
-- public Transform RayPosition;
-    - 판정을 위한 Raycast가 발생하는 Transform.
+- public Transform[] RayPosition;
+    - 판정을 위한 Raycast가 발생하는 Transform. 노트가 낙하하는 각 라인 별로 존재한다.
+
+- public Transform[] JudgePosition;
+    - 실제 사용자가 보는 판정선 Transform. 노트가 낙하하는 각 라인 별로 존재한다.
+
+- public Transform[] NoteSpawnTransforms
+    - 노트가 생성되는 위치. 노트가 낙하하는 각 라인 별로 존재한다.
 
 - public Rigidbody NotePrefab
     - 생성하는 노트의 프리팹.
-    - Rigidbody로 등록하여 작업하기 편하게 한다.
+    - Rigidbody로 등록하여 코드 내에서 사용하기 편하게 한다.
 
-- public Transform[] NoteSpawnTransforms
-    - 노트가 생성되는 위치를 지정한다.
+- private List<Rigidbody> notes
+    - 생성된 모든 노트들을 저장하는 리스트.
+
+- private List<IEnumerator> noteRoutines
+    - 실행되는 모든 노트 루틴을 저장하는 리스트.
+
+- public void SetVelocity()
+    - 노트의 속력을 설정한다.
 
 - public void SpawnNote(float time, int type)
     - StartCoroutine으로 SpawnNoteRoutine(time, type) 루틴 실행.
+    - time : 노트가 생성되는 시간.
+    - type : 노트가 생성되는 라인.
     
 - IEnumerator SpawnNoteRoutine(float time, int type)
     - time - judgingTime 만큼  WaitforSecond를 통해 대기.
         - if(time - judgingTime > 0), 0초 대기.
     - 노트를 NoteSpawnTransforms[type].position에 생성하여 NoteSpawnTransforms[type].rotation 방향으로 등속 운동시킨다.
+    - time : 노트 생성까지 대기하는 시간.
+    - type : 노트가 생성되는 라인.
 
 - public int JudgeNote(int type)
-    - 노트 타입에 연결되는 라인에서 노트 진행 방향으로 가장 멀리 이동한 노트를 참조한다.
-    - 참조한 노트가 해당 면에 Trigger된 상태라면 1을 반환한다.
-    - 그 외엔 0을 반환한다.
+    - 노트 타입에 연결되는 라인에서 노트 진행 방향으로 가장 멀리 이동한 노트를 참조해 판정을 한다.
+    - 이후 NantaScenarioManager.JudgeNote()를 호출하여 적절한 이벤트를 발생시킨다.
+    - type : 판정을 진행할 라인.
+
+- public void ResetAll()
+    - 씬 시작 상태로 되돌리는 함수.
 
 # Dance Scene
 
@@ -913,7 +1042,7 @@ class
 
 - int _SetStartIndex(int value)
     - 시작 인덱스가 IndexError를 일으키지 않도록 방지하는 함수이다.
-    - 반환값: IndexError을 일으키지 않는 범위 내의 값.
+    - returns: IndexError을 일으키지 않는 범위 내의 값.
 
 - void SetGallery()
     - GalleryImage.SetImage(string dirPath)를 통해 각 이미지를 갱신한다.

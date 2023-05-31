@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 난타 씬에서 사용되는 악기 오브젝트를 관리하는 클래스.
+/// </summary>
 public class NantaInstrumentManager : MonoBehaviour
 {
     /// <summary>
@@ -25,6 +27,8 @@ public class NantaInstrumentManager : MonoBehaviour
     }
     /// <summary>
     /// 악기를 교체하는 함수.
+    /// <param name="time">교체되는 시간</param>
+    /// <param name="instrumentIndex">교체될 악기 인덱스</param>
     /// </summary>
     public void ChangeInstrument(float time, int instrumentIndex)
     {
@@ -43,6 +47,15 @@ public class NantaInstrumentManager : MonoBehaviour
             instrument.gameObject.SetActive(false);
         }
         Instruments[instrumentIndex].gameObject.SetActive(true);
+        AlertChange(instrumentIndex);
+    }
+    /// <summary>
+    /// 악기 교체 알림을 처리하는 함수.
+    /// </summary>
+    /// <param name="instrumentIndex">변경되는 악기 인덱스</param>
+    public void AlertChange(int instrumentIndex)
+    {
+        //TODO: 악기 교체 알림.
     }
     /// <summary>
     /// 씬 시작 상태로 되돌리는 함수.

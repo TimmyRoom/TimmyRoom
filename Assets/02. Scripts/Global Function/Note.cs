@@ -1,6 +1,9 @@
 using System;
 
 [System.Serializable]
+/// <summary>
+/// GameChart에서 다루는 각 노트의 클레스.
+/// </summary>
 public class Note
 {
     /// <summary>

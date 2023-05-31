@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine.Events;
 
+/// <summary>
+/// AbstractSceneManager에서 시나리오로 분류되는 클래스들의 인터페이스.
+/// </summary>
 public interface IScenario
 {
     /// <summary>

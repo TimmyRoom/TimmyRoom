@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 [System.Serializable]
+/// <summary>
+/// 채보 데이터를 나타내는 클래스. JSON 파싱 후 해당 형태로 변환된다.
+/// </summary>
 public class GameChart
 {
     /// <summary>

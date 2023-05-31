@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 난타 씬에서 악기로 사용되는 오브젝트 스크립트의 추상 클래스.
+/// </summary>
 public abstract class AbstractNantaInstrument : MonoBehaviour
 {
     /// <summary>
