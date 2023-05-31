@@ -30,8 +30,9 @@ public class UserDataManager : MonoBehaviour
     /// 모든 유저 정보를 불러온다.
     /// </summary>
     /// <returns>성공하면 true, 실패하면 false</returns>
-    bool LoadData()
+    public bool LoadData()
     {
+        // After Making Login Scene
         try
         {
             string dirPath = Application.persistentDataPath;
@@ -51,7 +52,7 @@ public class UserDataManager : MonoBehaviour
     /// 지정된 프로필의 데이터 파일을 읽어 currentProfile을 갱신한다.
     /// </summary>
     /// <param name="targetProfile">프로필 이름.</param>
-    void ReadData(int targetProfile)
+    public void ReadData(int targetProfile)
     {
         CurrentProfile = targetProfile;
         //TODO : 데이터를 읽어 적용한다.
@@ -61,7 +62,7 @@ public class UserDataManager : MonoBehaviour
     /// <summary>
     /// currenProfile에 해당하는 파일의 정보를 저장한다.
     /// </summary>
-    void SaveData()
+    public void SaveData()
     {
         string json = JsonUtility.ToJson(GameData.userDataList);
         string dirPath = Application.persistentDataPath;
@@ -73,7 +74,7 @@ public class UserDataManager : MonoBehaviour
     /// </summary>
     /// <param name="targetProfile">새로 생성할 프로필 이름.</param>
     /// <param name="jsonData">새로 생성할 프로필 정보.</param>
-    void AddNewData(int colorId, int patterId)
+    public void AddNewData(int colorId, int patterId)
     {
         int id = GameData.AddUser(colorId, patterId);
         if(id == -1)

@@ -11,6 +11,31 @@ public class UserData
     public int patternId;
 }
 
+[System.Serializable]
+public enum UserColor
+{
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    Purple,
+    Orange,
+    Black,
+    SkyBlue,
+    Brown,
+    Pink,
+    None
+}
+
+public enum UserPattern
+{
+    None,
+    Star,
+    Heart,
+    Circle,
+    Square,
+    Triangle
+}
 
 public static class GameData
 {
