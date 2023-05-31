@@ -26,11 +26,11 @@ public class NantaScenarioManager : MusicContentTool
     /// <summary>
     /// 난타 북의 판정을 담당하는 클래스이다.
     /// </summary>
-    [SerializeField] NantaJudgingLine nantaJudgeLine;
+    [SerializeField] private NantaJudgingLine nantaJudgeLine;
     /// <summary>
     /// 난타 악기 오브젝트들을 관리하는 클래스이다.
     /// </summary>
-    [SerializeField] NantaInstrumentManager nantaInstrumentManager;
+    [SerializeField] private NantaInstrumentManager nantaInstrumentManager;
 
     /// <summary>
     /// 각 상황마다 등장하는 UI이다.
@@ -38,7 +38,7 @@ public class NantaScenarioManager : MusicContentTool
     public GameObject[] Scenarios;
 
     /// <summary>
-    /// Instruction에서 발생 가능한 이벤트 타입.
+    /// Instruction에서 발생 가능한 이벤트 타입을 표현하는 열거형이다.
     /// </summary>
     public enum EventType
     {
@@ -159,16 +159,6 @@ public class NantaScenarioManager : MusicContentTool
         barCombo = 0;
     }
 
-    public override void MoveScene(string sceneName)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void MoveScene(int sceneIndex)
-    {
-        throw new System.NotImplementedException();
-    }
-
     /// <summary>
     /// 각 노트에 대해 CommandExecute(time, command) 호출.
     /// </summary>
@@ -194,6 +184,9 @@ public class NantaScenarioManager : MusicContentTool
     }
     /// <summary>
     /// 일정 시간 후 음악을 재생하는 코루틴.
+    /// <param name="audioClip">재생할 오디오 클립.</param>
+    /// <param name="waitTime">대기 시간.</param>
+    /// <param name="barSecond">마디당 소요 시간.</param>
     /// </summary>
     IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
     {
@@ -313,5 +306,15 @@ public class NantaScenarioManager : MusicContentTool
         StopCoroutine(SongRoutine);
         nantaJudgeLine.ResetAll();
         SoundManager.instance.StopSound(MusicAudioSource);
+    }
+
+    public override void MoveScene(string sceneName)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void MoveScene(int sceneIndex)
+    {
+        throw new System.NotImplementedException();
     }
 }
