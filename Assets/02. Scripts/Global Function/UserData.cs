@@ -27,6 +27,7 @@ public enum UserColor
     None
 }
 
+[System.Serializable]
 public enum UserPattern
 {
     None,
@@ -37,9 +38,15 @@ public enum UserPattern
     Triangle
 }
 
+[System.Serializable]
+public class SerializableGameData
+{
+    public List<UserData> userDataList = new List<UserData>();
+}
+
 public static class GameData
 {
-    public static List<UserData> userDataList; 
+    public static List<UserData> userDataList = new List<UserData>(); 
 
     public static int AddUser(int colorId, int patternId)
     {

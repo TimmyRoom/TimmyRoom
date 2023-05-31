@@ -17,7 +17,16 @@ public class LoginCanvasManager : MonoBehaviour
     private void Start() {
         foreach(var user in GameData.userDataList)
         {
-            GameObject profile = Instantiate(profilePrefab, transform);
+            GameObject profile = Instantiate(profilePrefab, profileGrid.transform, false);
+            profile.GetComponent<Profile>().SetProfile(user.id, user.colorId, user.patternId);
+        }
+    }
+
+    public void NewStart()
+    {
+        foreach(var user in GameData.userDataList)
+        {
+            GameObject profile = Instantiate(profilePrefab, profileGrid.transform, false);
             profile.GetComponent<Profile>().SetProfile(user.id, user.colorId, user.patternId);
         }
     }

@@ -37,7 +37,8 @@ public class UserDataManager : MonoBehaviour
         {
             string dirPath = Application.persistentDataPath;
             string json = System.IO.File.ReadAllText(dirPath + "/userData.json");
-            GameData.userDataList = JsonUtility.FromJson<List<UserData>>(json);
+            SerializableGameData gameData = JsonUtility.FromJson<SerializableGameData>(json);
+            GameData.userDataList = gameData.userDataList;
             return true;
         }
         catch(UnityEngine.UnityException e)
@@ -64,8 +65,15 @@ public class UserDataManager : MonoBehaviour
     /// </summary>
     public void SaveData()
     {
-        string json = JsonUtility.ToJson(GameData.userDataList);
+        SerializableGameData gameData = new SerializableGameData();
+        gameData.userDataList = GameData.userDataList;
+
+        string json = JsonUtility.ToJson(gameData);
         string dirPath = Application.persistentDataPath;
+        // foreach(var user in GameData.userDataList)
+        // {
+        //     Debug.Log(user.id + " " + user.colorId + " " + user.patternId);
+        // }
         System.IO.File.WriteAllText(dirPath + "/userData.json", json);
     }
 
