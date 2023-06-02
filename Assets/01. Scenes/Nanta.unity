@@ -1344,16 +1344,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NantaJudjingLine
       objectReference: {fileID: 0}
-    - target: {fileID: 8514578786437164294, guid: a90945afa1a6cf240aedeeb1bf133516,
-        type: 3}
-      propertyPath: manager
-      value: 
-      objectReference: {fileID: 5379406326018483779}
-    - target: {fileID: 8514578786437164294, guid: a90945afa1a6cf240aedeeb1bf133516,
-        type: 3}
-      propertyPath: fallingTime
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a90945afa1a6cf240aedeeb1bf133516, type: 3}
 --- !u!114 &4777317281855846476 stripped
@@ -1752,11 +1742,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7178171539684536721, guid: baaa4148841d54b47a7329310144994f,
-        type: 3}
-      propertyPath: Judge
-      value: 
-      objectReference: {fileID: 4777317281855846476}
     - target: {fileID: 7834365799416552954, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
       propertyPath: m_Name
@@ -1770,17 +1755,17 @@ PrefabInstance:
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2794557
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0239911
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.615569
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
@@ -1815,11 +1800,6 @@ PrefabInstance:
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7914481076535190275, guid: baaa4148841d54b47a7329310144994f,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

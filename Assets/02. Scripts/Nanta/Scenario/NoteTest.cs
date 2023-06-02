@@ -53,6 +53,6 @@ public class NoteTest : HitTest, IScenario
     /// <returns>인스트럭션에서 발생하는 액션들의 리스트</returns>
     public override Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 2, SetCount }, { 4, StartBar} };
+        return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 2, StartBar } };
     }
 }

@@ -8,19 +8,39 @@
     "Notes": [
         {
             "Time": 0,
-            "Type": "RightHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
         },
         {
             "Time": 1,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         },
         {
             "Time": 2,
-            "Type": "RightHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
         },
         {
             "Time": 3,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         }
     ]
 }

@@ -35,6 +35,6 @@ public class HitTest : MonoBehaviour, IScenario
     /// <returns>인스트럭션에서 발생하는 액션들의 리스트</returns>
     public virtual Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 1, SetCount }, { 3, SetCount } };
+        return new Dictionary<int, UnityAction>() { { 1, SetCount }};
     }
 }

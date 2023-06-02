@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [System.Serializable]
 /// <summary>
@@ -11,7 +12,7 @@ public class Note
     /// </summary>
     public float Time;
     /// <summary>
-    /// 노트의 타입.
+    /// 노트에 포함된 액션 목록.
     /// </summary>
-    public string Type;
+    public List<Action> Actions;
 }
