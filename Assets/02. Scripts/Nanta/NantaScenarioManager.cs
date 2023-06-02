@@ -198,7 +198,14 @@ public class NantaScenarioManager : MusicContentTool
             {
                 case "Hit":
                 {
-                    nantaJudgeLine.SpawnNote(time, action.Type);
+                    if(actions.Find(x => x.Name == "Change") != null)
+                    {
+                        nantaJudgeLine.SpawnNoteWithChange(time, action.Type);
+                    }
+                    else
+                    {
+                        nantaJudgeLine.SpawnNote(time, action.Type);
+                    }
                     break;
                 }
                 case "Change":

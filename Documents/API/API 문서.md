@@ -756,10 +756,6 @@ class
     - time : 악기 교체가 일어나는 시간.
     - instrumentIndex : 교체할 악기의 인덱스.
 
-- public void AlertChange(int instrumentIndex)
-    - 악기 교체 알림을 처리하는 함수.
-    - instrumentIndex : 교체할 악기의 인덱스.
-
 - public void ResetAll()
     - 씬 시작 상태로 되돌리는 함수.
 
