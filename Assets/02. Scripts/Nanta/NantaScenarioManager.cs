@@ -42,10 +42,8 @@ public class NantaScenarioManager : MusicContentTool
     /// </summary>
     public enum EventType
     {
-        LeftHit,
-        LeftFail,
-        RightHit,
-        RightFail,
+        Hit,
+        Fail,
         Start,
         End
     }
@@ -55,10 +53,8 @@ public class NantaScenarioManager : MusicContentTool
     /// </summary>
     private Dictionary<EventType, UnityEvent> ScenarioEvents = 
         new Dictionary<EventType, UnityEvent>(){
-        { EventType.LeftHit, new UnityEvent() },
-        { EventType.LeftFail, new UnityEvent() },
-        { EventType.RightHit, new UnityEvent() },
-        { EventType.RightFail, new UnityEvent() },
+        { EventType.Hit, new UnityEvent() },
+        { EventType.Fail, new UnityEvent() },
         { EventType.Start, new UnityEvent() },
         { EventType.End, new UnityEvent() }
         };
@@ -224,17 +220,17 @@ public class NantaScenarioManager : MusicContentTool
                 {
                     case 1:
                     {
-                        ScenarioEvents[EventType.LeftHit]?.Invoke();
+                        ScenarioEvents[EventType.Hit]?.Invoke();
                         break;
                     }
                     case 0:
                     {
-                        ScenarioEvents[EventType.LeftFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     case -1:
                     {
-                        ScenarioEvents[EventType.LeftFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     default:
@@ -250,17 +246,17 @@ public class NantaScenarioManager : MusicContentTool
                 {
                     case 1:
                     {
-                        ScenarioEvents[EventType.RightHit]?.Invoke();
+                        ScenarioEvents[EventType.Hit]?.Invoke();
                         break;
                     }
                     case 0:
                     {
-                        ScenarioEvents[EventType.RightFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     case -1:
                     {
-                        ScenarioEvents[EventType.RightFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     default:

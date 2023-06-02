@@ -64,6 +64,6 @@ public class ChartTest : NoteTest
     }
     public override Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 1, MissNote }, { 2, SetCount }, { 3, MissNote }, { 4, StartBar} };
+        return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 1, MissNote }, { 2, StartBar } };
     }
 }
