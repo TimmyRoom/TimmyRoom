@@ -82,6 +82,20 @@ AbstractSceneManager에서 시나리오로 분류되는 클래스들의 인터�
     - 해당 인스트럭션에서 발생하는 액션들의 리스트를 반환한다.
     - returns : 인스트럭션에서 발생하는 액션들의 리스트
 
+## Action
+
+---
+
+class 
+
+Note에서 다루는 각 노트의 액션.
+
+- public string Name
+    - 액션의 이름.
+
+- public int Type
+    - 액션의 타입.
+
 ## Note
 
 ---
@@ -93,10 +107,10 @@ GameChart에서 다루는 각 노트의 클레스.
 - public float Time
     - 노트 등장 시간.
 
-- public string Type
-    - 노트의 타입.
+- public List<Action> Actions
+    - 노트에 포함된 액션 목록.
 
-##GameChart
+## GameChart
 
 ---
 
@@ -340,10 +354,10 @@ abstract class
     - type : 노트의 타입.
     - return : 노트 판정 결과.
 
-- public abstract void CommandExecute(float time, string command)
-    - switch구문으로 brach를 나눠 command에 따라 적절한 함수를 실행한다.
-    - time : command가 실행될 기준 시간.
-    - command : command 구문.
+- public abstract void CommandExecute(float time, List<Action> actions)
+    - switch구문으로 branch를 나눠 적절한 함수를 실행한다.
+    - time : 액션이 실행될 기준 시간.
+    - command : 실행될 액션 목록.
 
 - public abstract void ResetAll()
     - 씬의 상태를 채보 시작 이전 상태로 되돌린다.

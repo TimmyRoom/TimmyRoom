@@ -171,7 +171,7 @@ public class NantaScenarioManager : MusicContentTool
         nantaJudgeLine.SetVelocity();
         foreach(var note in data.Notes)
         {
-            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + GetWaitTime(), note.Type);
+            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + GetWaitTime(), note.Actions);
         }
         SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
         StartCoroutine(SongRoutine);
@@ -194,19 +194,23 @@ public class NantaScenarioManager : MusicContentTool
         StartMusic(audioClip, barSecond);
     }
 
-    public override void CommandExecute(float time, string command)
+    public override void CommandExecute(float time, List<Action> actions)
     {
-        if(command == "LeftHand")
+        foreach(var action in actions)
         {
-            nantaJudgeLine.SpawnNote(time, 0);
-        }
-        else if(command == "RightHand")
-        {
-            nantaJudgeLine.SpawnNote(time, 1);    
-        }
-        else if(Regex.IsMatch(command, "^ChangeInstrument .$"))
-        {
-            nantaInstrumentManager.ChangeInstrument(time, int.Parse(command.Split(' ')[1]));
+            switch(action.Name)
+            {
+                case "Hit":
+                {
+                    nantaJudgeLine.SpawnNote(time, action.Type);
+                    break;
+                }
+                case "Change":
+                {
+                    nantaInstrumentManager.ChangeInstrument(time, action.Type);
+                    break;
+                }
+            }
         }
     }
 

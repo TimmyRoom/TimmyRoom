@@ -8,43 +8,93 @@
     "Notes": [
         {
             "Time": 0,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         },
         {
             "Time": 1,
-            "Type": "RightHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
         },
         {
             "Time": 2,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         },
         {
             "Time": 2.5,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         },
         {
             "Time": 3,
-            "Type": "RightHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
         },
         {
             "Time": 4,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         },
         {
             "Time": 5,
-            "Type": "RightHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
         },
         {
             "Time": 6,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         },
         {
             "Time": 6.5,
-            "Type": "LeftHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
         },
         {
             "Time": 7,
-            "Type": "RightHand"
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
         }
     ]
 }
