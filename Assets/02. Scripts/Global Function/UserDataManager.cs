@@ -41,9 +41,10 @@ public class UserDataManager : MonoBehaviour
             GameData.userDataList = gameData.userDataList;
             return true;
         }
-        catch(UnityEngine.UnityException e)
+        catch(System.Exception e)
         {
-            Debug.LogError(e.Message);
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/userData.json", "");
+            Debug.LogWarning("LoadData : " + e.Message);
             return false;
         }
     }

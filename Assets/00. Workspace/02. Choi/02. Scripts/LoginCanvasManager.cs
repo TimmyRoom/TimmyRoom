@@ -15,6 +15,12 @@ public class LoginCanvasManager : MonoBehaviour
     }
 
     private void Start() {
+        if(GameData.userDataList.Count == 0)
+        {
+            SceneMover.instance.MoveScene("SignUp");
+            return;    
+        }
+
         foreach(var user in GameData.userDataList)
         {
             GameObject profile = Instantiate(profilePrefab, profileGrid.transform, false);
