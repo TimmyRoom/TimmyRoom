@@ -49,13 +49,14 @@ public abstract class MusicContentTool : AbstractSceneManager
         GameChart data = GetScript(json);
         foreach(var note in data.Notes)
         {
-            CommandExecute(Beat2Second(note.Time, data.BPM), note.Type);
+            CommandExecute(Beat2Second(note.Time, data.BPM), note.Actions);
         }
         return data;
     }
 
     /// <summary>
-    /// 음악 재생 전 대기하는 시간을 기록한다. 이는 음수 시간 발생을 방지하기 위함이다.
+    /// 음악 재생 전 대기하는 시간을 기록한다.
+    /// 이는 노트 낙하 및 등장 시간으로 인해 WaitforSecond의 파라미터로 음수 시간이 할당되는 것을 방지하기 위함이다.
     /// </summary>
     /// <returns>노트 이펙트 생성에 필요한 최대 시간</returns>
     public abstract float GetWaitTime();
@@ -69,13 +70,13 @@ public abstract class MusicContentTool : AbstractSceneManager
     public abstract int JudgeNote(int type, int result);
 
     /// <summary>
-    /// switch구문으로 branch를 나눠 command에 따라 적절한 함수를 실행한다.
+    /// switch구문으로 branch를 나눠 적절한 함수를 실행한다.
     /// </summary>
-    /// <param name="time">command가 실행될 기준 시간.</param>
-    /// <param name="command">command 구문.</param>
-    public abstract void CommandExecute(float time, string command);
+    /// <param name="time">액션이 실행될 기준 시간.</param>
+    /// <param name="actions">실행될 액션 목록.</param>
+    public abstract void CommandExecute(float time, List<Action> actions);
     /// <summary>
-    /// 채보 시작 이전 상태로 되돌린다.
+    /// 씬의 상태를 채보 시작 이전 상태로 되돌린다.
     /// </summary>
     public abstract void ResetAll();
 

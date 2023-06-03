@@ -1,66 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1925652264087486947
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 982297706393719122}
-  - component: {fileID: 1871289072300274291}
-  - component: {fileID: 7075356788432595452}
-  m_Layer: 0
-  m_Name: Left
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &982297706393719122
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925652264087486947}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1195787, z: -0.38800007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4499548486327591120}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1871289072300274291
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925652264087486947}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 4, z: 1}
-  m_Center: {x: -0.3, y: 0.6, z: 0}
---- !u!114 &7075356788432595452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925652264087486947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806443792c7664c4198015e249b67345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InstrumentClips: []
-  InstrumentAudioSource: {fileID: 3951163383134516667}
-  InstrumentType: 0
 --- !u!1 &7037869353072338571
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +12,7 @@ GameObject:
   - component: {fileID: 9153318055866916128}
   - component: {fileID: 7075356788432595451}
   m_Layer: 0
-  m_Name: Right
+  m_Name: HitArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7037869353072338571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1195787, z: -0.38800007}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4499548486327591120}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &9153318055866916128
 BoxCollider:
@@ -105,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 4, z: 1}
-  m_Center: {x: 0.3, y: 0.6, z: 0}
+  m_Size: {x: 1, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!114 &7075356788432595451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,8 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806443792c7664c4198015e249b67345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstrumentClips: []
-  InstrumentAudioSource: {fileID: 3951163383134516667}
   InstrumentType: 1
 --- !u!1 &8233359263448586676
 GameObject:
@@ -132,8 +69,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4499548486327591120}
   - component: {fileID: 3951163383134516667}
+  - component: {fileID: 1091206828797971480}
   m_Layer: 0
-  m_Name: NantaInstrument
+  m_Name: DrumSingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,11 +86,10 @@ Transform:
   m_GameObject: {fileID: 8233359263448586676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.453, z: 0.802}
-  m_LocalScale: {x: 1, y: 0.44322273, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2094577847907472051}
-  - {fileID: 982297706393719122}
   - {fileID: 5635977174768444731}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -253,6 +190,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1091206828797971480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233359263448586676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8941085478ec07a41908eda4f608fea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InstrumentClips: []
+  InstrumentAudioSource: {fileID: 3951163383134516667}
+  Judge: {fileID: 0}
+  HitAreas:
+  - {fileID: 7075356788432595451}
 --- !u!1001 &1917361404752442712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,7 +232,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 565583df563187849b4e2eacc1d52528,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 565583df563187849b4e2eacc1d52528,
         type: 3}
@@ -288,7 +242,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 565583df563187849b4e2eacc1d52528,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 565583df563187849b4e2eacc1d52528,
         type: 3}

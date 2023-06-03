@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 난타 씬에서 악기로 사용되는 오브젝트 스크립트의 추상 클래스.
+/// </summary>
 public abstract class AbstractNantaInstrument : MonoBehaviour
 {
     /// <summary>
@@ -13,7 +15,11 @@ public abstract class AbstractNantaInstrument : MonoBehaviour
     /// 악기와 관련된 효과음이 나오는 곳.
     /// </summary>
     public AudioSource InstrumentAudioSource;
-    public NantaJudgingLine Judge;
+    
+    /// <summary>
+    /// 판정을 위해 참조하는 클래스.
+    /// </summary>
+    [SerializeField] protected NantaJudgingLine Judge;
 
     /// <summary>
     /// 악기의 초기화를 위한 함수.
