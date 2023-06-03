@@ -82,19 +82,21 @@ public class UserDataManager : MonoBehaviour
     /// </summary>
     /// <param name="targetProfile">새로 생성할 프로필 이름.</param>
     /// <param name="jsonData">새로 생성할 프로필 정보.</param>
-    public void AddNewData(int colorId, int patterId)
+    public bool AddNewData(int colorId, int patterId)
     {
         int id = GameData.AddUser(colorId, patterId);
         if(id == -1)
         {
             Debug.LogWarning("AddNewData : AddUser Failed");
-            throw new System.Exception("AddNewData : AddUser Failed");
+            return false;
         }
         CurrentProfile = id;
+        return true;
     }
 
     private void OnApplicationQuit()
     {
+        Debug.Log("Application Quit");
         SaveData();
     }
 }

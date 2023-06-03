@@ -17,5 +17,6 @@ public class Profile : MonoBehaviour
 
         this.GetComponent<Image>().color = ColorManager.instance.GetColor(colorId);
         this.transform.GetChild(0).GetComponent<Image>().sprite = PatternManager.instance.GetPattern(patternId);
+        this.transform.Find("Text").GetComponent<Text>().text = "플레이어 " + (id + 1);
     }
 }

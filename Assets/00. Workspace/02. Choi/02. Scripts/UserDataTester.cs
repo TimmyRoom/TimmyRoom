@@ -12,4 +12,9 @@ public class UserDataTester : MonoBehaviour
 
         Debug.Log(GameData.userDataList.Count);
     }
+
+    public void MoveToSignUp()
+    {
+        SceneMover.instance.MoveScene("SignUp");
+    }
 }

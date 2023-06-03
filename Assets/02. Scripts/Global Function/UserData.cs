@@ -24,18 +24,24 @@ public enum UserColor
     SkyBlue,
     Brown,
     Pink,
+    Lime,
+    Olive,
+    Navy,
     None
 }
 
 [System.Serializable]
 public enum UserPattern
 {
-    None,
     Star,
     Heart,
     Circle,
     Square,
-    Triangle
+    Music,
+    Triangle,
+    Car,
+    Rocket,
+    None,
 }
 
 [System.Serializable]

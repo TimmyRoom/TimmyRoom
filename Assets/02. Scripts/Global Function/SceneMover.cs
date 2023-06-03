@@ -30,7 +30,7 @@ public class SceneMover : MonoBehaviour
     public void MoveScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-        VibrateControl.instance.InitializeController();
+        // VibrateControl.instance.InitializeController();
     }
 
     /// <summary>
