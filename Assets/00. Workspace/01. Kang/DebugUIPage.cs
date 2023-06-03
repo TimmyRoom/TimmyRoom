@@ -21,6 +21,6 @@ public class DebugUIPage : MonoBehaviour, IScenario
 
     public Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 0, UP }, { 2, UP }, {4, StartSong} };
+        return new Dictionary<int, UnityAction>() { { 0, UP }, { 2, StartSong} };
     }
 }

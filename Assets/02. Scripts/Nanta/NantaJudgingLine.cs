@@ -39,6 +39,11 @@ public class NantaJudgingLine : MonoBehaviour
     public Rigidbody NotePrefab;
 
     /// <summary>
+    /// 생성하는 악기 변환 노트의 프리팹.
+    /// </summary>
+    public Rigidbody NoteChangePrefab;
+
+    /// <summary>
     /// 생성된 모든 노트들을 저장하는 리스트.
     /// </summary>
     private List<Rigidbody> notes = new List<Rigidbody>();
@@ -61,9 +66,21 @@ public class NantaJudgingLine : MonoBehaviour
     /// </summary>
     /// <param name="time">루틴이 시작될 시간.</param>
     /// <param name="type">노트가 생성되는 라인</param>
-    public void SpawnNote(float time, int type)
+    public void SpawnNote(float time, int type, bool isChange = false)
     {
         IEnumerator noteRoutine = SpawnNoteRoutine(time, type);
+        noteRoutines.Add(noteRoutine);
+        StartCoroutine(noteRoutine);
+    }
+
+    /// <summary>
+    /// SpawnNoteRoutineWithChange(time, type) 루틴 실행.
+    /// </summary>
+    /// <param name="time">루틴이 시작될 시간.</param>
+    /// <param name="type">노트가 생성되는 라인</param>
+    public void SpawnNoteWithChange(float time, int type)
+    {
+        IEnumerator noteRoutine = SpawnNoteRoutineWithChange(time, type);
         noteRoutines.Add(noteRoutine);
         StartCoroutine(noteRoutine);
     }
@@ -77,6 +94,22 @@ public class NantaJudgingLine : MonoBehaviour
     {
         yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
+        newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
+        yield return new WaitForSeconds(1.1f * fallingTime);
+        if(newNote.gameObject.activeInHierarchy) NantaScenarioManager.instance.JudgeNote(type, 0);
+        Destroy(newNote?.gameObject);
+        notes.Remove(newNote);
+    }
+
+    /// <summary>
+    /// 일정 시간동안 대기 후 악기 변환 노트를 생성하여 움직이게 한다.
+    /// </summary>
+    /// <param name="time">생성까지 대기하는 시간.</param>
+    /// <param name="type">노트가 생성되는 라인.</param>
+    IEnumerator SpawnNoteRoutineWithChange(float time, int type)
+    {
+        yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));
+        Rigidbody newNote = GetNoteWithChange(type);
         newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
         yield return new WaitForSeconds(1.1f * fallingTime);
         if(newNote.gameObject.activeInHierarchy) NantaScenarioManager.instance.JudgeNote(type, 0);
@@ -126,6 +159,16 @@ public class NantaJudgingLine : MonoBehaviour
     Rigidbody GetNote(int type)
     {
         Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms[type].position, NoteSpawnTransforms[type].rotation);
+        notes.Add(newNote);
+        return newNote;
+    }
+    /// <summary> 
+    /// 악기 변환 노트를 생성하고 해당 오브젝트의 RigidBody 컴포넌트를 반환한다.
+    /// <returns>생성된 노트의 RigidBody.</returns>
+    /// </summary>
+    Rigidbody GetNoteWithChange(int type)
+    {
+        Rigidbody newNote = Instantiate(NoteChangePrefab, NoteSpawnTransforms[type].position, NoteSpawnTransforms[type].rotation);
         notes.Add(newNote);
         return newNote;
     }

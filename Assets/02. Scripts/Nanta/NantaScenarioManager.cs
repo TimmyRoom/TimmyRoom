@@ -42,10 +42,8 @@ public class NantaScenarioManager : MusicContentTool
     /// </summary>
     public enum EventType
     {
-        LeftHit,
-        LeftFail,
-        RightHit,
-        RightFail,
+        Hit,
+        Fail,
         Start,
         End
     }
@@ -55,10 +53,8 @@ public class NantaScenarioManager : MusicContentTool
     /// </summary>
     private Dictionary<EventType, UnityEvent> ScenarioEvents = 
         new Dictionary<EventType, UnityEvent>(){
-        { EventType.LeftHit, new UnityEvent() },
-        { EventType.LeftFail, new UnityEvent() },
-        { EventType.RightHit, new UnityEvent() },
-        { EventType.RightFail, new UnityEvent() },
+        { EventType.Hit, new UnityEvent() },
+        { EventType.Fail, new UnityEvent() },
         { EventType.Start, new UnityEvent() },
         { EventType.End, new UnityEvent() }
         };
@@ -171,7 +167,7 @@ public class NantaScenarioManager : MusicContentTool
         nantaJudgeLine.SetVelocity();
         foreach(var note in data.Notes)
         {
-            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + GetWaitTime(), note.Type);
+            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + GetWaitTime(), note.Actions);
         }
         SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
         StartCoroutine(SongRoutine);
@@ -194,19 +190,30 @@ public class NantaScenarioManager : MusicContentTool
         StartMusic(audioClip, barSecond);
     }
 
-    public override void CommandExecute(float time, string command)
+    public override void CommandExecute(float time, List<Action> actions)
     {
-        if(command == "LeftHand")
+        foreach(var action in actions)
         {
-            nantaJudgeLine.SpawnNote(time, 0);
-        }
-        else if(command == "RightHand")
-        {
-            nantaJudgeLine.SpawnNote(time, 1);    
-        }
-        else if(Regex.IsMatch(command, "^ChangeInstrument .$"))
-        {
-            nantaInstrumentManager.ChangeInstrument(time, int.Parse(command.Split(' ')[1]));
+            switch(action.Name)
+            {
+                case "Hit":
+                {
+                    if(actions.Find(x => x.Name == "Change") != null)
+                    {
+                        nantaJudgeLine.SpawnNoteWithChange(time, action.Type);
+                    }
+                    else
+                    {
+                        nantaJudgeLine.SpawnNote(time, action.Type);
+                    }
+                    break;
+                }
+                case "Change":
+                {
+                    nantaInstrumentManager.ChangeInstrument(time, action.Type);
+                    break;
+                }
+            }
         }
     }
 
@@ -220,17 +227,17 @@ public class NantaScenarioManager : MusicContentTool
                 {
                     case 1:
                     {
-                        ScenarioEvents[EventType.LeftHit]?.Invoke();
+                        ScenarioEvents[EventType.Hit]?.Invoke();
                         break;
                     }
                     case 0:
                     {
-                        ScenarioEvents[EventType.LeftFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     case -1:
                     {
-                        ScenarioEvents[EventType.LeftFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     default:
@@ -246,17 +253,17 @@ public class NantaScenarioManager : MusicContentTool
                 {
                     case 1:
                     {
-                        ScenarioEvents[EventType.RightHit]?.Invoke();
+                        ScenarioEvents[EventType.Hit]?.Invoke();
                         break;
                     }
                     case 0:
                     {
-                        ScenarioEvents[EventType.RightFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     case -1:
                     {
-                        ScenarioEvents[EventType.RightFail]?.Invoke();
+                        ScenarioEvents[EventType.Fail]?.Invoke();
                         break;
                     }
                     default:
