@@ -19,38 +19,26 @@ public class DanceScenarioManager : MusicContentTool
         }
         DontDestroyOnLoad(this);
     }
+
     [SerializeField] DanceJudgingPoint danceJudgingPoint;
 
-    public enum NoteType
+    public GameObject[] Scenarios;
+
+    public enum EventType
     {
-        LeftUpper,
-        RightUpper,
-        LeftMiddle,
-        RightMiddle,
-        Front
+        Hit,
+        Fail,
+        Start,
+        End
     }
 
-    public enum NoteResult
-    {
-        Miss,
-        Good
-    }
-
-    public UnityEvent[] TriggerEventsLeftUpper;
-
-    public UnityEvent[] TriggerFailEventsLeftUpper;
-
-    public UnityEvent[] TriggerEventsRightUpper;
-
-    public UnityEvent[] TriggerFailEventsRightUpper;
-
-    public UnityEvent[] TriggerEventsLeftMiddle;
-
-    public UnityEvent[] TriggerFailEventsLeftMiddle;
-
-    public UnityEvent[] TriggerEventsRightMiddle;
-
-    public UnityEvent[] TriggerFailEventsRightMiddle;
+    Dictionary<EventType, UnityEvent> ScenarioEvents =
+        new Dictionary<EventType, UnityEvent>(){
+        { EventType.Hit, new UnityEvent() },
+        { EventType.Fail, new UnityEvent() },
+        { EventType.Start, new UnityEvent() },
+        { EventType.End, new UnityEvent() }
+        };
 
     public AudioClip[] ComboClips;
 
@@ -60,7 +48,16 @@ public class DanceScenarioManager : MusicContentTool
 
     int barCombo = 0;
 
-    IEnumerator ComboRoutine()
+    IEnumerator SongRoutine;
+
+    IEnumerator ComboRoutine;
+
+    void Start()
+    {
+        Initialize();
+    }
+
+    void Initialize()
     {
         throw new System.NotImplementedException();
     }
@@ -85,7 +82,7 @@ public class DanceScenarioManager : MusicContentTool
         throw new System.NotImplementedException();
     }
 
-    public override void CommandExecute(float time, string command)
+    public override GameChart PlayChart(string json, AudioClip audioClip)
     {
         throw new System.NotImplementedException();
     }
@@ -95,7 +92,27 @@ public class DanceScenarioManager : MusicContentTool
         throw new System.NotImplementedException();
     }
 
+    IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void CommandExecute(float time, List<Action> actions)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override int JudgeNote(int type, int result)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SetScenario(int scenarioIndex)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ResetAll()
     {
         throw new System.NotImplementedException();
     }
@@ -109,15 +126,4 @@ public class DanceScenarioManager : MusicContentTool
     {
         throw new System.NotImplementedException();
     }
-
-    public override void ResetAll()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void SetScenario(int scenarioIndex)
-    {
-        throw new System.NotImplementedException();
-    }
-
 }

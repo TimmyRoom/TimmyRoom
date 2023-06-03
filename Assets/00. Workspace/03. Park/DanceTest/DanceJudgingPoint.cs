@@ -8,13 +8,25 @@ public class DanceJudgingPoint : MonoBehaviour
     [SerializeField] float judgingTime = 2;
     public float JudgingTime { get => judgingTime; set => judgingTime = value; }
 
-    public BoxCollider[] Triggers;
+    float noteVelocity = 0;
+    public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
 
-    public AudioClip[] InstrumentClips;
+    public Transform[] RayPosition;
 
-    public AudioSource InstrumentAudioSource;
+    public Transform[] JudgePosition;
 
     public Transform[] NoteSpawnTransforms;
+
+    public Rigidbody NotePrefab;
+
+    private List<Rigidbody> notes;
+
+    private List<IEnumerator> noteRoutines;
+
+    public void SetVelocity()
+    {
+        throw new System.NotImplementedException();
+    }
 
     public void SpawnNote(float time, int[] types)
     {
@@ -26,12 +38,12 @@ public class DanceJudgingPoint : MonoBehaviour
         throw new System.NotImplementedException();
     }
 
-    IEnumerator PlayNoteRoutine()
+    public int JudgeNote(int type)
     {
         throw new System.NotImplementedException();
     }
 
-    public int JudgeNote(int type)
+    public void ResetAll()
     {
         throw new System.NotImplementedException();
     }
