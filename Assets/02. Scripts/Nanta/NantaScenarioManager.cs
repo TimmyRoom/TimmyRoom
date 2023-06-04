@@ -97,6 +97,7 @@ public class NantaScenarioManager : MusicContentTool
     /// </summary>
     void Initialize()
     {
+        VibrateControl.instance.InitializeController();
         nantaInstrumentManager.Initialize();
         SetScenario(0);
     }

@@ -106,7 +106,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -207,6 +207,8 @@ MonoBehaviour:
   Judge: {fileID: 0}
   HitAreas:
   - {fileID: 7075356788432595451}
+  VibrateTime: 0.5
+  VibrateAmplifier: 0.5
 --- !u!1001 &1917361404752442712
 PrefabInstance:
   m_ObjectHideFlags: 0
