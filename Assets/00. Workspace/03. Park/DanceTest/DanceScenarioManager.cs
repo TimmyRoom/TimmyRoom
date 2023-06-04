@@ -21,6 +21,7 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     [SerializeField] DanceJudgingPoint danceJudgingPoint;
+    [SerializeField] DanceAreaManager danceAreaManager;
 
     public GameObject[] Scenarios;
 
@@ -59,62 +60,278 @@ public class DanceScenarioManager : MusicContentTool
 
     void Initialize()
     {
-        throw new System.NotImplementedException();
+        danceAreaManager.Initialize();
+        SetScenario(0);
     }
 
     void StartMusic(AudioClip audioClip, float barSecond)
     {
-        throw new System.NotImplementedException();
+        SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
     }
 
     IEnumerator AddComboLoop(float barSecond)
     {
-        throw new System.NotImplementedException();
+        WaitForSeconds tick = new WaitForSeconds(barSecond);
+        while (true)
+        {
+            yield return tick;
+            barCombo += 1;
+            if (barCombo == 2)
+            {
+                SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
+            }
+            else if (barCombo > 2 && barCombo % 2 == 0)
+            {
+                SoundManager.instance.PlaySound(ComboClips[1], ComboAudioSource);
+            }
+        }
     }
 
     IEnumerator EndComboLoop(float songLength)
     {
-        throw new System.NotImplementedException();
+        yield return new WaitForSeconds(songLength);
+        StopCoroutine(ComboRoutine);
     }
 
     public void ResetCombo()
     {
-        throw new System.NotImplementedException();
+        barCombo = 0;
     }
 
     public override GameChart PlayChart(string json, AudioClip audioClip)
     {
-        throw new System.NotImplementedException();
+        GameChart data = GetScript(json);
+        danceJudgingPoint.SetVelocity();
+        foreach (var note in data.Notes)
+        {
+            CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + GetWaitTime(), note.Actions);
+        }
+        SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
+        StartCoroutine(SongRoutine);
+        return data;
     }
 
     public override float GetWaitTime()
     {
-        throw new System.NotImplementedException();
+        return danceJudgingPoint.FallingTime;
     }
 
     IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
     {
-        throw new System.NotImplementedException();
+        yield return new WaitForSeconds(waitTime);
+        StartMusic(audioClip, barSecond);
     }
 
     public override void CommandExecute(float time, List<Action> actions)
     {
-        throw new System.NotImplementedException();
+        foreach (var action in actions)
+        {
+            switch (action.Name)
+            {
+                case "Hit":
+                    {
+                        danceJudgingPoint.SpawnNote(time, action.Type);
+                        break;
+                    }
+            }
+        }
     }
 
     public override int JudgeNote(int type, int result)
     {
-        throw new System.NotImplementedException();
+        switch (type)
+        {
+            case 11:
+            {
+                switch (result)
+                {
+                    case 1:
+                    {
+                        ScenarioEvents[EventType.Hit]?.Invoke();
+                        break;
+                    }
+                    case 0:
+                    {
+                        ScenarioEvents[EventType.Fail]?.Invoke();
+                        break;
+                    }
+                    case -1:
+                    {
+                        ScenarioEvents[EventType.Fail]?.Invoke();
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+                break;
+            }
+            case 12:
+            {
+                switch (result)
+                {
+                    case 1:
+                    {
+                        ScenarioEvents[EventType.Hit]?.Invoke();
+                        break;
+                    }
+                    case 0:
+                    {
+                        ScenarioEvents[EventType.Fail]?.Invoke();
+                        break;
+                    }
+                    case -1:
+                    {
+                        ScenarioEvents[EventType.Fail]?.Invoke();
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+                break;
+            }
+            case 13:
+            {
+                switch (result)
+                {
+                    case 1:
+                        {
+                            ScenarioEvents[EventType.Hit]?.Invoke();
+                            break;
+                        }
+                    case 0:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    case -1:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                break;
+            }
+            case 21:
+            {
+                switch (result)
+                {
+                    case 1:
+                        {
+                            ScenarioEvents[EventType.Hit]?.Invoke();
+                            break;
+                        }
+                    case 0:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    case -1:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                break;
+            }
+            case 22:
+            {
+                switch (result)
+                {
+                    case 1:
+                        {
+                            ScenarioEvents[EventType.Hit]?.Invoke();
+                            break;
+                        }
+                    case 0:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    case -1:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                break;
+            }
+            case 23:
+            {
+                switch (result)
+                {
+                    case 1:
+                        {
+                            ScenarioEvents[EventType.Hit]?.Invoke();
+                            break;
+                        }
+                    case 0:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    case -1:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+        return result;
     }
 
     public override void SetScenario(int scenarioIndex)
     {
-        throw new System.NotImplementedException();
+        foreach (var scenario in Scenarios)
+        {
+            scenario.SetActive(false);
+        }
+        Scenarios[scenarioIndex].SetActive(true);
+
+        ScenarioEvents[EventType.End].Invoke();
+        foreach (var events in ScenarioEvents.Values)
+        {
+            events.RemoveAllListeners();
+        }
+
+        foreach (var KeyPair in Scenarios[scenarioIndex].GetComponent<IScenario>().GetActions())
+        {
+            ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
+        }
+        ScenarioEvents[EventType.Start].Invoke();
     }
 
     public override void ResetAll()
     {
-        throw new System.NotImplementedException();
+        barCombo = 0;
+        StopCoroutine(SongRoutine);
+        danceJudgingPoint.ResetAll();
+        SoundManager.instance.StopSound(MusicAudioSource);
     }
 
     public override void MoveScene(string sceneName)
