@@ -9,7 +9,7 @@ public abstract class AbstractNantaInstrument : MonoBehaviour
     /// <summary>
     /// 악기와 관련된 효과음 목록.
     /// </summary>
-    public AudioClip[] InstrumentClips;
+    public AudioClip InstrumentClips;
         
     /// <summary>
     /// 악기와 관련된 효과음이 나오는 곳.

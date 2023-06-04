@@ -1006,6 +1006,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 17167020621449806, guid: 21e4b2946f0e318468f12a59658f2518,
         type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
+    - target: {fileID: 17167020621449806, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
@@ -1124,6 +1129,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4.ChartTest
       objectReference: {fileID: 0}
+    - target: {fileID: 4507258600661665776, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 4507258600661665776, guid: 21e4b2946f0e318468f12a59658f2518,
         type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1267,9 +1277,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704320794037828581, guid: 698880a447d82454eaf72d4a7785958e,
         type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
+    - target: {fileID: 1704320794037828581, guid: 698880a447d82454eaf72d4a7785958e,
+        type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 1704320794147093515, guid: 698880a447d82454eaf72d4a7785958e,
+        type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 1704320794147093515, guid: 698880a447d82454eaf72d4a7785958e,
         type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1477,6 +1497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134900076817810890, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
         type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
+    - target: {fileID: 4134900076817810890, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
+        type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
@@ -1485,6 +1510,11 @@ PrefabInstance:
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 4504583445174088582, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
+        type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 4504583445174088582, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
         type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1813,9 +1843,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 666032022787557663, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
+    - target: {fileID: 666032022787557663, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 1815711136894653781, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 1815711136894653781, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1823,9 +1863,19 @@ PrefabInstance:
       objectReference: {fileID: 5379406326018483779}
     - target: {fileID: 6165875944619675489, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
+    - target: {fileID: 6165875944619675489, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 7797413252758304647, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 7797413252758304647, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1943,6 +1993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165990385787945814, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
+    - target: {fileID: 9165990385787945814, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
@@ -1955,6 +2010,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 868852452}
     m_Modifications:
+    - target: {fileID: 8741657366137551472, guid: a8ae53c5696e16141a19db94459ed5d4,
+        type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 8741657366137551472, guid: a8ae53c5696e16141a19db94459ed5d4,
         type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2075,6 +2135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2.NoteTest
       objectReference: {fileID: 0}
+    - target: {fileID: 8741657366839522560, guid: a8ae53c5696e16141a19db94459ed5d4,
+        type: 3}
+      propertyPath: interactionSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 8741657366839522560, guid: a8ae53c5696e16141a19db94459ed5d4,
         type: 3}
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target

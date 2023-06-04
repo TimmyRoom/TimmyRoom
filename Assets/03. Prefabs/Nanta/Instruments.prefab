@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Instruments:
-  - {fileID: 3599802699701490715}
   - {fileID: 15045348058472283}
+  - {fileID: 3599802699701490715}
 --- !u!1001 &4526592270258460675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,6 +56,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7834365799416552955}
     m_Modifications:
+    - target: {fileID: 1091206828797971480, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: InstrumentClips
+      value: 
+      objectReference: {fileID: 8300000, guid: 91ec3e571d7b97b43848f1e633fbc509, type: 3}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_RootOrder
@@ -148,6 +153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrumDouble
       objectReference: {fileID: 0}
+    - target: {fileID: 5874500177572052695, guid: a2f1a31194383c048a949cecbaf6d048,
+        type: 3}
+      propertyPath: InstrumentClips
+      value: 
+      objectReference: {fileID: 8300000, guid: 91ec3e571d7b97b43848f1e633fbc509, type: 3}
     - target: {fileID: 8820783209089114647, guid: a2f1a31194383c048a949cecbaf6d048,
         type: 3}
       propertyPath: m_RootOrder

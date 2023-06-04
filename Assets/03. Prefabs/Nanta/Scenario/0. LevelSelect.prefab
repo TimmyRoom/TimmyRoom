@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: c7b87892743dd744daadd5b4e8f05f14, type: 3}
+  interactionSource: {fileID: 0}
   InteractionTime: 2
   UIEvents:
     m_PersistentCalls:
@@ -194,6 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: c7b87892743dd744daadd5b4e8f05f14, type: 3}
+  interactionSource: {fileID: 0}
   InteractionTime: 2
   UIEvents:
     m_PersistentCalls:
@@ -299,6 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: c7b87892743dd744daadd5b4e8f05f14, type: 3}
+  interactionSource: {fileID: 0}
   InteractionTime: 2
   UIEvents:
     m_PersistentCalls:
@@ -404,6 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: c7b87892743dd744daadd5b4e8f05f14, type: 3}
+  interactionSource: {fileID: 0}
   InteractionTime: 2
   UIEvents:
     m_PersistentCalls:
@@ -647,6 +655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: c7b87892743dd744daadd5b4e8f05f14, type: 3}
+  interactionSource: {fileID: 0}
   InteractionTime: 2
   UIEvents:
     m_PersistentCalls:
