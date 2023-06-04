@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DanceAreaManager : MonoBehaviour
 {
-    public AbstractDanceArea area;
+    public AreaSet area;
 
     public void Initialize()
     {

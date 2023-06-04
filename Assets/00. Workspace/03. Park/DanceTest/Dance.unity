@@ -1241,10 +1241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingTime: 2
-  RayPosition: []
-  JudgePosition: []
-  NoteSpawnTransforms:
-  - {fileID: 1289795655}
+  JudgePosition: {fileID: 620598669}
+  NoteSpawnTransforms: {fileID: 1289795655}
   NotePrefab: {fileID: 8798199418832036811, guid: 7aca946261826224f849729f009fc789,
     type: 3}
 --- !u!4 &620598669
@@ -1255,7 +1253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620598667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.88, z: 7.73}
+  m_LocalPosition: {x: -0.5, y: 4.88, z: 7.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6548,11 +6546,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 1. BasicPoseTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 6095106274808637030, guid: bf669c184f06e3a42b988168396011e2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf669c184f06e3a42b988168396011e2, type: 3}

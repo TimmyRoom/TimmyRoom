@@ -21,7 +21,7 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     [SerializeField] DanceJudgingPoint danceJudgingPoint;
-    [SerializeField] DanceAreaManager danceAreaManager;
+    public DanceAreaManager danceAreaManager;
 
     public GameObject[] Scenarios;
 
@@ -46,6 +46,8 @@ public class DanceScenarioManager : MusicContentTool
     public AudioSource MusicAudioSource;
 
     public AudioSource ComboAudioSource;
+
+    public int currentScenarioNum;
 
     int barCombo = 0;
 
@@ -312,6 +314,7 @@ public class DanceScenarioManager : MusicContentTool
             scenario.SetActive(false);
         }
         Scenarios[scenarioIndex].SetActive(true);
+        currentScenarioNum = scenarioIndex;
 
         ScenarioEvents[EventType.End].Invoke();
         foreach (var events in ScenarioEvents.Values)

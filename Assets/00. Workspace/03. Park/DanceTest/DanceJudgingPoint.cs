@@ -11,11 +11,9 @@ public class DanceJudgingPoint : MonoBehaviour
     float noteVelocity = 0;
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
 
-    public Transform[] RayPosition;
+    public Transform JudgePosition;
 
-    public Transform[] JudgePosition;
-
-    public Transform[] NoteSpawnTransforms;
+    public Transform NoteSpawnTransforms;
 
     public Rigidbody NotePrefab;
 
@@ -23,9 +21,16 @@ public class DanceJudgingPoint : MonoBehaviour
 
     private List<IEnumerator> noteRoutines;
 
+    private bool[] current;
+
+    private void Start()
+    {
+        current = new bool[6];
+    }
+
     public void SetVelocity()
     {
-        NoteVelocity = (JudgePosition[0].position - NoteSpawnTransforms[0].position).magnitude / FallingTime;
+        NoteVelocity = (JudgePosition.position - NoteSpawnTransforms.position).magnitude / FallingTime;
     }
 
     public void SpawnNote(float time, int type)
@@ -39,16 +44,57 @@ public class DanceJudgingPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));
         Rigidbody newNote = GetNote(type);
-        newNote.velocity = NoteSpawnTransforms[type].forward * NoteVelocity;
+        newNote.velocity = NoteSpawnTransforms.forward * NoteVelocity;
         yield return new WaitForSeconds(1.1f * fallingTime);
         if (newNote.gameObject.activeInHierarchy) NantaScenarioManager.instance.JudgeNote(type, 0);
         Destroy(newNote?.gameObject);
         notes.Remove(newNote);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        JudgeNote(other.gameObject.GetComponent<DanceNote>().type);
+        notes.Remove(other.gameObject.GetComponent<Rigidbody>());
+        other.gameObject.SetActive(false);
+    }
+
+    public void UsingTypeForScenario(int type)
+    {
+        if(DanceScenarioManager.instance.currentScenarioNum == 1)
+        {
+            DanceScenarioManager.instance.JudgeNote(type, 0);
+        }
+    }
+
     public int JudgeNote(int type)
     {
         int result = -1;
+
+        Array.Copy(DanceScenarioManager.instance.danceAreaManager.area.isTriggered, current, 6);
+
+        string leftValue = "-1";
+        string rightValue = "-1";
+
+        if (current[0]) leftValue = "1";
+        else if (current[1]) leftValue = "2";
+        else if (current[2]) leftValue = "3";
+
+        if (current[3]) rightValue = "1";
+        else if (current[4]) rightValue = "2";
+        else if (current[5]) rightValue = "3";
+
+        string curPose = leftValue + rightValue;
+
+        if(curPose == type.ToString())
+        {
+            result = 1;
+        }
+        else
+        {
+            result = 0;
+        }
+        Debug.Log(curPose + ", result = " + result.ToString());
+        DanceScenarioManager.instance.JudgeNote(type, result);
         //RaycastHit hit;
         //if (Physics.Raycast(RayPosition[type].position, RayPosition[type].forward, out hit))
         //{
@@ -76,13 +122,14 @@ public class DanceJudgingPoint : MonoBehaviour
         //{
         //    DanceScenarioManager.instance.JudgeNote(type, result);
         //}
-        DanceScenarioManager.instance.JudgeNote(type, result);
+        //DanceScenarioManager.instance.JudgeNote(type, result);
         return result;
     }
 
     Rigidbody GetNote(int type)
     {
-        Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms[type].position, NoteSpawnTransforms[type].rotation);
+        Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms.position, NoteSpawnTransforms.rotation);
+        newNote.gameObject.GetComponent<DanceNote>().type = type;
         notes.Add(newNote);
         return newNote;
     }

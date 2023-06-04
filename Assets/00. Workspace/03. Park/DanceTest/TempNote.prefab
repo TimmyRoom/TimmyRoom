@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3168275343831859629}
   - component: {fileID: 8027391244185564159}
   - component: {fileID: 8798199418832036811}
+  - component: {fileID: 8530940122679838865}
   m_Layer: 0
   m_Name: TempNote
   m_TagString: Untagged
@@ -115,6 +116,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8530940122679838865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658463370569245959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c837bf0cab7f8e49bcabe8db3c1c4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &3092899156698133756
 GameObject:
   m_ObjectHideFlags: 0
