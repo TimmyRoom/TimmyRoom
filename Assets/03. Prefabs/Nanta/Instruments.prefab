@@ -29,8 +29,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 45093368161319123}
   - {fileID: 3160030483590808475}
+  - {fileID: 45093368161319123}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56,15 +56,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7834365799416552955}
     m_Modifications:
-    - target: {fileID: 1091206828797971480, guid: b5bbcc0a5500b7c41a6806b5268ac078,
-        type: 3}
-      propertyPath: InstrumentClips
-      value: 
-      objectReference: {fileID: 8300000, guid: 91ec3e571d7b97b43848f1e633fbc509, type: 3}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
@@ -153,15 +148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrumDouble
       objectReference: {fileID: 0}
-    - target: {fileID: 5874500177572052695, guid: a2f1a31194383c048a949cecbaf6d048,
-        type: 3}
-      propertyPath: InstrumentClips
-      value: 
-      objectReference: {fileID: 8300000, guid: 91ec3e571d7b97b43848f1e633fbc509, type: 3}
     - target: {fileID: 8820783209089114647, guid: a2f1a31194383c048a949cecbaf6d048,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8820783209089114647, guid: a2f1a31194383c048a949cecbaf6d048,
         type: 3}
