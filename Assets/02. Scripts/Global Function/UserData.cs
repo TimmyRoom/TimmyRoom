@@ -11,10 +11,48 @@ public class UserData
     public int patternId;
 }
 
+[System.Serializable]
+public enum UserColor
+{
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    Purple,
+    Orange,
+    Black,
+    SkyBlue,
+    Brown,
+    Pink,
+    Lime,
+    Olive,
+    Navy,
+    None
+}
+
+[System.Serializable]
+public enum UserPattern
+{
+    Star,
+    Heart,
+    Circle,
+    Square,
+    Music,
+    Triangle,
+    Car,
+    Rocket,
+    None,
+}
+
+[System.Serializable]
+public class SerializableGameData
+{
+    public List<UserData> userDataList = new List<UserData>();
+}
 
 public static class GameData
 {
-    public static List<UserData> userDataList; 
+    public static List<UserData> userDataList = new List<UserData>(); 
 
     public static int AddUser(int colorId, int patternId)
     {

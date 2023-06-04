@@ -3,7 +3,12 @@ guid: 42546638cad0be7479fa188d61232520
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ragdoll
+    second: {fileID: 2100000, guid: 1a98e8fb48778bf458ce6b627ca6438a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
