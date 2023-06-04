@@ -7,14 +7,22 @@ using UnityEngine.Events;
 
 public class BasicPoseTest : MonoBehaviour, IScenario
 {
+    public bool isBasic = true;
+    public ReflectionProbe Mirror;
+
     [SerializeField] protected TextMeshProUGUI notifyText;
     [SerializeField] protected TextMeshProUGUI poseText;
+
     private bool[] current;
     private int clear = 0;
     private (int, int) answer;
 
     public virtual void Start()
     {
+        if (isBasic)
+            DanceScenarioManager.instance.danceAreaManager.area.EnableGuide();
+        else
+            DanceScenarioManager.instance.danceAreaManager.area.DisableGuide();
         notifyText.text = "Follow the Guide!";
         current = new bool[6];
         NewAnswer();
@@ -86,7 +94,10 @@ public class BasicPoseTest : MonoBehaviour, IScenario
             if(clear == 9)
             {
                 poseText.text = "Great!";
-                //DanceScenarioManager.instance.SetScenario(2);
+                if(DanceScenarioManager.instance.currentScenarioNum == 1)
+                    DanceScenarioManager.instance.SetScenario(2);
+                else
+                    DanceScenarioManager.instance.SetScenario(3);
             }
             else NewAnswer();
         }

@@ -17,9 +17,9 @@ public class DanceJudgingPoint : MonoBehaviour
 
     public Rigidbody NotePrefab;
 
-    private List<Rigidbody> notes;
+    private List<Rigidbody> notes = new List<Rigidbody>();
 
-    private List<IEnumerator> noteRoutines;
+    private List<IEnumerator> noteRoutines = new List<IEnumerator>();
 
     private bool[] current;
 
@@ -46,7 +46,7 @@ public class DanceJudgingPoint : MonoBehaviour
         Rigidbody newNote = GetNote(type);
         newNote.velocity = NoteSpawnTransforms.forward * NoteVelocity;
         yield return new WaitForSeconds(1.1f * fallingTime);
-        if (newNote.gameObject.activeInHierarchy) NantaScenarioManager.instance.JudgeNote(type, 0);
+        if (newNote.gameObject.activeInHierarchy) DanceScenarioManager.instance.JudgeNote(type, 0);
         Destroy(newNote?.gameObject);
         notes.Remove(newNote);
     }
@@ -58,11 +58,18 @@ public class DanceJudgingPoint : MonoBehaviour
         other.gameObject.SetActive(false);
     }
 
-    public void UsingTypeForScenario(int type)
+    public void UsingTypeForScenario()
     {
-        if(DanceScenarioManager.instance.currentScenarioNum == 1)
+        switch (DanceScenarioManager.instance.currentScenarioNum)
         {
-            DanceScenarioManager.instance.JudgeNote(type, 0);
+            case 1:
+                DanceScenarioManager.instance.JudgeNote(11, 0);
+                break;
+            case 2:
+                DanceScenarioManager.instance.JudgeNote(11, 0);
+                break;
+            default:
+                break;
         }
     }
 

@@ -1,0 +1,46 @@
+{
+  "ChartName": "NormalDance_NoteTest",
+  "SongName": "NormalDance",
+  "ArtistName": "TimmyRoom",
+  "SongLength": 2.47422,
+  "Offset": 0,
+  "BPM": 97,
+  "Notes": [
+    {
+      "Time": 0,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 1,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 2,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 3,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    }
+  ]
+}

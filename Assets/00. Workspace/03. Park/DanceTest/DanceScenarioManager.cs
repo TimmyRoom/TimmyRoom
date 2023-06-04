@@ -63,6 +63,7 @@ public class DanceScenarioManager : MusicContentTool
     void Initialize()
     {
         danceAreaManager.Initialize();
+        danceAreaManager.area.DisableGuide();
         SetScenario(0);
     }
 
@@ -299,13 +300,91 @@ public class DanceScenarioManager : MusicContentTool
                 }
                 break;
             }
+            case 31:
+            {
+                switch (result)
+                {
+                    case 1:
+                        {
+                            ScenarioEvents[EventType.Hit]?.Invoke();
+                            break;
+                        }
+                    case 0:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    case -1:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                break;
+            }
+            case 32:
+            {
+                switch (result)
+                {
+                    case 1:
+                        {
+                            ScenarioEvents[EventType.Hit]?.Invoke();
+                            break;
+                        }
+                    case 0:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    case -1:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                break;
+            }
+            case 33:
+            {
+                switch (result)
+                {
+                    case 1:
+                        {
+                            ScenarioEvents[EventType.Hit]?.Invoke();
+                            break;
+                        }
+                    case 0:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    case -1:
+                        {
+                            ScenarioEvents[EventType.Fail]?.Invoke();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                break;
+            }
             default:
             {
                 break;
             }
         }
         return result;
-    }
+    } 
 
     public override void SetScenario(int scenarioIndex)
     {
