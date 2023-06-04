@@ -8,16 +8,13 @@ using UnityEngine.Events;
 /// </summary>
 public class EscapeDoor : MonoBehaviour
 {
-    public UnityEvent[] Events;
+    public UnityEvent EscapeEvent;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("XR Origin"))
         {
-            foreach(var doorEvent in Events)
-            {
-                doorEvent?.Invoke();
-            }
+            EscapeEvent?.Invoke();
         }
     }
 }
