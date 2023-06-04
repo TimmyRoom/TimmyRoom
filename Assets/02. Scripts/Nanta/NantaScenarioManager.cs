@@ -31,7 +31,10 @@ public class NantaScenarioManager : MusicContentTool
     /// 난타 악기 오브젝트들을 관리하는 클래스이다.
     /// </summary>
     [SerializeField] private NantaInstrumentManager nantaInstrumentManager;
-
+    [Range(0, 1)]
+    public float VibrateTime = 0.5f;
+    [Range(0, 1)]
+    public float VibrateAmplifier = 0.5f;
     /// <summary>
     /// 각 상황마다 등장하는 UI이다.
     /// </summary>
@@ -234,11 +237,13 @@ public class NantaScenarioManager : MusicContentTool
                     case 0:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateLeft(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     case -1:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateLeft(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     default:
@@ -260,11 +265,13 @@ public class NantaScenarioManager : MusicContentTool
                     case 0:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     case -1:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     default:
