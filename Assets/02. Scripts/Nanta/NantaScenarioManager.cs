@@ -322,14 +322,4 @@ public class NantaScenarioManager : MusicContentTool
         nantaJudgeLine.ResetAll();
         SoundManager.instance.StopSound(MusicAudioSource);
     }
-
-    public override void MoveScene(string sceneName)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void MoveScene(int sceneIndex)
-    {
-        throw new System.NotImplementedException();
-    }
 }
