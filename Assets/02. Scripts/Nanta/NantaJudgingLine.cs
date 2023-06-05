@@ -131,6 +131,7 @@ public class NantaJudgingLine : MonoBehaviour
             if(hit.distance > 1.35f)
             {
                 result = 0;
+                
             }
             else if(0f < hit.distance && hit.distance < 1.35f)
             {
