@@ -85,4 +85,13 @@ public abstract class MusicContentTool : AbstractSceneManager
     /// </summary>
     /// <param name="scenarioIndex">변경할 시나리오의 Index.</param>
     public abstract void SetScenario(int scenarioIndex);
+    public override void MoveScene(string sceneName)
+    {
+        SceneMover.instance.MoveScene(sceneName);
+    }
+
+    public override void MoveScene(int sceneIndex)
+    {
+        SceneMover.instance.MoveScene(sceneIndex);
+    }
 }

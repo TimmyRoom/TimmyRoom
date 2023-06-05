@@ -12,7 +12,7 @@ public class EscapeDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("XR Origin"))
+        if(other.CompareTag("LeftController") || other.CompareTag("RightController"))
         {
             EscapeEvent?.Invoke();
         }
