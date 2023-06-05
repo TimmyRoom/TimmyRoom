@@ -186,9 +186,9 @@ MonoBehaviour:
   NoteSpawnTransforms:
   - {fileID: 6054552566628070214}
   - {fileID: 4069223761141505209}
-  NotePrefab: {fileID: -1671540331619009737, guid: 9f342f27a1da86748833114c2a573872,
+  NotePrefab: {fileID: 6394453818801029761, guid: 08435bc55be7eba4198bf14210b62e16,
     type: 3}
-  NoteChangePrefab: {fileID: -1671540331619009737, guid: 67c59de7f9aac02459d1721d8bb92e2b,
+  NoteChangePrefab: {fileID: 1745532985195533170, guid: 42e3352e52449214e8176ce2fa7381b4,
     type: 3}
 --- !u!1 &3232171927943583127
 GameObject:
