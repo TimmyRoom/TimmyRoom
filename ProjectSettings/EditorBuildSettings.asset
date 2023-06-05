@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/01. Scenes/Nanta.unity
     guid: 599a1db18b81481449b93739bd29bf22
   - enabled: 1
-    path: Assets/00. Workspace/03. Park/DanceTest/Dance.unity
+    path: Assets/01. Scenes/Dance.unity
     guid: 6101df154bab1f34e85d02965e35777c
   - enabled: 1
     path: Assets/00. Workspace/02. Choi/01. Scenes/Gallery.unity

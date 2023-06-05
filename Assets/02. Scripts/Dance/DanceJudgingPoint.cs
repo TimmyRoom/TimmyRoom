@@ -65,10 +65,10 @@ public class DanceJudgingPoint : MonoBehaviour
         switch (DanceScenarioManager.instance.currentScenarioNum)
         {
             case 1:
-                DanceScenarioManager.instance.JudgeNote(11, 0);
+                DanceScenarioManager.instance.JudgeNote(11, 1);
                 break;
             case 2:
-                DanceScenarioManager.instance.JudgeNote(11, 0);
+                DanceScenarioManager.instance.JudgeNote(11, 1);
                 break;
             default:
                 break;

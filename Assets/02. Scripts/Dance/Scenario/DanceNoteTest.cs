@@ -12,13 +12,16 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     [SerializeField] protected AudioClip audioClip;
     [SerializeField] protected int nextScenario = 4;
     protected IEnumerator barCoroutine;
-    protected int clear = 9;
+    protected int clear = 8;
 
     public virtual void SetCount()
     {
         countText.text = (--clear).ToString();
         if (clear < 0)
+        {
             clear = 0;
+            countText.text = clear.ToString();
+        }
     }
     /// <summary>
     /// 채보와 음악을 재생하는 함수.

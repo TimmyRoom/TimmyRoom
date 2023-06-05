@@ -105,6 +105,6 @@ public class BasicPoseTest : MonoBehaviour, IScenario
 
     public virtual Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 1, SetPoseText } };
+        return new Dictionary<int, UnityAction>() { { 0, SetPoseText } };
     }
 }
