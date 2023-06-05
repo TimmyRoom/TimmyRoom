@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DanceChartTest :DanceNoteTest
+public class DanceChartTest : DanceNoteTest
 {
     /// <summary>
     /// 다음 시나리오로 넘어가기 위해 필요한 적중률.
@@ -23,15 +23,21 @@ public class DanceChartTest :DanceNoteTest
     /// 실패 횟수.
     /// </summary>
     private int failCount = 0;
+
     public void Start()
     {
         countText.text = $"{hitCount}/{hitCount + failCount}";
     }
+
+    /// <summary>
+    /// 정답 판정이 나오면 정답 횟수 카운트를 증가시킴.
+    /// </summary>
     public override void SetCount()
     {
         hitCount++;
         countText.text = $"{hitCount}/{hitCount + failCount}";
     }
+
     protected override IEnumerator MusicCoroutine()
     {
         yield return new WaitForSeconds(DanceScenarioManager.instance.GetWaitTime());
@@ -50,6 +56,7 @@ public class DanceChartTest :DanceNoteTest
             DanceScenarioManager.instance.SetScenario(nextScenario);
         }
     }
+
     /// <summary>
     /// 노트를 놓쳤을 때 호출되는 함수.
     /// </summary>
@@ -58,6 +65,7 @@ public class DanceChartTest :DanceNoteTest
         failCount++;
         countText.text = $"{hitCount}/{hitCount + failCount}";
     }
+
     public override Dictionary<int, UnityAction> GetActions()
     {
         return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 1, MissNote }, { 2, StartBar } };

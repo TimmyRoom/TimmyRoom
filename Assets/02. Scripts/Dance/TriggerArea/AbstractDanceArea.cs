@@ -16,5 +16,8 @@ public abstract class AbstractDanceArea : MonoBehaviour
     /// </summary>
     public abstract void GetEntered(int type, GameObject areaObject);
 
+    /// <summary>
+    /// 사용자가 판정 영역을 벗어났을 때 호출되는 함수.
+    /// </summary>
     public abstract void GetExited(int type, GameObject areaObject);
 }

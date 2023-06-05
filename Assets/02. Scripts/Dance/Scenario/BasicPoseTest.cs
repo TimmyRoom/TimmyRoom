@@ -7,14 +7,31 @@ using UnityEngine.Events;
 
 public class BasicPoseTest : MonoBehaviour, IScenario
 {
+    /// <summary>
+    /// 초급 단계인지 확인하기 위한 변수.
+    /// </summary>
     public bool isBasic = true;
-    public ReflectionProbe Mirror;
 
+    /// <summary>
+    /// 공지를 표시하는 텍스트.
+    /// </summary>
     [SerializeField] protected TextMeshProUGUI notifyText;
+    /// <summary>
+    /// 해야할 포즈를 표시하는 텍스트.
+    /// </summary>
     [SerializeField] protected TextMeshProUGUI poseText;
 
+    /// <summary>
+    /// 판정을 위해 현재 발동된 트리거 정보를 자체적으로 저장하는 bool 배열.
+    /// </summary>
     private bool[] current;
+    /// <summary>
+    /// 정답 횟수를 카운트하는 변수.
+    /// </summary>
     private int clear = 0;
+    /// <summary>
+    /// 정답 정보를 저장하는 튜플.
+    /// </summary>
     private (int, int) answer;
 
     public virtual void Start()
@@ -28,6 +45,9 @@ public class BasicPoseTest : MonoBehaviour, IScenario
         NewAnswer();
     }
 
+    /// <summary>
+    /// 정답 정보를 갱신하고 텍스트를 업데이트하는 함수.
+    /// </summary>
     public void NewAnswer()
     {
         switch (clear)
@@ -73,6 +93,9 @@ public class BasicPoseTest : MonoBehaviour, IScenario
         }
     }
 
+    /// <summary>
+    /// 판정을 통해 정답 여부를 확인하고, 정답일 경우를 처리하는 함수.
+    /// </summary>
     public virtual void SetPoseText()
     {
         Array.Copy(DanceScenarioManager.instance.danceAreaManager.area.isTriggered, current, 6);

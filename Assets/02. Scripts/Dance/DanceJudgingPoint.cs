@@ -3,38 +3,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 시간에 따라 노트를 생성하고 이를 통해 사용자에게 타이밍을 인지시키는 클래스.
+/// </summary>
 public class DanceJudgingPoint : MonoBehaviour
 {
     [SerializeField] float fallingTime = 2;
+    /// <summary>
+    /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
+    /// </summary>
     public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
     float noteVelocity = 0;
+    /// <summary>
+    /// 노트의 등속 운동 속도.
+    /// </summary>
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
 
+    /// <summary>
+    /// 실제 사용자가 보는 판정선 Transform.
+    /// </summary>
     public Transform JudgePosition;
 
+    /// <summary>
+    /// 노트가 생성되는 위치.
+    /// </summary>
     public Transform NoteSpawnTransforms;
 
+    /// <summary>
+    /// 생성하는 노트의 프리팹.
+    /// </summary>
     public Rigidbody NotePrefab;
 
-    public List<Sprite> sprites = new List<Sprite>(); 
+    /// <summary>
+    /// 노트의 포즈 스프라이트들을 저장하는 리스트.
+    /// </summary>
+    public List<Sprite> sprites = new List<Sprite>();
 
+    /// <summary>
+    /// 생성된 모든 노트들을 저장하는 리스트.
+    /// </summary>
     private List<Rigidbody> notes = new List<Rigidbody>();
 
+    /// <summary>
+    /// 실행되는 모든 노트 루틴을 저장하는 리스트.
+    /// </summary>
     private List<IEnumerator> noteRoutines = new List<IEnumerator>();
 
-    private bool[] current;
+    /// <summary>
+    /// 판정을 위해 현재 발동된 트리거 정보를 자체적으로 저장하는 bool 배열.
+    /// </summary>
+    private bool[] current = new bool[6];
 
-    private void Start()
-    {
-        current = new bool[6];
-    }
-
+    /// <summary>
+    /// 노트의 속력을 설정한다.
+    /// </summary>
     public void SetVelocity()
     {
         NoteVelocity = (JudgePosition.position - NoteSpawnTransforms.position).magnitude / FallingTime;
     }
 
+    /// <summary>
+    /// SpawnNoteRoutine(time, type) 루틴 실행.
+    /// </summary>
+    /// <param name="time">루틴이 시작될 시간.</param>
+    /// <param name="type">노트가 생성되는 라인</param>
     public void SpawnNote(float time, int type)
     {
         IEnumerator noteRoutine = SpawnNoteRoutine(time, type);
@@ -42,6 +75,11 @@ public class DanceJudgingPoint : MonoBehaviour
         StartCoroutine(noteRoutine);
     }
 
+    /// <summary>
+    /// SpawnNoteRoutineWithChange(time, type) 루틴 실행.
+    /// </summary>
+    /// <param name="time">루틴이 시작될 시간.</param>
+    /// <param name="type">노트가 생성되는 라인</param>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
         yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));
@@ -53,6 +91,10 @@ public class DanceJudgingPoint : MonoBehaviour
         notes.Remove(newNote);
     }
 
+    /// <summary>
+    /// 판정 콜라이더에 노트가 들어오면 해당 노트의 판정과 삭제를 수행함.
+    /// </summary>
+    /// <param name="other">콜라이더와 접촉한 노트 오브젝트</param>
     private void OnTriggerEnter(Collider other)
     {
         JudgeNote(other.gameObject.GetComponent<DanceNote>().type);
@@ -60,6 +102,10 @@ public class DanceJudgingPoint : MonoBehaviour
         other.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 노트 판정이 필요없는 시나리오를 위한 자체 판정 요청을 수행함.
+    /// 포즈를 따라하기만 하는 시나리오 1, 2에서 사용됨.
+    /// </summary>
     public void UsingTypeForScenario()
     {
         switch (DanceScenarioManager.instance.currentScenarioNum)
@@ -75,6 +121,12 @@ public class DanceJudgingPoint : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 판정면에 도달한 노트 오브젝트를 참조해 판정을 한다.
+    /// 트리거 영역을 다루는 Manager에서 활성화 여부 배열을 받아와 판정에 이용한다.
+    /// </summary>
+    /// <param name="type">노트의 종류.</param>
+    /// <returns>노트 판정 결과.</returns>
     public int JudgeNote(int type)
     {
         int result = -1;
@@ -92,14 +144,6 @@ public class DanceJudgingPoint : MonoBehaviour
         else if (current[4]) rightValue = "2";
         else if (current[5]) rightValue = "3";
 
-        //if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[0]) leftValue = "1";
-        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[1]) leftValue = "2";
-        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[2]) leftValue = "3";
-
-        //if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[3]) rightValue = "1";
-        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[4]) rightValue = "2";
-        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[5]) rightValue = "3";
-
         string curPose = leftValue + rightValue;
 
         if(curPose == type.ToString())
@@ -116,6 +160,11 @@ public class DanceJudgingPoint : MonoBehaviour
         return result;
     }
 
+    /// <summary> 
+    /// 노트를 생성하고 해당 오브젝트의 RigidBody 컴포넌트를 반환한다.
+    /// 이 때, 노트의 타입에 맞는 스프라이트를 노트에 적용한다.
+    /// <returns>생성된 노트의 RigidBody.</returns>
+    /// </summary>
     Rigidbody GetNote(int type)
     {
         Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms.position, NoteSpawnTransforms.rotation);
@@ -156,6 +205,9 @@ public class DanceJudgingPoint : MonoBehaviour
         return newNote;
     }
 
+    /// <summary>
+    /// 씬 시작 상태로 되돌리는 함수.
+    /// </summary>
     public void ResetAll()
     {
         foreach (IEnumerator routine in noteRoutines)

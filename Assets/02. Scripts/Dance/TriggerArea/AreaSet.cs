@@ -2,18 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 씬 진행에 사용되는 모든 구역들의 집합.
+/// </summary>
 public class AreaSet : AbstractDanceArea
 {
+    /// <summary>
+    /// 각 판정 영역에 대한 정보를 담고 있는 구조체.
+    /// </summary>
     public DanceTriggerArea[] TriggerAreas;
 
+    /// <summary>
+    /// 각 판정 영역의 활성화 여부를 담고 있는 배열.
+    /// </summary>
     public bool[] isTriggered = { false, false, false, false, false, false };
 
+    /// <summary>
+    /// 컬링 마스크 적용을 위한 거울 오브젝트.
+    /// </summary>
     public ReflectionProbe mirror;
 
+    /// <summary>
+    /// 각 판정 영역의 색을 변경하거나 감추는데 사용하는 머테리얼.
+    /// </summary>
     public Material blue;
     public Material origin;
     public Material transparent;
 
+    /// <summary>
+    /// 각 판정 영역의 가이드를 활성화시킨다.
+    /// </summary>
     public void EnableGuide()
     {
         foreach(var area in TriggerAreas)
@@ -23,6 +41,9 @@ public class AreaSet : AbstractDanceArea
         mirror.cullingMask |= 1 << LayerMask.NameToLayer("Guide");
     }
 
+    /// <summary>
+    /// 각 판정 영역의 가이드를 비활성화시킨다.
+    /// </summary>
     public void DisableGuide()
     {
         foreach (var area in TriggerAreas)
