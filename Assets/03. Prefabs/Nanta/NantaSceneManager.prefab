@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nantaJudgeLine: {fileID: 0}
   nantaInstrumentManager: {fileID: 0}
+  VibrateTime: 0.4
+  VibrateAmplifier: 0.2
   Scenarios:
   - {fileID: 0}
   - {fileID: 0}
