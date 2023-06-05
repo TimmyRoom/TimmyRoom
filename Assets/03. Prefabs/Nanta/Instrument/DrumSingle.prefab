@@ -106,7 +106,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -202,11 +202,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8941085478ec07a41908eda4f608fea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstrumentClips: []
+  InstrumentClips: {fileID: 8300000, guid: 91ec3e571d7b97b43848f1e633fbc509, type: 3}
   InstrumentAudioSource: {fileID: 3951163383134516667}
   Judge: {fileID: 0}
   HitAreas:
   - {fileID: 7075356788432595451}
+  VibrateTime: 0.5
+  VibrateAmplifier: 0.5
 --- !u!1001 &1917361404752442712
 PrefabInstance:
   m_ObjectHideFlags: 0

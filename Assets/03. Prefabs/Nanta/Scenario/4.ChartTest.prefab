@@ -198,9 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 4945341681027764871}
+  count: 2
   jsonFile: {fileID: 4900000, guid: 35e8f43103119144c9677dbc0d1d1927, type: 3}
   audioClip: {fileID: 8300000, guid: 0a02b51b942e9da4f94ef33e8018501b, type: 3}
-  count: 2
   nextScenario: 5
   CountText: {fileID: 6476884398470057804}
   clearRate: 0.6
@@ -450,6 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: c7b87892743dd744daadd5b4e8f05f14, type: 3}
+  interactionSource: {fileID: 0}
   InteractionTime: 2
   UIEvents:
     m_PersistentCalls:
@@ -837,6 +839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37462d744b5e0d44b9d9b3370749bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: c7b87892743dd744daadd5b4e8f05f14, type: 3}
+  interactionSource: {fileID: 0}
   InteractionTime: 2
   UIEvents:
     m_PersistentCalls:

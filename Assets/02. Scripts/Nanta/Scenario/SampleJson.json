@@ -7,6 +7,15 @@
     "BPM": 96,
     "Notes": [
         {
+            "Time": 0,
+            "Actions": [
+                {
+                    "Name": "Change",
+                    "Type": 1
+                }
+            ]
+        },
+        {
             "Time": 0.5,
             "Actions": [
                 {
@@ -294,7 +303,7 @@
                 },
                 {
                     "Name": "Change",
-                    "Type": 1
+                    "Type": 0
                 }
             ]
         },
