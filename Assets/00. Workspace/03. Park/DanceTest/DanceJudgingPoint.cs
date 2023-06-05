@@ -17,6 +17,8 @@ public class DanceJudgingPoint : MonoBehaviour
 
     public Rigidbody NotePrefab;
 
+    public List<Sprite> sprites = new List<Sprite>(); 
+
     private List<Rigidbody> notes = new List<Rigidbody>();
 
     private List<IEnumerator> noteRoutines = new List<IEnumerator>();
@@ -90,6 +92,14 @@ public class DanceJudgingPoint : MonoBehaviour
         else if (current[4]) rightValue = "2";
         else if (current[5]) rightValue = "3";
 
+        //if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[0]) leftValue = "1";
+        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[1]) leftValue = "2";
+        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[2]) leftValue = "3";
+
+        //if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[3]) rightValue = "1";
+        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[4]) rightValue = "2";
+        //else if (DanceScenarioManager.instance.danceAreaManager.area.isTriggered[5]) rightValue = "3";
+
         string curPose = leftValue + rightValue;
 
         if(curPose == type.ToString())
@@ -102,34 +112,7 @@ public class DanceJudgingPoint : MonoBehaviour
         }
         Debug.Log(curPose + ", result = " + result.ToString());
         DanceScenarioManager.instance.JudgeNote(type, result);
-        //RaycastHit hit;
-        //if (Physics.Raycast(RayPosition[type].position, RayPosition[type].forward, out hit))
-        //{
-        //    // 여기서 활성화된 Area를 바탕으로 해서, 판정을 내리도록 한다
-
-        //    //if (hit.distance > 1.35f)
-        //    //{
-        //    //    result = 0;
-        //    //}
-        //    //else if (0f < hit.distance && hit.distance < 1.35f)
-        //    //{
-        //    //    result = 1;
-        //    //    notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
-        //    //    hit.collider.gameObject.SetActive(false);
-        //    //    DanceScenarioManager.instance.JudgeNote(type, result);
-        //    //}
-        //    //else
-        //    //{
-        //    //    result = 0;
-        //    //    notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
-        //    //    hit.collider.gameObject.SetActive(false);
-        //    //}
-        //}
-        //else
-        //{
-        //    DanceScenarioManager.instance.JudgeNote(type, result);
-        //}
-        //DanceScenarioManager.instance.JudgeNote(type, result);
+        
         return result;
     }
 
@@ -137,6 +120,38 @@ public class DanceJudgingPoint : MonoBehaviour
     {
         Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms.position, NoteSpawnTransforms.rotation);
         newNote.gameObject.GetComponent<DanceNote>().type = type;
+        switch (type)
+        {
+            case 11:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[0];
+                break;
+            case 12:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[1];
+                break;
+            case 13:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[2];
+                break;
+            case 21:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[3];
+                break;
+            case 22:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[4];
+                break;
+            case 23:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[5];
+                break;
+            case 31:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[6];
+                break;
+            case 32:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[7];
+                break;
+            case 33:
+                newNote.gameObject.GetComponent<DanceNote>().image.sprite = sprites[8];
+                break;
+            default:
+                break;
+        }
         notes.Add(newNote);
         return newNote;
     }

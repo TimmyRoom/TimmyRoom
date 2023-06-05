@@ -40,28 +40,28 @@ public class AreaSet : AbstractDanceArea
         switch (type)
         {
             case 11:
-                isTriggered[1] = false; isTriggered[2] = false;
                 isTriggered[0] = true;
+                isTriggered[1] = false; isTriggered[2] = false;
                 break;
             case 12:
-                isTriggered[0] = false; isTriggered[2] = false;
                 isTriggered[1] = true;
+                isTriggered[0] = false; isTriggered[2] = false;
                 break;
             case 13:
-                isTriggered[0] = false; isTriggered[1] = false;
                 isTriggered[2] = true;
+                isTriggered[0] = false; isTriggered[1] = false;
                 break;
             case 21:
-                isTriggered[4] = false; isTriggered[5] = false;
                 isTriggered[3] = true;
+                isTriggered[4] = false; isTriggered[5] = false;
                 break;
             case 22:
-                isTriggered[3] = false; isTriggered[5] = false;
                 isTriggered[4] = true;
+                isTriggered[3] = false; isTriggered[5] = false;
                 break;
             case 23:
-                isTriggered[3] = false; isTriggered[4] = false;
                 isTriggered[5] = true;
+                isTriggered[3] = false; isTriggered[4] = false;
                 break;
             default:
                 break;

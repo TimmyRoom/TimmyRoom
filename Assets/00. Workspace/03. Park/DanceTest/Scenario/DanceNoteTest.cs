@@ -14,9 +14,11 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     protected IEnumerator barCoroutine;
     protected int clear = 9;
 
-    public void SetCount()
+    public virtual void SetCount()
     {
         countText.text = (--clear).ToString();
+        if (clear < 0)
+            clear = 0;
     }
     /// <summary>
     /// 채보와 음악을 재생하는 함수.
