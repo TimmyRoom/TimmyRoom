@@ -208,9 +208,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneRecorder, Assembly-CSharp
-        m_MethodName: TestCapture
+      - m_Target: {fileID: 8565378190604649275}
+        m_TargetAssemblyTypeName: Profile, Assembly-CSharp
+        m_MethodName: ClickProfile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

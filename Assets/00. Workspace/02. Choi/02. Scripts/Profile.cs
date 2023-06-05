@@ -19,4 +19,10 @@ public class Profile : MonoBehaviour
         this.transform.GetChild(0).GetComponent<Image>().sprite = PatternManager.instance.GetPattern(patternId);
         this.transform.Find("Text").GetComponent<Text>().text = "플레이어 " + (id + 1);
     }
+
+    public void ClickProfile()
+    {
+        UserDataManager.instance.CurrentProfile = id;
+        LoginSceneManager.MovetoLobbyScene();
+    }
 }
