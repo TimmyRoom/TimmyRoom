@@ -8,13 +8,21 @@ using UnityEngine.Events;
 /// </summary>
 public class EscapeDoor : MonoBehaviour
 {
+    public AudioClip EscapeSound;
     public UnityEvent EscapeEvent;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("LeftController") || other.CompareTag("RightController"))
         {
-            EscapeEvent?.Invoke();
+            StartCoroutine(Escape());
         }
+    }
+
+    IEnumerator Escape()
+    {
+        SoundManager.instance.PlaySound(EscapeSound, gameObject.GetComponent<AudioSource>());
+        yield return new WaitForSeconds(0.75f);
+        EscapeEvent?.Invoke();
     }
 }
