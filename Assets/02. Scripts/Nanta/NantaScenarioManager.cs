@@ -91,6 +91,10 @@ public class NantaScenarioManager : MusicContentTool
     /// AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
     /// </summary>
     IEnumerator ComboRoutine;
+    /// <summary>
+    /// 음악 종료 후 발생하는 이벤트를 처리하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+    /// </summary>
+    IEnumerator StopRoutine;
     void Start()
     {
         Initialize();
@@ -185,7 +189,8 @@ public class NantaScenarioManager : MusicContentTool
         }
         SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
         StartCoroutine(SongRoutine);
-        StartCoroutine(StopMusic(data.SongLength));
+        StopRoutine = StopMusic(data.SongLength);
+        StartCoroutine(StopRoutine);
         return data;
     }
 
@@ -331,7 +336,8 @@ public class NantaScenarioManager : MusicContentTool
             scenario.SetActive(false);
         }
         Scenarios[scenarioIndex].SetActive(true);
-
+        StopCoroutine(StopRoutine);
+        
         foreach(var events in ScenarioEvents.Values)
         {
             events.RemoveAllListeners();
