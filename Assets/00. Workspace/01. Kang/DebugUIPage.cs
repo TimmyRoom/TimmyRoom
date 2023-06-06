@@ -18,9 +18,13 @@ public class DebugUIPage : MonoBehaviour, IScenario
     {
         text.text = (++count).ToString();
     }
-
+    public void StopChart()
+    {
+        NantaScenarioManager.instance.SetScenario(0);
+        SoundManager.instance.StopSound(NantaScenarioManager.instance.MusicAudioSource);
+    }
     public Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 0, UP }, { 2, StartSong} };
+        return new Dictionary<int, UnityAction>() { { 0, UP }, { 2, StartSong}, {3, StopChart} };
     }
 }

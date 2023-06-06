@@ -128,12 +128,12 @@ public class NantaJudgingLine : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(RayPosition[type].position, RayPosition[type].forward, out hit))
         {
-            if(hit.distance > 1.35f)
+            if(hit.distance > 1f)
             {
                 result = 0;
                 
             }
-            else if(0f < hit.distance && hit.distance < 1.35f)
+            else if(0f < hit.distance && hit.distance < 1f)
             {
                 result = 1;
                 notes.Remove(hit.collider.gameObject.GetComponent<Rigidbody>());
@@ -151,6 +151,7 @@ public class NantaJudgingLine : MonoBehaviour
         {
             NantaScenarioManager.instance.JudgeNote(type, result);
         }
+        Debug.Log(type + "번째 라인 판정 결과: " + result + "");
         return result;
     }
     /// <summary> 

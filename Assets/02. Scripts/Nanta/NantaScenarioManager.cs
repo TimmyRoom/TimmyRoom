@@ -48,7 +48,7 @@ public class NantaScenarioManager : MusicContentTool
         Hit,
         Fail,
         Start,
-        End
+        SongEnd
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public class NantaScenarioManager : MusicContentTool
         { EventType.Hit, new UnityEvent() },
         { EventType.Fail, new UnityEvent() },
         { EventType.Start, new UnityEvent() },
-        { EventType.End, new UnityEvent() }
+        { EventType.SongEnd, new UnityEvent() }
         };
 
     /// <summary>
@@ -113,8 +113,18 @@ public class NantaScenarioManager : MusicContentTool
     void StartMusic(AudioClip audioClip, float barSecond)
     {
         SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
-        //ComboRoutine = AddComboLoop(barSecond);
+        ComboRoutine = AddComboLoop(barSecond);
         //StartCoroutine(ComboRoutine);
+    }
+
+    /// <summary>
+    /// 음악을 멈추고 콤보 루틴을 종료한다. 
+    /// </summary>
+    IEnumerator StopMusic(float songLength)
+    {
+        yield return new WaitForSeconds(songLength + 1f);
+        ScenarioEvents[EventType.SongEnd].Invoke();
+        //StopCoroutine(ComboRoutine);
     }
 
     /// <summary>
@@ -124,7 +134,7 @@ public class NantaScenarioManager : MusicContentTool
     /// <returns>서브 루틴.</returns>
     IEnumerator AddComboLoop(float barSecond)
     {
-        WaitForSeconds tick = new WaitForSeconds(barSecond);
+        WaitForSeconds tick = new WaitForSeconds(barSecond * 4);
         while(true)
         {
             yield return tick;
@@ -175,6 +185,7 @@ public class NantaScenarioManager : MusicContentTool
         }
         SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
         StartCoroutine(SongRoutine);
+        StartCoroutine(StopMusic(data.SongLength));
         return data;
     }
 
@@ -283,6 +294,30 @@ public class NantaScenarioManager : MusicContentTool
             }
             default:
             {
+                switch(result)
+                {
+                    case 1:
+                    {
+                        ScenarioEvents[EventType.Hit]?.Invoke();
+                        break;
+                    }
+                    case 0:
+                    {
+                        ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
+                        break;
+                    }
+                    case -1:
+                    {
+                        ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
                 break;
             }
         }
@@ -297,7 +332,6 @@ public class NantaScenarioManager : MusicContentTool
         }
         Scenarios[scenarioIndex].SetActive(true);
 
-        ScenarioEvents[EventType.End].Invoke();
         foreach(var events in ScenarioEvents.Values)
         {
             events.RemoveAllListeners();

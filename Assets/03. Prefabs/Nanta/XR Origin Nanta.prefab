@@ -1548,10 +1548,20 @@ PrefabInstance:
       propertyPath: m_TagString
       value: RightController
       objectReference: {fileID: 0}
+    - target: {fileID: 3307345910937307197, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightController
+      objectReference: {fileID: 0}
     - target: {fileID: 4481722427582031343, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
       propertyPath: m_Name
       value: DemoStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481722427582031343, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightController
       objectReference: {fileID: 0}
     - target: {fileID: 8560225895522959742, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
@@ -1643,6 +1653,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: LeftController
       objectReference: {fileID: 0}
+    - target: {fileID: 3307345910937307197, guid: 15b4a731da4a9c444a792b0942a71f02,
+        type: 3}
+      propertyPath: m_TagString
+      value: LeftController
+      objectReference: {fileID: 0}
     - target: {fileID: 4481722427582031343, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
       propertyPath: m_Name
@@ -1651,7 +1666,7 @@ PrefabInstance:
     - target: {fileID: 4481722427582031343, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: LeftController
       objectReference: {fileID: 0}
     - target: {fileID: 8560225895522959742, guid: 15b4a731da4a9c444a792b0942a71f02,
         type: 3}
