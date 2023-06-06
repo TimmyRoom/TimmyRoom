@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 7308355219993915378}
-  jsonFile: {fileID: 4900000, guid: de3ec47107e0c8b43ab446e550d92c16, type: 3}
-  audioClip: {fileID: 8300000, guid: 1d364be327b0a5c4fa2b0e1e5628c36a, type: 3}
+  jsonFile: {fileID: 4900000, guid: f40924956abd34a4b910d2d40d94e0a7, type: 3}
+  audioClip: {fileID: 8300000, guid: a449c4d3013514044af6dce472846af3, type: 3}
 --- !u!114 &1734679558
 MonoBehaviour:
   m_ObjectHideFlags: 0
