@@ -160,23 +160,10 @@
             ]
         },
         {
-            "Time": 28,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
             "Time": 28.5,
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                },
-                {
-                    "Name": "Change",
                     "Type": 1
                 }
             ]
@@ -187,10 +174,6 @@
                 {
                     "Name": "Hit",
                     "Type": 1
-                },
-                {
-                    "Name": "Change",
-                    "Type": 2
                 }
             ]
         },
@@ -200,10 +183,6 @@
                 {
                     "Name": "Hit",
                     "Type": 1
-                },
-                {
-                    "Name": "Change",
-                    "Type": 0
                 }
             ]
         },
@@ -558,25 +537,7 @@
             ]
         },
         {
-            "Time": 68.5,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
             "Time": 69,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 69.5,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -594,25 +555,7 @@
             ]
         },
         {
-            "Time": 70.5,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
             "Time": 71,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 71.5,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -684,6 +627,10 @@
                 {
                     "Name": "Hit",
                     "Type": 0
+                },
+                {
+                    "Name": "Change",
+                    "Type": 2
                 }
             ]
         },
@@ -692,10 +639,6 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
-                },
-                {
-                    "Name": "Change",
                     "Type": 2
                 }
             ]
@@ -760,6 +703,10 @@
                 {
                     "Name": "Hit",
                     "Type": 2
+                },
+                {
+                    "Name": "Change",
+                    "Type": 1
                 }
             ]
         },
@@ -769,10 +716,6 @@
                 {
                     "Name": "Hit",
                     "Type": 0
-                },
-                {
-                    "Name": "Change",
-                    "Type": 1
                 }
             ]
         },
@@ -836,6 +779,10 @@
                 {
                     "Name": "Hit",
                     "Type": 0
+                },
+                {
+                    "Name": "Change",
+                    "Type": 2
                 }
             ]
         },
@@ -844,10 +791,6 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
-                },
-                {
-                    "Name": "Change",
                     "Type": 2
                 }
             ]
@@ -975,6 +918,10 @@
                 {
                     "Name": "Hit",
                     "Type": 2
+                },
+                {
+                    "Name": "Change",
+                    "Type": 1
                 }
             ]
         },
@@ -984,10 +931,6 @@
                 {
                     "Name": "Hit",
                     "Type": 0
-                },
-                {
-                    "Name": "Change",
-                    "Type": 1
                 }
             ]
         },
@@ -1051,6 +994,10 @@
                 {
                     "Name": "Hit",
                     "Type": 0
+                },
+                {
+                    "Name": "Change",
+                    "Type": 2
                 }
             ]
         },
@@ -1059,10 +1006,6 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
-                },
-                {
-                    "Name": "Change",
                     "Type": 2
                 }
             ]
@@ -1127,6 +1070,10 @@
                 {
                     "Name": "Hit",
                     "Type": 2
+                },
+                {
+                    "Name": "Change",
+                    "Type": 1
                 }
             ]
         },
@@ -1136,10 +1083,6 @@
                 {
                     "Name": "Hit",
                     "Type": 0
-                },
-                {
-                    "Name": "Change",
-                    "Type": 1
                 }
             ]
         },
@@ -1203,6 +1146,10 @@
                 {
                     "Name": "Hit",
                     "Type": 0
+                },
+                {
+                    "Name": "Change",
+                    "Type": 0
                 }
             ]
         },
@@ -1212,10 +1159,6 @@
                 {
                     "Name": "Hit",
                     "Type": 1
-                },
-                {
-                    "Name": "Change",
-                    "Type": 0
                 }
             ]
         },
