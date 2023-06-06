@@ -113,8 +113,17 @@ public class NantaScenarioManager : MusicContentTool
     void StartMusic(AudioClip audioClip, float barSecond)
     {
         SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
-        //ComboRoutine = AddComboLoop(barSecond);
-        //StartCoroutine(ComboRoutine);
+        ComboRoutine = AddComboLoop(barSecond);
+        StartCoroutine(ComboRoutine);
+    }
+
+    /// <summary>
+    /// 음악을 멈추고 콤보 루틴을 종료한다. 
+    /// </summary>
+    void StopMusic()
+    {
+        SoundManager.instance.StopSound(MusicAudioSource);
+        StopCoroutine(ComboRoutine);
     }
 
     /// <summary>
@@ -124,7 +133,7 @@ public class NantaScenarioManager : MusicContentTool
     /// <returns>서브 루틴.</returns>
     IEnumerator AddComboLoop(float barSecond)
     {
-        WaitForSeconds tick = new WaitForSeconds(barSecond);
+        WaitForSeconds tick = new WaitForSeconds(barSecond * 4);
         while(true)
         {
             yield return tick;
@@ -173,7 +182,7 @@ public class NantaScenarioManager : MusicContentTool
         {
             CommandExecute(data.Offset + Beat2Second(note.Time, data.BPM) + GetWaitTime(), note.Actions);
         }
-        SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
+        SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM), data.SongLength);
         StartCoroutine(SongRoutine);
         return data;
     }
@@ -188,10 +197,12 @@ public class NantaScenarioManager : MusicContentTool
     /// <param name="waitTime">대기 시간.</param>
     /// <param name="barSecond">마디당 소요 시간.</param>
     /// </summary>
-    IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
+    IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond, float songLength)
     {
         yield return new WaitForSeconds(waitTime);
         StartMusic(audioClip, barSecond);
+        yield return new WaitForSeconds(songLength);
+
     }
 
     public override void CommandExecute(float time, List<Action> actions)

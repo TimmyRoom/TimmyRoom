@@ -55,6 +55,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ComboClips: []
+  ComboClips:
+  - {fileID: 8300000, guid: 66ac006aace9c4b4d9684707b2260c73, type: 3}
+  - {fileID: 8300000, guid: 66ac006aace9c4b4d9684707b2260c73, type: 3}
   MusicAudioSource: {fileID: 0}
   ComboAudioSource: {fileID: 0}

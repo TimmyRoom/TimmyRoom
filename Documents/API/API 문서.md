@@ -672,6 +672,9 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
     - 콤보 루틴을 실행하여 일정 시간마다 콤보가 쌓이도록 한다.
     - ComboRoutine = StartCoroutine(AddComboLoop(float barSecond))
 
+- void StopMusic()
+  - 음악을 멈추고 콤보 루틴을 종료한다. 
+
 - IEnumerator AddComboLoop(float barSecond)
     - barSecond마다 barCombo += 1
     - barCombo의 값에 따라 SoundManager.SoundPlay(ComboClips, ComboAudioSource) 호출.

@@ -367,7 +367,7 @@ PrefabInstance:
     - target: {fileID: 829058429631741152, guid: 1eb9e4921945f8945a1129414c4ad75d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 829058429631741152, guid: 1eb9e4921945f8945a1129414c4ad75d,
         type: 3}
@@ -983,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 1902557180211553028, guid: 56225bfe50a9aa94982d2a60f5278319,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1902557180211553028, guid: 56225bfe50a9aa94982d2a60f5278319,
         type: 3}
@@ -1758,6 +1758,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5309121268814825008, guid: c6326a7459ad0ad459c98104516012b7,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309121268814825008, guid: c6326a7459ad0ad459c98104516012b7,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.9411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309121268814825008, guid: c6326a7459ad0ad459c98104516012b7,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.9411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309121268814825008, guid: c6326a7459ad0ad459c98104516012b7,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.9411765
+      objectReference: {fileID: 0}
     - target: {fileID: 5309121268814825014, guid: c6326a7459ad0ad459c98104516012b7,
         type: 3}
       propertyPath: m_PositionInput.m_Action.m_Id

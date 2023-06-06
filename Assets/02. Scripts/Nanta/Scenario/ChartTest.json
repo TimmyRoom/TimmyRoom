@@ -12,6 +12,10 @@
                 {
                     "Name": "Hit",
                     "Type": 0
+                },
+                {
+                    "Name": "Change",
+                    "Type": 3
                 }
             ]
         },

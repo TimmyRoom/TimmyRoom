@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 3933581348202491327, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3933581348202491327, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
@@ -40,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 3933581348202491327, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3933581348202491327, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 3933581348202491327, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3933581348202491327, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 4457776147501315845, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
       propertyPath: m_Name
-      value: Tembourine
+      value: NoteChange
       objectReference: {fileID: 0}
     - target: {fileID: 4850923087794459490, guid: 08435bc55be7eba4198bf14210b62e16,
         type: 3}
