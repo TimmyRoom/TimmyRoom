@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8323574606567501134}
   m_Layer: 0
   m_Name: DemoDanceStickRed
-  m_TagString: Untagged
+  m_TagString: LeftController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 9155889969277814506}
   m_Layer: 0
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: LeftController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
