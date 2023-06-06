@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LoginSceneManager : MonoBehaviour
 {
-    public void MoveToSignUpScene()
+    public static void MoveToSignUpScene()
     {
         SceneMover.instance.MoveScene("SignUp");
+    }
+
+    public static void MovetoLobbyScene()
+    {
+        SceneMover.instance.MoveScene("Lobby");
     }
 }

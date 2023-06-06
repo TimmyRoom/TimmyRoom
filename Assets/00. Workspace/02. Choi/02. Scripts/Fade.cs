@@ -23,5 +23,6 @@ public class Fade : MonoBehaviour
             canvasGroup.alpha -= Time.deltaTime / fadeTime;
             yield return null;
         }
+        this.gameObject.SetActive(false);
     }
 }

@@ -7,8 +7,8 @@ public class SignUpManager : MonoBehaviour
     public static SignUpManager instance;
     SignUpUIManager signUpUIManager;
 
-    UserColor color;
-    UserPattern pattern;
+    public UserColor color;
+    public UserPattern pattern;
 
 
     private void Awake() {
@@ -25,6 +25,7 @@ public class SignUpManager : MonoBehaviour
 
     private void Start() {
         signUpUIManager = GetComponent<SignUpUIManager>();
+        Init();
     }
     
     void Init()
@@ -43,6 +44,11 @@ public class SignUpManager : MonoBehaviour
 
     public void ConfirmColor()
     {
+        if(color == UserColor.None)
+        {
+            signUpUIManager.ShowNotice("색상을 선택해주세요.");
+            return;
+        }
         signUpUIManager.ConfirmColor();
     }
 
@@ -54,6 +60,11 @@ public class SignUpManager : MonoBehaviour
 
     public void ConfirmPattern()
     {
+        if(pattern == UserPattern.None)
+        {
+            signUpUIManager.ShowNotice("패턴을 선택해주세요.");
+            return;
+        } 
         signUpUIManager.ConfirmPattern();
 
         // 회원가입 완료
