@@ -468,6 +468,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1704320793120813145}
   count: 7
+  InstrumentClip: {fileID: 8300000, guid: 91ec3e571d7b97b43848f1e633fbc509, type: 3}
+  InstrumentAudioSource: {fileID: 0}
 --- !u!114 &1704320793751023231
 MonoBehaviour:
   m_ObjectHideFlags: 0

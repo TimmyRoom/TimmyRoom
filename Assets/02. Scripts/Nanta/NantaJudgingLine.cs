@@ -151,7 +151,6 @@ public class NantaJudgingLine : MonoBehaviour
         {
             NantaScenarioManager.instance.JudgeNote(type, result);
         }
-        Debug.Log(type + "번째 라인 판정 결과: " + result + "");
         return result;
     }
     /// <summary> 

@@ -10,6 +10,11 @@ public class DebugUIPage : MonoBehaviour, IScenario
     [SerializeField] TextAsset jsonFile;
     [SerializeField] AudioClip audioClip;
     private int count = 0;
+    public virtual void OnEnable()
+    {
+        count = 0;
+        text.text = count.ToString();
+    }
     public void StartSong()
     {
         NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);

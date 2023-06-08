@@ -10,8 +10,10 @@ public class Drum : AbstractNantaInstrument
     public SingleHitArea[] HitAreas;
     public override void GetHitted(int type)
     {
-        SoundManager.instance.PlaySound(InstrumentClips, InstrumentAudioSource, 0.4f);
-        Judge.JudgeNote(type);
+        if(Judge.JudgeNote(type) == 1)
+        {
+            SoundManager.instance.PlaySound(InstrumentClips, InstrumentAudioSource, 0.42f);
+        }
     }
 
     public override void Initialize()
