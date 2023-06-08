@@ -91,6 +91,10 @@ public class NantaScenarioManager : MusicContentTool
     /// AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
     /// </summary>
     IEnumerator ComboRoutine;
+    /// <summary>
+    /// 음악 종료 후 발생하는 이벤트를 처리하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+    /// </summary>
+    IEnumerator StopRoutine;
     void Start()
     {
         Initialize();
@@ -185,7 +189,8 @@ public class NantaScenarioManager : MusicContentTool
         }
         SongRoutine = PlayChartRoutine(audioClip, GetWaitTime(), Beat2Second(1, data.BPM));
         StartCoroutine(SongRoutine);
-        StartCoroutine(StopMusic(data.SongLength));
+        StopRoutine = StopMusic(data.SongLength);
+        StartCoroutine(StopRoutine);
         return data;
     }
 
@@ -231,6 +236,14 @@ public class NantaScenarioManager : MusicContentTool
             }
         }
     }
+    /// <summary>
+    /// 악기를 즉시 교체한다.
+    /// </summary>
+    /// <param name="type">악기의 종류</param>
+    public void ChangeInstrumentInstantly(int type)
+    {
+        nantaInstrumentManager.ChangeInstrument(0f, type);
+    }
 
     public override int JudgeNote(int type, int result)
     {
@@ -249,12 +262,12 @@ public class NantaScenarioManager : MusicContentTool
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(VibrateAmplifier, VibrateTime));
+                        StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     case -1:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
-                        StartCoroutine(VibrateControl.instance.CustomVibrateLeft(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     default:
@@ -276,13 +289,13 @@ public class NantaScenarioManager : MusicContentTool
                     case 0:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateLeft(VibrateAmplifier, VibrateTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     case -1:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
-                        StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     default:
@@ -304,13 +317,13 @@ public class NantaScenarioManager : MusicContentTool
                     case 0:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
+                        StartCoroutine(VibrateControl.instance.CustomVibrateLeft(VibrateAmplifier, VibrateTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     case -1:
                     {
                         ScenarioEvents[EventType.Fail]?.Invoke();
-                        StartCoroutine(VibrateControl.instance.CustomVibrateRight(VibrateAmplifier, VibrateTime));
                         break;
                     }
                     default:
@@ -331,7 +344,10 @@ public class NantaScenarioManager : MusicContentTool
             scenario.SetActive(false);
         }
         Scenarios[scenarioIndex].SetActive(true);
-
+        if(StopRoutine != null)
+        {
+            StopCoroutine(StopRoutine);
+        }
         foreach(var events in ScenarioEvents.Values)
         {
             events.RemoveAllListeners();
@@ -354,6 +370,7 @@ public class NantaScenarioManager : MusicContentTool
         //StopCoroutine(ComboRoutine);
         StopCoroutine(SongRoutine);
         nantaJudgeLine.ResetAll();
+        nantaInstrumentManager.ResetAll();
         SoundManager.instance.StopSound(MusicAudioSource);
     }
 }

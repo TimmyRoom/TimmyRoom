@@ -14,6 +14,16 @@ public class HitTest : MonoBehaviour, IScenario
     /// 카운트를 저장하는 변수.
     /// </summary>
     [SerializeField] protected int count = 7;
+    /// <summary>
+    /// 악기와 관련된 효과음 목록.
+    /// </summary>
+    [SerializeField] public AudioClip InstrumentClip;
+        
+    /// <summary>
+    /// 악기와 관련된 효과음이 나오는 곳.
+    /// </summary>
+    [SerializeField] public AudioSource InstrumentAudioSource;
+    
     public virtual void Start()
     {
         text.text = count.ToString();
@@ -24,6 +34,10 @@ public class HitTest : MonoBehaviour, IScenario
     public virtual void SetCount()
     {
         text.text = (--count).ToString();
+        StartCoroutine(VibrateControl.instance.CustomVibrateLeft(0.2f, 0.2f));
+        StartCoroutine(VibrateControl.instance.CustomVibrateRight(0.2f, 0.2f));
+        SoundManager.instance.PlaySound(InstrumentClip, InstrumentAudioSource, 0.42f);
+        NantaScenarioManager.instance.JudgeNote(1, 1);
         if(count == 0)
         {
             NantaScenarioManager.instance.SetScenario(2);

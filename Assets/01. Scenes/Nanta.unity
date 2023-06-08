@@ -652,7 +652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868852451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.027517557, y: 1.413909, z: 3.3027024}
+  m_LocalPosition: {x: 0, y: 2, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1482,6 +1482,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1704320793751023171, guid: 698880a447d82454eaf72d4a7785958e,
+        type: 3}
+      propertyPath: InstrumentAudioSource
+      value: 
+      objectReference: {fileID: 803205146}
     - target: {fileID: 1704320793751023173, guid: 698880a447d82454eaf72d4a7785958e,
         type: 3}
       propertyPath: m_Name
@@ -1875,6 +1880,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
         type: 3}
+      propertyPath: VibrateTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
       propertyPath: nantaJudgeLine
       value: 
       objectReference: {fileID: 4777317281855846476}
@@ -2022,12 +2032,12 @@ PrefabInstance:
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7834365799416552955, guid: baaa4148841d54b47a7329310144994f,
         type: 3}
@@ -2073,6 +2083,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 868852452}
     m_Modifications:
+    - target: {fileID: 650555982195642261, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_text
+      value: 'Drum
+
+        Change'
+      objectReference: {fileID: 0}
     - target: {fileID: 666032022787557663, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: interactionSource
@@ -2113,6 +2130,13 @@ PrefabInstance:
       propertyPath: UIEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 8430941173177933958, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_text
+      value: 'Line
+
+        Add'
+      objectReference: {fileID: 0}
     - target: {fileID: 8705594094840432568, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: m_Pivot.x

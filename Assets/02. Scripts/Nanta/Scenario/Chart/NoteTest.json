@@ -16,25 +16,7 @@
             ]
         },
         {
-            "Time": 1,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
             "Time": 2,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 3,
             "Actions": [
                 {
                     "Name": "Hit",

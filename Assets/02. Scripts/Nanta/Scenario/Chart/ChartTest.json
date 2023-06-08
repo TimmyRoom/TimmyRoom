@@ -11,11 +11,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 0
-                },
-                {
-                    "Name": "Change",
-                    "Type": 3
+                    "Type": 1
                 }
             ]
         },
@@ -24,7 +20,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 2
                 }
             ]
         },
@@ -33,16 +29,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 2.5,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
+                    "Type": 1
                 }
             ]
         },
@@ -51,6 +38,10 @@
             "Actions": [
                 {
                     "Name": "Hit",
+                    "Type": 2
+                },
+                {
+                    "Name": "Change",
                     "Type": 1
                 }
             ]
@@ -83,20 +74,15 @@
             ]
         },
         {
-            "Time": 6.5,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
             "Time": 7,
             "Actions": [
                 {
                     "Name": "Hit",
                     "Type": 1
+                },
+                {
+                    "Name": "Change",
+                    "Type": 2
                 }
             ]
         }

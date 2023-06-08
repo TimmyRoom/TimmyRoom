@@ -9,6 +9,7 @@ public class NoteTest : HitTest, IScenario
     [SerializeField] protected TextAsset jsonFile;
     [SerializeField] protected AudioClip audioClip;
     [SerializeField] protected int nextScenario = 3;
+    [SerializeField] protected int startInstrument = 0;
     protected IEnumerator barCoroutine;
     public override void SetCount()
     {
@@ -21,6 +22,7 @@ public class NoteTest : HitTest, IScenario
     {
         barCoroutine = BarCoroutine();
         StartCoroutine(barCoroutine);
+        NantaScenarioManager.instance.ChangeInstrumentInstantly(startInstrument);
     }
     /// <summary>
     /// 음악 재생을 위해 실행되는 코루틴.
