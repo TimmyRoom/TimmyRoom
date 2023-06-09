@@ -38,11 +38,11 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     /// </summary>
     public virtual void SetCount()
     {
-        countText.text = (--clear).ToString();
+        countText.text = (--clear).ToString() + "회 남음";
         if (clear < 0)
         {
             clear = 0;
-            countText.text = clear.ToString();
+            countText.text = clear.ToString() + "회 남음";
         }
     }
 
@@ -52,7 +52,7 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     public void StartBar()
     {
         DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(true);
-        countText.text = clear.ToString();
+        countText.text = clear.ToString() + "회 남음";
         barCoroutine = BarCoroutine();
         StartCoroutine(barCoroutine);
     }
