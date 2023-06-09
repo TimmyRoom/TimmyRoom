@@ -340,8 +340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 782394724567100690}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -651,6 +652,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d83c3cb1015bd42448dcb4b284b34435, type: 3}
+--- !u!1 &782394724567100690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 6868919026726459511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3337111913741783507 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
