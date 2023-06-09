@@ -36,6 +36,7 @@ public class BasicPoseTest : MonoBehaviour, IScenario
 
     public virtual void Start()
     {
+        DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(false);
         if (isBasic)
             DanceScenarioManager.instance.danceAreaManager.area.EnableGuide();
         else

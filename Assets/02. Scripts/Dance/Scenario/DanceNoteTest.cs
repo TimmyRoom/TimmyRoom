@@ -51,6 +51,7 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     /// </summary>
     public void StartBar()
     {
+        DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(true);
         countText.text = clear.ToString();
         barCoroutine = BarCoroutine();
         StartCoroutine(barCoroutine);
