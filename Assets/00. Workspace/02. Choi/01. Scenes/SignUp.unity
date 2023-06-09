@@ -250,6 +250,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1024407}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1024409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1024407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4685688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372,6 +378,12 @@ PrefabInstance:
 --- !u!224 &4685689 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 4685688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4685690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 4685688}
   m_PrefabAsset: {fileID: 0}
@@ -688,8 +700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 4685690}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -845,6 +858,12 @@ PrefabInstance:
 --- !u!224 &72842964 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 72842963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &72842965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 72842963}
   m_PrefabAsset: {fileID: 0}
@@ -1046,6 +1065,12 @@ PrefabInstance:
 --- !u!224 &103911446 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 103911445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &103911447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 103911445}
   m_PrefabAsset: {fileID: 0}
@@ -1364,6 +1389,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 212230040}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &212230042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 212230040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &221993779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1709,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 276841640}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &276841642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 276841640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &282219672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,8 +1952,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 276841642}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -2072,6 +2110,12 @@ PrefabInstance:
 --- !u!224 &329532992 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 329532991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &329532993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 329532991}
   m_PrefabAsset: {fileID: 0}
@@ -2782,6 +2826,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 481237602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &481237604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 481237602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &494756033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,8 +3071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 833326117}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -3636,8 +3687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1655302698}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -4007,8 +4059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 72842965}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -4677,8 +4730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1641091963}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -4954,8 +5008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1896372982}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -5263,6 +5318,12 @@ PrefabInstance:
 --- !u!224 &833326116 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 833326115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &833326117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 833326115}
   m_PrefabAsset: {fileID: 0}
@@ -5579,8 +5640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 103911447}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -5775,8 +5837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 212230042}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -6013,6 +6076,12 @@ PrefabInstance:
 --- !u!224 &938384062 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 938384061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &938384063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 938384061}
   m_PrefabAsset: {fileID: 0}
@@ -6254,8 +6323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1024409}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -6414,6 +6484,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1028985914}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1028985916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028985914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1058137763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6536,6 +6612,12 @@ PrefabInstance:
 --- !u!224 &1058137764 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1058137763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1058137765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 1058137763}
   m_PrefabAsset: {fileID: 0}
@@ -7126,6 +7208,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1208523944}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1208523946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1208523944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1220609042
 GameObject:
   m_ObjectHideFlags: 0
@@ -7363,8 +7451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 938384063}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -7636,8 +7725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1677046859}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -7793,6 +7883,12 @@ PrefabInstance:
 --- !u!224 &1339953069 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1339953068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1339953070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 1339953068}
   m_PrefabAsset: {fileID: 0}
@@ -8070,6 +8166,12 @@ PrefabInstance:
 --- !u!224 &1371919647 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1371919646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1371919648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 1371919646}
   m_PrefabAsset: {fileID: 0}
@@ -8386,8 +8488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1208523946}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -8888,8 +8991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1371919648}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -9202,6 +9306,12 @@ PrefabInstance:
 --- !u!224 &1522480134 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1522480133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1522480135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 1522480133}
   m_PrefabAsset: {fileID: 0}
@@ -10255,8 +10365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1522480135}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -10490,6 +10601,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1641091961}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1641091963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1641091961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1641317214
 GameObject:
   m_ObjectHideFlags: 0
@@ -10651,8 +10768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1863455091}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -10887,6 +11005,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1655302696}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1655302698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1655302696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1677046857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11009,6 +11133,12 @@ PrefabInstance:
 --- !u!224 &1677046858 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1677046857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1677046859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 1677046857}
   m_PrefabAsset: {fileID: 0}
@@ -11454,8 +11584,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1028985916}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -12181,6 +12312,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1863455089}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1863455091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1863455089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1874387072
 GameObject:
   m_ObjectHideFlags: 0
@@ -12418,8 +12555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1339953070}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -12651,6 +12789,12 @@ PrefabInstance:
 --- !u!224 &1896372981 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 1896372980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1896372982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
     type: 3}
   m_PrefabInstance: {fileID: 1896372980}
   m_PrefabAsset: {fileID: 0}
@@ -13709,8 +13853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 1058137765}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -13988,8 +14133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 481237604}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -14242,8 +14388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeObject: {fileID: 329532993}
   pointTimer: 0
-  maxPointTime: 3
+  maxPointTime: 2
   curve:
     serializedVersion: 2
     m_Curve:
