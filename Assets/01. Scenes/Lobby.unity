@@ -3076,7 +3076,6 @@ MonoBehaviour:
   gazeObject: {fileID: 25634030}
   gazeScale: 1.2
   ungazedColor: 0.75
-  pointTimer: 0
   maxPointTime: 2
   curve:
     serializedVersion: 2
@@ -3350,7 +3349,6 @@ MonoBehaviour:
   gazeObject: {fileID: 846738862}
   gazeScale: 1.2
   ungazedColor: 0.75
-  pointTimer: 0
   maxPointTime: 2
   curve:
     serializedVersion: 2
@@ -3966,7 +3964,6 @@ MonoBehaviour:
   gazeObject: {fileID: 953317954}
   gazeScale: 1.2
   ungazedColor: 0.75
-  pointTimer: 0
   maxPointTime: 2
   curve:
     serializedVersion: 2
