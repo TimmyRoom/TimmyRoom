@@ -1,0 +1,90 @@
+{
+    "ChartName": "ChartBeat_ChartTest",
+    "SongName": "ChartBeat",
+    "ArtistName": "TimmyRoom",
+    "SongLength": 4.94844,
+    "Offset": 0,
+    "BPM": 97,
+    "Notes": [
+        {
+            "Time": 0,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 1,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 2,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 3,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                },
+                {
+                    "Name": "Change",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 4,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 6,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 7,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                },
+                {
+                    "Name": "Change",
+                    "Type": 2
+                }
+            ]
+        }
+    ]
+}

@@ -30,23 +30,23 @@ public class UserDataManager : MonoBehaviour
     /// 모든 유저 정보를 불러온다.
     /// </summary>
     /// <returns>성공하면 true, 실패하면 false</returns>
-    bool LoadData()
+    public bool LoadData()
     {
-        return true;
-
         // After Making Login Scene
-        // try
-        // {
-        //     string dirPath = Application.persistentDataPath;
-        //     string json = System.IO.File.ReadAllText(dirPath + "/userData.json");
-        //     GameData.userDataList = JsonUtility.FromJson<List<UserData>>(json);
-        //     return true;
-        // }
-        // catch(UnityEngine.UnityException e)
-        // {
-        //     Debug.LogError(e.Message);
-        //     return false;
-        // }
+        try
+        {
+            string dirPath = Application.persistentDataPath;
+            string json = System.IO.File.ReadAllText(dirPath + "/userData.json");
+            SerializableGameData gameData = JsonUtility.FromJson<SerializableGameData>(json);
+            GameData.userDataList = gameData.userDataList;
+            return true;
+        }
+        catch(System.Exception e)
+        {
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/userData.json", "");
+            Debug.LogWarning("LoadData : " + e.Message);
+            return false;
+        }
     }
 
 
@@ -54,7 +54,7 @@ public class UserDataManager : MonoBehaviour
     /// 지정된 프로필의 데이터 파일을 읽어 currentProfile을 갱신한다.
     /// </summary>
     /// <param name="targetProfile">프로필 이름.</param>
-    void ReadData(int targetProfile)
+    public void ReadData(int targetProfile)
     {
         CurrentProfile = targetProfile;
         //TODO : 데이터를 읽어 적용한다.
@@ -64,10 +64,17 @@ public class UserDataManager : MonoBehaviour
     /// <summary>
     /// currenProfile에 해당하는 파일의 정보를 저장한다.
     /// </summary>
-    void SaveData()
+    public void SaveData()
     {
-        string json = JsonUtility.ToJson(GameData.userDataList);
+        SerializableGameData gameData = new SerializableGameData();
+        gameData.userDataList = GameData.userDataList;
+
+        string json = JsonUtility.ToJson(gameData);
         string dirPath = Application.persistentDataPath;
+        // foreach(var user in GameData.userDataList)
+        // {
+        //     Debug.Log(user.id + " " + user.colorId + " " + user.patternId);
+        // }
         System.IO.File.WriteAllText(dirPath + "/userData.json", json);
     }
 
@@ -76,19 +83,21 @@ public class UserDataManager : MonoBehaviour
     /// </summary>
     /// <param name="targetProfile">새로 생성할 프로필 이름.</param>
     /// <param name="jsonData">새로 생성할 프로필 정보.</param>
-    void AddNewData(int colorId, int patterId)
+    public bool AddNewData(int colorId, int patterId)
     {
         int id = GameData.AddUser(colorId, patterId);
         if(id == -1)
         {
             Debug.LogWarning("AddNewData : AddUser Failed");
-            throw new System.Exception("AddNewData : AddUser Failed");
+            return false;
         }
         CurrentProfile = id;
+        return true;
     }
 
     private void OnApplicationQuit()
     {
+        Debug.Log("Application Quit");
         SaveData();
     }
 }

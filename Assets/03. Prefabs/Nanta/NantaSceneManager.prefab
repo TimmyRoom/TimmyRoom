@@ -44,12 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b1dd59b601cc240b46fb451afb3abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  XRCamera: {fileID: 0}
+  StartTransform: {fileID: 0}
+  XRCameraOffset: {fileID: 0}
   nantaJudgeLine: {fileID: 0}
-  nantaInstrument: {fileID: 0}
-  HitEventsLeft: []
-  HitFailEventsLeft: []
-  HitEventsRight: []
-  HitFailEventsRight: []
-  ComboClips: []
+  nantaInstrumentManager: {fileID: 0}
+  VibrateTime: 0.2
+  VibrateAmplifier: 0.2
+  Scenarios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ComboClips:
+  - {fileID: 8300000, guid: 66ac006aace9c4b4d9684707b2260c73, type: 3}
+  - {fileID: 8300000, guid: 66ac006aace9c4b4d9684707b2260c73, type: 3}
   MusicAudioSource: {fileID: 0}
   ComboAudioSource: {fileID: 0}

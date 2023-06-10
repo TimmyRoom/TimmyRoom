@@ -8,13 +8,25 @@ using UnityEngine;
 public abstract class AbstractSceneManager : MonoBehaviour
 {
     /// <summary>
-    /// 초기화시 필요한 로직들을 담는 함수.
+    /// XR Origin의 Main Camera 위치를 담는 변수.
     /// </summary>
-    void Init()
+    public Transform XRCamera;
+    /// <summary>
+    /// 씬의 초기 위치를 담는 변수. 기준은 XR Origin의 Main Camera.
+    /// </summary>
+    public Transform StartTransform;
+    /// <summary>
+    /// XR Origin의 Camera Offset을 담는 변수.
+    /// </summary>
+    public Transform XRCameraOffset;
+    /// <summary>
+    /// 사용자 위치를 초기화하는 함수.
+    /// </summary>
+    public void ResetPosition()
     {
-        //TODO : Init 완성.
+        XRCameraOffset.position = StartTransform.position - XRCamera.localPosition;
+        XRCameraOffset.rotation = Quaternion.Euler(0, StartTransform.rotation.eulerAngles.y - XRCamera.rotation.eulerAngles.y, 0);
     }
-
     /// <summary>
     /// 특정 씬으로 이동하는 로직을 담은 함수.
     /// </summary>

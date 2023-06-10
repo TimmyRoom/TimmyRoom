@@ -27,9 +27,18 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     /// <param name="clip">재생할 AudioClip.</param>
     /// <param name="source">클립이 재생될 AudioSource.</param>
-    public void SoundPlay(AudioClip clip, AudioSource source)
+    public void PlaySound(AudioClip clip, AudioSource source, float startTime = 0f)
     {
         source.clip = clip;
+        source.time = startTime;
         source.Play();
+    }
+    /// <summary>
+    /// 설정한 AudioSource의 재생 음악을 멈춘다.
+    /// <param name="source">멈추고자 하는 AudioSource.</param>
+    /// </summary>
+    public void StopSound(AudioSource source)
+    {
+        source.Stop();
     }
 }
