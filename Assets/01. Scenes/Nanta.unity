@@ -1206,11 +1206,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 868852452}
     m_Modifications:
-    - target: {fileID: 7308355218256247495, guid: 82e52b1ffca94e144b7be4c573e1c2ae,
-        type: 3}
-      propertyPath: m_text
-      value: "\uC810\uC218"
-      objectReference: {fileID: 0}
     - target: {fileID: 7308355219384235971, guid: 82e52b1ffca94e144b7be4c573e1c2ae,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1320,11 +1315,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 5.PlayConcert
-      objectReference: {fileID: 0}
-    - target: {fileID: 7308355219384235981, guid: 82e52b1ffca94e144b7be4c573e1c2ae,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82e52b1ffca94e144b7be4c573e1c2ae, type: 3}
@@ -2322,11 +2312,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 5342084549905384700, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 081c42567e7bfd043b61d0b164841b87, type: 3}
     - target: {fileID: 5713864004254158483, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 5777589847021548163, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: d28421d2d39abb34b8eac03dc4765da3, type: 3}
     - target: {fileID: 5796222281614564933, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
