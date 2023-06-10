@@ -27,6 +27,11 @@ public abstract class AbstractNantaInstrument : MonoBehaviour
     public abstract void Initialize();
 
     /// <summary>
+    /// 악기가 비활성화될 때 호출되는 함수.
+    /// </summary>
+    public abstract void OnDisappear();
+
+    /// <summary>
     /// 악기가 사용자에 의해 인터렉션되었을 때 호출되는 함수.
     /// </summary>
     public abstract void GetHitted(int type);

@@ -21,7 +21,6 @@ public class NantaInstrumentManager : MonoBehaviour
     {
         foreach(var instrument in Instruments)
         {
-            instrument.Initialize();
             instrument.gameObject.SetActive(false);
         }
     }
@@ -44,9 +43,13 @@ public class NantaInstrumentManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         foreach(var instrument in Instruments)
         {
-            instrument.gameObject.SetActive(false);
+            if(instrument.gameObject.activeInHierarchy)
+            {
+                instrument.OnDisappear();
+            }
         }
         Instruments[instrumentIndex].gameObject.SetActive(true);
+        Instruments[instrumentIndex].Initialize();
     }
     /// <summary>
     /// 씬 시작 상태로 되돌리는 함수.
