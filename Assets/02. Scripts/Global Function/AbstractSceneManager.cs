@@ -8,13 +8,26 @@ using UnityEngine;
 public abstract class AbstractSceneManager : MonoBehaviour
 {
     /// <summary>
-    /// 초기화시 필요한 로직들을 담는 함수.
+    /// XR 헤드마운트 카메라 위치를 담는 변수.
     /// </summary>
-    void Init()
+    public Transform XRHead;
+    /// <summary>
+    /// 씬의 초기 위치를 담는 변수.
+    /// </summary>
+    public Transform SceneObject;
+    /// <summary>
+    /// XR Rig를 담는 변수.
+    /// </summary>
+    public Transform XRRig;
+    /// <summary>
+    /// 사용자 위치를 초기화하는 함수.
+    /// </summary>
+    public void ResetPosition()
     {
-        //TODO : Init 완성.
+        Debug.Log("Init");
+        XRRig.position = SceneObject.position - XRHead.localPosition;
+        XRRig.rotation = Quaternion.Euler(0, SceneObject.rotation.eulerAngles.y - XRHead.rotation.eulerAngles.y, 0);
     }
-
     /// <summary>
     /// 특정 씬으로 이동하는 로직을 담은 함수.
     /// </summary>

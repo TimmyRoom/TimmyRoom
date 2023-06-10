@@ -28,11 +28,21 @@ User Interaction을 통해 화살표를 따라 각 씬으로 이동 가능하다
 ---
 
 Abstract class
+
 각 씬의 매니저 클래스가 포함할 멤버와 메서드를 담는 추상 클래스.
 using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도한다.
 
-- void Init()
-    - 초기화시 필요한 로직들을 담는 함수
+- public Transform XRHead
+    - XR 헤드마운트 카메라 위치를 담는 변수.
+
+- public Transform SceneObject
+    - 씬의 초기 위치를 담는 변수.
+
+- public Transform XRRig
+    - XR Rig를 담는 변수.
+
+- public void ResetPosition()
+    - 사용자 위치를 초기화하는 함수
 
 - public void MoveScene(string sceneName)
     - 특정 씬으로 이동하는 로직을 담은 함수
