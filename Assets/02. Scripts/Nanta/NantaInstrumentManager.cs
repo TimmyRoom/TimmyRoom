@@ -21,7 +21,6 @@ public class NantaInstrumentManager : MonoBehaviour
     {
         foreach(var instrument in Instruments)
         {
-            instrument.Initialize();
             instrument.gameObject.SetActive(false);
         }
     }
@@ -42,11 +41,16 @@ public class NantaInstrumentManager : MonoBehaviour
     IEnumerator ChangeRoutine(float time, int instrumentIndex)
     {
         yield return new WaitForSeconds(time);
-        foreach(var instrument in Instruments)
+        Debug.Log(instrumentIndex);
+        for(int i = 0; i < Instruments.Length; i++)
         {
-            instrument.gameObject.SetActive(false);
+            if(Instruments[i].gameObject.activeInHierarchy && i != instrumentIndex)
+            {
+                Instruments[i].OnDisappear();
+            }
         }
         Instruments[instrumentIndex].gameObject.SetActive(true);
+        Instruments[instrumentIndex].Initialize();
     }
     /// <summary>
     /// 씬 시작 상태로 되돌리는 함수.
