@@ -18,11 +18,11 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     /// <summary>
     /// 채보 정보가 들어가있는 json 파일.
     /// </summary>
-    [SerializeField] protected TextAsset jsonFile;
+    [HideInInspector] public TextAsset jsonFile;
     /// <summary>
     /// 채보의 음악 오디오 클립.
     /// </summary>
-    [SerializeField] protected AudioClip audioClip;
+    [HideInInspector] public AudioClip audioClip;
     /// <summary>
     /// 다음 시나리오 번호.
     /// </summary>
