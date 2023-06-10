@@ -118,6 +118,7 @@ public class DanceScenarioManager : MusicContentTool
         danceAreaManager.area.DisableGuide();
         danceJudgingPoint.JudgePointGuide.SetActive(false);
         SetScenario(0);
+        ResetPosition();
     }
 
     /// <summary>
@@ -530,6 +531,7 @@ public class DanceScenarioManager : MusicContentTool
 
     public override void SetScenario(int scenarioIndex)
     {
+        ResetPosition();
         foreach (var scenario in Scenarios)
         {
             scenario.SetActive(false);
