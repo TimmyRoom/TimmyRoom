@@ -2069,19 +2069,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
         type: 3}
-      propertyPath: XRRig
-      value: 
-      objectReference: {fileID: 1564502919}
-    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
-        type: 3}
-      propertyPath: XRHead
+      propertyPath: XRCamera
       value: 
       objectReference: {fileID: 2090634717}
     - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
         type: 3}
-      propertyPath: SceneObject
+      propertyPath: StartTransform
       value: 
       objectReference: {fileID: 373829461}
+    - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
+        type: 3}
+      propertyPath: XRCameraOffset
+      value: 
+      objectReference: {fileID: 1564502919}
     - target: {fileID: 1686144000320090335, guid: 0be7de5f22203854eb6968743088e84b,
         type: 3}
       propertyPath: nantaJudgeLine

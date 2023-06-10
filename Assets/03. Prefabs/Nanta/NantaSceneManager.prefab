@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b1dd59b601cc240b46fb451afb3abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XRHead: {fileID: 0}
-  SceneObject: {fileID: 0}
-  XRRig: {fileID: 0}
+  XRCamera: {fileID: 0}
+  StartTransform: {fileID: 0}
+  XRCameraOffset: {fileID: 0}
   nantaJudgeLine: {fileID: 0}
   nantaInstrumentManager: {fileID: 0}
   VibrateTime: 0.2

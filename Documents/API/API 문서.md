@@ -32,14 +32,14 @@ Abstract class
 각 씬의 매니저 클래스가 포함할 멤버와 메서드를 담는 추상 클래스.
 using 추가 소요를 줄이고, SceneMover 싱글톤 사용 유도한다.
 
-- public Transform XRHead
-    - XR 헤드마운트 카메라 위치를 담는 변수.
+- public Transform XRCamera
+    - XR Origin의 Main Camera 위치를 담는 변수.
 
-- public Transform SceneObject
-    - 씬의 초기 위치를 담는 변수.
+- public Transform StartTransform
+    - 씬의 초기 위치를 담는 변수. 기준은 XR Origin의 Main Camera.
 
-- public Transform XRRig
-    - XR Rig를 담는 변수.
+- public Transform XRCameraOffset
+    - XR Origin의 Camera Offset을 담는 변수.
 
 - public void ResetPosition()
     - 사용자 위치를 초기화하는 함수
