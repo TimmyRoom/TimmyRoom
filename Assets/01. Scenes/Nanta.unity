@@ -1168,6 +1168,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 868852452}
     m_Modifications:
+    - target: {fileID: 7308355218256247495, guid: 82e52b1ffca94e144b7be4c573e1c2ae,
+        type: 3}
+      propertyPath: m_text
+      value: "\uC810\uC218"
+      objectReference: {fileID: 0}
     - target: {fileID: 7308355219384235971, guid: 82e52b1ffca94e144b7be4c573e1c2ae,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1456,6 +1461,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4.ChartTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1922968475700043736, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198649365056547374, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4203106965380820599, guid: 21e4b2946f0e318468f12a59658f2518,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1466,6 +1481,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 4913834401190266232, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945341681027764871, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5321910546366388087, guid: 21e4b2946f0e318468f12a59658f2518,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1476,6 +1501,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 6476884398470057804, guid: 21e4b2946f0e318468f12a59658f2518,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e4b2946f0e318468f12a59658f2518, type: 3}
 --- !u!224 &1216577896067796470 stripped
@@ -1721,6 +1751,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 3.SplitTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971952545116422378, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2892885560070871052, guid: e82f4c7d2c67dae458d18a8ca73a5c6e,
         type: 3}
@@ -2501,6 +2536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 2.NoteTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741657366594908757, guid: a8ae53c5696e16141a19db94459ed5d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8ae53c5696e16141a19db94459ed5d4, type: 3}
