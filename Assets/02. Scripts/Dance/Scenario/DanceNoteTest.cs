@@ -18,11 +18,11 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     /// <summary>
     /// 채보 정보가 들어가있는 json 파일.
     /// </summary>
-    [SerializeField] protected TextAsset jsonFile;
+    [HideInInspector] public TextAsset jsonFile;
     /// <summary>
     /// 채보의 음악 오디오 클립.
     /// </summary>
-    [SerializeField] protected AudioClip audioClip;
+    [HideInInspector] public AudioClip audioClip;
     /// <summary>
     /// 다음 시나리오 번호.
     /// </summary>
@@ -38,11 +38,11 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     /// </summary>
     public virtual void SetCount()
     {
-        countText.text = (--clear).ToString();
+        countText.text = (--clear).ToString() + "회 남음";
         if (clear < 0)
         {
             clear = 0;
-            countText.text = clear.ToString();
+            countText.text = clear.ToString() + "회 남음";
         }
     }
 
@@ -51,7 +51,8 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     /// </summary>
     public void StartBar()
     {
-        countText.text = clear.ToString();
+        DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(true);
+        countText.text = clear.ToString() + "회 남음";
         barCoroutine = BarCoroutine();
         StartCoroutine(barCoroutine);
     }

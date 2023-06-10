@@ -26,6 +26,11 @@ public class DanceJudgingPoint : MonoBehaviour
     public Transform JudgePosition;
 
     /// <summary>
+    /// 사용자들이 눈으로 확인 가능한 판정 범위 오브젝트.
+    /// </summary>
+    public GameObject JudgePointGuide;
+
+    /// <summary>
     /// 노트가 생성되는 위치.
     /// </summary>
     public Transform NoteSpawnTransforms;

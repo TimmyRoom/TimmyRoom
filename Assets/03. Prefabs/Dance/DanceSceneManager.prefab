@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fc8399a66e4704389b94b605e450f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  XRCamera: {fileID: 0}
+  StartTransform: {fileID: 0}
+  XRCameraOffset: {fileID: 0}
   danceJudgingPoint: {fileID: 0}
   danceAreaManager: {fileID: 0}
   Scenarios:
