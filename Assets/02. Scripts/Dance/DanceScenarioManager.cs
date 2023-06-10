@@ -26,7 +26,7 @@ public class DanceScenarioManager : MusicContentTool
     /// <summary>
     /// 댄스 포즈 판정을 담당하는 클래스이다.
     /// </summary>
-    [SerializeField] private DanceJudgingPoint danceJudgingPoint;
+    public DanceJudgingPoint danceJudgingPoint;
 
     /// <summary>
     /// 댄스 포즈 트리거 구역을 담당하는 클래스이다.
@@ -116,7 +116,9 @@ public class DanceScenarioManager : MusicContentTool
     {
         danceAreaManager.Initialize();
         danceAreaManager.area.DisableGuide();
+        danceJudgingPoint.JudgePointGuide.SetActive(false);
         SetScenario(0);
+        ResetPosition();
     }
 
     /// <summary>
@@ -529,6 +531,7 @@ public class DanceScenarioManager : MusicContentTool
 
     public override void SetScenario(int scenarioIndex)
     {
+        ResetPosition();
         foreach (var scenario in Scenarios)
         {
             scenario.SetActive(false);

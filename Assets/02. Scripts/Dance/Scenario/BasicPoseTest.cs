@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class BasicPoseTest : MonoBehaviour, IScenario
@@ -16,10 +17,11 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     /// 공지를 표시하는 텍스트.
     /// </summary>
     [SerializeField] protected TextMeshProUGUI notifyText;
+
     /// <summary>
-    /// 해야할 포즈를 표시하는 텍스트.
+    /// 해야할 포즈를 표시하는 이미지.
     /// </summary>
-    [SerializeField] protected TextMeshProUGUI poseText;
+    [SerializeField] protected Image poseGuideImage;
 
     /// <summary>
     /// 판정을 위해 현재 발동된 트리거 정보를 자체적으로 저장하는 bool 배열.
@@ -36,11 +38,17 @@ public class BasicPoseTest : MonoBehaviour, IScenario
 
     public virtual void Start()
     {
+        DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(false);
         if (isBasic)
+        {
             DanceScenarioManager.instance.danceAreaManager.area.EnableGuide();
+            notifyText.text = "아래 동작을 따라해보세요!\n가이드에 손을 맞춰주세요.";
+        }
         else
+        {
             DanceScenarioManager.instance.danceAreaManager.area.DisableGuide();
-        notifyText.text = "Follow the Guide!";
+            notifyText.text = "아래 동작을 따라해보세요!\n가이드 없이 해보도록 해요.";
+        }
         current = new bool[6];
         NewAnswer();
     }
@@ -54,39 +62,39 @@ public class BasicPoseTest : MonoBehaviour, IScenario
         {
             case 0:
                 answer = (1, 1);
-                poseText.text = "L Down, R Down";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[0];
                 break;
             case 1:
                 answer = (1, 2);
-                poseText.text = "L Down, R Mid";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[1];
                 break;
             case 2:
                 answer = (1, 3);
-                poseText.text = "L Down, R Up";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[2];
                 break;
             case 3:
                 answer = (2, 1);
-                poseText.text = "L Mid, R Down";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[3];
                 break;
             case 4:
                 answer = (2, 2);
-                poseText.text = "L Mid, R Mid";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[4];
                 break;
             case 5:
                 answer = (2, 3);
-                poseText.text = "L Mid, R Up";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[5];
                 break;
             case 6:
                 answer = (3, 1);
-                poseText.text = "L Up, R Down";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[6];
                 break;
             case 7:
                 answer = (3, 2);
-                poseText.text = "L Up, R Mid";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[7];
                 break;
             case 8:
                 answer = (3, 3);
-                poseText.text = "L Up, R Up";
+                poseGuideImage.sprite = DanceScenarioManager.instance.danceJudgingPoint.sprites[8];
                 break;
             case 9:
                 break;
@@ -116,7 +124,7 @@ public class BasicPoseTest : MonoBehaviour, IScenario
             clear++;
             if(clear == 9)
             {
-                poseText.text = "Great!";
+                //poseText.text = "Great!";
                 if(DanceScenarioManager.instance.currentScenarioNum == 1)
                     DanceScenarioManager.instance.SetScenario(2);
                 else
