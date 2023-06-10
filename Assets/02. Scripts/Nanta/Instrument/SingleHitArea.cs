@@ -15,6 +15,8 @@ public class SingleHitArea : MonoBehaviour
     public UnityAction action;
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"{other.transform.position} / {this.transform.position} / {Time.time}");
+        if(other.transform.position.y > this.transform.position.y + 0.5f)
         action.Invoke();
     }
 }
