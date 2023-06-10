@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DebugUIPage : MonoBehaviour, IScenario
+public class PlayConcert : MonoBehaviour, IScenario
 {
     [SerializeField] TextMeshProUGUI text;
-    [SerializeField] TextAsset jsonFile;
-    [SerializeField] AudioClip audioClip;
+    [HideInInspector] public TextAsset jsonFile;
+    [HideInInspector] public AudioClip audioClip;
     private int count = 0;
     public virtual void OnEnable()
     {
@@ -19,7 +19,7 @@ public class DebugUIPage : MonoBehaviour, IScenario
     {
         NantaScenarioManager.instance.PlayChart(jsonFile.text, audioClip);
     }
-    public void UP()
+    public void SetCount()
     {
         text.text = (++count).ToString();
     }
@@ -30,6 +30,6 @@ public class DebugUIPage : MonoBehaviour, IScenario
     }
     public Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 0, UP }, { 2, StartSong}, {3, StopChart} };
+        return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 2, StartSong }, {3, StopChart } };
     }
 }
