@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17511073, g: 0.21907203, b: 0.30137312, a: 1}
+  m_IndirectSpecularColor: {r: 0.17330302, g: 0.2166243, b: 0.29867548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -290,14 +290,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367438852}
-  m_LocalRotation: {x: 0.55403227, y: -0.21201213, z: 0.14845248, w: 0.79124016}
+  m_LocalRotation: {x: 0.7360264, y: -0.16760811, z: 0.19721764, w: 0.62552214}
   m_LocalPosition: {x: -2.93, y: 7.92, z: 5.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1337769752}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 70, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 99.28, y: -30, z: 0}
 --- !u!1 &373829460
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,9 +544,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
         type: 3}
+      propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
+        type: 3}
+      propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
+        type: 3}
       propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
+        type: 3}
+      propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
+        type: 3}
+      propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
+        type: 3}
+      propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: QuitNanta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
+        type: 3}
+      propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: NantaScenarioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898019259447497849, guid: 1eb9e4921945f8945a1129414c4ad75d,
+        type: 3}
+      propertyPath: EscapeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb9e4921945f8945a1129414c4ad75d, type: 3}
 --- !u!4 &726388851 stripped
