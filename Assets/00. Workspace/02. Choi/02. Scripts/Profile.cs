@@ -23,6 +23,7 @@ public class Profile : MonoBehaviour
     public void ClickProfile()
     {
         UserDataManager.instance.CurrentProfile = id;
+        ModelManager.instance.SetProfile(colorId, patternId);
         LoginSceneManager.MovetoLobbyScene();
     }
 }
