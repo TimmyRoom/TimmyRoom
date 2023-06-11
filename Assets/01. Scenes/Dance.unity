@@ -3113,6 +3113,11 @@ PrefabInstance:
       propertyPath: danceChart
       value: 
       objectReference: {fileID: 1697011345649601667}
+    - target: {fileID: 456842030521073542, guid: 847acccc39181c743bc79124ccae8839,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4900000, guid: 188bd24cc1f710149918cfaa9c51514b, type: 3}
     - target: {fileID: 3252478325432741074, guid: 847acccc39181c743bc79124ccae8839,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3233,6 +3238,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 913403566}
+    - target: {fileID: 7261294540892277596, guid: 847acccc39181c743bc79124ccae8839,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4900000, guid: 6ebe7cab5d4c5504e809bf502c26a0b6, type: 3}
     - target: {fileID: 8197262797710917445, guid: 847acccc39181c743bc79124ccae8839,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
