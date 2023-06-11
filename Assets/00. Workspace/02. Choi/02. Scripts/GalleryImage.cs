@@ -21,7 +21,7 @@ public class GalleryImage : MonoBehaviour
         this.dateTime = dirPath.Substring(dirPath.LastIndexOf('/') + 1);
         Texture2D tex = new Texture2D(1920,1080,TextureFormat.RGB24,false);
         tex.LoadImage(System.IO.File.ReadAllBytes(dirPath + "/photo000.png"));
-        this.GetComponent<RawImage>().texture = tex;
+        this.GetComponent<Image>().sprite = Sprite.Create(tex, new Rect(0,0,tex.width,tex.height), new Vector2(0.5f,0.5f));
     }
 
     public void Hover()
@@ -57,7 +57,7 @@ public class GalleryImage : MonoBehaviour
         }
         foreach(var img in images)
         {
-            this.GetComponent<RawImage>().texture = img;
+            this.GetComponent<Image>().sprite = Sprite.Create(img, new Rect(0,0,img.width,img.height), new Vector2(0.5f,0.5f));
             yield return new WaitForSeconds(1.0f / 24.0f);
         }
         Debug.Log("영상 재생 종료");
