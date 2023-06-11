@@ -41,7 +41,6 @@ public class NantaInstrumentManager : MonoBehaviour
     IEnumerator ChangeRoutine(float time, int instrumentIndex)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log(instrumentIndex);
         for(int i = 0; i < Instruments.Length; i++)
         {
             if(Instruments[i].gameObject.activeInHierarchy && i != instrumentIndex)
