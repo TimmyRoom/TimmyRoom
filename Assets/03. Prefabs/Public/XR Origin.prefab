@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 7794153992148072760}
   - component: {fileID: 7794153992148072767}
   - component: {fileID: 7794153992148072766}
-  - component: {fileID: -2458449487587927290}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: XR Origin
@@ -102,18 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActionAssets:
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
---- !u!114 &-2458449487587927290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7794153992148072765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fc736a10fb55042a8b11db814d7d0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7794153992284339490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,7 +1637,7 @@ PrefabInstance:
         type: 3}
       propertyPath: leftHand.vrTarget
       value: 
-      objectReference: {fileID: 7794153993274422964}
+      objectReference: {fileID: 7794153992530884185}
     - target: {fileID: 9057710088238351679, guid: 73ba43e58ccc59d4abe2426501eb07c6,
         type: 3}
       propertyPath: leftHand.rigTarget
@@ -1660,7 +1647,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rightHand.vrTarget
       value: 
-      objectReference: {fileID: 7794153992530884185}
+      objectReference: {fileID: 7794153993274422964}
     - target: {fileID: 9057710088238351679, guid: 73ba43e58ccc59d4abe2426501eb07c6,
         type: 3}
       propertyPath: rightHand.rigTarget
@@ -1670,6 +1657,26 @@ PrefabInstance:
         type: 3}
       propertyPath: head.trackingPositionOffset.z
       value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9057710088238351679, guid: 73ba43e58ccc59d4abe2426501eb07c6,
+        type: 3}
+      propertyPath: leftHand.trackingRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9057710088238351679, guid: 73ba43e58ccc59d4abe2426501eb07c6,
+        type: 3}
+      propertyPath: leftHand.trackingRotationOffset.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9057710088238351679, guid: 73ba43e58ccc59d4abe2426501eb07c6,
+        type: 3}
+      propertyPath: rightHand.trackingRotationOffset.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9057710088238351679, guid: 73ba43e58ccc59d4abe2426501eb07c6,
+        type: 3}
+      propertyPath: rightHand.trackingRotationOffset.y
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ba43e58ccc59d4abe2426501eb07c6, type: 3}
