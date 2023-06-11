@@ -24,7 +24,7 @@ public class ModelManager : MonoBehaviour
     {
         SetProfile(currentColorId, currentPatternId);
     }
-
+ 
     public void SetProfile(int colorId, int patternId)
     {
         this.GetComponent<SkinnedMeshRenderer>().materials = new Material[2] {colors[colorId], patterns[patternId]};
