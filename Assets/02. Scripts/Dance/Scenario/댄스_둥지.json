@@ -1,0 +1,1234 @@
+{
+  "ChartName": "둥지",
+  "SongName": "둥지",
+  "ArtistName": "심수봉",
+  "SongLength": 100,
+  "Offset": 1,
+  "BPM": 165,
+  "Notes": [
+    {
+      "Time": 17,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 18.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 21,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 22.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 25,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 26.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 29,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 33,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 34.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 37,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 38.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 41,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 42.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 45,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 50,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 52,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 54,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 56,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 57,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 58.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 61,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 33
+        }
+      ]
+    },
+    {
+      "Time": 62.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 66,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 68,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 70,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 72,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 74,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 76,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 78,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 80,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 82,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 84,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 86,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 88,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 90,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 92,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 94,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 96,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 98,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 100,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 102,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 104,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 106,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 108,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 110,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 112,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 114,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 116,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 118,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 120,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 122,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 33
+        }
+      ]
+    },
+    {
+      "Time": 123,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 125,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 128,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 129,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 33
+        }
+      ]
+    },
+    {
+      "Time": 138,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 140,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 142,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 144,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 146,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 148,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 150,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 152,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 154,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 156,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 158,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 160,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 162,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 164,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 33
+        }
+      ]
+    },
+    {
+      "Time": 166,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 168,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 169,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 173,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 174,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 175,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 176,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 177,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 178,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 179,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 180,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 181,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 182,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 183,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 184,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 185,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 186,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 187,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 188,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 189,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 190,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 191,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 192,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 193,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 194,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 195,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 196,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 197,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 198,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 199,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 200,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 201,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 202,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 203,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 204,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 209,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 211.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 213,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 215.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 217,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 219.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 221,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 223.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 225,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 226,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 227,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 228,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 32
+        }
+      ]
+    },
+    {
+      "Time": 229,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 230,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 12
+        }
+      ]
+    },
+    {
+      "Time": 231,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 21
+        }
+      ]
+    },
+    {
+      "Time": 232,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 23
+        }
+      ]
+    },
+    {
+      "Time": 233,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 237,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 239,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 241,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 243.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 245,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 247.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 249,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 251.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 13
+        }
+      ]
+    },
+    {
+      "Time": 253,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 255.5,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 31
+        }
+      ]
+    },
+    {
+      "Time": 257,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 259,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    },
+    {
+      "Time": 261,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 33
+        }
+      ]
+    },
+    {
+      "Time": 263,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 11
+        }
+      ]
+    },
+    {
+      "Time": 265,
+      "Actions": [
+        {
+          "Name": "Hit",
+          "Type": 22
+        }
+      ]
+    }
+  ]
+}

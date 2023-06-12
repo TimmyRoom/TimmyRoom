@@ -1,26 +1,17 @@
 {
-    "ChartName": "아모르파티",
-    "SongName": "아모르파티",
-    "ArtistName": "김연자",
-    "SongLength": 74,
-    "Offset": 9.5,
-    "BPM": 134,
+    "ChartName": "찐이야",
+    "SongName": "찐이야",
+    "ArtistName": "영탁",
+    "SongLength": 116,
+    "Offset": 0.8,
+    "BPM": 154,
     "Notes": [
         {
             "Time": 0,
             "Actions": [
                 {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 2,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
+                    "Name": "Change",
+                    "Type": 3
                 }
             ]
         },
@@ -29,7 +20,34 @@
             "Actions": [
                 {
                     "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 4.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 5,
+            "Actions": [
+                {
+                    "Name": "Hit",
                     "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 5.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -38,7 +56,34 @@
             "Actions": [
                 {
                     "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 6.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
                     "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 7,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 7.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -47,34 +92,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 9,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 10,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 11,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
                 }
             ]
         },
@@ -83,7 +101,34 @@
             "Actions": [
                 {
                     "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 12.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 13,
+            "Actions": [
+                {
+                    "Name": "Hit",
                     "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 13.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -92,7 +137,34 @@
             "Actions": [
                 {
                     "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 14.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
                     "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 15,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 15.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -101,16 +173,11 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 18,
-            "Actions": [
+                    "Type": 0
+                },
                 {
-                    "Name": "Hit",
-                    "Type": 1
+                    "Name": "Change",
+                    "Type": 0
                 }
             ]
         },
@@ -120,15 +187,10 @@
                 {
                     "Name": "Hit",
                     "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 21,
-            "Actions": [
+                },
                 {
-                    "Name": "Hit",
-                    "Type": 1
+                    "Name": "Change",
+                    "Type": 2
                 }
             ]
         },
@@ -137,7 +199,11 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 2
+                },
+                {
+                    "Name": "Change",
+                    "Type": 0
                 }
             ]
         },
@@ -147,6 +213,10 @@
                 {
                     "Name": "Hit",
                     "Type": 1
+                },
+                {
+                    "Name": "Change",
+                    "Type": 1
                 }
             ]
         },
@@ -155,39 +225,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 28.5,
-            "Actions": [
+                    "Type": 0
+                },
                 {
-                    "Name": "Hit",
-                    "Type": 1
+                    "Name": "Change",
+                    "Type": 0
                 }
             ]
         },
         {
-            "Time": 29,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 29.5,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 30,
+            "Time": 28,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -196,6 +243,24 @@
                 {
                     "Name": "Change",
                     "Type": 3
+                }
+            ]
+        },
+        {
+            "Time": 32,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 32.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
                 }
             ]
         },
@@ -209,6 +274,60 @@
             ]
         },
         {
+            "Time": 33.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 35,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 32,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 32.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 33,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 33.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
             "Time": 35,
             "Actions": [
                 {
@@ -218,11 +337,29 @@
             ]
         },
         {
-            "Time": 37,
+            "Time": 36,
             "Actions": [
                 {
                     "Name": "Hit",
                     "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 37,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 38,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -231,12 +368,12 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
+                    "Type": 1
                 }
             ]
         },
         {
-            "Time": 41,
+            "Time": 40,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -245,7 +382,7 @@
             ]
         },
         {
-            "Time": 43,
+            "Time": 42,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -254,7 +391,7 @@
             ]
         },
         {
-            "Time": 45,
+            "Time": 44,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -263,7 +400,7 @@
             ]
         },
         {
-            "Time": 47,
+            "Time": 46,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -276,15 +413,6 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 49,
-            "Actions": [
-                {
-                    "Name": "Hit",
                     "Type": 0
                 }
             ]
@@ -294,25 +422,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 51,
-            "Actions": [
-                {
-                    "Name": "Hit",
                     "Type": 2
-                }
-            ]
-        },
-        {
-            "Time": 52,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
                 }
             ]
         },
@@ -321,7 +431,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 0
+                    "Type": 2
                 }
             ]
         },
@@ -330,7 +440,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 2
                 }
             ]
         },
@@ -339,7 +449,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
+                    "Type": 1
                 }
             ]
         },
@@ -348,7 +458,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
                 }
             ]
         },
@@ -384,38 +494,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                },
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 60.5,
+            "Actions": [
                 {
-                    "Name": "Change",
+                    "Name": "Hit",
                     "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 61,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 62,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 63,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
                 }
             ]
         },
@@ -424,7 +512,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 64.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -438,7 +535,25 @@
             ]
         },
         {
+            "Time": 65.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
             "Time": 66,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 66.5,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -451,7 +566,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 67.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -460,7 +584,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
                 }
             ]
         },
@@ -478,7 +602,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 2
                 }
             ]
         },
@@ -496,25 +620,21 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                },
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 74,
+            "Actions": [
                 {
-                    "Name": "Change",
-                    "Type": 1
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
         {
             "Time": 76,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 77,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -527,16 +647,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 79,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
+                    "Type": 2
                 }
             ]
         },
@@ -545,20 +656,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 81,
-            "Actions": [
-                {
-                    "Name": "Hit",
                     "Type": 0
-                },
-                {
-                    "Name": "Change",
-                    "Type": 2
                 }
             ]
         },
@@ -572,43 +670,16 @@
             ]
         },
         {
-            "Time": 83,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
-                }
-            ]
-        },
-        {
             "Time": 84,
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 85,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
+                    "Type": 0
                 }
             ]
         },
         {
             "Time": 86,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 87,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -621,7 +692,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
                 }
             ]
         },
@@ -631,42 +702,11 @@
                 {
                     "Name": "Hit",
                     "Type": 2
-                },
-                {
-                    "Name": "Change",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 90,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 91,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
                 }
             ]
         },
         {
             "Time": 92,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 93,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -679,12 +719,48 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 2
                 }
             ]
         },
         {
-            "Time": 95,
+            "Time": 96,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 96.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 97,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 97.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 99,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -697,7 +773,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 96.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -706,16 +791,12 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 0
-                },
-                {
-                    "Name": "Change",
                     "Type": 2
                 }
             ]
         },
         {
-            "Time": 98,
+            "Time": 97.5,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -737,16 +818,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 101,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
+                    "Type": 0
                 }
             ]
         },
@@ -760,25 +832,7 @@
             ]
         },
         {
-            "Time": 103,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
-                }
-            ]
-        },
-        {
             "Time": 104,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 105,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -791,7 +845,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
+                    "Type": 1
                 }
             ]
         },
@@ -800,16 +854,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 109,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
+                    "Type": 0
                 }
             ]
         },
@@ -823,33 +868,11 @@
             ]
         },
         {
-            "Time": 111,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
-                }
-            ]
-        },
-        {
             "Time": 112,
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 113,
-            "Actions": [
-                {
-                    "Name": "Hit",
                     "Type": 2
-                },
-                {
-                    "Name": "Change",
-                    "Type": 1
                 }
             ]
         },
@@ -858,30 +881,12 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 115,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 116,
-            "Actions": [
-                {
-                    "Name": "Hit",
                     "Type": 1
                 }
             ]
         },
         {
-            "Time": 117,
+            "Time": 116,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -899,32 +904,10 @@
             ]
         },
         {
-            "Time": 119,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
             "Time": 120,
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 121,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                },
-                {
-                    "Name": "Change",
                     "Type": 2
                 }
             ]
@@ -934,16 +917,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
-                }
-            ]
-        },
-        {
-            "Time": 123,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
+                    "Type": 1
                 }
             ]
         },
@@ -952,7 +926,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 124.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
                 }
             ]
         },
@@ -961,7 +944,7 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
+                    "Type": 0
                 }
             ]
         },
@@ -970,7 +953,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 126.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },
@@ -988,7 +980,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 128.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
                 }
             ]
         },
@@ -997,20 +998,16 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 2
-                },
-                {
-                    "Name": "Change",
-                    "Type": 1
+                    "Type": 0
                 }
             ]
         },
         {
-            "Time": 130,
+            "Time": 129.5,
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 0
+                    "Type": 2
                 }
             ]
         },
@@ -1019,21 +1016,12 @@
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 0
+                    "Type": 2
                 }
             ]
         },
         {
             "Time": 132,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 133,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -1051,33 +1039,11 @@
             ]
         },
         {
-            "Time": 135,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
             "Time": 136,
             "Actions": [
                 {
                     "Name": "Hit",
-                    "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 137,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                },
-                {
-                    "Name": "Change",
-                    "Type": 0
+                    "Type": 2
                 }
             ]
         },
@@ -1091,7 +1057,16 @@
             ]
         },
         {
-            "Time": 139,
+            "Time": 140,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 142,
             "Actions": [
                 {
                     "Name": "Hit",
@@ -1100,11 +1075,1363 @@
             ]
         },
         {
-            "Time": 140,
+            "Time": 144,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 146,
             "Actions": [
                 {
                     "Name": "Hit",
                     "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 148,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 150,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 152,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 154,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 156,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 156.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 157,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 158,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 158.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 159,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 160,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 160.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 161,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 161.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 163,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 164,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 165,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 165.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 166,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 167,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 167.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 168,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 168.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 169,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 169.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 170,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 171,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 171,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 172,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 173,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 173.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 174,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 175,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 175.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 176,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 176.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 177,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 177.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 178,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 179,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 179,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 181,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 183,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 184,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 185,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 188.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 189,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 189.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 190,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 190.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 191,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 191.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 192,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 192.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 193,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 193.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 195,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 192,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 192.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 193,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 193.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 195,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 196,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 197,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 198,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 199,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 200,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 202,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 204,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 206,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 208,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 210,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 213,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 214,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 215,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 216,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 217,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 218,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 219,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 220,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 220.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 224,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 224.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 225,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 225.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 226,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 226.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 227,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 227.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 228,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 229,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 230,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 231,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 232,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 234,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 236,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 238,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 240,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 242,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 244,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 246,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 248,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 249,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 252,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 254,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 256,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 258,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 260,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                },
+                {
+                    "Name": "Change",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 262,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                },
+                {
+                    "Name": "Change",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 264,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                },
+                {
+                    "Name": "Change",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 266,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                },
+                {
+                    "Name": "Change",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 268,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 272,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                },
+                {
+                    "Name": "Change",
+                    "Type": 3
+                }
+            ]
+        },
+        {
+            "Time": 276,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 276.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 277,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 277.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 278,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 278.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 279,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 279.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 280,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 280.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 281,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 281.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 282,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 282.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 283,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 283.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 284,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 284.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 285,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 285.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 286,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 286.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 1
+                }
+            ]
+        },
+        {
+            "Time": 287,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 287.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 288,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 288.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 289,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 289.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 291,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 288,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 288.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 289,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 289.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 291,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         }
