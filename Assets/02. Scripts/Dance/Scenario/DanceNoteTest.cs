@@ -7,58 +7,58 @@ using UnityEngine.Events;
 public class DanceNoteTest : MonoBehaviour, IScenario
 {
     /// <summary>
-    /// °øÁö¸¦ Ç¥½ÃÇÏ´Â ÅØ½ºÆ®.
+    /// ê³µì§€ë¥¼ í‘œì‹œí•˜ëŠ” í…ìŠ¤íŠ¸.
     /// </summary>
     [SerializeField] protected TextMeshProUGUI notifyText;
     /// <summary>
-    /// ³²Àº È½¼ö¸¦ Ç¥½ÃÇÏ´Â ÅØ½ºÆ®.
+    /// ë‚¨ì€ íšŸìˆ˜ë¥¼ í‘œì‹œí•˜ëŠ” í…ìŠ¤íŠ¸.
     /// </summary>
     [SerializeField] protected TextMeshProUGUI countText;
 
     /// <summary>
-    /// Ã¤º¸ Á¤º¸°¡ µé¾î°¡ÀÖ´Â json ÆÄÀÏ.
+    /// ì±„ë³´ ì •ë³´ê°€ ë“¤ì–´ê°€ìˆëŠ” json íŒŒì¼.
     /// </summary>
     [HideInInspector] public TextAsset jsonFile;
     /// <summary>
-    /// Ã¤º¸ÀÇ À½¾Ç ¿Àµğ¿À Å¬¸³.
+    /// ì±„ë³´ì˜ ìŒì•… ì˜¤ë””ì˜¤ í´ë¦½.
     /// </summary>
     [HideInInspector] public AudioClip audioClip;
     /// <summary>
-    /// ´ÙÀ½ ½Ã³ª¸®¿À ¹øÈ£.
+    /// ë‹¤ìŒ ì‹œë‚˜ë¦¬ì˜¤ ë²ˆí˜¸.
     /// </summary>
     [SerializeField] protected int nextScenario = 4;
     protected IEnumerator barCoroutine;
     /// <summary>
-    /// Å¬¸®¾î¸¦ À§ÇØ ³²Àº Á¤´ä È½¼ö.
+    /// í´ë¦¬ì–´ë¥¼ ìœ„í•´ ë‚¨ì€ ì •ë‹µ íšŸìˆ˜.
     /// </summary>
     protected int clear = 8;
 
     /// <summary>
-    /// Á¤´ä ÆÇÁ¤ÀÌ ³ª¿À¸é ³²Àº È½¼ö Ä«¿îÆ®¸¦ °¨¼Ò½ÃÅ´.
+    /// ì •ë‹µ íŒì •ì´ ë‚˜ì˜¤ë©´ ë‚¨ì€ íšŸìˆ˜ ì¹´ìš´íŠ¸ë¥¼ ê°ì†Œì‹œí‚´.
     /// </summary>
     public virtual void SetCount()
     {
-        countText.text = (--clear).ToString() + "È¸ ³²À½";
+        countText.text = (--clear).ToString() + "íšŒ ë‚¨ìŒ";
         if (clear < 0)
         {
             clear = 0;
-            countText.text = clear.ToString() + "È¸ ³²À½";
+            countText.text = clear.ToString() + "íšŒ ë‚¨ìŒ";
         }
     }
 
     /// <summary>
-    /// Ã¤º¸¿Í À½¾ÇÀ» Àç»ıÇÏ´Â ÇÔ¼ö.
+    /// ì±„ë³´ì™€ ìŒì•…ì„ ì¬ìƒí•˜ëŠ” í•¨ìˆ˜.
     /// </summary>
     public void StartBar()
     {
         DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(true);
-        countText.text = clear.ToString() + "È¸ ³²À½";
+        countText.text = clear.ToString() + "íšŒ ë‚¨ìŒ";
         barCoroutine = BarCoroutine();
         StartCoroutine(barCoroutine);
     }
 
     /// <summary>
-    /// À½¾Ç Àç»ıÀ» À§ÇØ ½ÇÇàµÇ´Â ÄÚ·çÆ¾.
+    /// ìŒì•… ì¬ìƒì„ ìœ„í•´ ì‹¤í–‰ë˜ëŠ” ì½”ë£¨í‹´.
     /// </summary>
     protected IEnumerator BarCoroutine()
     {
@@ -71,7 +71,7 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     }
 
     /// <summary>
-    /// Ã¤º¸ Àç»ıÀ» À§ÇØ ½ÇÇàµÇ´Â ÄÚ·çÆ¾.
+    /// ì±„ë³´ ì¬ìƒì„ ìœ„í•´ ì‹¤í–‰ë˜ëŠ” ì½”ë£¨í‹´.
     /// </summary>
     protected virtual IEnumerator MusicCoroutine()
     {
@@ -85,9 +85,9 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     }
 
     /// <summary>
-    /// ÇØ´ç ÀÎ½ºÆ®·°¼Ç¿¡¼­ ¹ß»ıÇÏ´Â ¾×¼ÇµéÀÇ ¸®½ºÆ®¸¦ ¹İÈ¯ÇÑ´Ù.
+    /// í•´ë‹¹ ì¸ìŠ¤íŠ¸ëŸ­ì…˜ì—ì„œ ë°œìƒí•˜ëŠ” ì•¡ì…˜ë“¤ì˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°˜í™˜í•œë‹¤.
     /// </summary>
-    /// <returns>ÀÎ½ºÆ®·°¼Ç¿¡¼­ ¹ß»ıÇÏ´Â ¾×¼ÇµéÀÇ ¸®½ºÆ®</returns>
+    /// <returns>ì¸ìŠ¤íŠ¸ëŸ­ì…˜ì—ì„œ ë°œìƒí•˜ëŠ” ì•¡ì…˜ë“¤ì˜ ë¦¬ìŠ¤íŠ¸</returns>
     public virtual Dictionary<int, UnityAction> GetActions()
     {
         return new Dictionary<int, UnityAction>() { { 0, SetCount }, { 2, StartBar } };

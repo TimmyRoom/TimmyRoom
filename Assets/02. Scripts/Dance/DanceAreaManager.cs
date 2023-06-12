@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ´í½º Æ÷Áî Æ®¸®°Å ±¸¿ªÀ» ´ã´çÇÏ´Â Å¬·¡½ºÀÌ´Ù.
+/// ëŒ„ìŠ¤ í¬ì¦ˆ íŠ¸ë¦¬ê±° êµ¬ì—­ì„ ë‹´ë‹¹í•˜ëŠ” í´ë˜ìŠ¤ì´ë‹¤.
 /// </summary>
 public class DanceAreaManager : MonoBehaviour
 {
     /// <summary>
-    /// ¾À ÁøÇà¿¡ »ç¿ëµÇ´Â ¸ğµç ±¸¿ªµéÀÇ ÁıÇÕ.
+    /// ì”¬ ì§„í–‰ì— ì‚¬ìš©ë˜ëŠ” ëª¨ë“  êµ¬ì—­ë“¤ì˜ ì§‘í•©.
     /// </summary>
     public AreaSet area;
 
     /// <summary>
-    /// ÃÊ±â ¼³Á¤À» À§ÇÑ ÇÔ¼ö.
+    /// ì´ˆê¸° ì„¤ì •ì„ ìœ„í•œ í•¨ìˆ˜.
     /// </summary>
     public void Initialize()
     {
@@ -21,7 +21,7 @@ public class DanceAreaManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾À ½ÃÀÛ »óÅÂ·Î µÇµ¹¸®´Â ÇÔ¼ö.
+    /// ì”¬ ì‹œì‘ ìƒíƒœë¡œ ë˜ëŒë¦¬ëŠ” í•¨ìˆ˜.
     /// </summary>
     public void ResetAll()
     {

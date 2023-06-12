@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// ´í½º ³»ºÎ ½Ã³ª¸®¿À Àü°³¸¦ À§ÇØ ¿©·¯ ¿ÀºêÁ§Æ®µéÀ» »ı¼ºÇÏ°Å³ª Á¦°ÅÇÑ´Ù.
+/// ëŒ„ìŠ¤ ë‚´ë¶€ ì‹œë‚˜ë¦¬ì˜¤ ì „ê°œë¥¼ ìœ„í•´ ì—¬ëŸ¬ ì˜¤ë¸Œì íŠ¸ë“¤ì„ ìƒì„±í•˜ê±°ë‚˜ ì œê±°í•œë‹¤.
 /// </summary>
 public class DanceScenarioManager : MusicContentTool
 {
@@ -24,29 +24,29 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// ´í½º Æ÷Áî ÆÇÁ¤À» ´ã´çÇÏ´Â Å¬·¡½ºÀÌ´Ù.
+    /// ëŒ„ìŠ¤ í¬ì¦ˆ íŒì •ì„ ë‹´ë‹¹í•˜ëŠ” í´ë˜ìŠ¤ì´ë‹¤.
     /// </summary>
     public DanceJudgingPoint danceJudgingPoint;
 
     /// <summary>
-    /// ´í½º Æ÷Áî Æ®¸®°Å ±¸¿ªÀ» ´ã´çÇÏ´Â Å¬·¡½ºÀÌ´Ù.
+    /// ëŒ„ìŠ¤ í¬ì¦ˆ íŠ¸ë¦¬ê±° êµ¬ì—­ì„ ë‹´ë‹¹í•˜ëŠ” í´ë˜ìŠ¤ì´ë‹¤.
     /// </summary>
     public DanceAreaManager danceAreaManager;
 
     /// <summary>
-    /// °¢ »óÈ²¸¶´Ù µîÀåÇÏ´Â UIÀÌ´Ù.
+    /// ê° ìƒí™©ë§ˆë‹¤ ë“±ì¥í•˜ëŠ” UIì´ë‹¤.
     /// </summary>
     public GameObject[] Scenarios;
 
     /// <summary>
-    /// Á¤´ä ÆÇÁ¤ ½ÃÀÇ Áøµ¿ Áö¼Ó½Ã°£ ¹× ¼¼±âÀÌ´Ù.
+    /// ì •ë‹µ íŒì • ì‹œì˜ ì§„ë™ ì§€ì†ì‹œê°„ ë° ì„¸ê¸°ì´ë‹¤.
     /// </summary>
     [Range(0, 1)]
     public float correctVTime = 0.2f;
     [Range(0, 1)]
     public float correctVAmplifier = 0.3f;
     /// <summary>
-    /// ¿À´ä ÆÇÁ¤ ½ÃÀÇ Áøµ¿ Áö¼Ó½Ã°£ ¹× ¼¼±âÀÌ´Ù.
+    /// ì˜¤ë‹µ íŒì • ì‹œì˜ ì§„ë™ ì§€ì†ì‹œê°„ ë° ì„¸ê¸°ì´ë‹¤.
     /// </summary>
     [Range(0, 1)]
     public float wrongVTime = 0.4f;
@@ -54,7 +54,7 @@ public class DanceScenarioManager : MusicContentTool
     public float wrongVAmplifier = 0.6f;
 
     /// <summary>
-    /// Instruction¿¡¼­ ¹ß»ı °¡´ÉÇÑ ÀÌº¥Æ® Å¸ÀÔÀ» Ç¥ÇöÇÏ´Â ¿­°ÅÇüÀÌ´Ù.
+    /// Instructionì—ì„œ ë°œìƒ ê°€ëŠ¥í•œ ì´ë²¤íŠ¸ íƒ€ì…ì„ í‘œí˜„í•˜ëŠ” ì—´ê±°í˜•ì´ë‹¤.
     /// </summary>
     public enum EventType
     {
@@ -65,7 +65,7 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// ´í½º Æ÷Áî ÆÇÁ¤¿¡ µû¸¥ ÀÌº¥Æ®.
+    /// ëŒ„ìŠ¤ í¬ì¦ˆ íŒì •ì— ë”°ë¥¸ ì´ë²¤íŠ¸.
     /// </summary>
     private Dictionary<EventType, UnityEvent> ScenarioEvents =
         new Dictionary<EventType, UnityEvent>(){
@@ -76,29 +76,29 @@ public class DanceScenarioManager : MusicContentTool
         };
 
     /// <summary>
-    /// ÄŞº¸ ´Ş¼º ½Ã ¹ß»ıÇÏ´Â È¿°úÀ½ ¸ñ·ÏÀÌ´Ù.
+    /// ì½¤ë³´ ë‹¬ì„± ì‹œ ë°œìƒí•˜ëŠ” íš¨ê³¼ìŒ ëª©ë¡ì´ë‹¤.
     /// </summary>
     public AudioClip[] ComboClips;
 
     /// <summary>
-    /// ¹è°æ À½¿øÀÌ Àç»ıµÇ´Â AudioSourceÀÌ´Ù.
+    /// ë°°ê²½ ìŒì›ì´ ì¬ìƒë˜ëŠ” AudioSourceì´ë‹¤.
     /// </summary>
     public AudioSource MusicAudioSource;
 
     /// <summary>
-    /// ÄŞº¸ ´Ş¼º ½Ã ¹ß»ıÇÏ´Â È¿°úÀ½ÀÌ Àç»ıµÇ´Â AudioSourceÀÌ´Ù.
+    /// ì½¤ë³´ ë‹¬ì„± ì‹œ ë°œìƒí•˜ëŠ” íš¨ê³¼ìŒì´ ì¬ìƒë˜ëŠ” AudioSourceì´ë‹¤.
     /// </summary>
     public AudioSource ComboAudioSource;
 
     /// <summary>
-    /// ÇöÀç ÁøÇàÁßÀÎ ½Ã³ª¸®¿ÀÀÇ ¹øÈ£ÀÌ´Ù.
+    /// í˜„ì¬ ì§„í–‰ì¤‘ì¸ ì‹œë‚˜ë¦¬ì˜¤ì˜ ë²ˆí˜¸ì´ë‹¤.
     /// </summary>
     public int currentScenarioNum;
 
     //int barCombo = 0;
 
     /// <summary>
-    /// À½¾ÇÀ» Àç»ıÇÏ´Â ·çÆ¾À» ÀúÀåÇÑ´Ù. ÄÁÅÙÃ÷°¡ ³¡³ª¸é Á¾·áµÈ´Ù.
+    /// ìŒì•…ì„ ì¬ìƒí•˜ëŠ” ë£¨í‹´ì„ ì €ì¥í•œë‹¤. ì»¨í…ì¸ ê°€ ëë‚˜ë©´ ì¢…ë£Œëœë‹¤.
     /// </summary>
     IEnumerator SongRoutine;
 
@@ -110,7 +110,7 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// ÃÊ±â ¼³Á¤À» À§ÇÑ ÇÔ¼ö.
+    /// ì´ˆê¸° ì„¤ì •ì„ ìœ„í•œ í•¨ìˆ˜.
     /// </summary>
     void Initialize()
     {
@@ -122,21 +122,21 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// SoundManager¸¦ ÅëÇØ À½¾ÇÀ» Àç»ıÇÑ´Ù.
+    /// SoundManagerë¥¼ í†µí•´ ìŒì•…ì„ ì¬ìƒí•œë‹¤.
     /// </summary>
-    /// <param name="audioClip">Àç»ıÇÒ ¿Àµğ¿À Å¬¸³.</param>
-    /// <param name="barSecond">¸¶µğ´ç ¼Ò¿ä ½Ã°£.</param>
+    /// <param name="audioClip">ì¬ìƒí•  ì˜¤ë””ì˜¤ í´ë¦½.</param>
+    /// <param name="barSecond">ë§ˆë””ë‹¹ ì†Œìš” ì‹œê°„.</param>
     void StartMusic(AudioClip audioClip, float barSecond)
     {
         SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
     }
 
     /// <summary>
-    /// SoundManager¸¦ ÅëÇØ ÄŞº¸ »ç¿îµå¸¦ Àç»ıÇÑ´Ù.
+    /// SoundManagerë¥¼ í†µí•´ ì½¤ë³´ ì‚¬ìš´ë“œë¥¼ ì¬ìƒí•œë‹¤.
     /// </summary>
     IEnumerator PlayComboSound()
     {
-        // ÄŞº¸ »ç¿îµå°¡ Å¸ÀÌ¹ÖÀ» ¸ÂÃâ ¼ö ÀÖ°Ô µÇ¸é ¼öÁ¤
+        // ì½¤ë³´ ì‚¬ìš´ë“œê°€ íƒ€ì´ë°ì„ ë§ì¶œ ìˆ˜ ìˆê²Œ ë˜ë©´ ìˆ˜ì •
         //SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
         yield return null;
     }
@@ -171,10 +171,10 @@ public class DanceScenarioManager : MusicContentTool
     //}
 
     /// <summary>
-    /// °¢ ³ëÆ®¿¡ ´ëÇØ CommandExecute(time, command) È£Ãâ.
+    /// ê° ë…¸íŠ¸ì— ëŒ€í•´ CommandExecute(time, command) í˜¸ì¶œ.
     /// </summary>
-    /// <param name="json">JSON µ¥ÀÌÅÍ.</param>
-    /// <param name="audioClip">Àç»ıÇÒ À½¿ø.</param>
+    /// <param name="json">JSON ë°ì´í„°.</param>
+    /// <param name="audioClip">ì¬ìƒí•  ìŒì›.</param>
     public override GameChart PlayChart(string json, AudioClip audioClip)
     {
         GameChart data = GetScript(json);
@@ -194,10 +194,10 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// ÀÏÁ¤ ½Ã°£ ÈÄ À½¾ÇÀ» Àç»ıÇÏ´Â ÄÚ·çÆ¾.
-    /// <param name="audioClip">Àç»ıÇÒ ¿Àµğ¿À Å¬¸³.</param>
-    /// <param name="waitTime">´ë±â ½Ã°£.</param>
-    /// <param name="barSecond">¸¶µğ´ç ¼Ò¿ä ½Ã°£.</param>
+    /// ì¼ì • ì‹œê°„ í›„ ìŒì•…ì„ ì¬ìƒí•˜ëŠ” ì½”ë£¨í‹´.
+    /// <param name="audioClip">ì¬ìƒí•  ì˜¤ë””ì˜¤ í´ë¦½.</param>
+    /// <param name="waitTime">ëŒ€ê¸° ì‹œê°„.</param>
+    /// <param name="barSecond">ë§ˆë””ë‹¹ ì†Œìš” ì‹œê°„.</param>
     /// </summary>
     IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
     {

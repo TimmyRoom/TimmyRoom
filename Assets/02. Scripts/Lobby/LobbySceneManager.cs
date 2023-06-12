@@ -6,17 +6,17 @@ using UnityEngine;
 public class LobbySceneManager : AbstractSceneManager
 {
     /// <summary>
-    /// ÇöÀç ÇÁ·ÎÇÊ°ú ¸ÅÄªµÇ´Â ÀÌ¹ÌÁö ½ºÇÁ¶óÀÌÆ®¸¦ ¹İÈ¯ÇÑ´Ù.
+    /// í˜„ì¬ í”„ë¡œí•„ê³¼ ë§¤ì¹­ë˜ëŠ” ì´ë¯¸ì§€ ìŠ¤í”„ë¼ì´íŠ¸ë¥¼ ë°˜í™˜í•œë‹¤.
     /// </summary>
     public Sprite ShowProfile()
     {
-        // ProfileManager »ı¼º ½Ã ÇÔ²² ÀÛ¾÷
+        // ProfileManager ìƒì„± ì‹œ í•¨ê»˜ ì‘ì—…
         throw new NotImplementedException();
     }
 
     /// <summary>
-    /// DataTime ¶óÀÌºê·¯¸®¸¦ ÅëÇØ ÇöÀç ½Ã°¢À» Ãâ·ÂÇÑ´Ù.
-    /// ±âÁØÀº KST, Çü½ÄÀº HHmmss.
+    /// DataTime ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ í†µí•´ í˜„ì¬ ì‹œê°ì„ ì¶œë ¥í•œë‹¤.
+    /// ê¸°ì¤€ì€ KST, í˜•ì‹ì€ HHmmss.
     /// </summary>
     public static string GetCurrentTime()
     {

@@ -7,20 +7,20 @@ using UnityEngine.Events;
 public class DanceChartTest : DanceNoteTest
 {
     /// <summary>
-    /// ´ÙÀ½ ½Ã³ª¸®¿À·Î ³Ñ¾î°¡±â À§ÇØ ÇÊ¿äÇÑ ÀûÁß·ü.
+    /// ë‹¤ìŒ ì‹œë‚˜ë¦¬ì˜¤ë¡œ ë„˜ì–´ê°€ê¸° ìœ„í•´ í•„ìš”í•œ ì ì¤‘ë¥ .
     /// </summary>
     [Range(0, 1)]
     [SerializeField] float clearRate = 0.6f;
     /// <summary>
-    /// ½ÇÆĞ ½Ã µîÀåÇÏ´Â ÅØ½ºÆ® ¹®±¸µé.
+    /// ì‹¤íŒ¨ ì‹œ ë“±ì¥í•˜ëŠ” í…ìŠ¤íŠ¸ ë¬¸êµ¬ë“¤.
     /// </summary>
     [SerializeField] List<string> failTexts;
     /// <summary>
-    /// ÀûÁß È½¼ö.
+    /// ì ì¤‘ íšŸìˆ˜.
     /// </summary>
     private int hitCount = 0;
     /// <summary>
-    /// ½ÇÆĞ È½¼ö.
+    /// ì‹¤íŒ¨ íšŸìˆ˜.
     /// </summary>
     private int failCount = 0;
 
@@ -30,7 +30,7 @@ public class DanceChartTest : DanceNoteTest
     }
 
     /// <summary>
-    /// Á¤´ä ÆÇÁ¤ÀÌ ³ª¿À¸é Á¤´ä È½¼ö Ä«¿îÆ®¸¦ Áõ°¡½ÃÅ´.
+    /// ì •ë‹µ íŒì •ì´ ë‚˜ì˜¤ë©´ ì •ë‹µ íšŸìˆ˜ ì¹´ìš´íŠ¸ë¥¼ ì¦ê°€ì‹œí‚´.
     /// </summary>
     public override void SetCount()
     {
@@ -58,7 +58,7 @@ public class DanceChartTest : DanceNoteTest
     }
 
     /// <summary>
-    /// ³ëÆ®¸¦ ³õÃÆÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö.
+    /// ë…¸íŠ¸ë¥¼ ë†“ì³¤ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜.
     /// </summary>
     public void MissNote()
     {
