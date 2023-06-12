@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: drawBones
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2827819598040932469, guid: e513b9d0f8deac348a3e2a0df368b433,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7794153992148072760, guid: e513b9d0f8deac348a3e2a0df368b433,
         type: 3}
       propertyPath: m_RootOrder
@@ -196,6 +201,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794153992501532618, guid: e513b9d0f8deac348a3e2a0df368b433,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.5943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794153992501532618, guid: e513b9d0f8deac348a3e2a0df368b433,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.5943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794153992501532618, guid: e513b9d0f8deac348a3e2a0df368b433,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.5943396
       objectReference: {fileID: 0}
     - target: {fileID: 7794153992501532618, guid: e513b9d0f8deac348a3e2a0df368b433,
         type: 3}
@@ -1667,6 +1687,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 1497732834389498406, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497732834389498406, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5713864004254158483, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1687,6 +1717,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 6408337909701935768, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a32a450c695d2c0449ad6a882f73b91d,
+        type: 3}
     - target: {fileID: 7143101339062123041, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1697,6 +1733,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5379406326018483779}
+    - target: {fileID: 7663867715870877933, guid: d0fa3202bf7290c49a926d98a8b49137,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8283410007810948836, guid: d0fa3202bf7290c49a926d98a8b49137,
         type: 3}
       propertyPath: playConcert
