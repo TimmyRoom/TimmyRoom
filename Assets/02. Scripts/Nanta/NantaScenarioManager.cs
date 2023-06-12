@@ -208,6 +208,7 @@ public class NantaScenarioManager : MusicContentTool
     {
         yield return new WaitForSeconds(waitTime);
         StartMusic(audioClip, barSecond);
+        StartCoroutine(RecordAndCapture());
     }
 
     public override void CommandExecute(float time, List<Action> actions)

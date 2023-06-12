@@ -8,6 +8,17 @@ using UnityEngine;
 /// </summary>
 public abstract class MusicContentTool : AbstractSceneManager
 {
+    protected IEnumerator RecordAndCapture()
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0f, 50f));
+        SceneRecorder.instance.Record();
+        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f));
+        SceneRecorder.instance.Capture();
+        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f));
+        SceneRecorder.instance.RecordSelf();
+        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f));
+        SceneRecorder.instance.CaptureSelf();
+    }
     /// <summary>
     /// 마디 단위를 받아 BPM에 따라 정확한 초를 계산한다.
     /// </summary>
