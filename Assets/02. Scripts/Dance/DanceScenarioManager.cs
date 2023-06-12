@@ -20,7 +20,7 @@ public class DanceScenarioManager : MusicContentTool
             Destroy(this);
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     /// <summary>

@@ -28,7 +28,7 @@ public class SceneRecorder : MonoBehaviour
             Destroy(this);
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         filePath = Application.persistentDataPath;
     }
 

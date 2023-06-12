@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d087a945a78024b9a504468075bfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gazeObject: {fileID: 0}
+  gazeObject: {fileID: 5364196203367510642}
   gazeScale: 1.2
   ungazedColor: 0.75
   maxPointTime: 2
@@ -712,8 +712,8 @@ MonoBehaviour:
   m_text: "\uC544\uB798 \uB3D9\uC791\uC744 \uB530\uB77C\uD574\uBCF4\uC138\uC694!\n\uAC00\uC774\uB4DC
     \uC5C6\uC774 \uD574\uBCF4\uB3C4\uB85D \uD574\uC694."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ef9ce2a0c08ff749b9951b8058754b4, type: 2}
-  m_sharedMaterial: {fileID: 1922747384069071095, guid: 0ef9ce2a0c08ff749b9951b8058754b4,
+  m_fontAsset: {fileID: 11400000, guid: 49931668afe419d4cac9377cd33d7cdc, type: 2}
+  m_sharedMaterial: {fileID: -7164582407706522215, guid: 49931668afe419d4cac9377cd33d7cdc,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -904,6 +904,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d83c3cb1015bd42448dcb4b284b34435, type: 3}
+--- !u!1 &5364196203367510642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163407732625241445, guid: d83c3cb1015bd42448dcb4b284b34435,
+    type: 3}
+  m_PrefabInstance: {fileID: 2304055941139384087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7990835200936611507 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8150531180504959396, guid: d83c3cb1015bd42448dcb4b284b34435,

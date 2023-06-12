@@ -11,11 +11,7 @@ public abstract class MusicContentTool : AbstractSceneManager
     protected IEnumerator RecordAndCapture()
     {
         yield return new WaitForSeconds(UnityEngine.Random.Range(0f, 50f));
-        SceneRecorder.instance.Record();
-        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f));
         SceneRecorder.instance.Capture();
-        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f));
-        SceneRecorder.instance.RecordSelf();
         yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f));
         SceneRecorder.instance.CaptureSelf();
     }

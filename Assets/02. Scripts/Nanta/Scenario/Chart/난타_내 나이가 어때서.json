@@ -3,7 +3,7 @@
     "SongName": "내 나이가 어때서",
     "ArtistName": "오승근",
     "SongLength": 106,
-    "Offset": 0.4,
+    "Offset": 0.3,
     "BPM": 134,
     "Notes": [
         {
@@ -159,64 +159,64 @@
                 {
                     "Name": "Hit",
                     "Type": 1
-                }
-            ]
-        },
-        {
-            "Time": 28,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 28.5,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 29,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 0
-                }
-            ]
-        },
-        {
-            "Time": 28,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
-                }
-            ]
-        },
-        {
-            "Time": 28.5,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
-                }
-            ]
-        },
-        {
-            "Time": 29,
-            "Actions": [
-                {
-                    "Name": "Hit",
-                    "Type": 2
                 },
                 {
                     "Name": "Change",
                     "Type": 3
+                }
+            ]
+        },
+        {
+            "Time": 28,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 28.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 29,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 0
+                }
+            ]
+        },
+        {
+            "Time": 28,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 28.5,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
+                }
+            ]
+        },
+        {
+            "Time": 29,
+            "Actions": [
+                {
+                    "Name": "Hit",
+                    "Type": 2
                 }
             ]
         },

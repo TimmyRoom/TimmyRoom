@@ -21,7 +21,7 @@ public class NantaScenarioManager : MusicContentTool
             Destroy(this);
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
     /// <summary>
     /// 난타 북의 판정을 담당하는 클래스이다.
