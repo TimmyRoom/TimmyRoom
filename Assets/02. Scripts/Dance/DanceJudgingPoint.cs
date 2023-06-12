@@ -4,64 +4,64 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ½Ã°£¿¡ µû¶ó ³ëÆ®¸¦ »ı¼ºÇÏ°í ÀÌ¸¦ ÅëÇØ »ç¿ëÀÚ¿¡°Ô Å¸ÀÌ¹ÖÀ» ÀÎÁö½ÃÅ°´Â Å¬·¡½º.
+/// ì‹œê°„ì— ë”°ë¼ ë…¸íŠ¸ë¥¼ ìƒì„±í•˜ê³  ì´ë¥¼ í†µí•´ ì‚¬ìš©ìì—ê²Œ íƒ€ì´ë°ì„ ì¸ì§€ì‹œí‚¤ëŠ” í´ë˜ìŠ¤.
 /// </summary>
 public class DanceJudgingPoint : MonoBehaviour
 {
     [SerializeField] float fallingTime = 2;
     /// <summary>
-    /// ³ëÆ®°¡ »ı¼ºµÈ ÈÄ ÆÇÁ¤¸é¿¡ ´êÀ» ¶§±îÁöÀÇ ½Ã°£.
+    /// ë…¸íŠ¸ê°€ ìƒì„±ëœ í›„ íŒì •ë©´ì— ë‹¿ì„ ë•Œê¹Œì§€ì˜ ì‹œê°„.
     /// </summary>
     public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
     float noteVelocity = 0;
     /// <summary>
-    /// ³ëÆ®ÀÇ µî¼Ó ¿îµ¿ ¼Óµµ.
+    /// ë…¸íŠ¸ì˜ ë“±ì† ìš´ë™ ì†ë„.
     /// </summary>
     public float NoteVelocity { get => noteVelocity; set => noteVelocity = value; }
 
     /// <summary>
-    /// ½ÇÁ¦ »ç¿ëÀÚ°¡ º¸´Â ÆÇÁ¤¼± Transform.
+    /// ì‹¤ì œ ì‚¬ìš©ìê°€ ë³´ëŠ” íŒì •ì„  Transform.
     /// </summary>
     public Transform JudgePosition;
 
     /// <summary>
-    /// »ç¿ëÀÚµéÀÌ ´«À¸·Î È®ÀÎ °¡´ÉÇÑ ÆÇÁ¤ ¹üÀ§ ¿ÀºêÁ§Æ®.
+    /// ì‚¬ìš©ìë“¤ì´ ëˆˆìœ¼ë¡œ í™•ì¸ ê°€ëŠ¥í•œ íŒì • ë²”ìœ„ ì˜¤ë¸Œì íŠ¸.
     /// </summary>
     public GameObject JudgePointGuide;
 
     /// <summary>
-    /// ³ëÆ®°¡ »ı¼ºµÇ´Â À§Ä¡.
+    /// ë…¸íŠ¸ê°€ ìƒì„±ë˜ëŠ” ìœ„ì¹˜.
     /// </summary>
     public Transform NoteSpawnTransforms;
 
     /// <summary>
-    /// »ı¼ºÇÏ´Â ³ëÆ®ÀÇ ÇÁ¸®ÆÕ.
+    /// ìƒì„±í•˜ëŠ” ë…¸íŠ¸ì˜ í”„ë¦¬íŒ¹.
     /// </summary>
     public Rigidbody NotePrefab;
 
     /// <summary>
-    /// ³ëÆ®ÀÇ Æ÷Áî ½ºÇÁ¶óÀÌÆ®µéÀ» ÀúÀåÇÏ´Â ¸®½ºÆ®.
+    /// ë…¸íŠ¸ì˜ í¬ì¦ˆ ìŠ¤í”„ë¼ì´íŠ¸ë“¤ì„ ì €ì¥í•˜ëŠ” ë¦¬ìŠ¤íŠ¸.
     /// </summary>
     public List<Sprite> sprites = new List<Sprite>();
 
     /// <summary>
-    /// »ı¼ºµÈ ¸ğµç ³ëÆ®µéÀ» ÀúÀåÇÏ´Â ¸®½ºÆ®.
+    /// ìƒì„±ëœ ëª¨ë“  ë…¸íŠ¸ë“¤ì„ ì €ì¥í•˜ëŠ” ë¦¬ìŠ¤íŠ¸.
     /// </summary>
     private List<Rigidbody> notes = new List<Rigidbody>();
 
     /// <summary>
-    /// ½ÇÇàµÇ´Â ¸ğµç ³ëÆ® ·çÆ¾À» ÀúÀåÇÏ´Â ¸®½ºÆ®.
+    /// ì‹¤í–‰ë˜ëŠ” ëª¨ë“  ë…¸íŠ¸ ë£¨í‹´ì„ ì €ì¥í•˜ëŠ” ë¦¬ìŠ¤íŠ¸.
     /// </summary>
     private List<IEnumerator> noteRoutines = new List<IEnumerator>();
 
     /// <summary>
-    /// ÆÇÁ¤À» À§ÇØ ÇöÀç ¹ßµ¿µÈ Æ®¸®°Å Á¤º¸¸¦ ÀÚÃ¼ÀûÀ¸·Î ÀúÀåÇÏ´Â bool ¹è¿­.
+    /// íŒì •ì„ ìœ„í•´ í˜„ì¬ ë°œë™ëœ íŠ¸ë¦¬ê±° ì •ë³´ë¥¼ ìì²´ì ìœ¼ë¡œ ì €ì¥í•˜ëŠ” bool ë°°ì—´.
     /// </summary>
     private bool[] current = new bool[6];
 
     /// <summary>
-    /// ³ëÆ®ÀÇ ¼Ó·ÂÀ» ¼³Á¤ÇÑ´Ù.
+    /// ë…¸íŠ¸ì˜ ì†ë ¥ì„ ì„¤ì •í•œë‹¤.
     /// </summary>
     public void SetVelocity()
     {
@@ -69,10 +69,10 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// SpawnNoteRoutine(time, type) ·çÆ¾ ½ÇÇà.
+    /// SpawnNoteRoutine(time, type) ë£¨í‹´ ì‹¤í–‰.
     /// </summary>
-    /// <param name="time">·çÆ¾ÀÌ ½ÃÀÛµÉ ½Ã°£.</param>
-    /// <param name="type">³ëÆ®°¡ »ı¼ºµÇ´Â ¶óÀÎ</param>
+    /// <param name="time">ë£¨í‹´ì´ ì‹œì‘ë  ì‹œê°„.</param>
+    /// <param name="type">ë…¸íŠ¸ê°€ ìƒì„±ë˜ëŠ” ë¼ì¸</param>
     public void SpawnNote(float time, int type)
     {
         IEnumerator noteRoutine = SpawnNoteRoutine(time, type);
@@ -81,10 +81,10 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// SpawnNoteRoutineWithChange(time, type) ·çÆ¾ ½ÇÇà.
+    /// SpawnNoteRoutineWithChange(time, type) ë£¨í‹´ ì‹¤í–‰.
     /// </summary>
-    /// <param name="time">·çÆ¾ÀÌ ½ÃÀÛµÉ ½Ã°£.</param>
-    /// <param name="type">³ëÆ®°¡ »ı¼ºµÇ´Â ¶óÀÎ</param>
+    /// <param name="time">ë£¨í‹´ì´ ì‹œì‘ë  ì‹œê°„.</param>
+    /// <param name="type">ë…¸íŠ¸ê°€ ìƒì„±ë˜ëŠ” ë¼ì¸</param>
     IEnumerator SpawnNoteRoutine(float time, int type)
     {
         yield return new WaitForSeconds(Mathf.Clamp(time - FallingTime, 0, float.MaxValue));
@@ -97,9 +97,9 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// ÆÇÁ¤ Äİ¶óÀÌ´õ¿¡ ³ëÆ®°¡ µé¾î¿À¸é ÇØ´ç ³ëÆ®ÀÇ ÆÇÁ¤°ú »èÁ¦¸¦ ¼öÇàÇÔ.
+    /// íŒì • ì½œë¼ì´ë”ì— ë…¸íŠ¸ê°€ ë“¤ì–´ì˜¤ë©´ í•´ë‹¹ ë…¸íŠ¸ì˜ íŒì •ê³¼ ì‚­ì œë¥¼ ìˆ˜í–‰í•¨.
     /// </summary>
-    /// <param name="other">Äİ¶óÀÌ´õ¿Í Á¢ÃËÇÑ ³ëÆ® ¿ÀºêÁ§Æ®</param>
+    /// <param name="other">ì½œë¼ì´ë”ì™€ ì ‘ì´‰í•œ ë…¸íŠ¸ ì˜¤ë¸Œì íŠ¸</param>
     private void OnTriggerEnter(Collider other)
     {
         JudgeNote(other.gameObject.GetComponent<DanceNote>().type);
@@ -108,8 +108,8 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// ³ëÆ® ÆÇÁ¤ÀÌ ÇÊ¿ä¾ø´Â ½Ã³ª¸®¿À¸¦ À§ÇÑ ÀÚÃ¼ ÆÇÁ¤ ¿äÃ»À» ¼öÇàÇÔ.
-    /// Æ÷Áî¸¦ µû¶óÇÏ±â¸¸ ÇÏ´Â ½Ã³ª¸®¿À 1, 2¿¡¼­ »ç¿ëµÊ.
+    /// ë…¸íŠ¸ íŒì •ì´ í•„ìš”ì—†ëŠ” ì‹œë‚˜ë¦¬ì˜¤ë¥¼ ìœ„í•œ ìì²´ íŒì • ìš”ì²­ì„ ìˆ˜í–‰í•¨.
+    /// í¬ì¦ˆë¥¼ ë”°ë¼í•˜ê¸°ë§Œ í•˜ëŠ” ì‹œë‚˜ë¦¬ì˜¤ 1, 2ì—ì„œ ì‚¬ìš©ë¨.
     /// </summary>
     public void UsingTypeForScenario()
     {
@@ -127,11 +127,11 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// ÆÇÁ¤¸é¿¡ µµ´ŞÇÑ ³ëÆ® ¿ÀºêÁ§Æ®¸¦ ÂüÁ¶ÇØ ÆÇÁ¤À» ÇÑ´Ù.
-    /// Æ®¸®°Å ¿µ¿ªÀ» ´Ù·ç´Â Manager¿¡¼­ È°¼ºÈ­ ¿©ºÎ ¹è¿­À» ¹Ş¾Æ¿Í ÆÇÁ¤¿¡ ÀÌ¿ëÇÑ´Ù.
+    /// íŒì •ë©´ì— ë„ë‹¬í•œ ë…¸íŠ¸ ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¸ì¡°í•´ íŒì •ì„ í•œë‹¤.
+    /// íŠ¸ë¦¬ê±° ì˜ì—­ì„ ë‹¤ë£¨ëŠ” Managerì—ì„œ í™œì„±í™” ì—¬ë¶€ ë°°ì—´ì„ ë°›ì•„ì™€ íŒì •ì— ì´ìš©í•œë‹¤.
     /// </summary>
-    /// <param name="type">³ëÆ®ÀÇ Á¾·ù.</param>
-    /// <returns>³ëÆ® ÆÇÁ¤ °á°ú.</returns>
+    /// <param name="type">ë…¸íŠ¸ì˜ ì¢…ë¥˜.</param>
+    /// <returns>ë…¸íŠ¸ íŒì • ê²°ê³¼.</returns>
     public int JudgeNote(int type)
     {
         int result = -1;
@@ -166,9 +166,9 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary> 
-    /// ³ëÆ®¸¦ »ı¼ºÇÏ°í ÇØ´ç ¿ÀºêÁ§Æ®ÀÇ RigidBody ÄÄÆ÷³ÍÆ®¸¦ ¹İÈ¯ÇÑ´Ù.
-    /// ÀÌ ¶§, ³ëÆ®ÀÇ Å¸ÀÔ¿¡ ¸Â´Â ½ºÇÁ¶óÀÌÆ®¸¦ ³ëÆ®¿¡ Àû¿ëÇÑ´Ù.
-    /// <returns>»ı¼ºµÈ ³ëÆ®ÀÇ RigidBody.</returns>
+    /// ë…¸íŠ¸ë¥¼ ìƒì„±í•˜ê³  í•´ë‹¹ ì˜¤ë¸Œì íŠ¸ì˜ RigidBody ì»´í¬ë„ŒíŠ¸ë¥¼ ë°˜í™˜í•œë‹¤.
+    /// ì´ ë•Œ, ë…¸íŠ¸ì˜ íƒ€ì…ì— ë§ëŠ” ìŠ¤í”„ë¼ì´íŠ¸ë¥¼ ë…¸íŠ¸ì— ì ìš©í•œë‹¤.
+    /// <returns>ìƒì„±ëœ ë…¸íŠ¸ì˜ RigidBody.</returns>
     /// </summary>
     Rigidbody GetNote(int type)
     {
@@ -211,7 +211,7 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾À ½ÃÀÛ »óÅÂ·Î µÇµ¹¸®´Â ÇÔ¼ö.
+    /// ì”¬ ì‹œì‘ ìƒíƒœë¡œ ë˜ëŒë¦¬ëŠ” í•¨ìˆ˜.
     /// </summary>
     public void ResetAll()
     {

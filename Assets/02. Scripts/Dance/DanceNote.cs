@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary> 
-/// ´í½º ¾À¿¡¼­ ÆÇÁ¤°ú ³ëÆ® ½ºÇÁ¶óÀÌÆ® Àû¿ëÀ» À§ÇØ Å¸ÀÔ°ú ½ºÇÁ¶óÀÌÆ®¸¦ °ü¸®ÇÏ´Â ÀÚÃ¼ Å¬·¡½º.
+/// ëŒ„ìŠ¤ ì”¬ì—ì„œ íŒì •ê³¼ ë…¸íŠ¸ ìŠ¤í”„ë¼ì´íŠ¸ ì ìš©ì„ ìœ„í•´ íƒ€ìž…ê³¼ ìŠ¤í”„ë¼ì´íŠ¸ë¥¼ ê´€ë¦¬í•˜ëŠ” ìžì²´ í´ëž˜ìŠ¤.
 /// </summary>
 public class DanceNote : MonoBehaviour
 {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// ���� ���� �ó����� ������ ���� ���� ������Ʈ���� �����ϰų� �����Ѵ�.
+/// 댄스 내부 시나리오 전개를 위해 여러 오브젝트들을 생성하거나 제거한다.
 /// </summary>
 public class DanceScenarioManager : MusicContentTool
 {
@@ -24,29 +24,29 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// ���� ���� ������ ����ϴ� Ŭ�����̴�.
+    /// 댄스 포즈 판정을 담당하는 클래스이다.
     /// </summary>
     public DanceJudgingPoint danceJudgingPoint;
 
     /// <summary>
-    /// ���� ���� Ʈ���� ������ ����ϴ� Ŭ�����̴�.
+    /// 댄스 포즈 트리거 구역을 담당하는 클래스이다.
     /// </summary>
     public DanceAreaManager danceAreaManager;
 
     /// <summary>
-    /// �� ��Ȳ���� �����ϴ� UI�̴�.
+    /// 각 상황마다 등장하는 UI이다.
     /// </summary>
     public GameObject[] Scenarios;
 
     /// <summary>
-    /// ���� ���� ���� ���� ���ӽð� �� �����̴�.
+    /// 정답 판정 시의 진동 지속시간 및 세기이다.
     /// </summary>
     [Range(0, 1)]
     public float correctVTime = 0.2f;
     [Range(0, 1)]
     public float correctVAmplifier = 0.3f;
     /// <summary>
-    /// ���� ���� ���� ���� ���ӽð� �� �����̴�.
+    /// 오답 판정 시의 진동 지속시간 및 세기이다.
     /// </summary>
     [Range(0, 1)]
     public float wrongVTime = 0.4f;
@@ -54,7 +54,7 @@ public class DanceScenarioManager : MusicContentTool
     public float wrongVAmplifier = 0.6f;
 
     /// <summary>
-    /// Instruction���� �߻� ������ �̺�Ʈ Ÿ���� ǥ���ϴ� �������̴�.
+    /// Instruction에서 발생 가능한 이벤트 타입을 표현하는 열거형이다.
     /// </summary>
     public enum EventType
     {
@@ -65,7 +65,7 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// ���� ���� ������ ���� �̺�Ʈ.
+    /// 댄스 포즈 판정에 따른 이벤트.
     /// </summary>
     private Dictionary<EventType, UnityEvent> ScenarioEvents =
         new Dictionary<EventType, UnityEvent>(){
@@ -76,29 +76,29 @@ public class DanceScenarioManager : MusicContentTool
         };
 
     /// <summary>
-    /// �޺� �޼� �� �߻��ϴ� ȿ���� ����̴�.
+    /// 콤보 달성 시 발생하는 효과음 목록이다.
     /// </summary>
     public AudioClip[] ComboClips;
 
     /// <summary>
-    /// ��� ������ ����Ǵ� AudioSource�̴�.
+    /// 배경 음원이 재생되는 AudioSource이다.
     /// </summary>
     public AudioSource MusicAudioSource;
 
     /// <summary>
-    /// �޺� �޼� �� �߻��ϴ� ȿ������ ����Ǵ� AudioSource�̴�.
+    /// 콤보 달성 시 발생하는 효과음이 재생되는 AudioSource이다.
     /// </summary>
     public AudioSource ComboAudioSource;
 
     /// <summary>
-    /// ���� �������� �ó������� ��ȣ�̴�.
+    /// 현재 진행중인 시나리오의 번호이다.
     /// </summary>
     public int currentScenarioNum;
 
     //int barCombo = 0;
 
     /// <summary>
-    /// ������ ����ϴ� ��ƾ�� �����Ѵ�. �������� ������ ����ȴ�.
+    /// 음악을 재생하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
     /// </summary>
     IEnumerator SongRoutine;
 
@@ -110,7 +110,7 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// �ʱ� ������ ���� �Լ�.
+    /// 초기 설정을 위한 함수.
     /// </summary>
     void Initialize()
     {
@@ -122,21 +122,21 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// SoundManager�� ���� ������ ����Ѵ�.
+    /// SoundManager를 통해 음악을 재생한다.
     /// </summary>
-    /// <param name="audioClip">����� ����� Ŭ��.</param>
-    /// <param name="barSecond">����� �ҿ� �ð�.</param>
+    /// <param name="audioClip">재생할 오디오 클립.</param>
+    /// <param name="barSecond">마디당 소요 시간.</param>
     void StartMusic(AudioClip audioClip, float barSecond)
     {
         SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
     }
 
     /// <summary>
-    /// SoundManager�� ���� �޺� ���带 ����Ѵ�.
+    /// SoundManager를 통해 콤보 사운드를 재생한다.
     /// </summary>
     IEnumerator PlayComboSound()
     {
-        // �޺� ���尡 Ÿ�̹��� ���� �� �ְ� �Ǹ� ����
+        // 콤보 사운드가 타이밍을 맞출 수 있게 되면 수정
         //SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
         yield return null;
     }
@@ -171,10 +171,10 @@ public class DanceScenarioManager : MusicContentTool
     //}
 
     /// <summary>
-    /// �� ��Ʈ�� ���� CommandExecute(time, command) ȣ��.
+    /// 각 노트에 대해 CommandExecute(time, command) 호출.
     /// </summary>
-    /// <param name="json">JSON ������.</param>
-    /// <param name="audioClip">����� ����.</param>
+    /// <param name="json">JSON 데이터.</param>
+    /// <param name="audioClip">재생할 음원.</param>
     public override GameChart PlayChart(string json, AudioClip audioClip)
     {
         GameChart data = GetScript(json);
@@ -194,16 +194,15 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// ���� �ð� �� ������ ����ϴ� �ڷ�ƾ.
-    /// <param name="audioClip">����� ����� Ŭ��.</param>
-    /// <param name="waitTime">��� �ð�.</param>
-    /// <param name="barSecond">����� �ҿ� �ð�.</param>
+    /// 일정 시간 후 음악을 재생하는 코루틴.
+    /// <param name="audioClip">재생할 오디오 클립.</param>
+    /// <param name="waitTime">대기 시간.</param>
+    /// <param name="barSecond">마디당 소요 시간.</param>
     /// </summary>
     IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
     {
         yield return new WaitForSeconds(waitTime);
         StartMusic(audioClip, barSecond);
-        StartCoroutine(RecordAndCapture());
     }
 
     public override void CommandExecute(float time, List<Action> actions)

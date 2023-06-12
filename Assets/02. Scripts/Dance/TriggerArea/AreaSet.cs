@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ¾À ÁøÇà¿¡ »ç¿ëµÇ´Â ¸ğµç ±¸¿ªµéÀÇ ÁıÇÕ.
+/// ì”¬ ì§„í–‰ì— ì‚¬ìš©ë˜ëŠ” ëª¨ë“  êµ¬ì—­ë“¤ì˜ ì§‘í•©.
 /// </summary>
 public class AreaSet : AbstractDanceArea
 {
     /// <summary>
-    /// °¢ ÆÇÁ¤ ¿µ¿ª¿¡ ´ëÇÑ Á¤º¸¸¦ ´ã°í ÀÖ´Â ±¸Á¶Ã¼.
+    /// ê° íŒì • ì˜ì—­ì— ëŒ€í•œ ì •ë³´ë¥¼ ë‹´ê³  ìˆëŠ” êµ¬ì¡°ì²´.
     /// </summary>
     public DanceTriggerArea[] TriggerAreas;
 
     /// <summary>
-    /// °¢ ÆÇÁ¤ ¿µ¿ªÀÇ È°¼ºÈ­ ¿©ºÎ¸¦ ´ã°í ÀÖ´Â ¹è¿­.
+    /// ê° íŒì • ì˜ì—­ì˜ í™œì„±í™” ì—¬ë¶€ë¥¼ ë‹´ê³  ìˆëŠ” ë°°ì—´.
     /// </summary>
     public bool[] isTriggered = { false, false, false, false, false, false };
 
     /// <summary>
-    /// ÄÃ¸µ ¸¶½ºÅ© Àû¿ëÀ» À§ÇÑ °Å¿ï ¿ÀºêÁ§Æ®.
+    /// ì»¬ë§ ë§ˆìŠ¤í¬ ì ìš©ì„ ìœ„í•œ ê±°ìš¸ ì˜¤ë¸Œì íŠ¸.
     /// </summary>
     public ReflectionProbe mirror;
 
     /// <summary>
-    /// °¢ ÆÇÁ¤ ¿µ¿ªÀÇ »öÀ» º¯°æÇÏ°Å³ª °¨Ãß´Âµ¥ »ç¿ëÇÏ´Â ¸ÓÅ×¸®¾ó.
+    /// ê° íŒì • ì˜ì—­ì˜ ìƒ‰ì„ ë³€ê²½í•˜ê±°ë‚˜ ê°ì¶”ëŠ”ë° ì‚¬ìš©í•˜ëŠ” ë¨¸í…Œë¦¬ì–¼.
     /// </summary>
     public Material blue;
     public Material origin;
     public Material transparent;
 
     /// <summary>
-    /// °¢ ÆÇÁ¤ ¿µ¿ªÀÇ °¡ÀÌµå¸¦ È°¼ºÈ­½ÃÅ²´Ù.
+    /// ê° íŒì • ì˜ì—­ì˜ ê°€ì´ë“œë¥¼ í™œì„±í™”ì‹œí‚¨ë‹¤.
     /// </summary>
     public void EnableGuide()
     {
@@ -42,7 +42,7 @@ public class AreaSet : AbstractDanceArea
     }
 
     /// <summary>
-    /// °¢ ÆÇÁ¤ ¿µ¿ªÀÇ °¡ÀÌµå¸¦ ºñÈ°¼ºÈ­½ÃÅ²´Ù.
+    /// ê° íŒì • ì˜ì—­ì˜ ê°€ì´ë“œë¥¼ ë¹„í™œì„±í™”ì‹œí‚¨ë‹¤.
     /// </summary>
     public void DisableGuide()
     {
