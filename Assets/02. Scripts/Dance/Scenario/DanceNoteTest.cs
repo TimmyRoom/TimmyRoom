@@ -86,6 +86,18 @@ public class DanceNoteTest : MonoBehaviour, IScenario
     }
 
     /// <summary>
+    /// 스킵 버튼 작동시 차트 시나리오와의 노트 겹침을 막을 수 있는
+    /// 정상적인 초기화를 위해 독자적으로 실행하는 코루틴.
+    /// </summary>
+    public void SkipCoroutine()
+    {
+        StopCoroutine(barCoroutine);
+        clear = 8;
+        DanceScenarioManager.instance.ResetAll();
+        DanceScenarioManager.instance.SetScenario(4);
+    }
+
+    /// <summary>
     /// 해당 인스트럭션에서 발생하는 액션들의 리스트를 반환한다.
     /// </summary>
     /// <returns>인스트럭션에서 발생하는 액션들의 리스트</returns>

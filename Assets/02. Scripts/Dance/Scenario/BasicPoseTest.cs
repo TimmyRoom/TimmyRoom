@@ -110,7 +110,7 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     {
         while (answer == (-1, -1))
         {
-            
+            ;
         }
 
         Array.Copy(DanceScenarioManager.instance.danceAreaManager.area.isTriggered, current, 6);

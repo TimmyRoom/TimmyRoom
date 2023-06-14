@@ -10885,6 +10885,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6320091336055173377}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1565601996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6320091336779661776, guid: c3d3d76cba0f74b4abc18c4216ae6341,
+    type: 3}
+  m_PrefabInstance: {fileID: 6320091336055173377}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565601994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea4a293167d6304b9d4342f6f244856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1577134588
 GameObject:
   m_ObjectHideFlags: 0
@@ -17368,13 +17380,77 @@ PrefabInstance:
     m_TransformParent: {fileID: 1313085455}
     m_Modifications:
     - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1565601996}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 913403566}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SkipCoroutine
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetScenario
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DanceNoteTest, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DanceScenarioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 221504910, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 296600200, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 296600200, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 913403566}
+      objectReference: {fileID: 1565601996}
+    - target: {fileID: 296600200, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SkipCoroutine
+      objectReference: {fileID: 0}
+    - target: {fileID: 296600200, guid: c3d3d76cba0f74b4abc18c4216ae6341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DanceNoteTest, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6320091336779661770, guid: c3d3d76cba0f74b4abc18c4216ae6341,
         type: 3}
       propertyPath: m_Pivot.x
