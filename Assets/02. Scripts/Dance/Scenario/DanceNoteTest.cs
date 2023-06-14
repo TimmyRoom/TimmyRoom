@@ -42,14 +42,14 @@ public class DanceNoteTest : MonoBehaviour, IScenario
         if (clear < 0)
         {
             clear = 0;
-            countText.text = clear.ToString() + "회 남음";
+            countText.text = "클리어! 다음으로 넘어갑니다.";
         }
     }
 
     /// <summary>
     /// 채보와 음악을 재생하는 함수.
     /// </summary>
-    public void StartBar()
+    public virtual void StartBar()
     {
         DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(true);
         countText.text = clear.ToString() + "회 남음";
@@ -79,9 +79,22 @@ public class DanceNoteTest : MonoBehaviour, IScenario
         if (clear <= 0)
         {
             StopCoroutine(barCoroutine);
+            clear = 8;
             DanceScenarioManager.instance.ResetAll();
             DanceScenarioManager.instance.SetScenario(nextScenario);
         }
+    }
+
+    /// <summary>
+    /// 스킵 버튼 작동시 차트 시나리오와의 노트 겹침을 막을 수 있는
+    /// 정상적인 초기화를 위해 독자적으로 실행하는 코루틴.
+    /// </summary>
+    public void SkipCoroutine()
+    {
+        StopCoroutine(barCoroutine);
+        clear = 8;
+        DanceScenarioManager.instance.ResetAll();
+        DanceScenarioManager.instance.SetScenario(4);
     }
 
     /// <summary>

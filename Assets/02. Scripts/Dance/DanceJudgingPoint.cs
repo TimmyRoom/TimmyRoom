@@ -159,7 +159,6 @@ public class DanceJudgingPoint : MonoBehaviour
         {
             result = 0;
         }
-        Debug.Log(curPose + ", result = " + result.ToString());
         DanceScenarioManager.instance.JudgeNote(type, result);
         
         return result;
