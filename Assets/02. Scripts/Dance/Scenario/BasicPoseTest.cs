@@ -11,7 +11,7 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     /// <summary>
     /// 초급 단계인지 확인하기 위한 변수.
     /// </summary>
-    public bool isBasic = true;
+    public int isBasic;
 
     /// <summary>
     /// 공지를 표시하는 텍스트.
@@ -34,12 +34,14 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     /// <summary>
     /// 정답 정보를 저장하는 튜플.
     /// </summary>
-    private (int, int) answer;
+    private (int, int) answer = (-1, -1);
 
-    public virtual void Start()
+    public void Initialize()
     {
+        isBasic = DanceScenarioManager.instance.currentScenarioNum;
+        Debug.Log(isBasic);
         DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(false);
-        if (isBasic)
+        if (isBasic == 1)
         {
             DanceScenarioManager.instance.danceAreaManager.area.EnableGuide();
             notifyText.text = "아래 동작을 따라해보세요!\n가이드에 손을 맞춰주세요.";
@@ -106,6 +108,11 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     /// </summary>
     public virtual void SetPoseText()
     {
+        while (answer == (-1, -1))
+        {
+            
+        }
+
         Array.Copy(DanceScenarioManager.instance.danceAreaManager.area.isTriggered, current, 6);
 
         int leftValue = -1;
@@ -124,9 +131,12 @@ public class BasicPoseTest : MonoBehaviour, IScenario
             clear++;
             if(clear == 9)
             {
-                //poseText.text = "Great!";
-                if(DanceScenarioManager.instance.currentScenarioNum == 1)
+                clear = 0;
+                answer = (-1, -1);
+                if (DanceScenarioManager.instance.currentScenarioNum == 1)
+                {
                     DanceScenarioManager.instance.SetScenario(2);
+                }
                 else
                     DanceScenarioManager.instance.SetScenario(3);
             }
@@ -136,6 +146,6 @@ public class BasicPoseTest : MonoBehaviour, IScenario
 
     public virtual Dictionary<int, UnityAction> GetActions()
     {
-        return new Dictionary<int, UnityAction>() { { 0, SetPoseText } };
+        return new Dictionary<int, UnityAction>() { { 0, SetPoseText }, { 2, Initialize } };
     }
 }

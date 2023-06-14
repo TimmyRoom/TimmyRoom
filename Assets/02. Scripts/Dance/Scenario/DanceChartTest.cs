@@ -24,11 +24,6 @@ public class DanceChartTest : DanceNoteTest
     /// </summary>
     private int failCount = 0;
 
-    public void Start()
-    {
-        countText.text = $"{hitCount}/{hitCount + failCount}";
-    }
-
     /// <summary>
     /// 정답 판정이 나오면 정답 횟수 카운트를 증가시킴.
     /// </summary>
@@ -36,6 +31,14 @@ public class DanceChartTest : DanceNoteTest
     {
         hitCount++;
         countText.text = $"{hitCount}/{hitCount + failCount}";
+    }
+
+    public override void StartBar()
+    {
+        DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(true);
+        countText.text = $"{hitCount}/{hitCount + failCount}";
+        barCoroutine = BarCoroutine();
+        StartCoroutine(barCoroutine);
     }
 
     protected override IEnumerator MusicCoroutine()
@@ -52,6 +55,8 @@ public class DanceChartTest : DanceNoteTest
         else
         {
             StopCoroutine(barCoroutine);
+            hitCount = 0;
+            failCount = 0;
             DanceScenarioManager.instance.ResetAll();
             DanceScenarioManager.instance.SetScenario(nextScenario);
         }
