@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 씬 내부를 촬영하고 촬영된 영상을 저장하는 클래스.
@@ -28,7 +29,7 @@ public class SceneRecorder : MonoBehaviour
             Destroy(this);
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         filePath = Application.persistentDataPath;
     }
 

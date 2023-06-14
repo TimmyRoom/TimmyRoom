@@ -141,8 +141,12 @@ public class GazeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             gaze.fillAmount = fillAmount;
             if(pointTimer >= maxPointTime)
             {
-                button.onClick.Invoke();
                 pointTimer = 0f;
+                isPointing = false;
+                gaze.fillAmount = 0;
+                image.color = new Color(originalColor.r * ungazedColor, originalColor.g * ungazedColor, originalColor.b * ungazedColor, 1f);
+                transform.localScale = new Vector3(1f, 1f, 1f);
+                button.onClick.Invoke();
             }
         }
         else

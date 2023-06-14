@@ -7,17 +7,17 @@ public abstract class AbstractDanceArea : MonoBehaviour
     [SerializeField] protected DanceJudgingPoint Judge;
 
     /// <summary>
-    /// ÆÇÁ¤ ¿µ¿ªÀÇ ÃÊ±âÈ­¸¦ À§ÇÑ ÇÔ¼ö.
+    /// íŒì • ì˜ì—­ì˜ ì´ˆê¸°í™”ë¥¼ ìœ„í•œ í•¨ìˆ˜.
     /// </summary>
     public abstract void Initialize();
 
     /// <summary>
-    /// ÆÇÁ¤ ¿µ¿ªÀÌ »ç¿ëÀÚ¿¡ ÀÇÇØ ÀÎÅÍ·º¼ÇµÇ¾úÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö.
+    /// íŒì • ì˜ì—­ì´ ì‚¬ìš©ìì— ì˜í•´ ì¸í„°ë ‰ì…˜ë˜ì—ˆì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜.
     /// </summary>
     public abstract void GetEntered(int type, GameObject areaObject);
 
     /// <summary>
-    /// »ç¿ëÀÚ°¡ ÆÇÁ¤ ¿µ¿ªÀ» ¹ş¾î³µÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö.
+    /// ì‚¬ìš©ìê°€ íŒì • ì˜ì—­ì„ ë²—ì–´ë‚¬ì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜.
     /// </summary>
     public abstract void GetExited(int type, GameObject areaObject);
 }

@@ -151,6 +151,9 @@ MonoBehaviour:
   - {fileID: 3940145270422794168}
   - {fileID: 5444179396050578698}
   - {fileID: 1202251070510132364}
+  DrumModels:
+  - {fileID: 8962021623177064232}
+  - {fileID: 2845610329337507502}
 --- !u!1001 &3007608314926466289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,6 +161,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 743597342692865239}
     m_Modifications:
+    - target: {fileID: 665932143539583494, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a01fedc59b990a64ebd615b9ae9d3125, type: 2}
+    - target: {fileID: 1610810751580964873, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_RootOrder
@@ -166,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
@@ -218,6 +231,11 @@ PrefabInstance:
       propertyPath: InstrumentType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7307702966676236577, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ba8c98a48b1e2814399003942b5651cb, type: 2}
     - target: {fileID: 8233359263448586676, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_Name
@@ -231,7 +249,7 @@ PrefabInstance:
     - target: {fileID: 9153318055866916128, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.6
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 9153318055866916128, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
@@ -260,6 +278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806443792c7664c4198015e249b67345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8962021623177064232 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6188602284174388185, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+    type: 3}
+  m_PrefabInstance: {fileID: 3007608314926466289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6097454690668119619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,6 +291,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 743597342692865239}
     m_Modifications:
+    - target: {fileID: 1610810751580964873, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_RootOrder
@@ -361,6 +390,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 743597342692865239}
     m_Modifications:
+    - target: {fileID: 1610810751580964873, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_RootOrder
@@ -369,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
@@ -434,7 +468,7 @@ PrefabInstance:
     - target: {fileID: 9153318055866916128, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.6
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 9153318055866916128, guid: b5bbcc0a5500b7c41a6806b5268ac078,
         type: 3}
@@ -457,6 +491,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806443792c7664c4198015e249b67345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2845610329337507502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6188602284174388185, guid: b5bbcc0a5500b7c41a6806b5268ac078,
+    type: 3}
+  m_PrefabInstance: {fileID: 8259592343724393847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5543488018981676455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4499548486327591120, guid: b5bbcc0a5500b7c41a6806b5268ac078,

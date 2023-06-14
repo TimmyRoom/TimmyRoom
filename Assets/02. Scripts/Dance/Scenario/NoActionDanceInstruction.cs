@@ -7,26 +7,26 @@ public class NoActionDanceInstruction : MonoBehaviour, IScenario
 {
     [SerializeField] DanceChartTest danceChart;
     /// <summary>
-    /// ÇØ´ç ÀÎ½ºÆ®·°¼Ç¿¡¼­ ¹ß»ıÇÏ´Â ¾×¼ÇµéÀÇ ¸®½ºÆ®¸¦ ¹İÈ¯ÇÑ´Ù.
+    /// í•´ë‹¹ ì¸ìŠ¤íŠ¸ëŸ­ì…˜ì—ì„œ ë°œìƒí•˜ëŠ” ì•¡ì…˜ë“¤ì˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°˜í™˜í•œë‹¤.
     /// </summary>
-    /// <returns>ÀÎ½ºÆ®·°¼Ç¿¡¼­ ¹ß»ıÇÏ´Â ¾×¼ÇµéÀÇ ¸®½ºÆ®</returns>
+    /// <returns>ì¸ìŠ¤íŠ¸ëŸ­ì…˜ì—ì„œ ë°œìƒí•˜ëŠ” ì•¡ì…˜ë“¤ì˜ ë¦¬ìŠ¤íŠ¸</returns>
     public Dictionary<int, UnityAction> GetActions()
     {
         return new Dictionary<int, UnityAction>();
     }
 
     /// <summary>
-    /// ¸ŞÀÎ ÄÁÅÙÃ÷ÀÇ Ã¤º¸¸¦ ¼³Á¤ÇÑ´Ù.
+    /// ë©”ì¸ ì»¨í…ì¸ ì˜ ì±„ë³´ë¥¼ ì„¤ì •í•œë‹¤.
     /// </summary>
-    /// <param name="jsonFile">Ã¤º¸.</param>
+    /// <param name="jsonFile">ì±„ë³´.</param>
     public void SetJSON(TextAsset jsonFile)
     {
         danceChart.jsonFile = jsonFile;
     }
     /// <summary>
-    /// ¸ŞÀÎ ÄÁÅÙÃ÷ÀÇ À½¾ÇÀ» ¼³Á¤ÇÑ´Ù.
+    /// ë©”ì¸ ì»¨í…ì¸ ì˜ ìŒì•…ì„ ì„¤ì •í•œë‹¤.
     /// </summary>
-    /// <param name="audioClip">À½¾Ç.</param>
+    /// <param name="audioClip">ìŒì•….</param>
     public void SetSong(AudioClip audioClip)
     {
         danceChart.audioClip = audioClip;

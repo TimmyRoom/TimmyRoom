@@ -5,18 +5,18 @@ using UnityEngine.Events;
 
 public class DanceTriggerArea : MonoBehaviour
 {
-    // ÆÇÁ¤ ¿µ¿ªÀÇ Å¸ÀÔ ¹øÈ£
+    // íŒì • ì˜ì—­ì˜ íƒ€ìž… ë²ˆí˜¸
     public int AreaType;
     /// <summary>
-    /// ÇØ´ç ¿ÀºêÁ§Æ®ÀÇ Æ®¸®°Å¿¡ ÁøÀÔÇßÀ» ¶§ ¹ß»ýÇÏ´Â ¾×¼Ç.
+    /// í•´ë‹¹ ì˜¤ë¸Œì íŠ¸ì˜ íŠ¸ë¦¬ê±°ì— ì§„ìž…í–ˆì„ ë•Œ ë°œìƒí•˜ëŠ” ì•¡ì…˜.
     /// </summary>
     public UnityAction enterAction;
     /// <summary>
-    /// ÇØ´ç ¿ÀºêÁ§Æ®ÀÇ Æ®¸®°Å¸¦ ³ª°¬À» ¶§ ¹ß»ýÇÏ´Â ¾×¼Ç.
+    /// í•´ë‹¹ ì˜¤ë¸Œì íŠ¸ì˜ íŠ¸ë¦¬ê±°ë¥¼ ë‚˜ê°”ì„ ë•Œ ë°œìƒí•˜ëŠ” ì•¡ì…˜.
     /// </summary>
     public UnityAction exitAction;
     /// <summary>
-    /// ¸ÓÅ×¸®¾ó ±³Ã¼¸¦ À§ÇÑ ÆÇÁ¤ ¿µ¿ª ¿ÀºêÁ§Æ® ÀÚÃ¼ÀÇ Á¤º¸.
+    /// ë¨¸í…Œë¦¬ì–¼ êµì²´ë¥¼ ìœ„í•œ íŒì • ì˜ì—­ ì˜¤ë¸Œì íŠ¸ ìžì²´ì˜ ì •ë³´.
     /// </summary>
     public GameObject areaObject;
 

@@ -14,6 +14,10 @@ public class XRCameraSetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+            SceneRecorder.instance.Capture();
+            
+        if(Input.GetKeyDown(KeyCode.Escape))
+            SceneRecorder.instance.CaptureSelf();
     }
 }

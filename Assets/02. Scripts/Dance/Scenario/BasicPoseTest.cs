@@ -9,30 +9,30 @@ using UnityEngine.Events;
 public class BasicPoseTest : MonoBehaviour, IScenario
 {
     /// <summary>
-    /// ÃÊ±Ş ´Ü°èÀÎÁö È®ÀÎÇÏ±â À§ÇÑ º¯¼ö.
+    /// ì´ˆê¸‰ ë‹¨ê³„ì¸ì§€ í™•ì¸í•˜ê¸° ìœ„í•œ ë³€ìˆ˜.
     /// </summary>
     public bool isBasic = true;
 
     /// <summary>
-    /// °øÁö¸¦ Ç¥½ÃÇÏ´Â ÅØ½ºÆ®.
+    /// ê³µì§€ë¥¼ í‘œì‹œí•˜ëŠ” í…ìŠ¤íŠ¸.
     /// </summary>
     [SerializeField] protected TextMeshProUGUI notifyText;
 
     /// <summary>
-    /// ÇØ¾ßÇÒ Æ÷Áî¸¦ Ç¥½ÃÇÏ´Â ÀÌ¹ÌÁö.
+    /// í•´ì•¼í•  í¬ì¦ˆë¥¼ í‘œì‹œí•˜ëŠ” ì´ë¯¸ì§€.
     /// </summary>
     [SerializeField] protected Image poseGuideImage;
 
     /// <summary>
-    /// ÆÇÁ¤À» À§ÇØ ÇöÀç ¹ßµ¿µÈ Æ®¸®°Å Á¤º¸¸¦ ÀÚÃ¼ÀûÀ¸·Î ÀúÀåÇÏ´Â bool ¹è¿­.
+    /// íŒì •ì„ ìœ„í•´ í˜„ì¬ ë°œë™ëœ íŠ¸ë¦¬ê±° ì •ë³´ë¥¼ ìì²´ì ìœ¼ë¡œ ì €ì¥í•˜ëŠ” bool ë°°ì—´.
     /// </summary>
     private bool[] current;
     /// <summary>
-    /// Á¤´ä È½¼ö¸¦ Ä«¿îÆ®ÇÏ´Â º¯¼ö.
+    /// ì •ë‹µ íšŸìˆ˜ë¥¼ ì¹´ìš´íŠ¸í•˜ëŠ” ë³€ìˆ˜.
     /// </summary>
     private int clear = 0;
     /// <summary>
-    /// Á¤´ä Á¤º¸¸¦ ÀúÀåÇÏ´Â Æ©ÇÃ.
+    /// ì •ë‹µ ì •ë³´ë¥¼ ì €ì¥í•˜ëŠ” íŠœí”Œ.
     /// </summary>
     private (int, int) answer;
 
@@ -42,19 +42,19 @@ public class BasicPoseTest : MonoBehaviour, IScenario
         if (isBasic)
         {
             DanceScenarioManager.instance.danceAreaManager.area.EnableGuide();
-            notifyText.text = "¾Æ·¡ µ¿ÀÛÀ» µû¶óÇØº¸¼¼¿ä!\n°¡ÀÌµå¿¡ ¼ÕÀ» ¸ÂÃçÁÖ¼¼¿ä.";
+            notifyText.text = "ì•„ë˜ ë™ì‘ì„ ë”°ë¼í•´ë³´ì„¸ìš”!\nê°€ì´ë“œì— ì†ì„ ë§ì¶°ì£¼ì„¸ìš”.";
         }
         else
         {
             DanceScenarioManager.instance.danceAreaManager.area.DisableGuide();
-            notifyText.text = "¾Æ·¡ µ¿ÀÛÀ» µû¶óÇØº¸¼¼¿ä!\n°¡ÀÌµå ¾øÀÌ ÇØº¸µµ·Ï ÇØ¿ä.";
+            notifyText.text = "ì•„ë˜ ë™ì‘ì„ ë”°ë¼í•´ë³´ì„¸ìš”!\nê°€ì´ë“œ ì—†ì´ í•´ë³´ë„ë¡ í•´ìš”.";
         }
         current = new bool[6];
         NewAnswer();
     }
 
     /// <summary>
-    /// Á¤´ä Á¤º¸¸¦ °»½ÅÇÏ°í ÅØ½ºÆ®¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ÇÔ¼ö.
+    /// ì •ë‹µ ì •ë³´ë¥¼ ê°±ì‹ í•˜ê³  í…ìŠ¤íŠ¸ë¥¼ ì—…ë°ì´íŠ¸í•˜ëŠ” í•¨ìˆ˜.
     /// </summary>
     public void NewAnswer()
     {
@@ -102,7 +102,7 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     }
 
     /// <summary>
-    /// ÆÇÁ¤À» ÅëÇØ Á¤´ä ¿©ºÎ¸¦ È®ÀÎÇÏ°í, Á¤´äÀÏ °æ¿ì¸¦ Ã³¸®ÇÏ´Â ÇÔ¼ö.
+    /// íŒì •ì„ í†µí•´ ì •ë‹µ ì—¬ë¶€ë¥¼ í™•ì¸í•˜ê³ , ì •ë‹µì¼ ê²½ìš°ë¥¼ ì²˜ë¦¬í•˜ëŠ” í•¨ìˆ˜.
     /// </summary>
     public virtual void SetPoseText()
     {
