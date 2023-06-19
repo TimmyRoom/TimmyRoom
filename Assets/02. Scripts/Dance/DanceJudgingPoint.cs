@@ -8,13 +8,13 @@ using UnityEngine;
 /// </summary>
 public class DanceJudgingPoint : MonoBehaviour
 {
-    [SerializeField] float fallingTime = 2;
+    [SerializeField] float fallingTime = 2.0f;
     /// <summary>
     /// 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     /// </summary>
     public float FallingTime { get => fallingTime; set => fallingTime = value; }
 
-    float noteVelocity = 0;
+    float noteVelocity = 0.0f;
     /// <summary>
     /// 노트의 등속 운동 속도.
     /// </summary>
@@ -97,17 +97,6 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// 판정 콜라이더에 노트가 들어오면 해당 노트의 판정과 삭제를 수행함.
-    /// </summary>
-    /// <param name="other">콜라이더와 접촉한 노트 오브젝트</param>
-    private void OnTriggerEnter(Collider other)
-    {
-        JudgeNote(other.gameObject.GetComponent<DanceNote>().type);
-        notes.Remove(other.gameObject.GetComponent<Rigidbody>());
-        other.gameObject.SetActive(false);
-    }
-
-    /// <summary>
     /// 노트 판정이 필요없는 시나리오를 위한 자체 판정 요청을 수행함.
     /// 포즈를 따라하기만 하는 시나리오 1, 2에서 사용됨.
     /// </summary>
@@ -164,11 +153,29 @@ public class DanceJudgingPoint : MonoBehaviour
         return result;
     }
 
-    /// <summary> 
-    /// 노트를 생성하고 해당 오브젝트의 RigidBody 컴포넌트를 반환한다.
-    /// 이 때, 노트의 타입에 맞는 스프라이트를 노트에 적용한다.
-    /// <returns>생성된 노트의 RigidBody.</returns>
+    /// <summary>
+    /// 씬 시작 상태로 되돌리는 함수.
     /// </summary>
+    public void ResetAll()
+    {
+        foreach (IEnumerator routine in noteRoutines)
+        {
+            StopCoroutine(routine);
+        }
+        noteRoutines.Clear();
+        foreach (Rigidbody note in notes)
+        {
+            Destroy(note.gameObject);
+        }
+        notes.Clear();
+    }
+
+    /// <summary> 
+    /// 노트를 생성하고 해당 오브젝트의 Rigidbody 컴포넌트를 반환한다.
+    /// 이 때, 노트의 타입에 맞는 스프라이트를 노트에 적용한다.
+    /// </summary>
+    /// <param name="type">노트의 타입.</param>
+    /// <returns>생성된 노트 오브젝트의 Rigidbody.</returns>
     Rigidbody GetNote(int type)
     {
         Rigidbody newNote = Instantiate(NotePrefab, NoteSpawnTransforms.position, NoteSpawnTransforms.rotation);
@@ -210,19 +217,13 @@ public class DanceJudgingPoint : MonoBehaviour
     }
 
     /// <summary>
-    /// 씬 시작 상태로 되돌리는 함수.
+    /// 판정 콜라이더에 노트가 들어오면 해당 노트의 판정과 삭제를 수행함.
     /// </summary>
-    public void ResetAll()
+    /// <param name="other">콜라이더와 접촉한 노트 오브젝트</param>
+    private void OnTriggerEnter(Collider other)
     {
-        foreach (IEnumerator routine in noteRoutines)
-        {
-            StopCoroutine(routine);
-        }
-        noteRoutines.Clear();
-        foreach (Rigidbody note in notes)
-        {
-            Destroy(note.gameObject);
-        }
-        notes.Clear();
+        JudgeNote(other.gameObject.GetComponent<DanceNote>().type);
+        notes.Remove(other.gameObject.GetComponent<Rigidbody>());
+        other.gameObject.SetActive(false);
     }
 }

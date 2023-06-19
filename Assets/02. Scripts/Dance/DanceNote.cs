@@ -8,9 +8,15 @@ using UnityEngine.UI;
 /// </summary>
 public class DanceNote : MonoBehaviour
 {
+    /// <summary>
+    /// 노트 오브젝트의 타입.
+    /// </summary>
     public int type;
     public int Type { get => type; set => type = value; }
 
+    /// <summary>
+    /// 노트 오브젝트에 씌워지는 포즈 이미지.
+    /// </summary>
     public Image image;
 
     private void Awake()

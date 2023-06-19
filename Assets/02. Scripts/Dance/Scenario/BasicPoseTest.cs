@@ -36,10 +36,13 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     /// </summary>
     private (int, int) answer = (-1, -1);
 
+    /// <summary>
+    /// 시나리오를 초기화하는 함수.
+    /// 초급 단계일 경우 판정 영역의 가이드를 활성화한다.
+    /// </summary>
     public void Initialize()
     {
         isBasic = DanceScenarioManager.instance.currentScenarioNum;
-        Debug.Log(isBasic);
         DanceScenarioManager.instance.danceJudgingPoint.JudgePointGuide.SetActive(false);
         if (isBasic == 1)
         {
@@ -110,7 +113,7 @@ public class BasicPoseTest : MonoBehaviour, IScenario
     {
         while (answer == (-1, -1))
         {
-            ;
+            ; // Do Nothing in Loop
         }
 
         Array.Copy(DanceScenarioManager.instance.danceAreaManager.area.isTriggered, current, 6);

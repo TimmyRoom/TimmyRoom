@@ -14,10 +14,14 @@ public abstract class AbstractDanceArea : MonoBehaviour
     /// <summary>
     /// 판정 영역이 사용자에 의해 인터렉션되었을 때 호출되는 함수.
     /// </summary>
+    /// <param name="type">판정 영역의 고유번호.</param>
+    /// <param name="areaObject">판정 영역 오브젝트.</param>
     public abstract void GetEntered(int type, GameObject areaObject);
 
     /// <summary>
     /// 사용자가 판정 영역을 벗어났을 때 호출되는 함수.
     /// </summary>
+    /// <param name="type">판정 영역의 고유번호.</param>
+    /// <param name="areaObject">판정 영역 오브젝트.</param>
     public abstract void GetExited(int type, GameObject areaObject);
 }

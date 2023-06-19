@@ -851,153 +851,95 @@ class
 
 MusicContentTool, AbstarctSceneManager을 상속받는다.
 
-- public enum NoteType {LeftUpper, RightUpper, LeftMiddle, RightMiddle, Front}
-    - 노트 타입을 표현하는 열거형이다.
+- public DanceJudgingPoint danceJudgingPoint
+    - 댄스 포즈 판정을 담당하는 클래스이다.
 
-- public enum NoteResult {Miss, Good}
-    - 노트 판정을 표현하는 열거형이다.
+- public DanceAreaManager danceAreaManager
+    - 댄스 포즈 트리거 구역을 담당하는 클래스이다.
 
-- public UnityEvent[] TriggerEventsLeftUpper
-    - 왼쪽 위 댄스 판정이 성공할 경우에 대한 이벤트.
+- public GameObject[] Scenarios;
+    - 각 상황마다 등장하는 UI이다.
 
-- public UnityEvent[] TriggerFailEventsLeftUpper
-    - 왼쪽 위 댄스 판정이 실패할 경우에 대한 이벤트.
+- public float correctVTime
+- public float correctVAmplifier
+    - 정답 판정 시의 진동 지속시간 및 세기이다.
+    - 0.0에서 1.0 사이의 float 값을 임의로 지정해줄 수 있다.
 
-- public UnityEvent[] TriggerEventsRightUpper
-    - 오른쪽 위 댄스 판정이 성공할 경우에 대한 이벤트.
+- public float wrongVTime
+- public float wrongVAmplifier
+    - 정답 판정 시의 진동 지속시간 및 세기이다.
+    - 0.0에서 1.0 사이의 float 값을 임의로 지정해줄 수 있다.
 
-- public UnityEvent[] TriggerFailEventsRightUpper
-    - 오른쪽 위 댄스 판정이 실패할 경우에 대한 이벤트.
-
-- public UnityEvent[] TriggerEventsLeftMiddle
-    - 왼쪽 중간 댄스 판정이 성공할 경우에 대한 이벤트.
-
-- public UnityEvent[] TriggerFailEventsLeftMiddle
-    - 왼쪽 중간 댄스 판정이 실패할 경우에 대한 이벤트.
-
-- public UnityEvent[] TriggerEventsRightMiddle
-    - 오른쪽 중간 댄스 판정이 성공할 경우에 대한 이벤트.
-
-- public UnityEvent[] TriggerFailEventsRightMiddle
-    - 오른쪽 중간 댄스 판정이 실패할 경우에 대한 이벤트.
-
-- public UnityEvent[] TriggerEventsRightMiddle
-    - 오른쪽 중간 댄스 판정이 성공할 경우에 대한 이벤트.
-
-- public UnityEvent[] TriggerFailEventsRightMiddle
-    - 오른쪽 중간 댄스 판정이 실패할 경우에 대한 이벤트.
-
-- public AudioClip[] ComboClips
-    - 콤보 달성 시 발생하는 효과음 목록이다.
+- public enum EventType {Hit, Fail, Start, End}
+    - Instruction에서 발생 가능한 이벤트 타입을 표현하는 열거형이다.
 
 - public AudioSource MusicAudioSource
     - 배경 음원이 재생되는 AudioSource이다.
 
-- public AudioSource ComboAudioSource
-    - 콤보 달성 시 발생하는 효과음이 재생되는 AudioSource이다.
+- public int currentScenarioNum
+    - 현재 진행중인 시나리오의 번호이다.
 
-- int barCombo
-    - 초기 값을 0으로 한다.
-    - 모든 노드를 성공으로 판정받은 마디가 있으면 해당 값을 1 증가시킨다.
-    - 판정에 실패하면 즉시 값을 0으로 만든다.
+- IEnumerator SongRoutine
+    - 음악을 재생하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
 
-- IEnumerator ComboRoutine
-    - AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+- private Dictionary<EventType, UnityEvent> ScenarioEvents
+    - 댄스 포즈 판정에 따른 이벤트.
+    - EventType에 따라 적절한 이벤트를 발생시킨다.
 
-- void StartMusic(AudioClip audioClip, float barSecond)
-    - SoundManager.SoundPlay(audioClip, MusicAudioSource)
-    - 콤보 루틴을 실행하여 일정 시간마다 콤보가 쌓이도록 한다.
-    - ComboRoutine = StartCoroutine(AddComboLoop(float barSecond))
+- void Initialize()
+    - 초기 설정을 위한 함수.
 
-- IEnumerator AddComboLoop(float barSecond)
-    - barSecond마다 barCombo += 1
-    - barCombo의 값에 따라 SoundManager.SoundPlay(ComboClips, ComboAudioSource) 호출.
-        
-        
-        | barCombo | ComboClips[k] |
-        | --- | --- |
-        | 2 | k = 0 |
-        | 4,6,8,… | k = 1 |
+- public override GameChart PlayChart(string json, AudioClip audioClip)
+    - 각 노트에 대해 CommandExecute(time, command) 호출.
+    - json : 차트 JSON 데이터.
+    - audioClip : 재생할 음원.
 
-- IEnumerator void EndComboLoop(float songLength)
-    - WaitforSecond로 songLength초 만큼 대기.
-    - 콤보 루틴을 종료한다: StopCoroutine(ComboRoutine);
+- public override float GetWaitTime()
+    - DanceJudgingPoint의 의 fallingTime을 반환한다.
 
-- public void ResetCombo()
-    - barCombo를 0으로 설정한다.
-
-- override void PlayChart(string json)
-    - base.PlayChart(json)
-    - BPM을 통해 마디 당 초 단위 시간을 계산하고 이를 SPB라 둔다.
-        - MusicContentTool.Beat2Second()를 통해 계산.
-    - 적절한 음원 파일을 참조하여 song으로 설정, StartMusic(song, SPB) 호출.
-    - StartCoroutine(EndComboLoop(songLength)) 루틴 실행.
-
-- override void CommandExecute(float time, string command)
+- public override void CommandExecute(float time, string command)
     - switch구문으로 brach를 나눠 command에 따라 적절한 함수를 실행한다.
-        
-        
         | command | function |
         | --- | --- |
-        | Trigger({type, type, …}) | DanceJudjingPoint.SpawnNote(time, [type, type, …])
-        DanceInstructor.ShowInstructor(time, [type, type, …]) |
+        | Hit | DanceJudgingPoint.SpawnNote(time, action.Type) |
 
-- override NoteResult JudgeNote(int type)
-    - DanceJudjingPoint.JudgeNote(type)를 호출하여 result를 얻는다.
-    - type, result를 적절한 NoteType, NoteResult로 치환한다.
+- public override int JudgeNote(int type, int result)
+    - 노트 판정에 따른 이벤트를 발생시킨다.
     - type, result에 따라 등록된 이벤트를 출력하고 result를 반환한다.
-        
-        
-        | type\result | Good | Bad |
-        | --- | --- | --- |
-        | LeftUpper | TriggerEventsLeftUpper | TriggerFailEventsLeftUpper |
-        | RightUpper | TriggerEventsRightUpper | TriggerFailEventsRightUpper |
-        | LeftMiddle | TriggerEventsLeftMiddle | TriggerFailEventsLeftMiddle |
-        | RightMiddle | TriggerEventsRightMiddle | TriggerFailEventsRightMiddle |
-        | Front | TriggerEventsLeftFront | TriggerFailEventsFront |
+        | type | mean |
+        | --- | --- |
+        | 11 | Left Down - Right Down |
+        | 12 | Left Down - Right Middle |
+        | 13 | Left Down - Right Up |
+        | 21 | Left Middle - Right Down |
+        | 22 | Left Middle - Right Middle |
+        | 23 | Left Middle - Right Up |
+        | 31 | Left Up - Right Down |
+        | 32 | Left Up - Right Middle |
+        | 33 | Left Up - Right Up |
 
-## DanceInstructor
+- public override void SetScenario(int scenarioIndex)
+    - 각 시나리오에 맞는 적절한 인터페이스 오브젝트를 활성화한다.
+    - 시나리오가 끝날 때 발생하는 이벤트들을 Invoke한다.
+    - 변경할 시나리오의 index를 현재 시나리오 번호로 지정해준다.
+    - 각 시나리오에 맞게 판정 이벤트를 초기화 후 새롭게 매핑한다.
+    - 시나리오 시작 시 발생하는 이벤트들을 Invoke한다.
 
----
+- public override void ResetAll()
+    - 씬 시작 상태로 되돌리는 함수.
 
-class
+- IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
+    - 일정 시간 후 음악을 재생하는 코루틴.
+    - audioClip : 재생할 오디오 클립.
+    - waitTime : 대기 시간.
+    - barSecond : 마디당 소요 시간.
 
-사용자가 정확한 인터렉션을 할 수 있도록 기능을 제공한다.
+- void StartMusic(AudioClip audioClip, float barSecond)
+    - SoundManager를 통해 음악을 재생한다.
+    - audioClip : 재생할 오디오 클립.
+    - barSecond : 마디당 소요 시간.
 
-- IEnumerator mirrorRoutine
-    - ShowMirrorImageRoutine() 루틴을 참조한다.
-
-- public Sprite[] Instructions
-    - 어떤 포즈를 취해야 할지 알려주는 그림 이미지들의 목록.
-
-- public Camera MirrorCam
-    - 사용자를 반대 방향에서 촬영하는 카메라.
-
-- public GameObject Mirror
-    - MirrorCam에서 촬영한 이미지가 반영되는 상.
-
-- public GameObject InstructorPanel
-    - Instructions 이미지가 보여질 UI 패널.
-
-- public void ShowMirrorImage()
-    - StartCoroutine으로 ShowMirrorImageRoutine() 루틴을 실행한다.
-    - mirrorRoutine = StartCoroutine(ShowMirrorImageRoutine());
-
-- public void TurnOffMirrorImage()
-    - StopCoroutine으로 mirrorRoutine 루틴을 종료한다.
-
-- IEnumerator ShowMirrorImageRoutine()
-    - MirrorCam을 통해 사용자의 모습을 Mirror에 투영한다.
-
-- void ReadyForInstruction(float time, int[] types)
-    - 입력받는 types를 고려해 Instructions에서 적절한 이미지를 찾아 instruction로 둔다.
-    - StartCoroutine으로 ShowInstruction(time, instruction) 실행.
-
-- IEnumerator ShowInstruction(float time, Sprite instruction)
-    - WaitforSecond로 time만큼 대기.
-    - InstructorPanel에 해당 이미지를 반영한다.
-
-## DanceJudjingPoint
+## DanceJudgingPoint
 
 ---
 
@@ -1005,41 +947,158 @@ class
 
 시간에 따라 노트를 생성하고 이를 통해 사용자에게 타이밍을 인지시키는 클래스.
 
-각각의 노트는 Object Pulling을 활용한다.
-
-- float judgingTime
-    - 노트가 생성된 후 판정을 가할 때까지의 시간.
+- float fallingTime
+    - 노트가 생성된 후 판정면에 닿을 때까지의 시간.
     - getter/setter 제공
 
-- public BoxCollider[] Triggers
-    - 컨트롤러로 트리거 가능한 범위이다.
+- float noteVelocity
+    - 노트의 등속 운동 속도.
+    - getter/setter 제공
 
-- public AudioClip[] InstrumentClips
-    - 악기와 관련된 효과음 목록이다.
+- public Transform JudgePosition
+    - 실제 사용자가 보는 판정선 Transform.
 
-- public AudioSource InstrumentAudioSource
-    - 악기와 관련된 효과음이 나오는 곳이다.
+- public GameObject JudgePointGuide
+    - 사용자들이 눈으로 확인 가능한 판정 범위 오브젝트.
 
-- public Transform[] NoteSpawnTransforms
-    - 노트가 생성되는 위치를 지정한다.
+- public Transform NoteSpawnTransforms
+    - 노트가 생성되는 위치.
 
-- public void SpawnNote(float time, int[] types)
-    - StartCoroutine으로 SpawnNoteRoutine(time, types) 루틴 실행.
+- public Rigidbody NotePrefab
+    - 생성하는 노트의 프리팹.
+    - Rigidbody로 등록하여 코드 내에서 사용하기 편하게 한다.
+
+- public List<Sprite> sprites
+    - 노트의 포즈 스프라이트들을 저장하는 리스트.
+
+- private List<Rigidbody> notes
+    - 생성된 모든 노트들을 저장하는 리스트.
+
+- private List<IEnumerator> noteRoutines
+    - 실행되는 모든 노트 루틴을 저장하는 리스트.
+
+- private bool[] current
+    - 판정을 위해 현재 발동된 트리거 정보를 자체적으로 저장하는 bool 배열.
+    - 판정 트리거의 개수인 6을 크기로 한다.
+
+- public void SetVelocity()
+    - 노트의 속력을 설정한다.
+
+- public void SpawnNote(float time, int type)
+    - StartCoroutine으로 SpawnNoteRoutine(time, type) 루틴 실행.
+    - time : 노트가 생성되는 시간.
+    - type : 노트가 생성되는 라인.
     
-- IEnumerator SpawnNoteRoutine(float time, int[] types)
-    - time - judgingTime 만큼 WaitforSecond를 통해 대기.
+- IEnumerator SpawnNoteRoutine(float time, int type)
+    - time - judgingTime 만큼  WaitforSecond를 통해 대기.
         - if(time - judgingTime > 0), 0초 대기.
-    - foreach(var type in types)
-        - 노트를 NoteSpawnTransforms[type].position에 생성하여 StartCoroutine으로 PlayNoteRoutine() 서브루틴을 실행한다.
+    - 노트를 NoteSpawnTransforms[type].position에 생성하여 NoteSpawnTransforms[type].rotation 방향으로 등속 운동시킨다.
+    - time : 노트 생성까지 대기하는 시간.
+    - type : 노트가 생성되는 라인.
 
-- IEnumerator PlayNoteRoutine()
-    - judgingTime 만큼 WaitforSecond를 통해 대기.
-    - DanceScenarioManager.JudgeNote(type) 호출.
-        - 결과가 Good일 경우 SoundManager.SoundPlay(InstrumentClips[0], InstrumentAudioSource) 호출.
+- public void UsingTypeForScenario()
+    - 노트 판정이 필요없는 시나리오를 위한 자체 판정 요청을 수행함.
+    - 포즈를 따라하기만 하는 시나리오 1, 2에서 사용됨.
 
 - public int JudgeNote(int type)
-    - Trigger[type]에 컨트롤러가 Trigger중인지 확인한다.
-    - Trigger된 상태라면 1을, 그 외엔 0을 반환한다.
+    - 판정면에 도달한 노트 오브젝트를 참조해 판정을 한다.
+    - 트리거 영역을 다루는 Manager에서 활성화 여부 배열을 받아와 판정에 이용한다.
+    - type : 노트의 종류.
+    - 노트 판정 결과를 반환한다.
+
+- public void ResetAll()
+    - 씬 시작 상태로 되돌리는 함수.
+
+- RigidBody GetNote(int type)
+    - 노트를 생성하고 해당 오브젝트의 Rigidbody 컴포넌트를 반환한다.
+    - 이 때, 노트의 타입에 맞는 스프라이트를 노트에 적용한다.
+    - type : 노트의 타입.
+
+- private void OnTriggerEnter(Collider other)
+    - 판정 콜라이더에 노트가 들어오면 해당 노트의 판정과 삭제를 수행함.
+
+## DanceAreaManager
+
+---
+
+class
+
+댄스 포즈 트리거 구역을 담당한다.
+
+- public AreaSet area
+    - 씬 진행에 사용되는 모든 구역들의 집합.
+
+- public void Initialize()
+    - 초기 설정을 위한 함수.
+
+- public void ResetAll
+    - 씬 시작 상태로 되돌리는 함수.
+
+## AreaSet
+
+---
+
+class
+
+씬 진행에 사용되는 트리거 구역을 관리하는 클래스이다.
+
+AbstractDanceArea를 상속받는다.
+
+- public DanceTriggerArea[] TriggerAreas
+    - 각 판정 영역에 대한 정보를 담고 있는 구조체.
+        | index | object |
+        | --- | --- |
+        | 0 | Left Down |
+        | 1 | Left Middle |
+        | 2 | Left Up |
+        | 3 | Right Down |
+        | 4 | Right Middle |
+        | 5 | Right Up |
+
+- public bool[] isTriggered
+    - 각 판정 영역의 활성화 여부를 담고 있는 배열.
+    - 판정 트리거의 개수인 6을 크기로 한다.
+
+- public ReflectionProbe mirror
+    - 컬링 마스크 적용을 위한 거울 오브젝트.
+
+- public Material blue
+- public Material origin
+- public Material transparent
+    - 각 판정 영역의 색을 변경하거나 감추는데 사용하는 머테리얼.
+    - blue : 판정 영역이 강조될 때의 색.
+    - origin : 판정 영역의 기본 색.
+    - transparent : 판정 영역이 가려질 때의 투명 머테리얼.
+
+- public void EnableGuide()
+    - 각 판정 영역의 가이드를 활성화시킨다.
+
+- public void DisableGuide()
+    - 각 판정 영역의 가이드를 비활성화시킨다.
+
+- public override void GetEntered(int type, GameObject areaObject)
+    - 판정 영역이 사용자에 의해 인터랙션되었을 때 호출되는 함수.
+    - 시나리오 1일 경우 영역의 머테리얼을 강조색으로 바꾼다.
+    - 현재 판정 영역 활성화 여부를 업데이트한다.
+    - type : 판정 영역의 고유번호.
+    - areaObject : 판정 영역 오브젝트.
+        | type | object |
+        | --- | --- |
+        | 11 | Left Down |
+        | 12 | Left Middle |
+        | 13 | Left Up |
+        | 21 | Right Down |
+        | 22 | Right Middle |
+        | 23 | Right Up |
+
+- public override void GetExited(int type, GameObject areaObject)
+    - 사용자가 판정 영역을 벗어났을 때 호출되는 함수.
+    - 시나리오 1일 경우 영역의 머테리얼을 원래 색으로 바꾼다.
+    - type : 판정 영역의 고유번호.
+    - areaObject : 판정 영역 오브젝트.
+
+- public override void Initialize()
+    - 판정 영역의 초기화를 위한 함수.
 
 # Gallery Scene
 
