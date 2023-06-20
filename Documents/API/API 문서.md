@@ -540,6 +540,73 @@ XR Origin의 ActionBasedController와 연결하여 해당 컨트롤러에 원하
     }
     ```
 
+## GazeButton
+
+---
+
+class
+
+각 UI 오브젝트들이 포인터로 가리키고만 있어도 선택 효과를 주고, 통일된 UX를 제공하기 위한 스크립트이다.
+
+- GameObject gazeObject
+    -  현재 인터랙션까지 남은 시간을 시각적으로 알려주는 Gaze 이미지가 들어있는 오브젝트.
+
+- float gazeScale;
+    - 포인터로 가리킬 시 확대되는 최대 크기.
+
+- float ungazedColor;
+    - 포인터로 가리키지 않았을 때의 명도.
+
+- AnimationCurve curve;
+    - 인터랙션 시 Gaze가 변화하는 곡선.
+
+- public void OnPointerEnter(PointerEventData eventData)
+    - 포인터 Enter 시 isPointing을 true로 바꾸고 GoFront 코루틴을 실행함.
+
+- public void OnPointerExit(PointerEventData eventData)
+    - 포인터 Exit 시 isPointing을 false로 바꾸고 GoBack 코루틴을 실행, gaze 이미지의 fillAmount를 0으로 초기화함
+
+- IEnumerator GoFront()
+    - 포인터가 가리키고 있는 동안 Gaze 이미지와 버튼의 크기를 점점 키우는 코루틴.
+    ```csharp
+    IEnumerator GoFront()
+    {
+        float c = ungazedColor;
+        float s = 1f;
+        while(isPointing && c < 1f)
+        {
+            c = Mathf.Clamp( c + 0.025f, ungazedColor, 1f);
+            image.color = new Color(originalColor.r * c, originalColor.g * c, originalColor.b * c, 1f);
+            s = Mathf.Clamp( s + 0.02f, 1f, gazeScale);
+            transform.localScale = new Vector3(s, s, s);
+            yield return null;
+        }
+        image.color = originalColor;
+        transform.localScale = new Vector3(gazeScale, gazeScale, gazeScale);
+    }
+    ```
+
+    - IEnumerator GoBack()
+        - 포인터가 가리키지 않는동안 Gaze 이미지와 버튼의 크기를 점점 줄이는 코루틴
+    ```csharp
+    IEnumerator GoBack()
+    {
+        float c = 1f;
+        float s = gazeScale;
+        while(c > ungazedColor)
+        {
+            c = Mathf.Clamp( c - 0.05f, ungazedColor, 1f);
+            image.color = new Color(originalColor.r * c, originalColor.g * c, originalColor.b * c, 1f);
+            s = Mathf.Clamp( s - 0.04f, 1f, gazeScale);
+            transform.localScale = new Vector3(s, s, s);
+            yield return null;
+        }
+        image.color = new Color(originalColor.r * ungazedColor, originalColor.g * ungazedColor, originalColor.b * ungazedColor, 1f);
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+    ```
+
+
 # Login Scene
 
 ---
