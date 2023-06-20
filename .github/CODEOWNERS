@@ -8,7 +8,7 @@
 /Assets/02.\ Scripts/Global\ Function/VibrateControl.cs @MultiDCP
 
 # Interface
-/Assets/02.\ Scripts/Interface/IScenario.cs
+/Assets/02.\ Scripts/Interface/IScenario.cs @EunhoKang
 
 # Lobby Scene
 /Assets/02.\ Scripts/Lobby/* @MultiDCP
