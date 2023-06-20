@@ -4,6 +4,7 @@
 
 # Interface
 
+
 # Lobby Scene
 /Assets/02.\ Scripts/Lobby/* @MultiDCP
 
@@ -20,3 +21,8 @@
 
 # Miscellaneous Scripts
 /Assets/02.\ Scripts/Prefab/UISelector.cs @MultiDCP
+
+# Contact
+@EunhoKang zay0njugin@gmail.com
+@MultiDCP psmdc0714@gmail.com
+@Junhyung-Choi junhyung9571@naver.com
