@@ -25,6 +25,7 @@ Timmy Room의 가상현실 및 증강현실 프로그래밍 프로젝트의 주�
   ![url](./thumbnails/4.png)
   ![url](./thumbnails/5.png)
   ![url](./thumbnails/6.png)
+  ** if you need a licensed project file, contact us.  zay0njugin@gmail.com
 4. Follow the below steps
 
 - Windows:
