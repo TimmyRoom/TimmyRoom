@@ -1,9 +1,14 @@
 # Global Function
+/Assets/02.\ Scripts/Global\ Function/Action.cs @EunhoKang
+/Assets/02.\ Scripts/Global\ Function/GameChart.cs @EunhoKang
+/Assets/02.\ Scripts/Global\ Function/MusicContentTool.cs @EunhoKang
+/Assets/02.\ Scripts/Global\ Function/Note.cs @EunhoKang
 /Assets/02.\ Scripts/Global\ Function/SceneMover.cs @MultiDCP
+/Assets/02.\ Scripts/Global\ Function/SoundManager.cs @EunhoKang
 /Assets/02.\ Scripts/Global\ Function/VibrateControl.cs @MultiDCP
 
 # Interface
-
+/Assets/02.\ Scripts/Interface/IScenario.cs
 
 # Lobby Scene
 /Assets/02.\ Scripts/Lobby/* @MultiDCP
