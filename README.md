@@ -19,7 +19,12 @@ Timmy Room의 가상현실 및 증강현실 프로그래밍 프로젝트의 주�
 1. Clone this Repository
 2. Open Project with `Unity 21.3.21f1`
 3. Add Licensed Files at `Assets/08. Licensed Assets` as follows
-  ![url](Directory Sturcture)
+  ![url](./thumbnails/1.png)
+  ![url](./thumbnails/2.png)
+  ![url](./thumbnails/3.png)
+  ![url](./thumbnails/4.png)
+  ![url](./thumbnails/5.png)
+  ![url](./thumbnails/6.png)
 4. Follow the below steps
 
 - Windows:
