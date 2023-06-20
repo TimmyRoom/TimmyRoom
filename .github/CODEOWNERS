@@ -1,0 +1,22 @@
+# Global Function
+/Assets/02. Scripts/Global Function/SceneMover.cs @MultiDCP
+/Assets/02. Scripts/Global Function/VibrateControl.cs @MultiDCP
+
+# Interface
+
+# Lobby Scene
+/Assets/02. Scripts/Lobby/* @MultiDCP
+
+# Nanta Scene
+/Assets/02. Scripts/Nanta/* @EunhoKang
+
+# Dance Scene
+/Assets/02. Scripts/Dance/* @MultiDCP
+
+# Gallery Scene
+
+# User Data
+/Assets/02. Scripts/UserData/* @Junhyong-Choi
+
+# Miscellaneous Scripts
+/Assets/02. Scripts/Prefab/UISelector.cs @MultiDCP
