@@ -581,10 +581,9 @@ class
     - 현재 프로필 버튼 오브젝트를 해당 매개변수로 설정한다.
 
 - public void ClickProfile()
-    - newUserColor, newUserPattern를 토대로 새로운 프로필을 만든다.
-    - 기본 정보를 포함하는 JSON 파일을 생성한다.
-    - UserDataManager.AddNewData(profileName, jsonData)를 호출한다.
-    - SelectProfile(profileName)을 호출한다.
+    - UserDataManager의 프로필을 현재 프로필로 맞춘다.
+    - ModelManager의 아바타를 현재 프로필로 변경시킨다.
+    - LobbySceneManager를 통해 로비 씬으로 이동시킨다.
 
 
 # Lobby Scene
