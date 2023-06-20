@@ -540,6 +540,73 @@ XR Origin의 ActionBasedController와 연결하여 해당 컨트롤러에 원하
     }
     ```
 
+## GazeButton
+
+---
+
+class
+
+각 UI 오브젝트들이 포인터로 가리키고만 있어도 선택 효과를 주고, 통일된 UX를 제공하기 위한 스크립트이다.
+
+- GameObject gazeObject
+    -  현재 인터랙션까지 남은 시간을 시각적으로 알려주는 Gaze 이미지가 들어있는 오브젝트.
+
+- float gazeScale;
+    - 포인터로 가리킬 시 확대되는 최대 크기.
+
+- float ungazedColor;
+    - 포인터로 가리키지 않았을 때의 명도.
+
+- AnimationCurve curve;
+    - 인터랙션 시 Gaze가 변화하는 곡선.
+
+- public void OnPointerEnter(PointerEventData eventData)
+    - 포인터 Enter 시 isPointing을 true로 바꾸고 GoFront 코루틴을 실행함.
+
+- public void OnPointerExit(PointerEventData eventData)
+    - 포인터 Exit 시 isPointing을 false로 바꾸고 GoBack 코루틴을 실행, gaze 이미지의 fillAmount를 0으로 초기화함
+
+- IEnumerator GoFront()
+    - 포인터가 가리키고 있는 동안 Gaze 이미지와 버튼의 크기를 점점 키우는 코루틴.
+    ```csharp
+    IEnumerator GoFront()
+    {
+        float c = ungazedColor;
+        float s = 1f;
+        while(isPointing && c < 1f)
+        {
+            c = Mathf.Clamp( c + 0.025f, ungazedColor, 1f);
+            image.color = new Color(originalColor.r * c, originalColor.g * c, originalColor.b * c, 1f);
+            s = Mathf.Clamp( s + 0.02f, 1f, gazeScale);
+            transform.localScale = new Vector3(s, s, s);
+            yield return null;
+        }
+        image.color = originalColor;
+        transform.localScale = new Vector3(gazeScale, gazeScale, gazeScale);
+    }
+    ```
+
+    - IEnumerator GoBack()
+        - 포인터가 가리키지 않는동안 Gaze 이미지와 버튼의 크기를 점점 줄이는 코루틴
+    ```csharp
+    IEnumerator GoBack()
+    {
+        float c = 1f;
+        float s = gazeScale;
+        while(c > ungazedColor)
+        {
+            c = Mathf.Clamp( c - 0.05f, ungazedColor, 1f);
+            image.color = new Color(originalColor.r * c, originalColor.g * c, originalColor.b * c, 1f);
+            s = Mathf.Clamp( s - 0.04f, 1f, gazeScale);
+            transform.localScale = new Vector3(s, s, s);
+            yield return null;
+        }
+        image.color = new Color(originalColor.r * ungazedColor, originalColor.g * ungazedColor, originalColor.b * ungazedColor, 1f);
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+    ```
+
+
 # Login Scene
 
 ---
@@ -548,7 +615,7 @@ XR Origin의 ActionBasedController와 연결하여 해당 컨트롤러에 원하
 
 각 클래스들의 기능을 호출하는 UI 오브젝트를 통해 인터렉션한다.
 
-## ProfileManager
+## SignUpManager
 
 ---
 
@@ -556,21 +623,35 @@ class
 
 프로필을 설정할 떄 사용하는 클래스이다.
 
-- string newUserColor
-    - 신규 사용자 등록 시 색을 캐싱한다.
+- public void SetColor(UserColor color)
+    - 사용자가 선택한 컬러를 캐싱한다.
 
-- string newUserPattern
-    - 신규 사용자 등록 시 패턴을 캐싱한다.
+- public void SetPattern(UserPattern pattern)
+    - 사용자가 선택한 패턴을 캐싱한다.
 
-- public void SelectProfile(string profileName)
-    - 설정한 프로필을 선택해 현재 프로필로 설정한다.
-    - UserDataManager.ReadData(profileName)를 호출한다.
+- public void ConfirmColor()
+    - 캐싱된 색상을 확정하고 패턴 창을 보여준다.
 
-- public void MakeNewProfile()
-    - newUserColor, newUserPattern를 토대로 새로운 프로필을 만든다.
-    - 기본 정보를 포함하는 JSON 파일을 생성한다.
-    - UserDataManager.AddNewData(profileName, jsonData)를 호출한다.
-    - SelectProfile(profileName)을 호출한다.
+- public void ConfirmPattern()
+    - 캐싱된 패턴을 확정하고, UserDataManager를 활용하여 새로운 프로필을 생성한다.
+    - 생성되지 않는다면 회원가입창을 원상복구 시킨다.
+
+## Profile
+
+---
+
+class
+
+로그인을 할때 프로필 버튼에 할당되어 사용하는 클래스이다.
+
+- public void SelectProfile(int id, int colorId, int patternId)
+    - 현재 프로필 버튼 오브젝트를 해당 매개변수로 설정한다.
+
+- public void ClickProfile()
+    - UserDataManager의 프로필을 현재 프로필로 맞춘다.
+    - ModelManager의 아바타를 현재 프로필로 변경시킨다.
+    - LobbySceneManager를 통해 로비 씬으로 이동시킨다.
+
 
 # Lobby Scene
 
