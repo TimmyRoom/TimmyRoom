@@ -65,7 +65,23 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
+    /// 배경 음원이 재생되는 AudioSource이다.
+    /// </summary>
+    public AudioSource MusicAudioSource;
+
+    /// <summary>
+    /// 현재 진행중인 시나리오의 번호이다.
+    /// </summary>
+    public int currentScenarioNum;
+
+    /// <summary>
+    /// 음악을 재생하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+    /// </summary>
+    IEnumerator SongRoutine;
+
+    /// <summary>
     /// 댄스 포즈 판정에 따른 이벤트.
+    /// EventType에 따라 적절한 이벤트를 발생시킨다.
     /// </summary>
     private Dictionary<EventType, UnityEvent> ScenarioEvents =
         new Dictionary<EventType, UnityEvent>(){
@@ -74,35 +90,6 @@ public class DanceScenarioManager : MusicContentTool
         { EventType.Start, new UnityEvent() },
         { EventType.End, new UnityEvent() }
         };
-
-    /// <summary>
-    /// 콤보 달성 시 발생하는 효과음 목록이다.
-    /// </summary>
-    public AudioClip[] ComboClips;
-
-    /// <summary>
-    /// 배경 음원이 재생되는 AudioSource이다.
-    /// </summary>
-    public AudioSource MusicAudioSource;
-
-    /// <summary>
-    /// 콤보 달성 시 발생하는 효과음이 재생되는 AudioSource이다.
-    /// </summary>
-    public AudioSource ComboAudioSource;
-
-    /// <summary>
-    /// 현재 진행중인 시나리오의 번호이다.
-    /// </summary>
-    public int currentScenarioNum;
-
-    //int barCombo = 0;
-
-    /// <summary>
-    /// 음악을 재생하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
-    /// </summary>
-    IEnumerator SongRoutine;
-
-    //IEnumerator ComboRoutine;
 
     void Start()
     {
@@ -122,58 +109,9 @@ public class DanceScenarioManager : MusicContentTool
     }
 
     /// <summary>
-    /// SoundManager를 통해 음악을 재생한다.
-    /// </summary>
-    /// <param name="audioClip">재생할 오디오 클립.</param>
-    /// <param name="barSecond">마디당 소요 시간.</param>
-    void StartMusic(AudioClip audioClip, float barSecond)
-    {
-        SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
-    }
-
-    /// <summary>
-    /// SoundManager를 통해 콤보 사운드를 재생한다.
-    /// </summary>
-    IEnumerator PlayComboSound()
-    {
-        // 콤보 사운드가 타이밍을 맞출 수 있게 되면 수정
-        //SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
-        yield return null;
-    }
-
-    //IEnumerator AddComboLoop(float barSecond)
-    //{
-    //    WaitForSeconds tick = new WaitForSeconds(barSecond);
-    //    while (true)
-    //    {
-    //        yield return tick;
-    //        barCombo += 1;
-    //        if (barCombo == 2)
-    //        {
-    //            SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
-    //        }
-    //        else if (barCombo > 2 && barCombo % 2 == 0)
-    //        {
-    //            SoundManager.instance.PlaySound(ComboClips[0], ComboAudioSource);
-    //        }
-    //    }
-    //}
-
-    //IEnumerator EndComboLoop(float songLength)
-    //{
-    //    yield return new WaitForSeconds(songLength);
-    //    StopCoroutine(ComboRoutine);
-    //}
-
-    //public void ResetCombo()
-    //{
-    //    barCombo = 0;
-    //}
-
-    /// <summary>
     /// 각 노트에 대해 CommandExecute(time, command) 호출.
     /// </summary>
-    /// <param name="json">JSON 데이터.</param>
+    /// <param name="json">차트 JSON 데이터.</param>
     /// <param name="audioClip">재생할 음원.</param>
     public override GameChart PlayChart(string json, AudioClip audioClip)
     {
@@ -191,18 +129,6 @@ public class DanceScenarioManager : MusicContentTool
     public override float GetWaitTime()
     {
         return danceJudgingPoint.FallingTime;
-    }
-
-    /// <summary>
-    /// 일정 시간 후 음악을 재생하는 코루틴.
-    /// <param name="audioClip">재생할 오디오 클립.</param>
-    /// <param name="waitTime">대기 시간.</param>
-    /// <param name="barSecond">마디당 소요 시간.</param>
-    /// </summary>
-    IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
-    {
-        yield return new WaitForSeconds(waitTime);
-        StartMusic(audioClip, barSecond);
     }
 
     public override void CommandExecute(float time, List<Action> actions)
@@ -233,7 +159,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -252,6 +177,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -266,7 +192,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -285,6 +210,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -299,7 +225,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -318,6 +243,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -332,7 +258,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -351,6 +276,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -365,7 +291,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -384,6 +309,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -398,7 +324,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -417,6 +342,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -431,7 +357,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -450,6 +375,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -464,7 +390,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -483,6 +408,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -497,7 +423,6 @@ public class DanceScenarioManager : MusicContentTool
                         ScenarioEvents[EventType.Hit]?.Invoke();
                         StartCoroutine(VibrateControl.instance.CustomVibrateLeft(correctVAmplifier, correctVTime));
                         StartCoroutine(VibrateControl.instance.CustomVibrateRight(correctVAmplifier, correctVTime));
-                        StartCoroutine(PlayComboSound());
                         break;
                     }
                     case 0:
@@ -516,6 +441,7 @@ public class DanceScenarioManager : MusicContentTool
                     }
                     default:
                     {
+                        Debug.Assert(false);
                         break;
                     }
                 }
@@ -523,6 +449,7 @@ public class DanceScenarioManager : MusicContentTool
             }
             default:
             {
+                Debug.Assert(false);
                 break;
             }
         }
@@ -537,6 +464,7 @@ public class DanceScenarioManager : MusicContentTool
             scenario.SetActive(false);
         }
         Scenarios[scenarioIndex].SetActive(true);
+
         currentScenarioNum = scenarioIndex;
 
         ScenarioEvents[EventType.End].Invoke();
@@ -544,7 +472,6 @@ public class DanceScenarioManager : MusicContentTool
         {
             events.RemoveAllListeners();
         }
-
         foreach (var KeyPair in Scenarios[scenarioIndex].GetComponent<IScenario>().GetActions())
         {
             ScenarioEvents[(EventType)KeyPair.Key].AddListener(KeyPair.Value);
@@ -554,9 +481,30 @@ public class DanceScenarioManager : MusicContentTool
 
     public override void ResetAll()
     {
-        //barCombo = 0;
         StopCoroutine(SongRoutine);
         danceJudgingPoint.ResetAll();
         SoundManager.instance.StopSound(MusicAudioSource);
+    }
+
+    /// <summary>
+    /// 일정 시간 후 음악을 재생하는 코루틴.
+    /// <param name="audioClip">재생할 오디오 클립.</param>
+    /// <param name="waitTime">대기 시간.</param>
+    /// <param name="barSecond">마디당 소요 시간.</param>
+    /// </summary>
+    IEnumerator PlayChartRoutine(AudioClip audioClip, float waitTime, float barSecond)
+    {
+        yield return new WaitForSeconds(waitTime);
+        StartMusic(audioClip, barSecond);
+    }
+
+    /// <summary>
+    /// SoundManager를 통해 음악을 재생한다.
+    /// </summary>
+    /// <param name="audioClip">재생할 오디오 클립.</param>
+    /// <param name="barSecond">마디당 소요 시간.</param>
+    void StartMusic(AudioClip audioClip, float barSecond)
+    {
+        SoundManager.instance.PlaySound(audioClip, MusicAudioSource);
     }
 }
