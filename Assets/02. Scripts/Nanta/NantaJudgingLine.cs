@@ -77,7 +77,7 @@ public class NantaJudgingLine : MonoBehaviour
     /// SpawnNoteRoutineWithChange(time, type) 루틴 실행.
     /// </summary>
     /// <param name="time">루틴이 시작될 시간.</param>
-    /// <param name="type">노트가 생성되는 라인</param>
+    /// <param name="type">노트가 생성되는 라인.</param>
     public void SpawnNoteWithChange(float time, int type)
     {
         IEnumerator noteRoutine = SpawnNoteRoutineWithChange(time, type);

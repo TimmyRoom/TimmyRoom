@@ -10,12 +10,12 @@ User Interaction을 통해 화살표를 따라 각 씬으로 이동 가능하다
 
 아래는 각 씬에서 정의된 기능들의 목록이다.
 
-1. [Global Function](https://www.notion.so/VR-fd5c155dad6447468978faffcdb4ca4c)
-2. [Login Scene](https://www.notion.so/VR-fd5c155dad6447468978faffcdb4ca4c)
-3. [Lobby Scene](https://www.notion.so/VR-fd5c155dad6447468978faffcdb4ca4c)
-4. [Nanta Scene](https://www.notion.so/VR-fd5c155dad6447468978faffcdb4ca4c)
-5. [Dance Scene](https://www.notion.so/VR-fd5c155dad6447468978faffcdb4ca4c)
-6. [Gallery Scene](https://www.notion.so/VR-fd5c155dad6447468978faffcdb4ca4c)
+1. [Global Function](https://github.com/TimmyRoom/TimmyRoom/blob/develop/Documents/API/API%20%EB%AC%B8%EC%84%9C.md#global-function)
+2. [Login Scene](https://github.com/TimmyRoom/TimmyRoom/blob/develop/Documents/API/API%20%EB%AC%B8%EC%84%9C.md#login-scene)
+3. [Lobby Scene](https://github.com/TimmyRoom/TimmyRoom/blob/develop/Documents/API/API%20%EB%AC%B8%EC%84%9C.md#lobby-scene)
+4. [Nanta Scene](https://github.com/TimmyRoom/TimmyRoom/blob/develop/Documents/API/API%20%EB%AC%B8%EC%84%9C.md#nanta-scene)
+5. [Dance Scene](https://github.com/TimmyRoom/TimmyRoom/blob/develop/Documents/API/API%20%EB%AC%B8%EC%84%9C.md#dance-scene)
+6. [Gallery Scene](https://github.com/TimmyRoom/TimmyRoom/blob/develop/Documents/API/API%20%EB%AC%B8%EC%84%9C.md#gallery-scene)
 
 # Global Function
 
@@ -288,6 +288,9 @@ abstract class
 
 각 씬의 매너지 클래스 중 일부가 상속하며 AbstractSceneManager를 상속받는다.
 
+- protected IEnumerator RecordAndCapture()
+    - 콘텐츠 실행 중 무작위 시간에 SceneRecorder를 사용자의 화면을 캡쳐한다.
+
 - public float Beat2Second(float beat, float BPM)
     - 박자 단위를 받아 BPM에 따라 정확한 초를 계산한다.
     - beat : 마디 수.
@@ -375,6 +378,7 @@ abstract class
 - public abstract void SetScenario(int scenarioIndex)
     - 현재 시나리오를 scenario 번호에 따라 설정하고 시나리오에 맞는 오브젝트 및 데이터, UI를 생성하거나 삭제한다.
     - scenarioIndex : 변경할 시나리오의 Index.
+
 ## EscapeDoor
 
 ---
@@ -385,11 +389,14 @@ class
 
 상호작용 시 정해진 UnityEvent를 발생시킨다.
 
-- public UnityEvent[] Events
-    - 인터렉션 시 발생하는 이벤트를 정의한다.
+- public AudioClip EscapeSound
+    - 탈출 버튼 작동 시 재생되는 효과음.
 
-- private void OnTriggerEnter(Collider other)
-    - Events를 발생시킨다.
+- public UnityEvent EscapeEvent
+    - 탈출 버튼 작동 시 실행되는 이벤트.
+
+- IEnumerator Escape()
+    - 일정 시간을 두고 EscapeEvent를 발생시킨다.
 
 ## UserDataManager
 
@@ -623,6 +630,9 @@ abstract class
 - public abstract void Initialize()
     - 악기의 초기화를 위한 함수.
 
+- public abstract void OnDisappear()
+    - 악기가 비활성화될 때 호출되는 함수.
+
 - public abstract void GetHitted(int type)
     - 악기가 사용자에 의해 인터렉션되었을 때 호출되는 함수.
 
@@ -644,6 +654,12 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
 - private NantaInstrumentManager nantaInstrumentManager
     - 난타 악기 오브젝트들을 관리하는 클래스이다.
 
+- public float VibrateTime
+    - 난타 판정 발생 시 진동이 발생하는 시간.
+
+- public float VibrateAmplifier
+    - 난타 판정 발생 시 진동의 세기.
+
 - public GameObject[] Scenarios
     - 각 상황마다 등장하는 UI이다.
 
@@ -654,25 +670,14 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
     - 난타 북 타격 판정에 따른 이벤트 목록.
     - EventType에 따라 적절한 이벤트를 발생시킨다.
 
-- public AudioClip[] ComboClips
-    - 콤보 달성 시 발생하는 효과음 목록이다.
-
 - public AudioSource MusicAudioSource
     - 배경 음원이 재생되는 AudioSource이다.
-
-- public AudioSource ComboAudioSource
-    - 콤보 달성 시 발생하는 효과음이 재생되는 AudioSource이다.
-
-- int barCombo
-    - 초기 값을 0으로 한다.
-    - 모든 노드를 성공으로 판정받은 마디가 있으면 해당 값을 1 증가시킨다.
-    - 판정에 실패하면 즉시 값을 0으로 만든다.
 
 - IEnumerator SongRoutine
     - 음악을 재생하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
 
-- IEnumerator ComboRoutine
-    - AddComboLoop 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
+- IEnumerator StopRoutine
+    - 음악 종료 후 발생하는 이벤트를 처리하는 루틴을 저장한다. 컨텐츠가 끝나면 종료된다.
 
 - void Initialize()
     - 초기 설정을 위한 함수.
@@ -683,24 +688,7 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
     - ComboRoutine = StartCoroutine(AddComboLoop(float barSecond))
 
 - void StopMusic()
-  - 음악을 멈추고 콤보 루틴을 종료한다. 
-
-- IEnumerator AddComboLoop(float barSecond)
-    - barSecond마다 barCombo += 1
-    - barCombo의 값에 따라 SoundManager.SoundPlay(ComboClips, ComboAudioSource) 호출.
-        
-        
-        | barCombo | ComboClips[k] |
-        | --- | --- |
-        | 2 | k = 0 |
-        | 4,6,8,… | k = 1 |
-
-- IEnumerator void EndComboLoop(float songLength)
-    - WaitforSecond로 songLength초 만큼 대기.
-    - 콤보 루틴을 종료한다: StopCoroutine(ComboRoutine);
-
-- public void ResetCombo()
-    - barCombo를 0으로 설정한다.
+  - 음악을 멈추고 루틴을 종료한다. 
 
 - override void PlayChart(string json)
     - base.PlayChart(json)
@@ -725,6 +713,10 @@ MusicContentTool, AbstarctSceneManager을 상속받는다.
         | LeftHand | NantaJudgingLine.SpawnNote(time, 0) |
         | RightHand | NantaJudgingLine.SpawnNote(time, 1) |
         | ^ChangeInstrument .$ | NantaInstrumentManager.ChangeInstrument(time, int.Parse(command.Split(' ')[1])) |
+
+- public void ChangeInstrumentInstantly(int type)
+    - 악기를 즉시 교체한다.
+    - type : 악기의 종류
 
 - public override NoteResult JudgeNote(int type)
     - NantaJudgingLine.JudgeNote(type)를 호출하여 result를 얻는다.
@@ -816,6 +808,11 @@ class
     - time : 노트가 생성되는 시간.
     - type : 노트가 생성되는 라인.
     
+- public void SpawnNoteWithChange(float time, int type)
+    - SpawnNoteRoutineWithChange(time, type) 루틴 실행.
+    - time : 루틴이 시작될 시간.
+    - type : 노트가 생성되는 라인.
+
 - IEnumerator SpawnNoteRoutine(float time, int type)
     - time - judgingTime 만큼  WaitforSecond를 통해 대기.
         - if(time - judgingTime > 0), 0초 대기.
@@ -823,10 +820,24 @@ class
     - time : 노트 생성까지 대기하는 시간.
     - type : 노트가 생성되는 라인.
 
+- IEnumerator SpawnNoteRoutineWithChange(float time, int type)
+    - 일정 시간동안 대기 후 악기 변환 노트를 생성하여 움직이게 한다.
+    - time : 생성까지 대기하는 시간.
+    - type : 노트가 생성되는 라인.
+
 - public int JudgeNote(int type)
     - 노트 타입에 연결되는 라인에서 노트 진행 방향으로 가장 멀리 이동한 노트를 참조해 판정을 한다.
     - 이후 NantaScenarioManager.JudgeNote()를 호출하여 적절한 이벤트를 발생시킨다.
     - type : 판정을 진행할 라인.
+    - returns : 노트 판정 결과.
+
+- Rigidbody GetNote(int type)
+    - 노트를 생성하고 해당 오브젝트의 RigidBody 컴포넌트를 반환한다.
+    - returns : 생성된 노트의 RigidBody.
+
+- Rigidbody GetNoteWithChange(int type)
+    - 악기 변환 노트를 생성하고 해당 오브젝트의 RigidBody 컴포넌트를 반환한다.
+    - returns : 생성된 노트의 RigidBody.
 
 - public void ResetAll()
     - 씬 시작 상태로 되돌리는 함수.
