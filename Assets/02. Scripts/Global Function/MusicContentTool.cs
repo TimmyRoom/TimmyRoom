@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public abstract class MusicContentTool : AbstractSceneManager
 {
+    /// <summary>
+    /// 콘텐츠 실행 중 무작위 시간에 SceneRecorder를 사용자의 화면을 캡쳐한다.
+    /// </summary>
     protected IEnumerator RecordAndCapture()
     {
         yield return new WaitForSeconds(UnityEngine.Random.Range(0f, 50f));
