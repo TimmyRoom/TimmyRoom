@@ -548,7 +548,7 @@ XR Origin의 ActionBasedController와 연결하여 해당 컨트롤러에 원하
 
 각 클래스들의 기능을 호출하는 UI 오브젝트를 통해 인터렉션한다.
 
-## ProfileManager
+## SignUpManager
 
 ---
 
@@ -556,21 +556,36 @@ class
 
 프로필을 설정할 떄 사용하는 클래스이다.
 
-- string newUserColor
-    - 신규 사용자 등록 시 색을 캐싱한다.
+- public void SetColor(UserColor color)
+    - 사용자가 선택한 컬러를 캐싱한다.
 
-- string newUserPattern
-    - 신규 사용자 등록 시 패턴을 캐싱한다.
+- public void SetPattern(UserPattern pattern)
+    - 사용자가 선택한 패턴을 캐싱한다.
 
-- public void SelectProfile(string profileName)
-    - 설정한 프로필을 선택해 현재 프로필로 설정한다.
-    - UserDataManager.ReadData(profileName)를 호출한다.
+- public void ConfirmColor()
+    - 캐싱된 색상을 확정하고 패턴 창을 보여준다.
 
-- public void MakeNewProfile()
+- public void ConfirmPattern()
+    - 캐싱된 패턴을 확정하고, UserDataManager를 활용하여 새로운 프로필을 생성한다.
+    - 생성되지 않는다면 회원가입창을 원상복구 시킨다.
+
+## Profile
+
+---
+
+class
+
+로그인을 할때 프로필 버튼에 할당되어 사용하는 클래스이다.
+
+- public void SelectProfile(int id, int colorId, int patternId)
+    - 현재 프로필 버튼 오브젝트를 해당 매개변수로 설정한다.
+
+- public void ClickProfile()
     - newUserColor, newUserPattern를 토대로 새로운 프로필을 만든다.
     - 기본 정보를 포함하는 JSON 파일을 생성한다.
     - UserDataManager.AddNewData(profileName, jsonData)를 호출한다.
     - SelectProfile(profileName)을 호출한다.
+
 
 # Lobby Scene
 
