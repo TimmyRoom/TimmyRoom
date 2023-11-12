@@ -1,6 +1,6 @@
 # 개요
 
-![Video Label](http://img.youtube.com/vi/_sbLuniFsnI/0.jpg)
+![Video Label](http://img.youtube.com/vi/mzYkAJVTIH4/0.jpg)
 
 ### TimmyRoom Repository
 
